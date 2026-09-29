@@ -1,4 +1,4 @@
-# Some Recent Thoughts
+# AI Won't Close the Gap Between People, and 7 Other Notes
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
 - Published: 2026-08-09 (Asia/Shanghai; 2026-08-09T06:00:35.000Z)

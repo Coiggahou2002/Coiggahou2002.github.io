@@ -1,4 +1,4 @@
-# 最近的一些思考
+# AI 不会缩小人与人的差距，以及另外 7 条思考
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
 - Published: 2026-08-09 (Asia/Shanghai; 2026-08-09T06:00:35.000Z)
