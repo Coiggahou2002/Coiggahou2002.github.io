@@ -93,7 +93,7 @@
 <li>tsc can use the information from the entire type system across multiple files to figure out that <code>SomeInterface</code> refers to a type and <code>SomeEnum</code> is a value. It then drops SomeInterface but keeps the import of SomeEnum</li>
 <li>TypeScript compilers other than tsc may not be able to. For example, Babel’s TS transpiler and esbuild both work in single-file transpilation mode. Unlike tsc, they can’t transpile a file with the context of the whole type system, so <strong>in some cases they can’t tell whether the <code>A</code> in <code>import A</code> is a pure type</strong>. The compiler then can’t be sure the statement is safe to remove, so it keeps it.</li>
 </ul>
-<p>These wrongly retained statements reference type declarations that were already stripped at compile time, which means that at runtime they reference a value that doesn’t exist. So this usually leads to bugs or runtime errors (this is documented in the <a href="https://www.typescriptlang.org/tsconfig/#isolatedModules">official TypeScript docs</a>, in <a href="https://github.com/evanw/esbuild/issues/314#issuecomment-668401819">Evan Wallance’s reply</a>, and in the <a href="https://esbuild.github.io/content-types/#isolated-modules">esbuild docs</a>)</p>
+<p>These wrongly retained statements reference type declarations that were already stripped at compile time, which means that at runtime they reference a value that doesn’t exist. So this usually leads to bugs or runtime errors (this is documented in the <a href="https://www.typescriptlang.org/tsconfig/#isolatedModules">official TypeScript docs</a>, in <a href="https://github.com/evanw/esbuild/issues/314#issuecomment-668401819">Evan Wallace’s reply</a>, and in the <a href="https://esbuild.github.io/content-types/#isolated-modules">esbuild docs</a>)</p>
 <p><a href="https://www.typescriptlang.org/tsconfig/#isolatedModules">Here’s what the official TypeScript docs say about single-file transpilation</a>:</p>
 <blockquote>
 <p>While you can use TypeScript to produce JavaScript code from TypeScript code, it’s also common to use other transpilers such as Babel to do this. However, other transpilers only operate on a single file at a time, which means they can’t apply code transforms that depend on understanding the full type system. This restriction also applies to TypeScript’s ts.transpileModule API which is used by some build tools.</p>
@@ -108,7 +108,7 @@
 <p>TODO: explain what each option does here</p>
 <ul>
 <li>isolatedModules: lets people using single-file compilers catch certain errors early</li>
-<li>importsNotUsedAsValues: specifies how imports whose values are never used should be handled, remove/perserve/error</li>
+<li>importsNotUsedAsValues: specifies how imports whose values are never used should be handled, remove/preserve/error</li>
 <li>preserveValueImports</li>
 <li>verbatimModuleSyntax</li>
 </ul>

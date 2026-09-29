@@ -93,7 +93,7 @@
 <li>对于 tsc 来说，它有办法利用多个文件蕴含的整个类型系统的信息，来发现你这个 <code>SomeInterface</code> 指代的是一个类型，而 <code>SomeEnum</code> 是一个值，它就会去除掉 SomeInterface，但保留 SomeEnum 的引入语句</li>
 <li>对于 tsc 以外的 TypeScript 编译器来说，就不一定了——例如 Babel 的 TS 转译器和 esbuild 都是单文件转译的模式，他们不像 tsc 一样具备在整个类型系统信息的背景下转译这个文件的能力，所以<strong>在某些情况下，他们没办法判断一个 <code>import A</code> 的 <code>A</code> 到底是不是一个纯类型</strong>，那么此时编译器就并不能肯定地认为这个语句能够去掉，于是就会保留它。</li>
 </ul>
-<p>这种被错误保留的语句，它们引用了在编译时已经被去除的类型声明，也就是在运行时引用了一个不存在的值，所以这种情况一般会引发一些 bug 或者运行时错误（这一点在 <a href="https://www.typescriptlang.org/tsconfig/#isolatedModules">TypeScript 官方文档</a>和 <a href="https://github.com/evanw/esbuild/issues/314#issuecomment-668401819">Evan Wallance 的回复</a>，以及 <a href="https://esbuild.github.io/content-types/#isolated-modules">esbuild 的文档</a>中都有说明）</p>
+<p>这种被错误保留的语句，它们引用了在编译时已经被去除的类型声明，也就是在运行时引用了一个不存在的值，所以这种情况一般会引发一些 bug 或者运行时错误（这一点在 <a href="https://www.typescriptlang.org/tsconfig/#isolatedModules">TypeScript 官方文档</a>和 <a href="https://github.com/evanw/esbuild/issues/314#issuecomment-668401819">Evan Wallace 的回复</a>，以及 <a href="https://esbuild.github.io/content-types/#isolated-modules">esbuild 的文档</a>中都有说明）</p>
 <p><a href="https://www.typescriptlang.org/tsconfig/#isolatedModules">TypeScript 官方文档关于单文件转译模式的说明原话</a>如下：</p>
 <blockquote>
 <p>While you can use TypeScript to produce JavaScript code from TypeScript code, it’s also common to use other transpilers such as Babel to do this. However, other transpilers only operate on a single file at a time, which means they can’t apply code transforms that depend on understanding the full type system. This restriction also applies to TypeScript’s ts.transpileModule API which is used by some build tools.</p>
@@ -108,7 +108,7 @@
 <p>TODO: 这里讲一下每个配置有什么作用</p>
 <ul>
 <li>isolatedModules: 为了让用单文件的编译器的用户，也能及时爆出一些错误</li>
-<li>importsNotUsedAsValues: 规定那些没有用到的 import 值应该怎么处理，remove/perserve/error</li>
+<li>importsNotUsedAsValues: 规定那些没有用到的 import 值应该怎么处理，remove/preserve/error</li>
 <li>preserveValueImports</li>
 <li>verbatimModuleSyntax</li>
 </ul>

@@ -271,7 +271,7 @@
 
 
 
-<table><thead><tr><th>Base character</th><th>Code point</th><th>With variation selector</th><th>Code point</th></tr></thead><tbody><tr><td>☀</td><td><code>U+2600</code></td><td>☀️</td><td><code>U+2600</code> <code>U+FE0F</code></td></tr><tr><td>♠</td><td><code>U+2600</code></td><td>♠️️</td><td><code>U+2660</code> <code>U+FE0F</code></td></tr><tr><td>⬆</td><td><code>U+2B06</code></td><td>⬆️️️</td><td><code>U+2B06</code> <code>U+FE0F</code></td></tr><tr><td>☑</td><td><code>U+2611</code></td><td>️ ☑️️️</td><td><code>U+2611</code> <code>U+FE0F</code></td></tr></tbody></table>
+<table><thead><tr><th>Base character</th><th>Code point</th><th>With variation selector</th><th>Code point</th></tr></thead><tbody><tr><td>☀</td><td><code>U+2600</code></td><td>☀️</td><td><code>U+2600</code> <code>U+FE0F</code></td></tr><tr><td>♠</td><td><code>U+2660</code></td><td>♠️️</td><td><code>U+2660</code> <code>U+FE0F</code></td></tr><tr><td>⬆</td><td><code>U+2B06</code></td><td>⬆️️️</td><td><code>U+2B06</code> <code>U+FE0F</code></td></tr><tr><td>☑</td><td><code>U+2611</code></td><td>️ ☑️️️</td><td><code>U+2611</code> <code>U+FE0F</code></td></tr></tbody></table>
 <h3 id="keycap-sequences">Keycap sequences</h3>
 <p>The keycap emoji we use all the time, like 1️⃣ 2️⃣ 3️⃣, belong to this family. Each one is made of a base code point + a variation selector + an enclosing keycap code point.</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507211011487.png" alt=""></p>
@@ -498,7 +498,7 @@
 <p>So we need a solid solution that can “correctly identify each Unicode unit” for us.</p>
 <hr>
 <h2 id="3-reading-the-runesjs-source">3 Reading the runes.js source</h2>
-<p><a href="https://github.com/dotcypress/runes">runes</a>) is a JavaScript library for splitting strings that contain emoji and other Unicode characters. In JavaScript, the default <code>String.split('')</code> can’t correctly handle emoji and other non-BMP (Basic Multilingual Plane) characters, and runes solves that.</p>
+<p><a href="https://github.com/dotcypress/runes">runes</a> is a JavaScript library for splitting strings that contain emoji and other Unicode characters. In JavaScript, the default <code>String.split('')</code> can’t correctly handle emoji and other non-BMP (Basic Multilingual Plane) characters, and runes solves that.</p>
 <p>It’s a fairly small utility library, just one file exporting two functions, <code>runes</code> and <code>substr</code>. Its handling of emoji ties in closely with the Unicode principles and encoding details covered above, and it gives frontend developers a reliable way to work with emoji strings.</p>
 <p>First, the results:</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> runes</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> require</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'runes'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
