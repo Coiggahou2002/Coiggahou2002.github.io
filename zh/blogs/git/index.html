@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git · Rory Cai</title><meta name="description" content="分支只是指向 snapshot 节点的指针 snapshot 节点组成一幅有向无环图 HEAD 指针指向当前工作区状态对应的 snapshot 节点 工作区(Working Directory) 暂存区(Staging Area) 自上一次提交后，git 知道的文件，产生了修改后，就会进入这个状态（如果是 git…"><link rel="canonical" href="https://coiggahou2002.github.io/zh/blogs/git/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/git/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/git/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/git/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+    // Runs before first paint so a light-mode reader never sees a dark flash.
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="Git"><meta property="og:description" content="分支只是指向 snapshot 节点的指针 snapshot 节点组成一幅有向无环图 HEAD 指针指向当前工作区状态对应的 snapshot 节点 工作区(Working Directory) 暂存区(Staging Area) 自上一次提交后，git 知道的文件，产生了修改后，就会进入这个状态（如果是 git…"><meta property="og:url" content="https://coiggahou2002.github.io/zh/blogs/git/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2023-10-08T00:00:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Git","description":"分支只是指向 snapshot 节点的指针 snapshot 节点组成一幅有向无环图 HEAD 指针指向当前工作区状态对应的 snapshot 节点 工作区(Working Directory) 暂存区(Staging Area) 自上一次提交后，git 知道的文件，产生了修改后，就会进入这个状态（如果是 git…","url":"https://coiggahou2002.github.io/zh/blogs/git/","mainEntityOfPage":"https://coiggahou2002.github.io/zh/blogs/git/","inLanguage":"zh-CN","datePublished":"2023-10-08T00:00:00.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"全栈开发工程师","worksFor":{"@type":"Organization","name":"腾讯","url":"https://www.tencent.com/zh-cn/"},"alumniOf":{"@type":"CollegeOrUniversity","name":"哈尔滨工业大学","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002"]}}</script><link rel="stylesheet" href="/_astro/Base.BxbyvWQG.css"></head><body><nav class="pill-nav" aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/blogs/" aria-current="page">文章</a><a href="/zh/menu/uses/">工具</a><a href="/zh/menu/journal/">手账</a><a class="lang-switch" href="/blogs/git/" hreflang="en" lang="en" aria-label="Switch to English">EN</a><button class="theme-toggle" type="button" aria-label="切换深浅色" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+    // The toggle only exists with JavaScript; without it the site stays dark.
+    (() => {
+      const btn = document.querySelector('.theme-toggle');
+      const root = document.documentElement;
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
+      });
+    })();
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>Git</h1><time datetime="2023-10-08T00:00:00.000Z">2023-10-08</time></header><nav class="toc" aria-label="目录"><p>目录</p><ol><li class="d2"><a href="#-基础知识">📚 基础知识</a></li><li class="d3"><a href="#概念">概念</a></li><li class="d3"><a href="#三个区域">三个区域</a></li><li class="d3"><a href="#文件的三种状态">文件的三种状态</a></li><li class="d2"><a href="#-命令">📄 命令</a></li><li class="d3"><a href="#基础的">基础的</a></li><li class="d3"><a href="#查看类">查看类</a></li><li class="d3"><a href="#关于更改缓冲区">关于更改缓冲区</a></li><li class="d3"><a href="#关于转移改动">关于转移改动</a></li><li class="d3"><a href="#关于最近一次-commit">关于最近一次 commit</a></li><li class="d3"><a href="#和远程同步">和远程同步</a></li><li class="d3"><a href="#硬重置">硬重置</a></li><li class="d2"><a href="#一些小技巧">一些小技巧</a></li><li class="d2"><a href="#tag-相关">tag 相关</a></li><li class="d2"><a href="#alias">alias</a></li></ol></nav><div class="prose"><h2 id="-基础知识">📚 基础知识</h2>
+<h3 id="概念">概念</h3>
+<ul>
+<li>分支只是指向 snapshot 节点的指针</li>
+<li>snapshot 节点组成一幅有向无环图</li>
+<li>HEAD 指针指向当前工作区状态对应的 snapshot 节点</li>
+</ul>
+<h3 id="三个区域">三个区域</h3>
+<p>工作区(Working Directory)</p>
+<p>暂存区(Staging Area)</p>
+<h3 id="文件的三种状态">文件的三种状态</h3>
+<h4 id="modified">Modified</h4>
+<p>自上一次提交后，git 知道的文件，产生了修改后，就会进入这个状态（如果是 git 不知道的文件，即使它产生了修改，也不会进入 Modified 状态，例如新的文件或者 <code>.gitignore</code> 所包含的文件。</p>
+<h4 id="staged">Staged</h4>
+<p>使用 git add 添加过的文件（或文件里的部分改动），就会进入 Staged 状态。</p>
+<h4 id="查看文件状态">查看文件状态</h4>
+<p>使用 <code>git status</code> 可以查看当前仓库的状态，会显示修改了哪些文件、暂存了哪些文件</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>On branch main</span></span>
+<span class="line"><span>Your branch is up to date with 'origin/main'.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Changes not staged for commit:</span></span>
+<span class="line"><span>  (use "git add &#x3C;file>..." to update what will be committed)</span></span>
+<span class="line"><span>  (use "git restore &#x3C;file>..." to discard changes in working directory)</span></span>
+<span class="line"><span>        modified:   components/blog/TocNav.vue</span></span>
+<span class="line"><span>        modified:   content/blogs/git.md</span></span>
+<span class="line"><span>        modified:   content/blogs/importtype-import.md</span></span>
+<span class="line"><span>        modified:   nuxt.config.ts</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Untracked files:</span></span>
+<span class="line"><span>  (use "git add &#x3C;file>..." to include in what will be committed)</span></span>
+<span class="line"><span>        components/content/ProseH4.vue</span></span>
+<span class="line"><span>        content/blogs/package-json.md</span></span>
+<span class="line"><span>        content/blogs/react-native-pitfalls.md</span></span>
+<span class="line"><span>        content/blogs/use-githook-to-improve-publish-process.md</span></span>
+<span class="line"><span>        content/zh/blogs/</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>no changes added to commit (use "git add" and/or "git commit -a")</span></span></code></pre>
+<p>如果使用 <code>git status -s</code> 就会以更短的模式展示</p>
+<ul>
+<li>M 表示处于 Modified 状态的文件</li>
+<li>A 表示该文件所有改动已经进入暂存区</li>
+<li>AM 表示该文件有部分改动进入了暂存区，有部分改动未进入暂存区</li>
+<li><code>??</code> 表示属于 git 未知的文件（也就是未被 git 追踪）</li>
+</ul>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50"> M</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> components/blog/TocNav.vue</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50"> M</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> content/blogs/git.md</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50"> M</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> content/blogs/importtype-import.md</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50"> A</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> nuxt.config.ts</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">AM</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> components/content/ProseH4.vue</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">??</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> content/blogs/package-json.md</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">??</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> content/blogs/react-native-pitfalls.md</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">??</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> content/blogs/use-githook-to-improve-publish-process.md</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">??</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> content/zh/blogs/</span></span></code></pre>
+<h2 id="-命令">📄 命令</h2>
+<h3 id="基础的">基础的</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> add</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${files}</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> checkout</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${branchName}</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> checkout</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> -b</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${newBranch}  </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 从当前分支创建一个分支并签出</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> checkout</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> -</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 切回上一个分支</span></span></code></pre>
+<h3 id="查看类">查看类</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> status</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 查看状态</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> status</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> -s</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 以文件列表方式查看状态</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> branch</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --show-current</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 打印当前分支名</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> log</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${branch} </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 查看分支提交历史</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> show</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${commitHash} </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 查看指定 commit 的具体改动</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> diff</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --name-only</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 列出当前处于 Modified 状态的所有文件名</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> diff</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --staged</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --name-only</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 列出当前处于缓冲区的所有文件的文件名，通常用于提交前格式化等作用</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 列出缓冲区中所有文件的文件名，只显示新添加、复制、修改文件</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> diff</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --staged</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --diff-filter=ACM</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 将缓存区中所有文件用 prettier 格式化</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> diff</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --staged</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --name-only</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> |</span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50"> xargs</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> prettier</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --write</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> </span></span></code></pre>
+<h3 id="关于更改缓冲区">关于更改缓冲区</h3>
+<p>可能你在 A 分支改了一堆代码，但属于未完成状态，此时临时要切到 B 分支去做其他工作，可以将代码暂存</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> stash</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  # 暂存 unstaged 更改 </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> stash</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> apply</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> stash</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> pop</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 吐出最近一次的暂存更改 </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> stash</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> drop</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 丢掉 stash</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> stash</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> list</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  # 查看暂存栈</span></span></code></pre>
+<p>当然，也可以选择全部丢弃</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> restore</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${filename}  </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 清除 unstaged 文件</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> restore</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --staged</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${filename} </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 从暂存区清除指定文件</span></span></code></pre>
+<h3 id="关于转移改动">关于转移改动</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> merge</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${branch}  </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 把 branch 合并到当前所在分支来</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> cherry-pick</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${commitHash} </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 把 commitHash 提交 pick 到当前分支上</span></span></code></pre>
+<h3 id="关于最近一次-commit">关于最近一次 commit</h3>
+<p>如果提交了但没推到远程，想撤回来，可以用软重置，改动会吐出来</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> reset</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --soft</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> HEAD~1</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> reset</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --soft</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> HEAD~n</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 可以一次性软重置多个 commit</span></span></code></pre>
+<p>如果提交了但没推到远程，想改一下 commit message，可以用 amend</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --amend</span></span></code></pre>
+<h3 id="和远程同步">和远程同步</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> fetch</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --all</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> pull</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # 相当于 fetch + merge</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> pull</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --rebase</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> -m</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ${message}</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> push</span></span></code></pre>
+<h3 id="硬重置">硬重置</h3>
+<p>强行重置本地的分支</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> reset</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --hard</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> HEAD~n</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> reset</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --hard</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> origin/master</span></span></code></pre>
+<p>强行重置远端的 (危险警告)</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> reset</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --hard</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> xxx</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> push</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> -f</span></span></code></pre>
+<h2 id="一些小技巧">一些小技巧</h2>
+<p>可以用上面的一些命令进行组合得到一些常用命令</p>
+<p>例如，我在分支 A，希望更新一下分支 B，然后把 B 合到 A</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># shell 函数形式</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">update_merge</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">() {</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">  git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> checkout</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> B</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">  git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> pull</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">  git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> checkout</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> -</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">  git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> merge</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> B</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 配合 alias 可以一行简写</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">gco</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> B</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> &#x26;&#x26; </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">pull</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> &#x26;&#x26; </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">gco</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> -</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> &#x26;&#x26; </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> merge</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> B</span></span></code></pre>
+<h2 id="tag-相关">tag 相关</h2>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> tag</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> v1.0.0</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    # 在当前头打 tag</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">git</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> push</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --tags</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">   # 推送 tag</span></span></code></pre>
+<h2 id="alias">alias</h2>
+<aside class="callout callout-info"><p>分享下我的常用 alias</p></aside>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ggr</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git log --oneline --decorate --graph --all"</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gco</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git checkout"</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> glog</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git log"</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gst</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git status"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gs</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git stash"</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gsp</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git stash pop"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gdropall</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git restore ."</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> # discard all changes in unstaged</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gb</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git branch"</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  # 查看当前 branch</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gcp</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git cherry-pick"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gfa</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git fetch --all"</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">alias</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> gplr</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"git pull --rebase"</span></span></code></pre></div></article></main><footer><span>© 2026 Rory Cai</span><a href="/zh/rss.xml">RSS</a></footer></div></body></html>

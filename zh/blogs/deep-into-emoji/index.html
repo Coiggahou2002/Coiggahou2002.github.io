@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>How Long Is an Emoji, Really? A Deep Dive into Emoji Strings in UTF-16 · Rory Cai</title><meta name="description" content="In day-to-day frontend work we deal with emoji all the time. If you're new to this, you've probably run into problems like these: You use split on a string that contains emoji, and it comes out broken You read .length on a string with emoji, and the number looks off Something goes wrong and weird question marks and…"><link rel="canonical" href="https://coiggahou2002.github.io/blogs/deep-into-emoji/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/deep-into-emoji/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/deep-into-emoji/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>emoji 的长度到底是多少？UTF-16 下 emoji 字符串原理探究 · Rory Cai</title><meta name="description" content="在日常前端开发过程中，我们经常会与 emoji 打交道。相信刚入门的新手们或多或少会遇到类似这样的问题： 使用split方法拆开含有 emoji 的字符串，拆坏了 使用.length获取含 emoji 字符串的长度，发现好像不太对劲 处理不当，正文出现一些奇怪的问号、框框，到底是什么？…"><link rel="canonical" href="https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/deep-into-emoji/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/deep-into-emoji/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
     // Runs before first paint so a light-mode reader never sees a dark flash.
     try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
-  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="en_US"><meta property="og:title" content="How Long Is an Emoji, Really? A Deep Dive into Emoji Strings in UTF-16"><meta property="og:description" content="In day-to-day frontend work we deal with emoji all the time. If you're new to this, you've probably run into problems like these: You use split on a string that contains emoji, and it comes out broken You read .length on a string with emoji, and the number looks off Something goes wrong and weird question marks and…"><meta property="og:url" content="https://coiggahou2002.github.io/blogs/deep-into-emoji/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2025-07-16T00:00:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How Long Is an Emoji, Really? A Deep Dive into Emoji Strings in UTF-16","description":"In day-to-day frontend work we deal with emoji all the time. If you're new to this, you've probably run into problems like these: You use split on a string that contains emoji, and it comes out broken You read .length on a string with emoji, and the number looks off Something goes wrong and weird question marks and…","url":"https://coiggahou2002.github.io/blogs/deep-into-emoji/","mainEntityOfPage":"https://coiggahou2002.github.io/blogs/deep-into-emoji/","inLanguage":"en","datePublished":"2025-07-16T00:00:00.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Full-stack Developer","worksFor":{"@type":"Organization","name":"Tencent","url":"https://www.tencent.com/en-us/"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Harbin Institute of Technology","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002"]}}</script><link rel="stylesheet" href="/_astro/Base.BxbyvWQG.css"></head><body><nav class="pill-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blogs/" aria-current="page">Posts</a><a href="/menu/uses/">Uses</a><a href="/menu/journal/">Journal</a><a class="lang-switch" href="/zh/blogs/deep-into-emoji/" hreflang="zh-CN" lang="zh-CN" aria-label="切换到中文">中文</a><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="emoji 的长度到底是多少？UTF-16 下 emoji 字符串原理探究"><meta property="og:description" content="在日常前端开发过程中，我们经常会与 emoji 打交道。相信刚入门的新手们或多或少会遇到类似这样的问题： 使用split方法拆开含有 emoji 的字符串，拆坏了 使用.length获取含 emoji 字符串的长度，发现好像不太对劲 处理不当，正文出现一些奇怪的问号、框框，到底是什么？…"><meta property="og:url" content="https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2025-07-16T00:00:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"emoji 的长度到底是多少？UTF-16 下 emoji 字符串原理探究","description":"在日常前端开发过程中，我们经常会与 emoji 打交道。相信刚入门的新手们或多或少会遇到类似这样的问题： 使用split方法拆开含有 emoji 的字符串，拆坏了 使用.length获取含 emoji 字符串的长度，发现好像不太对劲 处理不当，正文出现一些奇怪的问号、框框，到底是什么？…","url":"https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/","mainEntityOfPage":"https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/","inLanguage":"zh-CN","datePublished":"2025-07-16T00:00:00.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"全栈开发工程师","worksFor":{"@type":"Organization","name":"腾讯","url":"https://www.tencent.com/zh-cn/"},"alumniOf":{"@type":"CollegeOrUniversity","name":"哈尔滨工业大学","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002"]}}</script><link rel="stylesheet" href="/_astro/Base.BxbyvWQG.css"></head><body><nav class="pill-nav" aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/blogs/" aria-current="page">文章</a><a href="/zh/menu/uses/">工具</a><a href="/zh/menu/journal/">手账</a><a class="lang-switch" href="/blogs/deep-into-emoji/" hreflang="en" lang="en" aria-label="Switch to English">EN</a><button class="theme-toggle" type="button" aria-label="切换深浅色" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
     // The toggle only exists with JavaScript; without it the site stays dark.
     (() => {
       const btn = document.querySelector('.theme-toggle');
@@ -13,114 +13,114 @@
         try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
       });
     })();
-  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>How Long Is an Emoji, Really? A Deep Dive into Emoji Strings in UTF-16</h1><time datetime="2025-07-16T00:00:00.000Z">Jul 16, 2025</time></header><nav class="toc" aria-label="Contents"><p>Contents</p><ol><li class="d2"><a href="#0-introduction">0 Introduction</a></li><li class="d2"><a href="#1-background">1 Background</a></li><li class="d3"><a href="#unicode">Unicode</a></li><li class="d3"><a href="#utf-16">UTF-16</a></li><li class="d3"><a href="#surrogate-pairs">Surrogate pairs</a></li><li class="d2"><a href="#2-common-emoji-types-and-how-theyre-composed">2 Common emoji types and how they’re composed</a></li><li class="d3"><a href="#the-most-common-a-single-code-point">The most common: a single code point</a></li><li class="d3"><a href="#skin-tone-modifiers">Skin tone modifiers</a></li><li class="d3"><a href="#variation-selectors">Variation selectors</a></li><li class="d3"><a href="#keycap-sequences">Keycap sequences</a></li><li class="d3"><a href="#flag-sequences">Flag sequences</a></li><li class="d3"><a href="#joiner-sequences">Joiner sequences</a></li><li class="d3"><a href="#complex-sequences-skin-tone--gender--profession--joiner">Complex sequences: skin tone + gender + profession + joiner</a></li><li class="d3"><a href="#other-fun-combinations">Other fun combinations</a></li><li class="d3"><a href="#with-all-these-combinations-how-do-we-handle-them">With all these combinations, how do we handle them?</a></li><li class="d2"><a href="#3-reading-the-runesjs-source">3 Reading the runes.js source</a></li><li class="d3"><a href="#the-core-functions">The core functions</a></li><li class="d2"><a href="#4-summary">4 Summary</a></li><li class="d2"><a href="#5-functions--tools">5 Functions &amp; tools</a></li></ol></nav><div class="prose"><h2 id="0-introduction">0 Introduction</h2>
-<p>In day-to-day frontend work we deal with emoji all the time. If you’re new to this, you’ve probably run into problems like these:</p>
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>emoji 的长度到底是多少？UTF-16 下 emoji 字符串原理探究</h1><time datetime="2025-07-16T00:00:00.000Z">2025-07-16</time></header><nav class="toc" aria-label="目录"><p>目录</p><ol><li class="d2"><a href="#0-前言">0 前言</a></li><li class="d2"><a href="#1-前置知识">1 前置知识</a></li><li class="d3"><a href="#unicode">Unicode</a></li><li class="d3"><a href="#utf-16">UTF-16</a></li><li class="d3"><a href="#代理对">代理对</a></li><li class="d2"><a href="#2-常见的-emoji-类型及其组合模式">2 常见的 emoji 类型及其组合模式</a></li><li class="d3"><a href="#最常见的单码点模式">最常见的单码点模式</a></li><li class="d3"><a href="#肤色修饰模式">肤色修饰模式</a></li><li class="d3"><a href="#变体选择器">变体选择器</a></li><li class="d3"><a href="#按键组合模式">按键组合模式</a></li><li class="d3"><a href="#国旗组合模式">国旗组合模式</a></li><li class="d3"><a href="#连接组合模式">连接组合模式</a></li><li class="d3"><a href="#复杂组合模式肤色性别职业连接">复杂组合模式：肤色+性别+职业+连接</a></li><li class="d3"><a href="#其他有趣的组合">其他有趣的组合</a></li><li class="d3"><a href="#这么多组合怎么处理呢">这么多组合，怎么处理呢？</a></li><li class="d2"><a href="#3-runesjs-源码解读">3 runes.js 源码解读</a></li><li class="d3"><a href="#核心函数分析">核心函数分析</a></li><li class="d2"><a href="#4-总结">4 总结</a></li><li class="d2"><a href="#5-函数--工具参考">5 函数 &amp; 工具参考</a></li></ol></nav><div class="prose"><h2 id="0-前言">0 前言</h2>
+<p>在日常前端开发过程中，我们经常会与 emoji 打交道。相信刚入门的新手们或多或少会遇到类似这样的问题：</p>
 <ul>
-<li>You use <code>split</code> on a string that contains emoji, and it comes out broken</li>
-<li>You read <code>.length</code> on a string with emoji, and the number looks off</li>
-<li>Something goes wrong and weird question marks and boxes show up in your text. What are those?</li>
+<li>使用<code>split</code>方法拆开含有 emoji 的字符串，拆坏了</li>
+<li>使用<code>.length</code>获取含 emoji 字符串的长度，发现好像不太对劲</li>
+<li>处理不当，正文出现一些奇怪的问号、框框，到底是什么？</li>
 </ul>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161437888.png" alt=""></p>
-<p>In practice, what we need is pretty clear:</p>
+<p>在实际开发中，其实我们的需求十分明确：</p>
 <ol>
-<li>Display strings containing emoji correctly</li>
-<li>When we need to split text (say, for a character-by-character fade-in animation), split strings containing emoji correctly</li>
-<li>Compute the length of strings containing emoji correctly.</li>
+<li>正确地显示含 emoji 的字符串</li>
+<li>在有切分需求（例如逐字 fade-in 动画）时，正确地切开含 emoji 的字符串</li>
+<li>正确计算含 emoji 字符串的长度。</li>
 </ol>
-<p><strong>TL;DR</strong>: If you don’t have time to dig into how it works, just use <a href="https://github.com/dotcypress/runes">runes.js</a>. Copy the source in or install it and you’re good to go. It exports two functions, <code>runes</code> and <code>substr</code>, which correctly split strings containing emoji and take substrings of them. The unminified source is only about 160 lines.</p>
-<p>But if we want to understand why, we need to dig a little deeper. While reading through the <code>runes.js</code> source, I picked up some common emoji patterns along the way. They’re actually pretty fun, so let me walk you through them.</p>
+<p><strong>太长不看版</strong>：倘若你无暇深入探究原理，可以直接使用 <a href="https://github.com/dotcypress/runes">runes.js</a> ，直接引入源码 or 安装后直接使用即可，该库导出了两个函数 <code>runes</code> 和 <code>substr</code> 用于对含 emoji 的字符串执行正确的切分、取子串操作。未压缩的源代码只有 160 行左右。</p>
+<p>但如果我们想要知其所以然，就有必要深入研究一下，笔者在研究 <code>runes.js</code> 的源码过程中，顺带了解了一些 emoji 的常见模式，其实还挺有趣的，给各位看官介绍一下。</p>
 <hr>
-<h2 id="1-background">1 Background</h2>
-<p>First, a quick primer on character encoding. If you already know this stuff, feel free to skip ahead.</p>
-<p><strong>Note: this isn’t copy-pasted from an AI answer. I’ll introduce every concept you need in my own words.</strong></p>
+<h2 id="1-前置知识">1 前置知识</h2>
+<p>先来一波字符编码的前置知识补充，熟悉的大佬可以直接跳过。</p>
+<p><strong>注意，这里并非直接 copy AI 的回答，笔者将用自己的理解引出所有必要的概念。</strong></p>
 <h3 id="unicode">Unicode</h3>
-<p>Unicode is the industry standard for character encoding in computing. It assigns a single, unique binary code to every character in every language. According to <a href="https://en.wikipedia.org/wiki/Unicode">Wikipedia</a>, version 16.0 contains 154,998 characters.</p>
-<p>It’s actually simple to think about: it’s one giant map with 154,998 entries, where each entry’s key is a number and the value is the actual character.</p>
-<p>The key here is called a <a href="https://en.wikipedia.org/wiki/Code_point"><strong>Code Point</strong></a>.</p>
-<p>A code point, i.e. <code>UnicodeMap[key]</code>, uniquely identifies one character.</p>
+<p>Unicode是计算机领域字符编码的业界标准，它为每种语言中的每个字符设定了统一且唯一的二进制编码。根据 <a href="https://en.wikipedia.org/wiki/Unicode">Wikipedia</a>，它的 16.0 版本含有 154,998 个字符。</p>
+<p>其实理解起来很简单，他就是一个超大的 map，含有 154,998 个条目，其中每个条目的 key 是一个数字，value 就是实际对应的字符。</p>
+<p>其中，这里的 key 就叫<a href="https://en.wikipedia.org/wiki/Code_point"><strong>码点(Code Point)</strong></a>。</p>
+<p>通过一个码点，也就是 <code>UnicodeMap[key]</code> ，就可以唯一定位到一个字符。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161456351.png" alt=""></p>
-<p>The curious among you may already be reaching for a calculator: this map has at least 154,998 keys, so how many bits does a key need?</p>
-<p>You can work it out yourself, or ask the AI built into the WeChat keyboard like I did. Either way, the answer is 18 bits.</p>
+<p>有兴趣的小伙伴可能已经开始抄起计算器算了，这个 map 的 key 数至少有 154,998 个，那这个 key 需要多少个二进制位来表示？</p>
+<p>我们可以自己算，也可以用微信输入法问 AI 算，反正最后是需要 18 个二进制位。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161439327.png" alt=""></p>
-<p>In reality, though, the Unicode standard reserves more room than that. Code points range from <code>0x0</code> to <code>0x10FFFF</code>, which can hold roughly 1.1 million characters.</p>
-<p>That’s why Wikipedia says Unicode can hold 1.1M+ characters.</p>
+<p>但其实 Unicode 标准预留的位置比这个多，它的码点取值范围是从 <code>0x0</code> 到 <code>0x10FFFF</code>，这个范围可以容纳 110 万个左右的字符。</p>
+<p>所以，这就是为什么 Wikipedia 称 Unicode 可以存 110w+ 字符。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161026287.png" alt=""></p>
-<p>Now someone will ask: by that logic, you need 24 bits in total, which is 3 bytes. Does a computer really need 3 bytes to store one character? That’s not what I learned. Isn’t <code>char</code> one byte?</p>
-<p>Think about it for a second: in a map that big, the keys at the very front are surely short. Can’t we compress them?</p>
-<p>Exactly. Since some characters have short code points, there’s no point wasting space on them. That’s where the familiar encodings like <code>UTF-8</code>, <code>UTF-16</code> and <code>UTF-32</code> come from.</p>
+<p>到这里又有人要问了，那按你这么说，总共加起来都需要 24 位了，也就是 3 个字节，难道计算机上存一个字符需要 3 个字节吗？这跟我学过的计算机知识不一样啊，<code>char</code> 类型不是一个字节吗？</p>
+<p>随便拍脑袋一想，那么大的 map，最前面的那些 key，肯定是很短的，就不能压缩一下吗？</p>
+<p>没错，因为有些字符的码点很短，我们没必要浪费空间，这就是我们日常熟知的 <code>UTF-8</code>, <code>UTF-16</code>, <code>UTF-32</code> 等编码方式的由来。</p>
 <ul>
-<li><strong>UTF-8</strong>: A variable-length encoding that uses 1 to 4 bytes per character. It’s backward compatible with ASCII, and it’s by far the most widely used encoding for the web and file storage.</li>
-<li><strong>UTF-16</strong>: Also variable-length, using either 2 or 4 bytes per character. It’s mainly used in systems and technologies like Windows, Java and JavaScript.</li>
-<li><strong>UTF-32</strong>: A fixed-length encoding where every character takes exactly 4 bytes. Its advantage is that the encoding rules are simple and direct, but it uses a lot more storage.</li>
+<li><strong>UTF-8</strong>：一种变长编码方式，使用 1 到 4 个字节来表示不同的字符。它具备良好的向后兼容性，能与 ASCII 编码无缝衔接，是网页和文件存储领域应用最为广泛的编码标准。</li>
+<li><strong>UTF-16</strong>：同样属于变长编码，采用 2 个或 4 个字节来表示字符。它主要应用于 Windows、Java 以及 JavaScript 等系统和技术中。</li>
+<li><strong>UTF-32</strong>：这是一种定长编码，每个字符固定占用 4 个字节。其优势在于编码规则简单直接，但会占用较多的存储空间。</li>
 </ul>
-<p>Let’s set UTF-32 aside. Both UTF-8 and UTF-16 are variable-length, so suppose you want to represent a sequence of characters as an array. How would you do it?</p>
-<p>If you’re using a dynamically typed language like JavaScript or Python, you’d say: what’s the problem? That’s trivial.</p>
+<p>UTF-32 我们先不讨论，我们可以看到，UTF-8 和 UTF-16 都是变长的，此时假设你要用一个数组来表示一个字符序列，你要怎么办呢？</p>
+<p>如果你使用 JavaScript/Python 这类动态类型语言，你就会说，这还不简单？有手就行。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161440305.png" alt=""></p>
-<p>If you’re using a statically typed language like C, you start scratching your head. A plain <code>char[]</code> won’t do, because anything longer than 1 byte won’t fit. Go bigger with something like <code>uint32_t[]</code> and you waste space.</p>
+<p>如果你是用 C 这类静态类型语言，就要开始挠头了。简单搞个 <code>char[]</code> 又不行，碰到 1 字节以上的就放不下，搞多点用个什么 <code>uint32_t[]</code> 又浪费空间。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/9b6939e10dc83ee8e3532d8f3fd41f56.gif" alt=""></p>
-<p>There’s a fairly obvious fix: use the smallest possible number of bytes as the size of each element. In a given encoding, every other supported byte count is a multiple of this base unit, so that works.</p>
-<p>For example, the smallest unit in UTF-8 is 1 byte, so I use <code>char[]</code>. When a character needs 2 or 3 bytes, it just takes up 2 or 3 elements.</p>
-<p>The smallest unit in UTF-16 is 2 bytes, so I use <code>uint16_t[]</code>. When a character needs 4 bytes, it takes up 2 elements.</p>
+<p>那其实也比较容易想到一种办法，我取可能的最短字节数作为每个元素的大小，在此编码方式下，其他支持的字节数，都是这个基本单位的倍数，就可以了。</p>
+<p>例如 UTF-8 最短的单元是 1 字节，我就用 <code>char[]</code>，当他需要 2 字节、3 字节的时候，就占 2 个、3 个元素就好了。</p>
+<p>UTF-16 最短的单元是 2 字节，我就用 <code>uint16_t[]</code>，当他需要 4 字节的时候，就占 2 个元素。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161508059.png" alt=""></p>
-<p>That’s where the concept of a <a href="https://en.wikipedia.org/wiki/Character_encoding#Code_unit"><strong>Code Unit</strong></a> comes from.</p>
-<p>With code units, no matter which encoding I use, my character array is just <code>CodeUnit[]</code>.</p>
+<p>这就是 <a href="https://en.wikipedia.org/wiki/Character_encoding#Code_unit"><strong>码元(CodeUnit)</strong></a> 概念的由来。</p>
+<p>有了码元的概念，无论我用什么编码方式，我的字符数组都是 <code>CodeUnit[]</code> 就 OK 了。</p>
 <h3 id="utf-16">UTF-16</h3>
-<p>Back to the main topic. We’re mostly talking about how to handle emoji correctly in JS, so what encoding does a JavaScript String use? UTF-16.</p>
-<aside class="callout callout-info"><p>Objective-C’s NSString and the String in Java’s standard library also use UTF-16</p></aside>
-<p>As we just said, a UTF-16 code unit is 2 bytes, or 16 bits. So which keys in our giant Unicode map can be stored in a single UTF-16 code unit?</p>
-<p>The answer is keys from <code>0x0</code> to <code>0xFFFF</code>. Anything larger needs two code units to fit.</p>
-<p>This is a bit like manually splitting a map into segments. Unicode splits itself into segments too, and that’s where the <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2"><strong>Basic Multilingual Plane (BMP)</strong></a> and the <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E7%AC%AC%E4%B8%80%E8%BC%94%E5%8A%A9%E5%B9%B3%E9%9D%A2"><strong>supplementary planes</strong></a> come from.</p>
-<p>Unicode actually splits it into <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#">many segments</a>, but to keep things simple, people usually talk about just two:</p>
+<p>回到本文重点，我们主要讨论在 JS 下如何正确处理 emoji，那么 JavaScript 的 String 采用的是什么字符编码呢？是 UTF-16.</p>
+<aside class="callout callout-info"><p>其实 Objective-C 的 NSString 和 Java 标准库的 String 用的也都是 UTF-16</p></aside>
+<p>我们刚刚有说到，对于 UTF-16，它的码元长度是 2 字节，也就是 16 位，我们那个庞大的 Unicode 字符 map 里，哪些 key 可以只用一个 UTF-16 码元来存呢？</p>
+<p>答案是从 <code>0x0</code> 到 <code>0xFFFF</code> 范围的 key。比这更大的 key，就需要两个码元才能放得下了。</p>
+<p>这个有点类似于给一个 map 人为分段，Unicode 也自己分了几个段，这就是 <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2"><strong>基本多文种平面(Basic Multilingual Plane, BMP)</strong></a> 和 <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E7%AC%AC%E4%B8%80%E8%BC%94%E5%8A%A9%E5%B9%B3%E9%9D%A2"><strong>辅助平面</strong></a> 的由来。</p>
+<p>其实 Unicode 把他分成了<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#">很多段</a>，但为了方便讨论，一般都只划分两段：</p>
 <ul>
-<li><strong>Basic plane</strong>: <code>0x0</code> to <code>0xFFFF</code>, <code>0x10000</code> characters in total, covering a huge number of commonly used characters.</li>
-<li><strong>Supplementary planes</strong>: <code>0x10000</code> to <code>0x10FFFF</code>, <code>0xFFFFF</code> characters in total, holding less commonly used characters. Most emoji live here.</li>
+<li><strong>基本平面</strong>：<code>0x0</code> 到 <code>0xFFFF</code>，一共 <code>0x10000</code> 个字符，涵盖了大量常用字符。</li>
+<li><strong>辅助平面</strong>：<code>0x10000</code> 到 <code>0x10FFFF</code>，一共 <code>0xFFFFF</code> 个字符，用于容纳相对不那么常用的字符，大部分 emoji 在这个段上。</li>
 </ul>
-<p>As we just said, the supplementary planes hold <code>0xFFFFF</code> characters. In binary that takes 20 bits, and a UTF-16 code unit only has 16, so it won’t fit.</p>
-<p>Then use two code units. The obvious idea: you’ve got 20 bits, so split them into the high 10 bits and the low 10 bits and put each half in its own code unit. Done?</p>
-<p>OK, but that raises another question. If you were writing a parser for UTF-16 character sequences, how would you write it? When you hit a code unit, how do you know whether it stands on its own or has to be read together with the one after it?</p>
-<p>So some of the bits must be used as markers, telling the parser: when you see me, look one unit further.</p>
-<p>That’s where the <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2"><strong>UTF-16 reserved ranges in the basic plane</strong></a> come from.</p>
+<p>我们刚说了，辅助平面上，一共有 <code>0xFFFFF</code> 个字符，假设用二进制表示需要 20 位才够，一个 UTF-16 码元只有 16 位，是放不下的。</p>
+<p>那就用两个码元咯，一拍脑袋就想到，你不是说 20 位嘛，我拆成高 10 位和低 10 位，分别放在两个码元里，不就行了？</p>
+<p>好的，我们引出了另一个问题：那如果你是那个写 UTF-16 字符序列解析器的人，你要怎么写呢？遇到一个码元，你怎么知道它自己就是完整的，还是要连着它后面那个一起看？</p>
+<p>所以，我们肯定有一些二进制位是用来做标记的，告诉解析器，遇到我的时候，请你再往后看一位。</p>
+<p>这就是 <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2"><strong>基本平面内 UTF-16 保留区</strong></a> 的由来。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161116565.png" alt=""></p>
-<p>The Unicode basic plane reserves two ranges for UTF-16. On top of that, people came up with <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF_(surrogates)"><strong>Surrogate Pairs</strong></a>, which split a supplementary-plane code point into its high 10 bits and low 10 bits and pack them into two code units that land exactly inside those ranges.</p>
-<h3 id="surrogate-pairs">Surrogate pairs</h3>
-<p>So how does it actually work? In short, you first subtract <code>0x10000</code>, which gives you the offset within the supplementary planes. This offset is 20 bits.</p>
-<p>To pack those 20 bits into a surrogate pair, take the high 10 bits and add <code>0xD800</code> to get the first code unit (the high surrogate); then take the low 10 bits and add <code>0xDC00</code> to get the second code unit (the low surrogate). That’s it.</p>
-<p><strong>Steps in plain words</strong>:</p>
+<p>Unicode 基本平面为 UTF-16 保留了两个区段，于是人们发明了一种叫 <a href="https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF_(surrogates)"><strong>代理对(Surrogate Pairs)</strong></a> 的东西，用来把一个辅助平面的码点的高 10 位和低 10 位分开，然后塞到两个码元里，并且恰好位于这个区段。</p>
+<h3 id="代理对">代理对</h3>
+<p>具体是如何操作呢？简单来说，先减去 <code>0x10000</code>，得到的就是在辅助平面内的偏移量，这个偏移量是 20 位。</p>
+<p>此时要把 20 位的东西塞进代理对，取高 10 位加上 <code>0xD800</code>，作为第一个码元（称为高代理, high surrogate）;再取低 10 位加上 <code>0xDC00</code>，作为第二个码元（成为低代理，low surrogate），就 OK 了。</p>
+<p><strong>文字版步骤</strong>：</p>
 <ol>
-<li>Subtract 0x10000 from the code point, giving a value in the range 0~0xFFFFF (at most 20 bits)</li>
-<li>Add 0xD800 to the high 10 bits to get the high surrogate (range 0xD800~0xDBFF)</li>
-<li>Add 0xDC00 to the low 10 bits to get the low surrogate (range 0xDC00~0xDFFF)</li>
+<li>先将码点减去0x10000，得到一个0~0xFFFFF范围内的值(最多20位)</li>
+<li>高10位加上0xD800得到高位代理值(范围0xD800~0xDBFF)</li>
+<li>低10位加上0xDC00得到低位代理值(范围0xDC00~0xDFFF)</li>
 </ol>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161136354.png" alt=""></p>
-<p>So a surrogate pair can be written as <code>(high surrogate, low surrogate)</code>, and combining the two gives you the actual code point.</p>
-<p><strong>In code</strong>:</p>
-<p>Code probably makes it clearer:</p>
+<p>所以一个代理对可以表示为：<code>(高位代理, 低位代理)</code>，两者结合计算出实际的码点值。</p>
+<p><strong>代码版</strong>:</p>
+<p>用代码来讲可能更清晰一些：</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> HIGH_SURROGATE_START</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0xd800</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> LOW_SURROGATE_START</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0xdc00</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> surrogatePairFromCodePoint</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#E36209;--shiki-dark:#F69D50">codePoint</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">:</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> number</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">:</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> string</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> {</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // Validate that the input is a valid code point (U+0000 to U+10FFFF)</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 验证输入是否为有效码点 (U+0000 至 U+10FFFF)</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">!</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">Number.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isInteger</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(codePoint) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">||</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> </span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">      codePoint </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">&#x3C;</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> ||</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> </span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">      codePoint </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">></span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0x10FFFF</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    throw</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> RangeError</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'Invalid code point'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">);</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // Characters in the Basic Multilingual Plane (BMP) don't need a surrogate pair</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 基本多文种平面 (BMP) 字符无需使用代理对</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (codePoint </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">&#x3C;=</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0xFFFF</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> String.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">fromCodePoint</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(codePoint);</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // Compute the high and low surrogates</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 计算高代理和低代理值</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> offset</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> codePoint </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0x10000</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">;</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> high</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> HIGH_SURROGATE_START</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (offset </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">>></span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 10</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">);</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> low</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> LOW_SURROGATE_START</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (offset </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">&#x26;</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0x3FF</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">);</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // Convert to a UTF-16 surrogate pair string</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 转换为 UTF-16 代理对字符串</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  return</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> String.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">fromCharCode</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(high, low);</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span>
 <span class="line"></span></code></pre>
-<p>Going the other way, how do you turn a surrogate pair back into a code point? You just run the steps above in reverse: subtract <code>0xD800</code> from the first code unit and shift it left by ten bits, add the second code unit minus <code>0xDC00</code>, then add <code>0x10000</code>. See the code below</p>
+<p>反过来，如何把代理对转换回一个码点？其实就是执行上面的逆操作：第一个码元减去 <code>0xD800</code> 再左移十位，加上第二个码元减去 <code>0xDC00</code>的结果，在加上 <code>0x10000</code>，具体可以看下面代码</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> HIGH_SURROGATE_START</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0xd800</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> LOW_SURROGATE_START</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0xdc00</span></span>
 <span class="line"></span>
@@ -129,24 +129,24 @@
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> lowOffset</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> pair.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">charCodeAt</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> LOW_SURROGATE_START</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  return</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (highOffset </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">&#x3C;&#x3C;</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 10</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> lowOffset </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0x10000</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<p>At this point we’ve covered how every Unicode character is encoded in UTF-16. So what does this have to do with emoji?</p>
+<p>讲到这里，我们已经解决了所有 Unicode 在 UTF-16 编码方式下应该如何编码的问题。这和 emoji 又有什么关系呢？</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/07b3421783f51aa3fa13e35515fb1cb5.gif" alt=""></p>
-<p>We can already answer one of the questions from the start: why the <code>length</code> of a string with emoji looks off.</p>
-<p>Take the grinning face 😀. Its code point is <code>0x1F600</code>, which is in a supplementary plane. As a surrogate pair it’s <code>0xD83D 0xDE00</code>, taking up two code units. According to the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length">MDN docs</a>, a String’s length property returns the number of UTF-16 code units.</p>
+<p>其实我们已经可以回答开篇的其中一个问题，为什么含有 emoji 字符串的 <code>length</code> 看起来不太对劲。</p>
+<p>以笑脸😀为例，它的码点是 <code>0x1F600</code>，位于辅助平面，它的代理对表示为 <code>0xD83D 0xDE00</code>，占用两个码元。根据 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length">MDN 文档</a>，String 的 length 属性返回的是 UTF-16 码元的个数。</p>
 <blockquote>
 <p>The length data property of a String value contains <strong>the length of the string in UTF-16 code units</strong>.</p>
 </blockquote>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161140963.png" alt=""></p>
-<p>Now someone asks: fine, I get 2 code units. But what on earth is this one with 11??</p>
+<p>有的人又要问了，2 个码元我可以理解啊，这种 11 的是什么玩意？？</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161145298.png" alt=""></p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/cffd51f1c134730a24a98d2c0c67952f.gif" alt=""></p>
-<p>Hold on. JS isn’t lying to you. It really does take 11 code units to represent that one.</p>
-<p>Next, I’ll go through the common patterns emoji are built from.</p>
+<p>别急，JS 又不会骗你，说明人家要 11 个码元才能表示出来。</p>
+<p>接下来，我会列举一下常见的 emoji 组合模式。</p>
 <hr>
-<h2 id="2-common-emoji-types-and-how-theyre-composed">2 Common emoji types and how they’re composed</h2>
-<p>Emoji are not as simple as they look. There’s a lot of composition logic inside them.</p>
-<h3 id="the-most-common-a-single-code-point">The most common: a single code point</h3>
-<p>This is mostly the first wave of basic emoji, for example:</p>
+<h2 id="2-常见的-emoji-类型及其组合模式">2 常见的 emoji 类型及其组合模式</h2>
+<p>其实 emoji 并没有那么简单，里面含有很多组合的逻辑。</p>
+<h3 id="最常见的单码点模式">最常见的单码点模式</h3>
+<p>这里主要有最开始的一波基础 emoji 表情，例如：</p>
 
 
 
@@ -182,31 +182,31 @@
 
 
 
-<table><thead><tr><th>Emoji</th><th>Unicode code point</th><th>UTF-16 surrogate pair</th></tr></thead><tbody><tr><td>😀</td><td>U+1F600</td><td>0xD83D,0xDE00</td></tr><tr><td>🤪</td><td>U+1F92A</td><td>0xD83E,0xDD2A</td></tr><tr><td>🦊</td><td>U+1F98A</td><td>0xD83E,0xDD8A</td></tr><tr><td>🚀</td><td>U+1F680</td><td>0xD83D,0xDE80</td></tr><tr><td>…</td><td>…</td><td>…</td></tr></tbody></table>
-<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// If you want to play with this in the browser, here are some examples</span></span>
+<table><thead><tr><th>Emoji</th><th>Unicode 码点</th><th>UTF-16 代理对</th></tr></thead><tbody><tr><td>😀</td><td>U+1F600</td><td>0xD83D,0xDE00</td></tr><tr><td>🤪</td><td>U+1F92A</td><td>0xD83E,0xDD2A</td></tr><tr><td>🦊</td><td>U+1F98A</td><td>0xD83E,0xDD8A</td></tr><tr><td>🚀</td><td>U+1F680</td><td>0xD83D,0xDE80</td></tr><tr><td>…</td><td>…</td><td>…</td></tr></tbody></table>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 如果你想在浏览器玩玩，这里提供了一些示例</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">String.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">fromCodePoint</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">0x1F98A</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 🦊</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">String.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">fromCharCode</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">0xD83E</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">0xDD8A</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 🦊</span></span>
 <span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'🦊'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">charCodeAt</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">toString</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">16</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// D83E</span></span>
 <span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'🦊'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">charCodeAt</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">toString</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">16</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// DD8A</span></span>
 <span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'🦊'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">codePointAt</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">toString</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">16</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 1F98A</span></span></code></pre>
 <blockquote>
-<p>Note: U+1F600 and 0x1F600 are just two conventional notations. Both refer to a Unicode code point</p>
+<p>注：这里 U+1F600 和 0x1F600 只是两种习惯的表示方法，表示的都是 Unicode 码点</p>
 </blockquote>
-<h3 id="skin-tone-modifiers">Skin tone modifiers</h3>
-<p>You’ve probably used this: both the Apple keyboard and the WeChat keyboard let you pick a skin tone for emoji</p>
+<h3 id="肤色修饰模式">肤色修饰模式</h3>
+<p>大家都应该使用过，苹果输入法/微信输入法，都可以选择 emoji 的肤色</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/45628e8623144a5c84c99f5a2a1a61fb.jpg" alt=""></p>
-<p>How do skin tones work? There’s something called a “skin tone modifier”, which comes in several variants. Append one after the code units of a person or hand-gesture emoji, and it renders with a different skin tone.</p>
+<p>肤色是怎么实现的呢？有种叫做「肤色修饰器」的东西，有好几个类型，把他加在人物/手势 emoji 码元的后面，显示出来就会变成不同的肤色。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161517503.png" alt=""></p>
-<p>For example, the ”👋” (waving hand) emoji can become hands of different colors by adding a skin tone modifier, like 👋🏻👋🏽👋🏾👋🏿</p>
-<p>Looking it up, the code point of 👋 is <code>U+1F44B</code></p>
-<p>All the other colored hands are 2 code points, as shown below:</p>
+<p>例如，“👋”（你好）这个 emoji，通过添加肤色修饰器，可以变成不同颜色的手，如 👋🏻👋🏽👋🏾👋🏿</p>
+<p>我们找了一下，发现👋这个 emoji 的码点是：<code>U+1F44B</code></p>
+<p>其他颜色的手都是 2 个码点，如下图:</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161208431.png" alt=""></p>
-<p>So appending a skin tone modifier to a base emoji changes its skin tone.</p>
-<p>These are the main skin tone modifiers. Without a modifier, you get the default yellow.</p>
+<p>我们发现，在基础 emoji 后面加上肤色修饰器，就可以改变基础 emoji 的肤色。</p>
+<p>主要的肤色修饰器有这么几种，如果不写修饰器，就是默认的黄色。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161213764.png" alt=""></p>
-<h3 id="variation-selectors">Variation selectors</h3>
-<p>Have you ever seen this in some odd app, or when sending messages across platforms? You meant to send your girlfriend a red heart ♥️, and it arrived as a black ♥. Why?</p>
-<p>Let’s look at their code points:</p>
+<h3 id="变体选择器">变体选择器</h3>
+<p>在某些奇怪的应用/跨平台消息发送场景中，你是否遇到过这种情况？本想发给女朋友的爱心♥️，发过去之后变成了黑色的♥，这是为什么呢？</p>
+<p>此时我们查看一下他们的码点分别是什么：</p>
 
 
 
@@ -224,18 +224,18 @@
 
 
 
-<table><thead><tr><th>Character</th><th>Code point</th></tr></thead><tbody><tr><td>♥</td><td>U+2665</td></tr><tr><td>♥️</td><td>U+2665 U+FE0F</td></tr></tbody></table>
-<p>It turns out the black heart is a character that has existed for a long time. From <code>U+2665</code> alone you can tell it’s in the basic plane.</p>
+<table><thead><tr><th>字符</th><th>码点</th></tr></thead><tbody><tr><td>♥</td><td>U+2665</td></tr><tr><td>♥️</td><td>U+2665 U+FE0F</td></tr></tbody></table>
+<p>我们发现，黑色的爱心其实是一个早就存在的字符，看它是 <code>U+2665</code> 就知道它位于基本平面。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161519358.png" alt=""></p>
-<p>My guess is that once the red heart emoji came along, they appended a <code>U+FE0F</code> to indicate it should be displayed in color. This is probably a leftover from history. Here’s an explanation from another source:</p>
+<p>估计后来有了红心 emoji 之后，才通过在它后面加一个 <code>U+FE0F</code> 来表示这个应该以彩色形式显示。我估计这个应该是历史的尘埃（产物）了，下面附上一些来自其他资料的解释：</p>
 <blockquote>
-<p>As computing evolved, people wanted more variety in how characters are displayed. The same character might have several presentation styles; an emoji, for example, might be shown as a color image or as monochrome text. To support this, Unicode introduced variation selectors: by appending a specific variation selector after a base character, you tell software which style to render it in.</p>
+<p>随着计算机技术的发展，人们对字符显示的多样性需求增加。同一字符可能有多种显示样式，例如表情符号可能希望以彩色图像形式显示，也可能希望以单色文本形式显示。为了满足这种需求，Unicode 引入了变体选择器机制，通过在基本字符后添加特定的变体选择器，来告知软件以何种样式呈现字符。</p>
 </blockquote>
-<p>In the Unicode basic plane, characters from <code>0xFE00</code> to <code>0xFE0F</code> are all Variation Selectors, and <code>U+FE0F</code> is designated to indicate that a base glyph should be displayed as a color emoji.</p>
+<p>Unicode 的基本平面中，<code>0xFE00</code> 到 <code>0xFE0F</code> 范围的字符，都属于变体选择器(Variation Selector)，其中 <code>U+FE0F</code> 被指定用来表示一个基本图案应该以彩色 emoji 方式来显示。</p>
 <blockquote>
-<p>Characters in emoji presentation are usually in color, while characters in text presentation are black and white. To specify the presentation style explicitly, U+FE0E marks that the character should be shown in text style, and U+FE0F marks that it should be shown in emoji style.</p>
+<p>一般 emoji 风格呈现的字符是彩色的，而文本风格渲染的字符是黑白的。为了明确指定 emoji 字符的显示风格，U+FE0E 被用于标明该文字应显示为文本样式，U+FE0F 则用于标明该文字应显示为 emoji 样式。</p>
 </blockquote>
-<p>What are some other examples of variation selectors?</p>
+<p>还有哪些使用变体选择器的例子呢？</p>
 
 
 
@@ -271,12 +271,12 @@
 
 
 
-<table><thead><tr><th>Base character</th><th>Code point</th><th>With variation selector</th><th>Code point</th></tr></thead><tbody><tr><td>☀</td><td><code>U+2600</code></td><td>☀️</td><td><code>U+2600</code> <code>U+FE0F</code></td></tr><tr><td>♠</td><td><code>U+2600</code></td><td>♠️️</td><td><code>U+2660</code> <code>U+FE0F</code></td></tr><tr><td>⬆</td><td><code>U+2B06</code></td><td>⬆️️️</td><td><code>U+2B06</code> <code>U+FE0F</code></td></tr><tr><td>☑</td><td><code>U+2611</code></td><td>️ ☑️️️</td><td><code>U+2611</code> <code>U+FE0F</code></td></tr></tbody></table>
-<h3 id="keycap-sequences">Keycap sequences</h3>
-<p>The keycap emoji we use all the time, like 1️⃣ 2️⃣ 3️⃣, belong to this family. Each one is made of a base code point + a variation selector + an enclosing keycap code point.</p>
+<table><thead><tr><th>基础字符</th><th>码点</th><th>带变体选择器</th><th>码点</th></tr></thead><tbody><tr><td>☀</td><td><code>U+2600</code></td><td>☀️</td><td><code>U+2600</code> <code>U+FE0F</code></td></tr><tr><td>♠</td><td><code>U+2600</code></td><td>♠️️</td><td><code>U+2660</code> <code>U+FE0F</code></td></tr><tr><td>⬆</td><td><code>U+2B06</code></td><td>⬆️️️</td><td><code>U+2B06</code> <code>U+FE0F</code></td></tr><tr><td>☑</td><td><code>U+2611</code></td><td>️ ☑️️️</td><td><code>U+2611</code> <code>U+FE0F</code></td></tr></tbody></table>
+<h3 id="按键组合模式">按键组合模式</h3>
+<p>我们平时经常会用到的 1️⃣ 2️⃣ 3️⃣ 这类按键 emoji 就属于这个系列，它是由一个基础码点+变体选择器+框选码点来组成的。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507211011487.png" alt=""></p>
-<h3 id="flag-sequences">Flag sequences</h3>
-<p>Flag emoji work a little differently, but the rule is still simple: a flag is usually made of two regional indicator letters. For example, ”🇨🇳” is the Chinese flag, and it’s actually the letters C + N (two code points) combined.</p>
+<h3 id="国旗组合模式">国旗组合模式</h3>
+<p>国旗 emoji 的玩法稍微特殊一点，但规则也比较简单：通常是由两个区域指示符号字母组成，比如“🇨🇳”代表中国国旗，其实他是 C + N 两面旗（两个码点）组合起来表示的。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507182013775.png" alt=""></p>
 
 
@@ -331,15 +331,15 @@
 
 
 
-<table><thead><tr><th>Part 1</th><th>Code point</th><th>Part 2</th><th>Code point</th><th>Combined</th><th>Code point</th></tr></thead><tbody><tr><td>🇨</td><td><code>U+1F1E8</code></td><td>🇳</td><td><code>U+1F1F3</code></td><td>🇨🇳</td><td><code>U+1F1E8 U+1F1F3</code></td></tr><tr><td>🇯</td><td><code>U+1F1EF</code></td><td>🇵</td><td><code>U+1F1F5</code></td><td>🇯🇵</td><td><code>U+1F1EF U+1F1F5</code></td></tr><tr><td>🇺</td><td><code>U+1F1FA</code></td><td>🇸</td><td><code>U+1F1F8</code></td><td>🇺🇸</td><td><code>U+1F1FA U+1F1F8</code></td></tr><tr><td>🇬</td><td><code>U+1F1EC</code></td><td>🇧</td><td><code>U+1F1E7</code></td><td>🇬🇧</td><td><code>U+1F1EC U+1F1E7</code></td></tr><tr><td>🇧</td><td><code>U+1F1E7</code></td><td>🇷</td><td><code>U+1F1F7</code></td><td>🇧🇷</td><td><code>U+1F1E7 U+1F1F7</code></td></tr></tbody></table>
-<h3 id="joiner-sequences">Joiner sequences</h3>
-<p>The patterns above can all be thought of as “modifiers”. Emoji also have a much bigger way to extend themselves: several independent emoji can be joined together to express a more complex idea. This is done with the <a href="https://en.wikipedia.org/wiki/Zero-width_joiner"><strong>Zero Width Joiner (ZWJ)</strong></a>.</p>
-<p>The zero width joiner’s code point is <code>U+200D</code>. As the name suggests, it’s a “zero-width” character. It doesn’t render anything itself, but it glues the emoji on either side into a new visual unit.</p>
+<table><thead><tr><th>Part 1</th><th>码点</th><th>Part 2</th><th>码点</th><th>组合</th><th>码点</th></tr></thead><tbody><tr><td>🇨</td><td><code>U+1F1E8</code></td><td>🇳</td><td><code>U+1F1F3</code></td><td>🇨🇳</td><td><code>U+1F1E8 U+1F1F3</code></td></tr><tr><td>🇯</td><td><code>U+1F1EF</code></td><td>🇵</td><td><code>U+1F1F5</code></td><td>🇯🇵</td><td><code>U+1F1EF U+1F1F5</code></td></tr><tr><td>🇺</td><td><code>U+1F1FA</code></td><td>🇸</td><td><code>U+1F1F8</code></td><td>🇺🇸</td><td><code>U+1F1FA U+1F1F8</code></td></tr><tr><td>🇬</td><td><code>U+1F1EC</code></td><td>🇧</td><td><code>U+1F1E7</code></td><td>🇬🇧</td><td><code>U+1F1EC U+1F1E7</code></td></tr><tr><td>🇧</td><td><code>U+1F1E7</code></td><td>🇷</td><td><code>U+1F1F7</code></td><td>🇧🇷</td><td><code>U+1F1E7 U+1F1F7</code></td></tr></tbody></table>
+<h3 id="连接组合模式">连接组合模式</h3>
+<p>上面主要讲的几种都可以理解为「修饰器」，emoji 还有一种更大的扩充自身的方式，它允许多个独立的 emoji 连接起来表达更复杂的概念，这就是通过<a href="https://en.wikipedia.org/wiki/Zero-width_joiner"><strong>零宽连接符(Zero Width Joiner, ZWJ)</strong></a> 实现的组合模式。</p>
+<p>零宽连接符的码点是 <code>U+200D</code>，顾名思义，它是一个”零宽度”的字符，本身不显示，但能将前后的 emoji 粘合在一起，形成一个新的视觉单元。</p>
 <blockquote>
-<p>For brevity, I’ll call the zero width joiner ZWJ from here on</p>
+<p>为了方便表述，下面统一将零宽连接符简称为 ZWJ</p>
 </blockquote>
-<h4 id="professions">Professions</h4>
-<p>The simplest example is profession emoji. For example, 👨‍🔬 (man scientist) is 👨 (man) combined with 🔬 (microscope):</p>
+<h4 id="职业组合">职业组合</h4>
+<p>最简单的例子是职业 emoji。例如👨‍🔬（男科学家）是由👨（男人）和🔬（显微镜）组合：</p>
 
 
 
@@ -365,20 +365,20 @@
 
 
 
-<table><thead><tr><th>Part</th><th>Description</th><th>Code point</th></tr></thead><tbody><tr><td>👨</td><td>Man</td><td>U+1F468</td></tr><tr><td>‍</td><td>Zero width joiner</td><td>U+200D</td></tr><tr><td>🔬</td><td>Microscope</td><td>U+1F52C</td></tr></tbody></table>
-<p>More examples:</p>
+<table><thead><tr><th>部分</th><th>描述</th><th>码点</th></tr></thead><tbody><tr><td>👨</td><td>男人</td><td>U+1F468</td></tr><tr><td>‍</td><td>零宽连接符</td><td>U+200D</td></tr><tr><td>🔬</td><td>显微镜</td><td>U+1F52C</td></tr></tbody></table>
+<p>其他例子：</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161524234.png" alt=""></p>
-<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">👨‍🔬 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 👨 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> ZWJ</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 🔬 </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// scientist</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">🧑‍💻 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 🧑 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> ZWJ</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 💻 </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// programmer</span></span></code></pre>
-<h4 id="action--gender">Action + gender</h4>
-<p>Some emoji combine with gender symbols, like “♂️” (male sign) and “♀️” (female sign), to form new symbols. For example, <code>🙋‍♀️</code> (woman raising hand) is <code>🙋</code> (happy person raising hand) joined with <code>♀</code> via a ZWJ. On <a href="https://emojipedia.org/woman-raising-hand#technical">emojipedia</a> we can see its code point sequence:</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">👨‍🔬 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 👨 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> ZWJ</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 🔬 </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 科学家</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">🧑‍💻 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 🧑 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> ZWJ</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 💻 </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 程序员</span></span></code></pre>
+<h4 id="动作--性别组合">动作 + 性别组合</h4>
+<p>一些emoji会结合性别符号，如“♂️”（男性符号）和“♀️”（女性符号），与其他emoji组合形成新的表意符号。例如，<code>🙋‍♀️</code>（女性举手）就是将 <code>🙋</code>（开心举手的人）与<code>♀</code> 通过 ZWJ 组合在一起。通过 <a href="https://emojipedia.org/woman-raising-hand#technical">emojipedia</a> 我们可以看到它的码点序列：</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161313162.png" alt=""></p>
-<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">🙋‍♀️ </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 🙋 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> ZWJ</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ♀ </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0xFE0F</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> // woman raising hand</span></span></code></pre>
-<h4 id="families">Families</h4>
-<p>For example, 👨‍👩‍👧‍👦 (family of four) is actually 4 separate emoji joined by 3 zero width joiners:</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">🙋‍♀️ </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> 🙋 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> ZWJ</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> ♀ </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0xFE0F</span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"> // 女性举手</span></span></code></pre>
+<h4 id="家庭组合">家庭组合</h4>
+<p>例如👨‍👩‍👧‍👦（一家四口）实际上是由4个独立的emoji通过3个零宽连接符连接而成：</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161317103.png" alt=""></p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>👨‍👩‍👧‍👦 = 👨 + ZWJ + 👩 + ZWJ + 👧 + ZWJ + 👦</span></span></code></pre>
-<p>Let’s break down its code points:</p>
+<p>我们来分析一下它的码点构成：</p>
 
 
 
@@ -424,13 +424,13 @@
 
 
 
-<table><thead><tr><th>Part</th><th>Description</th><th>Code point</th></tr></thead><tbody><tr><td>👨</td><td>Man</td><td>U+1F468</td></tr><tr><td>‍</td><td>ZWJ</td><td>U+200D</td></tr><tr><td>👩</td><td>Woman</td><td>U+1F469</td></tr><tr><td>‍</td><td>ZWJ</td><td>U+200D</td></tr><tr><td>👧</td><td>Girl</td><td>U+1F467</td></tr><tr><td>‍</td><td>ZWJ</td><td>U+200D</td></tr><tr><td>👦</td><td>Boy</td><td>U+1F466</td></tr></tbody></table>
-<p>Now we can answer the question from the previous part: why is <code>"👨‍👩‍👧‍👦".length = 11</code>?</p>
-<p>Because this simple-looking family emoji is actually made of 7 code points. The 3 zero width joiners take 1 code unit each, and the people are all in supplementary planes, so each needs two code units. That gives a length of <code>8 + 3 = 11</code>.</p>
-<h3 id="complex-sequences-skin-tone--gender--profession--joiner">Complex sequences: skin tone + gender + profession + joiner</h3>
-<p>Mix all of the patterns above together and you get complex sequences. For example, the woman police officer with dark skin tone 👮🏿‍♀️ is made of these elements:</p>
+<table><thead><tr><th>部分</th><th>描述</th><th>码点</th></tr></thead><tbody><tr><td>👨</td><td>男人</td><td>U+1F468</td></tr><tr><td>‍</td><td>ZWJ</td><td>U+200D</td></tr><tr><td>👩</td><td>女人</td><td>U+1F469</td></tr><tr><td>‍</td><td>ZWJ</td><td>U+200D</td></tr><tr><td>👧</td><td>女孩</td><td>U+1F467</td></tr><tr><td>‍</td><td>ZWJ</td><td>U+200D</td></tr><tr><td>👦</td><td>男孩</td><td>U+1F466</td></tr></tbody></table>
+<p>到这里，我们已经可以回答上一 Part 提出的问题：为什么 <code>"👨‍👩‍👧‍👦".length = 11</code></p>
+<p>因为一个看似简单的家庭 emoji 实际上由 7 个码点组成，其中零宽连接符 3 个（每个占 1 个码元），另外的人物都在辅助平面，需要用两个码元来表示，所以最后得到的长度是 <code>8 + 3 = 11</code>。</p>
+<h3 id="复杂组合模式肤色性别职业连接">复杂组合模式：肤色+性别+职业+连接</h3>
+<p>上面讲过的所有模式，混在一起，就是复杂组合模式。例如，深色皮肤女警察👮🏿‍♀️是由以下元素组合而成：</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161529972.png" alt=""></p>
-<p>Broken down:</p>
+<p>具体分解为：</p>
 
 
 
@@ -466,41 +466,41 @@
 
 
 
-<table><thead><tr><th>Part</th><th>Description</th><th>Code point</th></tr></thead><tbody><tr><td>👮</td><td>Police officer</td><td>U+1F46E</td></tr><tr><td>🏿</td><td>Dark skin tone modifier</td><td>U+1F3FF</td></tr><tr><td>‍</td><td>Zero width joiner</td><td>U+200D</td></tr><tr><td>♀</td><td>Female sign</td><td>U+2640</td></tr><tr><td>️</td><td>Variation selector</td><td>U+FE0F</td></tr></tbody></table>
-<p>We can run a little experiment here. My guess is that the spread operator handles surrogate pairs specially, but doesn’t handle these combined sequences well.</p>
+<table><thead><tr><th>部分</th><th>描述</th><th>码点</th></tr></thead><tbody><tr><td>👮</td><td>警察</td><td>U+1F46E</td></tr><tr><td>🏿</td><td>深色肤色修饰符</td><td>U+1F3FF</td></tr><tr><td>‍</td><td>零宽连接符</td><td>U+200D</td></tr><tr><td>♀</td><td>女性符号</td><td>U+2640</td></tr><tr><td>️</td><td>变体选择器</td><td>U+FE0F</td></tr></tbody></table>
+<p>其实我们这里可以做个实验，我猜 spread 运算符应该是特殊处理了代理对，但是并没能处理好组合的情况。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161536505.png" alt=""></p>
-<h3 id="other-fun-combinations">Other fun combinations</h3>
-<p>Rainbow flag 🏳️‍🌈: a white flag combined with a rainbow</p>
+<h3 id="其他有趣的组合">其他有趣的组合</h3>
+<p>彩虹旗🏳️‍🌈：白旗与彩虹的组合</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>🏳️‍🌈 = 🏳️ + U+200D + 🌈</span></span></code></pre>
-<p>Heart with arrow 💘: a heart combined with an arrow</p>
+<p>带着爱心飞的箭头💘：爱心与箭头的组合</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>💘 = ❤️ + U+200D + 🏹</span></span></code></pre>
-<p>Woman and woman kissing</p>
+<p>女人和女人亲嘴</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>👩‍❤️‍💋‍👩 = 👩 + U+200D + ❤️ + U+200D + 💋 + U+200D + 👩</span></span></code></pre>
-<p>Two women with darker skin tones kissing</p>
+<p>两个深色皮肤女人亲嘴</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>👩🏽‍❤️‍💋‍👩🏽 U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD</span></span></code></pre>
-<p>Different skin tones on each side</p>
+<p>两边肤色不一样</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>👩🏼‍❤️‍💋‍👩🏾' U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE</span></span></code></pre>
-<p>If you’re curious, try working out the length of that last one, the two women with different skin tones kissing. Ha.</p>
+<p>有兴趣的朋友可以算算最后这个不同肤色女人亲嘴的 emoji 的长度是多少，哈哈。</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507182013596.png" alt=""></p>
-<h3 id="with-all-these-combinations-how-do-we-handle-them">With all these combinations, how do we handle them?</h3>
-<p>These patterns make emoji far more expressive, but they also make string handling harder. If you <code>split</code> a string containing emoji, compute its length, or take a substring without accounting for these structures, you can easily run into problems:</p>
+<h3 id="这么多组合怎么处理呢">这么多组合，怎么处理呢？</h3>
+<p>上面说的这些模式，极大地丰富了 emoji 的表现力，但也给字符串处理带来了挑战。当你尝试对含 emoji 的字符串进行 <code>split</code> 拆分、计算长度或取子串操作时，如果不考虑这些特殊结构，容易导致一些问题：</p>
 <ul>
-<li>Split the text for a character-by-character fade-in animation, and garbled question marks show up</li>
-<li>If the string travels between the backend and the frontend, the two sides may compute different lengths</li>
-<li>Where you need a character count, using length directly gives the wrong answer</li>
+<li>先拆开，然后做逐字 fade-in 动画，会出现问号乱码</li>
+<li>如果字符串会在后台和前端之间流转，两段计算的长度可能对不上</li>
+<li>在需要统计字数的场景，直接使用 length 计算，也不准确</li>
 </ul>
-<p>For example, you can probably guess what happens when we split a family emoji:</p>
+<p>例如，我们尝试 split 一个家庭 emoji 会产生什么，大家应该心里有数了：</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161327495.png" alt=""></p>
-<p>Someone says: can’t I just use the spread operator? Let’s see:</p>
+<p>有人说：我用扩展运算符不行吗？我们看看：</p>
 <p><img src="https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161328429.png" alt=""></p>
-<p>To be fair, it does split things better than split, it just breaks the family apart 😏</p>
-<p>Because JS string methods (like <code>String.prototype.charAt()</code> or <code>String.prototype.substring()</code>) and the <code>length</code> property all work on UTF-16 code units, they all run into this problem with emoji and other characters outside the basic plane.</p>
-<p>So we need a solid solution that can “correctly identify each Unicode unit” for us.</p>
+<p>不得不说，这个还是比 split 拆分得好一些，只不过把人家一家人拆散了 (doge</p>
+<p>其实，因为 JS 的字符串操作函数(如<code>String.prototype.charAt()</code>或<code>String.prototype.substring()</code>)还有 <code>length</code> 属性都是基于 UTF-16 码元的，所以在面对 emoji 和其他非基本平面字符时，都会有这种问题。</p>
+<p>所以，我们需要一个成熟的方案来帮我们「正确地识别每个 Unicode 单元」。</p>
 <hr>
-<h2 id="3-reading-the-runesjs-source">3 Reading the runes.js source</h2>
-<p><a href="https://github.com/dotcypress/runes">runes</a>) is a JavaScript library for splitting strings that contain emoji and other Unicode characters. In JavaScript, the default <code>String.split('')</code> can’t correctly handle emoji and other non-BMP (Basic Multilingual Plane) characters, and runes solves that.</p>
-<p>It’s a fairly small utility library, just one file exporting two functions, <code>runes</code> and <code>substr</code>. Its handling of emoji ties in closely with the Unicode principles and encoding details covered above, and it gives frontend developers a reliable way to work with emoji strings.</p>
-<p>First, the results:</p>
+<h2 id="3-runesjs-源码解读">3 runes.js 源码解读</h2>
+<p><a href="https://github.com/dotcypress/runes">runes</a>) 是一个专门用于处理含有 emoji 和其他 Unicode 字符的 JavaScript 字符串分割库。在 JavaScript 中，默认的<code>String.split('')</code>方法无法正确处理 emoji 和其他非 BMP(Basic Multilingual Plane) 字符，runes 库解决了这个问题。</p>
+<p>这是一个比较简单的工具库，只有一个文件，导出两个函数 <code>runes</code> 和 <code>substr</code>，它在处理emoji相关操作时，紧密结合了前面提到的Unicode原理和编码知识，为前端开发中处理emoji字符串提供了可靠的解决方案。</p>
+<p>先看效果：</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> runes</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> require</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'runes'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// Standard String.split</span></span>
@@ -517,12 +517,12 @@
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">runes</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'♥️'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=></span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> [</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'♥️'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">]</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">runes</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'Emoji 🤖'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=></span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> [</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'E'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'m'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'o'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'j'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'i'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">' '</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'🤖'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">]</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">runes</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'👩‍👩‍👧‍👦'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=></span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> [</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'👩‍👩‍👧‍👦'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">]</span></span></code></pre>
-<h3 id="the-core-functions">The core functions</h3>
-<p>The library mainly exports two utility functions: <code>runes</code>, which replaces the built-in <code>split</code>, and <code>substr</code>, which takes substrings correctly.</p>
-<p>As you’d expect, the core is <code>runes</code>. Once you can correctly split a string into an array, taking a substring is just a matter of splicing the array and joining it back together.</p>
-<p>So let’s focus on how <code>runes</code> is implemented:</p>
+<h3 id="核心函数分析">核心函数分析</h3>
+<p>这个库主要导出两个工具函数，一个是 <code>runes</code>，用来替代原有的 <code>split</code>；另一个是 <code>substr</code>，用来正确地取出子串。</p>
+<p>其实可以想到，最核心的肯定是 <code>runes</code>，当你能正确拆分一个字符串成为数组的时候，取子串无非就是把数组 splice 然后再 join 起来就行了。</p>
+<p>所以我们主要分析下 <code>runes</code> 函数是怎么实现的：</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> runes</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#E36209;--shiki-dark:#F69D50">string</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // Input check</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 输入检查</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">typeof</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> string </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">!==</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> 'string'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    throw</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> Error</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">'string cannot be undefined or null'</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  }</span></span>
@@ -532,28 +532,28 @@
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  let</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  </span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  while</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">&#x3C;</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> string.</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">length</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // Determine how many code units the current character is made of</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // 确定当前字符由多少个代码单元组成</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    increment </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> nextUnits</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment, string)</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    </span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // Some special characters, e.g. romanization marks</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // 一些特殊字符，例如罗马音标</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isGraphem</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(string[i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment])) {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">      increment</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">++</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    }</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // If it's a variation selector, move the cursor forward by one</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // 如果是变体选择器，游标向后移动一位</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isVariationSelector</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(string[i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment])) {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">      increment</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">++</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    }</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // If it's a modifier such as an enclosing keycap, move the cursor forward by one</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // 如果是框之类的修饰符，游标向后移动一位</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isDiacriticalMark</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(string[i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment])) {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">      increment</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">++</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    }</span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // If it's a zero width joiner, don't push yet; keep looking ahead</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // 如果是零宽连接符，先不要 push 进去，再继续往后看</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isZeroWidthJoiner</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(string[i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment])) {</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">      increment</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">++</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">      continue</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    }</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    </span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // Reaching here means we've extracted one complete character</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // 走到这就说明提取到了一个完整的字符</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    result.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">push</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(string.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">substring</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(i, i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment))</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> increment</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    increment </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0</span></span>
@@ -561,24 +561,24 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  </span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  return</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> result</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<p>As you can see:</p>
+<p>可以看到：</p>
 <ol>
-<li>The <code>nextUnits</code> function decides how many code units the current character is made of</li>
-<li>Then it checks for joiners and modifiers</li>
-<li>If it’s a modifier like a variation selector, it skips ahead one unit</li>
-<li>If it’s a ZWJ, the part that follows has to go through the whole process again</li>
+<li><code>nextUnits</code> 函数决定当前字符由几个码元组成</li>
+<li>然后看连接符、修饰符</li>
+<li>如果是变体选择器这类修饰符，就往后跳一位</li>
+<li>如果是 ZWJ，说明得对后面的部分重新走一次该流程</li>
 </ol>
-<p>Now let’s look at <code>nextUnits</code>, which decides how many code units the current character is made of:</p>
+<p>再来看看 <code>nextUnits</code> 函数，该函数决定当前字符由多少个代码单元组成：</p>
 <ul>
-<li>Basic Multilingual Plane (BMP) characters: 1 code unit</li>
-<li>Characters represented by a surrogate pair: 2 code units</li>
-<li>Emoji with a skin tone modifier: 4 code units</li>
-<li>Flag emoji: 4 code units</li>
+<li>基本多文种平面(BMP)字符：1个代码单元</li>
+<li>代理对表示的字符：2个代码单元</li>
+<li>带肤色修饰符的emoji：4个代码单元</li>
+<li>国旗emoji：4个代码单元</li>
 </ul>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">function</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> nextUnits</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#E36209;--shiki-dark:#F69D50">i</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#E36209;--shiki-dark:#F69D50">string</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> current</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> string[i]</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  </span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // If it's not the start of a surrogate pair, or we've hit the end of the string, take just one code unit</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 如果不是代理对的首部或到达字符串末尾，则只取一个代码单元</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isFirstOfSurrogatePair</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(current) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">||</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">===</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> string.</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">length</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> -</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 1</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  }</span></span>
@@ -586,45 +586,45 @@
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> currentPair</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> current </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> string[i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">]</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  let</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> nextPair </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> string.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">substring</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 5</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // If it's a flag sequence, that's two code points (four code units)</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 如果是国旗组合模式，那就是两个码点（四个码元）</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isRegionalIndicator</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(currentPair) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">&#x26;&#x26;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> isRegionalIndicator</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(nextPair)) {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 4</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // The skin tone modifier is itself a non-BMP code point (so it takes 2 code units); with the skin tone that makes 4 code units</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 肤色修饰符本身是一个非 BMP 的码点（所以要用 2 个码元表示），加上肤色就是 4 个码元</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">isFitzpatrickModifier</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(nextPair)) {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 4</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  }</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  </span></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // A regular surrogate pair</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">  // 正常代理对</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">  return</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 2</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<p>A quick explanation of the helper functions. They’re short, so I won’t paste the code:</p>
+<p>解释一下里面的函数，因为很简短，就不贴代码了：</p>
 <ul>
-<li><code>isFirstOfSurrogatePair</code> checks whether current is a high surrogate. If not, it’s a basic-plane character and needs no special handling</li>
-<li><code>isRegionalIndicator</code> checks whether both the current pair and the next pair fall within the flag code point range, i.e. <code>0x1f1e6</code> to <code>0x1f1ff</code></li>
-<li><code>isVariationSelector</code> checks whether the current code unit is in the <code>0xfe00</code> to <code>0xfe0f</code> range</li>
-<li><code>isZeroWidthJoiner</code> checks whether the current code point is <code>0x200D</code></li>
-<li><code>isFitzpatrickModifier</code> checks for a skin tone modifier; there are only five, <code>0x1f3fb</code> to <code>0x1f3ff</code></li>
+<li><code>isFirstOfSurrogatePair</code> 其实就判断 current 是不是一个高代理对，如果不是，说明它是一个基本平面的字符，不需要特殊处理</li>
+<li><code>isRegionalIndicator</code> 其实就是判断当前代理对和下个代理对，是否都在国旗组合码点的范围内，即 <code>0x1f1e6</code> 到 <code>0x1f1ff</code></li>
+<li><code>isVariationSelector</code> 就是判断当前码元在不在 <code>0xfe00</code> 到 <code>0xfe0f</code> 范围内</li>
+<li><code>isZeroWidthJoiner</code> 就是判断当前码点是不是 <code>0x200D</code></li>
+<li><code>isFitzpatrickModifier</code> 判断是不是肤色选择器，其实就五个，<code>0x1f3fb</code> 到 <code>0x1f3ff</code></li>
 </ul>
-<h2 id="4-summary">4 Summary</h2>
-<p>In this post we took a deep look at how emoji work and how to handle them in frontend development. We started with the basics of Unicode encoding, including Code Points and Code Units, and how UTF-16 uses Surrogate Pairs to represent characters outside the basic plane.</p>
-<p>We walked through several common emoji composition patterns:</p>
+<h2 id="4-总结">4 总结</h2>
+<p>在这篇文章中，我们深入探究了emoji的工作原理及其在前端开发中的处理方法。首先了解了Unicode编码的基础概念，包括码点(Code Point)和码元(Code Unit)，以及UTF-16编码如何通过代理对(Surrogate Pairs)表示超出基本平面的字符。</p>
+<p>我们详细分析了几种常见的emoji组合模式：</p>
 <ol>
-<li>Basic single-code-point emoji</li>
-<li>Emoji with skin tone modifiers</li>
-<li>Symbols displayed in color using variation selectors</li>
-<li>Flag sequences (made of two regional indicators)</li>
-<li>Compound emoji joined with the Zero Width Joiner (ZWJ), such as families and professions</li>
+<li>基本的单码点emoji</li>
+<li>带肤色修饰符的emoji</li>
+<li>使用变体选择器显示为彩色的符号</li>
+<li>国旗组合（由两个区域指示符组成）</li>
+<li>使用零宽连接符(ZWJ)组合的复合emoji（如家庭、职业组合）</li>
 </ol>
-<p>These compositions make emoji much more expressive, but they also make string handling in JavaScript harder. Because JavaScript string operations are based on UTF-16 code units rather than Unicode characters, native methods like <code>String.split('')</code> or <code>.length</code> misbehave on strings containing emoji.</p>
-<p>Finally, we went through the source of the runes.js library. By understanding Unicode encoding rules and the various emoji composition patterns, this small library provides <code>runes()</code> and <code>substr()</code>, which correctly split and take substrings of strings containing complex emoji. Its core logic identifies the boundaries of each Unicode character, making sure an emoji and its modifiers are treated as a single, complete unit.</p>
-<p>By using runes.js, or understanding the principles behind it, we can correctly display, measure and manipulate strings containing emoji in frontend code, avoid garbled text and wrong length calculations, and deliver a better user experience.</p>
-<h2 id="5-functions--tools">5 Functions &#x26; tools</h2>
-<p>Look up emoji and their code points: <a href="https://emojipedia.org/flag-brazil#technical">emojipedia</a></p>
-<p>Look up a character by code point: <a href="https://www.compart.com/en/unicode/U+20E3">Compart Unicode</a></p>
-<p>Look up a character by code point: <a href="https://zi-hi.com/sp/uni/1F3FF">Zihi (zihi.com)</a></p>
-<p>Get the code unit at a given position in a String: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt">String.charCodeAt</a></p>
-<p>Get the code point at a given position in a String: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt">String.codePointAt</a></p>
-<p>Build a string from a sequence of code points: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint">String.fromCodePoint</a></p>
-<p>Build a string from a sequence of code units: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode">String.fromCharCode</a></p></div></article></main><footer><span>© 2026 Rory Cai</span><a href="/rss.xml">RSS</a></footer></div></body></html>
+<p>这些复杂的组合方式使得emoji表达更加丰富，但也给JavaScript字符串处理带来了挑战。由于JavaScript的字符串操作基于UTF-16码元而非Unicode字符，导致使用原生方法如<code>String.split('')</code>或<code>.length</code>处理含emoji字符串时出现问题。</p>
+<p>最后，我们分析了runes.js库的源码实现。这个小巧的库通过理解Unicode编码规则和各种emoji组合模式，提供了<code>runes()</code>和<code>substr()</code>函数，能够正确处理包含复杂emoji的字符串分割和子串提取操作。其核心逻辑是识别各种Unicode字符的边界，确保emoji及其修饰符被视为单一的完整单元。</p>
+<p>通过使用runes.js或理解其背后的原理，我们可以在前端开发中正确地显示、计算和操作含有emoji的字符串，避免出现乱码、长度计算错误等问题，从而提升用户体验。</p>
+<h2 id="5-函数--工具参考">5 函数 &#x26; 工具参考</h2>
+<p>查询 emoji 及其对应的码点：<a href="https://emojipedia.org/flag-brazil#technical">emojipedia</a></p>
+<p>根据码点来查字符：<a href="https://www.compart.com/en/unicode/U+20E3">Compart Unicode</a></p>
+<p>根据码点查询字符：<a href="https://zi-hi.com/sp/uni/1F3FF">字嗨 zihi.com</a></p>
+<p>获取 String 指定位置的码元：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt">String.charCodeAt</a></p>
+<p>获取 String 指定位置的码点：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt">String.codePointAt</a></p>
+<p>通过码点序列构造字符串: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint">String.fromCodePoint</a></p>
+<p>通过码元序列构造字符串: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode">String.fromCharCode</a></p></div></article></main><footer><span>© 2026 Rory Cai</span><a href="/zh/rss.xml">RSS</a></footer></div></body></html>

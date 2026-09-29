@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kotlin Learning Notes · Rory Cai</title><meta name="description" content="I've been wanting to dig into the React Native source code lately, and starting from the Android side felt easier since I already know Java. But the project I maintain mixes Java and Kotlin, so I picked up some Kotlin along the way. I mostly learn it by comparing it with TypeScript. Short, Int, Long UShort, UInt,…"><link rel="canonical" href="https://coiggahou2002.github.io/blogs/app/learn-kotlin/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/app/learn-kotlin/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/app/learn-kotlin/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/app/learn-kotlin/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kotlin 学习笔记 · Rory Cai</title><meta name="description" content="最近想要深入一下 React Native 的源码，感觉从 Android 入手会相对好一点，因为本身就熟悉 Java，但是现在维护的项目是 Java 和 Kotlin 混合的，所以 Kotlin 也顺带看了一下。 主要和 TypeScript 结合对比来理解。 Short, Int, Long UShort,…"><link rel="canonical" href="https://coiggahou2002.github.io/zh/blogs/app/learn-kotlin/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/app/learn-kotlin/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/app/learn-kotlin/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/app/learn-kotlin/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
     // Runs before first paint so a light-mode reader never sees a dark flash.
     try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
-  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="en_US"><meta property="og:title" content="Kotlin Learning Notes"><meta property="og:description" content="I've been wanting to dig into the React Native source code lately, and starting from the Android side felt easier since I already know Java. But the project I maintain mixes Java and Kotlin, so I picked up some Kotlin along the way. I mostly learn it by comparing it with TypeScript. Short, Int, Long UShort, UInt,…"><meta property="og:url" content="https://coiggahou2002.github.io/blogs/app/learn-kotlin/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Kotlin Learning Notes","description":"I've been wanting to dig into the React Native source code lately, and starting from the Android side felt easier since I already know Java. But the project I maintain mixes Java and Kotlin, so I picked up some Kotlin along the way. I mostly learn it by comparing it with TypeScript. Short, Int, Long UShort, UInt,…","url":"https://coiggahou2002.github.io/blogs/app/learn-kotlin/","mainEntityOfPage":"https://coiggahou2002.github.io/blogs/app/learn-kotlin/","inLanguage":"en","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Full-stack Developer","worksFor":{"@type":"Organization","name":"Tencent","url":"https://www.tencent.com/en-us/"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Harbin Institute of Technology","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002"]}}</script><link rel="stylesheet" href="/_astro/Base.BxbyvWQG.css"></head><body><nav class="pill-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blogs/" aria-current="page">Posts</a><a href="/menu/uses/">Uses</a><a href="/menu/journal/">Journal</a><a class="lang-switch" href="/zh/blogs/app/learn-kotlin/" hreflang="zh-CN" lang="zh-CN" aria-label="切换到中文">中文</a><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="Kotlin 学习笔记"><meta property="og:description" content="最近想要深入一下 React Native 的源码，感觉从 Android 入手会相对好一点，因为本身就熟悉 Java，但是现在维护的项目是 Java 和 Kotlin 混合的，所以 Kotlin 也顺带看了一下。 主要和 TypeScript 结合对比来理解。 Short, Int, Long UShort,…"><meta property="og:url" content="https://coiggahou2002.github.io/zh/blogs/app/learn-kotlin/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Kotlin 学习笔记","description":"最近想要深入一下 React Native 的源码，感觉从 Android 入手会相对好一点，因为本身就熟悉 Java，但是现在维护的项目是 Java 和 Kotlin 混合的，所以 Kotlin 也顺带看了一下。 主要和 TypeScript 结合对比来理解。 Short, Int, Long UShort,…","url":"https://coiggahou2002.github.io/zh/blogs/app/learn-kotlin/","mainEntityOfPage":"https://coiggahou2002.github.io/zh/blogs/app/learn-kotlin/","inLanguage":"zh-CN","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"全栈开发工程师","worksFor":{"@type":"Organization","name":"腾讯","url":"https://www.tencent.com/zh-cn/"},"alumniOf":{"@type":"CollegeOrUniversity","name":"哈尔滨工业大学","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002"]}}</script><link rel="stylesheet" href="/_astro/Base.BxbyvWQG.css"></head><body><nav class="pill-nav" aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/blogs/" aria-current="page">文章</a><a href="/zh/menu/uses/">工具</a><a href="/zh/menu/journal/">手账</a><a class="lang-switch" href="/blogs/app/learn-kotlin/" hreflang="en" lang="en" aria-label="Switch to English">EN</a><button class="theme-toggle" type="button" aria-label="切换深浅色" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
     // The toggle only exists with JavaScript; without it the site stays dark.
     (() => {
       const btn = document.querySelector('.theme-toggle');
@@ -13,17 +13,17 @@
         try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
       });
     })();
-  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>Kotlin Learning Notes</h1></header><nav class="toc" aria-label="Contents"><p>Contents</p><ol><li class="d2"><a href="#basic-data-types">Basic Data Types</a></li><li class="d2"><a href="#variables">Variables</a></li><li class="d2"><a href="#strings">Strings</a></li><li class="d2"><a href="#collections">Collections</a></li><li class="d3"><a href="#a-uniform-method-interface">A Uniform Method Interface</a></li><li class="d3"><a href="#list">List</a></li><li class="d3"><a href="#set">Set</a></li><li class="d3"><a href="#map">Map</a></li><li class="d2"><a href="#type-annotations">Type Annotations</a></li><li class="d2"><a href="#null-safety">Null Safety</a></li><li class="d2"><a href="#control-flow">Control Flow</a></li><li class="d3"><a href="#conditionals">Conditionals</a></li><li class="d3"><a href="#branching">Branching</a></li><li class="d2"><a href="#equality-checks">Equality Checks</a></li><li class="d2"><a href="#loops-and-iteration">Loops and Iteration</a></li><li class="d3"><a href="#range">Range</a></li><li class="d3"><a href="#iterating-over-data-structures">Iterating Over Data Structures</a></li><li class="d2"><a href="#functions">Functions</a></li><li class="d3"><a href="#declarations-arguments-and-defaults">Declarations, Arguments, and Defaults</a></li><li class="d3"><a href="#anonymous-functions">Anonymous Functions</a></li><li class="d2"><a href="#classes--data-classes">Classes / Data Classes</a></li><li class="d3"><a href="#class">class</a></li><li class="d3"><a href="#data-class">data class</a></li><li class="d2"><a href="#async">Async</a></li><li class="d3"><a href="#coroutine">Coroutine</a></li><li class="d2"><a href="#key-differences-and-similarities-with-java">Key Differences and Similarities with Java</a></li><li class="d2"><a href="#key-differences-and-similarities-with-typescript">Key Differences and Similarities with TypeScript</a></li><li class="d2"><a href="#differences-and-similarities-with-golang">Differences and Similarities with Golang</a></li></ol></nav><div class="prose"><p>I’ve been wanting to dig into the React Native source code lately, and starting from the Android side felt easier since I already know Java. But the project I maintain mixes Java and Kotlin, so I picked up some Kotlin along the way.</p>
-<p>I mostly learn it by comparing it with TypeScript.</p>
-<h2 id="basic-data-types">Basic Data Types</h2>
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>Kotlin 学习笔记</h1></header><nav class="toc" aria-label="目录"><p>目录</p><ol><li class="d2"><a href="#基本数据类型">基本数据类型</a></li><li class="d2"><a href="#变量">变量</a></li><li class="d2"><a href="#字符串">字符串</a></li><li class="d2"><a href="#集合">集合</a></li><li class="d3"><a href="#统一方法接口">统一方法接口</a></li><li class="d3"><a href="#list">List</a></li><li class="d3"><a href="#set">Set</a></li><li class="d3"><a href="#map">Map</a></li><li class="d2"><a href="#类型标记">类型标记</a></li><li class="d2"><a href="#空值安全">空值安全</a></li><li class="d2"><a href="#控制流">控制流</a></li><li class="d3"><a href="#条件">条件</a></li><li class="d3"><a href="#分支">分支</a></li><li class="d2"><a href="#相等性判断">相等性判断</a></li><li class="d2"><a href="#循环和迭代">循环和迭代</a></li><li class="d3"><a href="#range">Range</a></li><li class="d3"><a href="#迭代数据结构">迭代数据结构</a></li><li class="d2"><a href="#函数">函数</a></li><li class="d3"><a href="#声明--传参--默认值">声明 &amp; 传参 &amp; 默认值</a></li><li class="d3"><a href="#匿名函数">匿名函数</a></li><li class="d2"><a href="#类数据类">类/数据类</a></li><li class="d3"><a href="#class">class</a></li><li class="d3"><a href="#data-class">data class</a></li><li class="d2"><a href="#异步">异步</a></li><li class="d3"><a href="#coroutine">Coroutine</a></li><li class="d2"><a href="#和-java-的主要区别和联系">和 Java 的主要区别和联系</a></li><li class="d2"><a href="#和-typescript-的主要区别和联系">和 TypeScript 的主要区别和联系</a></li><li class="d2"><a href="#和-golang-的区别和联系">和 Golang 的区别和联系</a></li></ol></nav><div class="prose"><p>最近想要深入一下 React Native 的源码，感觉从 Android 入手会相对好一点，因为本身就熟悉 Java，但是现在维护的项目是 Java 和 Kotlin 混合的，所以 Kotlin 也顺带看了一下。</p>
+<p>主要和 TypeScript 结合对比来理解。</p>
+<h2 id="基本数据类型">基本数据类型</h2>
 <p>Short, Int, Long</p>
 <p>UShort, UInt, ULong</p>
 <p>Boolean</p>
 <p>String</p>
 <p>Float</p>
 <p>Double</p>
-<h2 id="variables">Variables</h2>
-<h2 id="strings">Strings</h2>
+<h2 id="变量">变量</h2>
+<h2 id="字符串">字符串</h2>
 
 
 
@@ -42,8 +42,8 @@
 
 
 <table><thead><tr><th>Kotlin</th><th>TypeScript</th></tr></thead><tbody><tr><td><code>val str = "abc"</code></td><td><code>const str = "abc</code></td></tr><tr><td><code>str.uppercase()</code></td><td><code>str.toUpperCase()</code></td></tr></tbody></table>
-<h2 id="collections">Collections</h2>
-<h3 id="a-uniform-method-interface">A Uniform Method Interface</h3>
+<h2 id="集合">集合</h2>
+<h3 id="统一方法接口">统一方法接口</h3>
 
 
 
@@ -94,8 +94,8 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">mList.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">remove</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">5</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"is 5 in mList? ${</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">5</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> in</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> mList}"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span></code></pre>
 <h3 id="list">List</h3>
-<p>Comes in mutable and immutable flavors</p>
-<p>Initialization:</p>
+<p>分为可变和不可变</p>
+<p>初始化：</p>
 <ul>
 <li><code>listOf()</code></li>
 <li><code>mutableListOf()</code></li>
@@ -111,14 +111,14 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">mMap.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">remove</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"discover"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// delete key</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">mMap.keys </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// ["discover", "book"]</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">mMap.values </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// [100, 200]</span></span></code></pre>
-<h2 id="type-annotations">Type Annotations</h2>
+<h2 id="类型标记">类型标记</h2>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> vList: </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">List</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">Int</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">> </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> listOf</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> mMap: </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">MutableMap</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">String</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">Boolean</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">> </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> mutableMapOf</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"damn"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> to </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">true</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"fuck"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> to </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span></code></pre>
-<h2 id="null-safety">Null Safety</h2>
-<h2 id="control-flow">Control Flow</h2>
-<h3 id="conditionals">Conditionals</h3>
-<p>Exactly the same as TS</p>
+<h2 id="空值安全">空值安全</h2>
+<h2 id="控制流">控制流</h2>
+<h3 id="条件">条件</h3>
+<p>和 TS 一模一样</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> d: </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">Int</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> check </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> true</span></span>
 <span class="line"></span>
@@ -129,15 +129,15 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(d) </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 1</span></span></code></pre>
-<p>Ternary-style expressions</p>
+<p>类三元表达式</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> a </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 1</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> b </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 2</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">if</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (a </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">></span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> b) a </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">else</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> b) </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// Returns a value: 2</span></span></code></pre>
-<h3 id="branching">Branching</h3>
-<p>Branches are checked in order, and once one matches, the rest are skipped (so it’s not quite the same as switch: without a return, a switch can fall through and match several cases in a row)</p>
-<h4 id="branch--action">Branch + Action</h4>
-<p>Whatever follows the arrow is the action that runs on a match</p>
+<h3 id="分支">分支</h3>
+<p>按顺序执行，命中一个就不会再走后面的（行为和 switch 还是不太一样的, switch 如果不写 return 是可以连续命中多个的）</p>
+<h4 id="分支--action">分支 + action</h4>
+<p>箭头后面就是命中之后的 action</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> obj </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> "sofjewojfwee"</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">when</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (obj) {</span></span>
@@ -148,9 +148,9 @@
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // Default statement</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    else</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> -></span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"Unknown"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)     </span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<h4 id="branch--return-value">Branch + Return Value</h4>
-<p>It can be combined with an assignment expression</p>
-<p>In TS, this kind of “synchronously pick a branch and assign the result” logic is usually written with an immediately invoked function</p>
+<h4 id="分支--返回值">分支 + 返回值</h4>
+<p>可以结合赋值表达式使用</p>
+<p>TS 里面一般用立即执行函数来表达这种「同步分支决策赋值」的逻辑</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// TypeScript</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> condition</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=></span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> {</span></span>
@@ -165,7 +165,7 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    }</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    return</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> -</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">;</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">})();</span></span></code></pre>
-<p>In Kotlin, you can do it with when plus a return value</p>
+<p>换到 Kotlin 里可以用 when 结合返回值来做</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// Kotlin</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> returnedValue </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> when</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(bundle) {</span></span>
@@ -174,13 +174,13 @@
 <span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">    "rewards"</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> -></span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 3</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    else</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> -></span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> -</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<h2 id="equality-checks">Equality Checks</h2>
+<h2 id="相等性判断">相等性判断</h2>
 <p>TypeScript</p>
 <ul>
-<li><code>==</code> with implicit type coercion</li>
-<li><code>===</code> strict equality</li>
+<li><code>==</code> 带隐式转换</li>
+<li><code>===</code> 完全相等</li>
 </ul>
-<h2 id="loops-and-iteration">Loops and Iteration</h2>
+<h2 id="循环和迭代">循环和迭代</h2>
 <h3 id="range">Range</h3>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">for</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (number </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">in</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 1</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">..</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">5</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">    println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(number); </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 1,2,3,4,5</span></span>
@@ -188,24 +188,24 @@
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">for</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (num </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">in</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 1</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">..&#x3C;</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">5</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">    println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(num) </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 1,2,3,4</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<h3 id="iterating-over-data-structures">Iterating Over Data Structures</h3>
+<h3 id="迭代数据结构">迭代数据结构</h3>
 <h4 id="list-1">List</h4>
-<p>Just iterate over a List with for..in</p>
-<p>This differs from TS, where for..in iterates over an object’s hasOwnProperty keys. The TS equivalent is for..of, which works on any collection that has an iterator method</p>
+<p>直接使用 for..in 迭代 List 即可</p>
+<p>跟 TS 不太一样，TS 的 for..in 是用来迭代对象的 hasOwnProperty 键的，TS 里类似的迭代方法应该是 for..of，只要迭代的集合具有迭代器方法就可以使用这个方法来迭代</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> bundles </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> listOf</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"bookDetail"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"discoverV2"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">for</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (bundle </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">in</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> bundles) {</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">    println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(bundle)</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
 <h4 id="map-1">Map</h4>
-<p>Iterating over the keys</p>
+<p>遍历 keys</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> myMap </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> mapOf</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"one"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> to </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"two"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> to </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">for</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (k </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">in</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> myMap.keys) {</span></span>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">    println</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(k); </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// one, two</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<h2 id="functions">Functions</h2>
-<h3 id="declarations-arguments-and-defaults">Declarations, Arguments, and Defaults</h3>
-<p>The syntax for declaring functions is basically the same as TypeScript, and so is the return type annotation</p>
-<p>TS has one problem, though: when a function takes too many parameters, you have to bundle them into an options object so parameter order doesn’t hurt readability, and then you have to write an interface XxxOptions {} too</p>
+<h2 id="函数">函数</h2>
+<h3 id="声明--传参--默认值">声明 &#x26; 传参 &#x26; 默认值</h3>
+<p>声明函数的语法基本和 TypeScript 一样，返回值的标识也是一样</p>
+<p>但 TS 有个问题，当参数太多的时候，需要用一个 options 收起来，以避免让参数的顺序干扰可读性，然后还要写个 interface XxxOptions {}</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// TypeScript</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">interface</span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50"> MyFuncParams</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> {</span></span>
@@ -223,7 +223,7 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    prefix: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"Log"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    message: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"hello"</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">})</span></span></code></pre>
-<p>Kotlin solves this nicely: the arguments in a function call expression (FuncitonCallExpression) can be passed by name</p>
+<p>Kotlin 就很好地解决了这个问题，函数调用表达式 (FuncitonCallExpression) 所传的参数可以写明名字</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// Kotlin</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">fun</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> printMessageWithPrefix</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(message: </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">String</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, prefix: </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">String</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> "DefaultPrefix"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) {</span></span>
@@ -238,9 +238,9 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    )</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">    // [Log] Hello</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
-<h3 id="anonymous-functions">Anonymous Functions</h3>
-<p>They feel basically the same as TS arrow functions, with slightly different syntax</p>
-<p>And just like in TS, anonymous functions are most often used with functions like filter and map</p>
+<h3 id="匿名函数">匿名函数</h3>
+<p>感觉和 TS 的箭头函数基本一样，只是语法上有一点点不一样</p>
+<p>而且和 TS 类似，匿名函数最常用在 filter, map 等函数上</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// TypeScript</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">const</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> annoFunc</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> (</span><span style="--shiki-light:#E36209;--shiki-dark:#F69D50">name</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">:</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> string</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=></span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> {</span></span>
@@ -256,31 +256,31 @@
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">val</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> nums </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB"> listOf</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">nums.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">filter</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">({ num: </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">Int</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> -> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">num</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> ></span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> }) </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390">// 1, 2</span></span></code></pre>
-<p>The fold function seems to do the same job as reduce</p>
+<p>fold 函数，感觉和 reduce 干的是一样的事情</p>
 <pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="kotlin"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">listOf</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">3</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#DCBDFB">fold</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, { x, item </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">-></span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">+</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> item })</span></span></code></pre>
-<h2 id="classes--data-classes">Classes / Data Classes</h2>
+<h2 id="类数据类">类/数据类</h2>
 <h3 id="class">class</h3>
-<p>You don’t write new to construct an instance</p>
+<p>构造实例不用写 new</p>
 <h3 id="data-class">data class</h3>
-<p>Signature methods:</p>
+<p>标志性方法：</p>
 <ul>
 <li>toString()</li>
 <li>equals()</li>
 <li>copy()</li>
 </ul>
-<p>Data class instances can be compared directly with ==, because they implement equals</p>
-<h2 id="async">Async</h2>
+<p>数据类实例之间可以直接用 == 比较，因为实现了 equals 方法</p>
+<h2 id="异步">异步</h2>
 <h3 id="coroutine">Coroutine</h3>
-<h2 id="key-differences-and-similarities-with-java">Key Differences and Similarities with Java</h2>
+<h2 id="和-java-的主要区别和联系">和 Java 的主要区别和联系</h2>
 <ul>
-<li>More syntactic sugar</li>
-<li>OOP isn’t mandatory</li>
-<li>Kotlin classes don’t seem to have anything like static, and you don’t write the <code>new</code> keyword to construct an instance</li>
+<li>语法糖更多</li>
+<li>不强制 OOP</li>
+<li>Kotlin 的类似乎没有 static 一类的东西，构造实例的时候也不用写 <code>new</code> 关键字</li>
 </ul>
-<h2 id="key-differences-and-similarities-with-typescript">Key Differences and Similarities with TypeScript</h2>
+<h2 id="和-typescript-的主要区别和联系">和 TypeScript 的主要区别和联系</h2>
 <ul>
-<li>TS type checking is a compile-time thing, decoupled from runtime; Kotlin is a statically typed language to begin with</li>
-<li>The syntax for type annotations is very similar</li>
-<li>Both support a functional style well</li>
+<li>TS 的类型检查是编译时行为，和运行时脱钩；Kotlin 本身就是静态语言</li>
+<li>标记类型的语法非常相似</li>
+<li>函数式风格都支持得比较好</li>
 </ul>
-<h2 id="differences-and-similarities-with-golang">Differences and Similarities with Golang</h2></div></article></main><footer><span>© 2026 Rory Cai</span><a href="/rss.xml">RSS</a></footer></div></body></html>
+<h2 id="和-golang-的区别和联系">和 Golang 的区别和联系</h2></div></article></main><footer><span>© 2026 Rory Cai</span><a href="/zh/rss.xml">RSS</a></footer></div></body></html>
