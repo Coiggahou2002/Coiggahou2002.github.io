@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="AI amplifies the gap">
+<style>
+text{font-family:"Chalkboard SE","Comic Sans MS",cursive;font-weight:300;fill:#1d1d1d}
+.b{stroke:#1d1d1d;stroke-width:2.2;stroke-linejoin:round}
+.d{stroke-dasharray:8 6}
+.a{stroke:#e03131;stroke-width:2.6;fill:none;marker-end:url(#h)}
+.a2{stroke:#1971c2;stroke-width:2.6;fill:none;marker-end:url(#h2)}
+.t1{font-size:21px;font-weight:400} .t2{font-size:17px} .t3{font-size:14px;fill:#6b6b6b}
+.r{font-size:16px;fill:#e03131} .bl{font-size:16px;fill:#1971c2} .m{font-family:Menlo,monospace;font-size:15px}
+</style>
+<defs>
+<filter id="w"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+<marker id="h" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker>
+<marker id="h2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1971c2"/></marker>
+</defs>
+<rect width="480" height="300" fill="#fbfbf8"/>
+<g filter="url(#w)"><text class="t3" x="40" y="42" text-anchor="start">before</text><rect class="b" x="40" y="180" width="40" height="60" rx="10" fill="#dbeafe"/><rect class="b" x="100" y="150" width="40" height="90" rx="10" fill="#dbeafe"/><path class="b" d="M30,240 L160,240" fill="none"/><text class="t3" x="300" y="42" text-anchor="start">with AI</text><rect class="b" x="300" y="200" width="40" height="40" rx="10" fill="#ffe3e3"/><rect class="b" x="360" y="60" width="40" height="180" rx="10" fill="#dcfce7"/><path class="b" d="M290,240 L420,240" fill="none"/><text class="r" x="240" y="285" text-anchor="middle">the gap grows</text></g><path class="a" d="M175,150 C210,130 245,130 280,150"/><path class="a2" d="M420,230 L420,70"/></svg>

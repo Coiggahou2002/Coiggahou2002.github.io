@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="nginx">
+<style>
+text{font-family:"Chalkboard SE","Comic Sans MS",cursive;font-weight:300;fill:#1d1d1d}
+.b{stroke:#1d1d1d;stroke-width:2.2;stroke-linejoin:round}
+.d{stroke-dasharray:8 6}
+.a{stroke:#e03131;stroke-width:2.6;fill:none;marker-end:url(#h)}
+.a2{stroke:#1971c2;stroke-width:2.6;fill:none;marker-end:url(#h2)}
+.t1{font-size:21px;font-weight:400} .t2{font-size:17px} .t3{font-size:14px;fill:#6b6b6b}
+.r{font-size:16px;fill:#e03131} .bl{font-size:16px;fill:#1971c2} .m{font-family:Menlo,monospace;font-size:15px}
+</style>
+<defs>
+<filter id="w"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+<marker id="h" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker>
+<marker id="h2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1971c2"/></marker>
+</defs>
+<rect width="480" height="300" fill="#fbfbf8"/>
+<g filter="url(#w)"><rect class="b" x="20" y="115" width="100" height="70" rx="10" fill="#dbeafe"/><text class="t2" x="70" y="156" text-anchor="middle">client</text><rect class="b" x="180" y="100" width="120" height="100" rx="10" fill="#dcfce7"/><text class="t1" x="240" y="146" text-anchor="middle">nginx</text><text class="t3" x="240" y="172" text-anchor="middle">server_name</text><rect class="b" x="360" y="40" width="100" height="56" rx="10" fill="#fef3c7"/><text class="t3" x="410" y="74" text-anchor="middle">app :3000</text><rect class="b" x="360" y="122" width="100" height="56" rx="10" fill="#fef3c7"/><text class="t3" x="410" y="156" text-anchor="middle">app :3001</text><rect class="b d" x="360" y="204" width="100" height="56" rx="10" fill="#fbfbf8"/><text class="t3" x="410" y="238" text-anchor="middle">/static</text></g><path class="a" d="M124,150 L176,150"/><path class="a" d="M304,130 L356,74"/><path class="a" d="M304,150 L356,150"/><path class="a2" d="M304,170 L356,228"/></svg>

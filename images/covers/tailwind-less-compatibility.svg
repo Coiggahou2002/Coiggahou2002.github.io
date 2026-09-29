@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Less breaks @apply">
+<style>
+text{font-family:"Chalkboard SE","Comic Sans MS",cursive;font-weight:300;fill:#1d1d1d}
+.b{stroke:#1d1d1d;stroke-width:2.2;stroke-linejoin:round}
+.d{stroke-dasharray:8 6}
+.a{stroke:#e03131;stroke-width:2.6;fill:none;marker-end:url(#h)}
+.a2{stroke:#1971c2;stroke-width:2.6;fill:none;marker-end:url(#h2)}
+.t1{font-size:21px;font-weight:400} .t2{font-size:17px} .t3{font-size:14px;fill:#6b6b6b}
+.r{font-size:16px;fill:#e03131} .bl{font-size:16px;fill:#1971c2} .m{font-family:Menlo,monospace;font-size:15px}
+</style>
+<defs>
+<filter id="w"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+<marker id="h" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker>
+<marker id="h2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1971c2"/></marker>
+</defs>
+<rect width="480" height="300" fill="#fbfbf8"/>
+<g filter="url(#w)"><rect class="b" x="24" y="60" width="120" height="60" rx="10" fill="#dbeafe"/><text class="t2" x="84" y="97" text-anchor="middle">App.less</text><rect class="b" x="180" y="60" width="120" height="60" rx="10" fill="#fef3c7"/><text class="t2" x="240" y="90" text-anchor="middle">less 4.x</text><text class="t3" x="240" y="110" text-anchor="middle">loader</text><rect class="b" x="336" y="60" width="120" height="60" rx="10" fill="#dcfce7"/><text class="t2" x="396" y="90" text-anchor="middle">tailwind</text><text class="t3" x="396" y="110" text-anchor="middle">@apply</text><rect class="b" x="150" y="190" width="180" height="70" rx="10" fill="#ffe3e3"/><text class="t2" x="240" y="222" text-anchor="middle">who broke it?</text><text class="t3" x="240" y="246" text-anchor="middle">blame goes to Tailwind</text></g><path class="a" d="M146,90 L176,90"/><path d="M302,90 L332,90" stroke="#e03131" stroke-width="2.6" fill="none"/><path d="M311,84 L323,96 M323,84 L311,96" stroke="#e03131" stroke-width="3.2" fill="none"/><path class="a2" d="M396,124 C396,170 360,200 334,210"/></svg>

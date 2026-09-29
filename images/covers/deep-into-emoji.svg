@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="emoji length">
+<style>
+text{font-family:"Chalkboard SE","Comic Sans MS",cursive;font-weight:300;fill:#1d1d1d}
+.b{stroke:#1d1d1d;stroke-width:2.2;stroke-linejoin:round}
+.d{stroke-dasharray:8 6}
+.a{stroke:#e03131;stroke-width:2.6;fill:none;marker-end:url(#h)}
+.a2{stroke:#1971c2;stroke-width:2.6;fill:none;marker-end:url(#h2)}
+.t1{font-size:21px;font-weight:400} .t2{font-size:17px} .t3{font-size:14px;fill:#6b6b6b}
+.r{font-size:16px;fill:#e03131} .bl{font-size:16px;fill:#1971c2} .m{font-family:Menlo,monospace;font-size:15px}
+</style>
+<defs>
+<filter id="w"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+<marker id="h" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker>
+<marker id="h2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1971c2"/></marker>
+</defs>
+<rect width="480" height="300" fill="#fbfbf8"/>
+<g filter="url(#w)"><circle class="b" cx="240" cy="70" r="40" fill="#fef3c7"/><rect class="b" x="12" y="170" width="52" height="44" rx="6" fill="#dbeafe"/><text class="t3" x="38" y="198" text-anchor="middle">D83D</text><rect class="b" x="70" y="170" width="52" height="44" rx="6" fill="#dbeafe"/><text class="t3" x="96" y="198" text-anchor="middle">DC68</text><rect class="b" x="128" y="170" width="52" height="44" rx="6" fill="#ffe3e3"/><text class="t3" x="154" y="198" text-anchor="middle">200D</text><rect class="b" x="186" y="170" width="52" height="44" rx="6" fill="#dbeafe"/><text class="t3" x="212" y="198" text-anchor="middle">D83D</text><rect class="b" x="244" y="170" width="52" height="44" rx="6" fill="#dbeafe"/><text class="t3" x="270" y="198" text-anchor="middle">DC69</text><rect class="b" x="302" y="170" width="52" height="44" rx="6" fill="#ffe3e3"/><text class="t3" x="328" y="198" text-anchor="middle">200D</text><rect class="b" x="360" y="170" width="52" height="44" rx="6" fill="#dbeafe"/><text class="t3" x="386" y="198" text-anchor="middle">D83D</text><rect class="b" x="418" y="170" width="52" height="44" rx="6" fill="#dbeafe"/><text class="t3" x="444" y="198" text-anchor="middle">DC67</text><text class="r" x="240" y="270" text-anchor="middle">length === 8</text></g><path class="a" d="M240,114 L240,160"/><text x="240" y="84" text-anchor="middle" style="font-size:36px;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">👨‍👩‍👧</text></svg>
