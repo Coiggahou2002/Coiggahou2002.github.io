@@ -1,0 +1,1 @@
+import{_ as r,o as e,c as o}from"./Bem5CZEe.js";const c={},s={class:"border-gray-300 border dark:border-gray-600 my-10 border-dashed"};function a(t,d){return e(),o("hr",s)}const _=r(c,[["render",a]]);export{_ as default};

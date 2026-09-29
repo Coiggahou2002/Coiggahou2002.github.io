@@ -1,1 +1,0 @@
-import{_ as o,o as s,c as t,A as r}from"./GR1iQ9F2.js";const c={},n={class:"prose_ol"};function a(e,_){return s(),t("ol",n,[r(e.$slots,"default",{},void 0,!0)])}const l=o(c,[["render",a],["__scopeId","data-v-60349d98"]]);export{l as default};

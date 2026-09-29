@@ -1,1 +1,0 @@
-import"./BQyrVyYv.js";import{_ as r}from"./CmQTDmvU.js";import{r as t}from"./B4nn_MI1.js";import{g as a,k as p,o as s,h as _,w as e}from"./GR1iQ9F2.js";const d=a({__name:"Info",setup(m){return p(()=>{}),(o,i)=>{const n=r;return s(),_(n,{type:"info"},{title:e(()=>[t(o.$slots,"title",{unwrap:"p"})]),default:e(()=>[t(o.$slots,"default",{unwrap:"p"})]),_:3})}}});export{d as default};

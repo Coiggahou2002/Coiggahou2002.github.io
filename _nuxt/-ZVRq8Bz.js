@@ -1,0 +1,1 @@
+import{_ as r,o,c as t,A as s}from"./Bem5CZEe.js";const a={},c={class:"p-1 rounded text-sm bg-gray-200/85 dark:bg-gray-700 dark:text-gray-300"};function n(e,d){return o(),t("code",c,[s(e.$slots,"default")])}const l=r(a,[["render",n]]);export{l as default};

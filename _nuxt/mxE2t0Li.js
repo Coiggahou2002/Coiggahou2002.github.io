@@ -1,1 +1,0 @@
-import{_ as t,o,c as s,A as r}from"./GR1iQ9F2.js";const a={},c={class:"text-lg font-bold dark:text-gray-200"};function n(e,d){return o(),s("thead",c,[r(e.$slots,"default")])}const _=t(a,[["render",n]]);export{_ as default};
