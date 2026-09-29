@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>最近的一些思考 · Rory Cai</title><meta name="description" content="AI 并不会让人与人之间的差距缩小，真实的情况恰恰相反。它放大人的创造力，scale 人的判断力，但也会放大人的愚蠢和偏见。"><link rel="canonical" href="https://coiggahou2002.github.io/zh/blogs/recent-thoughts/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/recent-thoughts/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/recent-thoughts/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/recent-thoughts/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+    // Runs before first paint so a light-mode reader never sees a dark flash.
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="text/markdown" href="/zh/blogs/recent-thoughts.md"><link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="最近的一些思考"><meta property="og:description" content="AI 并不会让人与人之间的差距缩小，真实的情况恰恰相反。它放大人的创造力，scale 人的判断力，但也会放大人的愚蠢和偏见。"><meta property="og:url" content="https://coiggahou2002.github.io/zh/blogs/recent-thoughts/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2026-08-09T06:00:35.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"最近的一些思考","description":"AI 并不会让人与人之间的差距缩小，真实的情况恰恰相反。它放大人的创造力，scale 人的判断力，但也会放大人的愚蠢和偏见。","url":"https://coiggahou2002.github.io/zh/blogs/recent-thoughts/","mainEntityOfPage":"https://coiggahou2002.github.io/zh/blogs/recent-thoughts/","inLanguage":"zh-CN","datePublished":"2026-08-09T06:00:35.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Agent 工程师 / 设计工程师","worksFor":{"@type":"Organization","name":"Parfit"},"alumniOf":{"@type":"CollegeOrUniversity","name":"哈尔滨工业大学","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002"]}}</script><link rel="stylesheet" href="/_astro/Base.CgyVZKkI.css"></head><body><nav class="pill-nav" aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/blogs/" aria-current="page">文章</a><a href="/zh/menu/uses/">工具</a><a href="/zh/menu/journal/">手账</a><a class="lang-switch" href="/blogs/recent-thoughts/" hreflang="en" lang="en" aria-label="Switch to English">EN</a><button class="theme-toggle" type="button" aria-label="切换深浅色" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+    // The toggle only exists with JavaScript; without it the site stays dark.
+    (() => {
+      const btn = document.querySelector('.theme-toggle');
+      const root = document.documentElement;
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
+      });
+    })();
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>最近的一些思考</h1><time datetime="2026-08-09T06:00:35.000Z">2026-08-09</time></header><div class="prose"><p><strong>#1</strong></p>
+<p>AI 并不会让人与人之间的差距缩小，真实的情况恰恰相反。</p>
+<p>它放大人的创造力，scale 人的判断力，但也会放大人的愚蠢和偏见。</p>
+<p><strong>#2</strong></p>
+<p>对于初入职场的新人，相比于一毕业就在一个充满大组织病的地方学会当好螺丝钉和抢功甩锅，在一个小团队里硬着头皮上未必是坏事，也许会累点，但很容易锻炼出不错的 owner 意识和全局视野。</p>
+<p>我刚毕业的时候就在一个这样的环境，当时我觉得特别累，很辛苦，但是回头看，是这段经历给了我全面的能力，以及日后抓住更好机会的基础。</p>
+<p>你无法预先把点滴串联起来；只有回头回望的时候，你才看清过往经历的因果。所以你必须相信当下的碎片，日后终将相连。</p>
+<p><strong>#3</strong></p>
+<p>觉得一个环境不适合自己发展，那就大胆地离开，寻找更适合自己放开手脚去干的环境。芒格有一句话：我从来不会在改变他人身上浪费一秒钟，但改变自己永远不晚。</p>
+<p><strong>#4</strong></p>
+<p>东邪西毒里有一句台词我很喜欢：每个人都会经过这个阶段，看见一座山，便想知道山的后面是什么，我很想告诉他，可能翻过去山后面，你会发觉没什么特别，回头看也许会觉得这边更好，但我知道他不会相信，以他的性格，自己不试过是不会甘心。</p>
+<p>成长就是一个不断对以前崇拜的、神化的事物祛魅的过程，这一路上，你会看到很多事物和人，发觉也不过如此。</p>
+<p><strong>#5</strong></p>
+<p>这个世界上一直都有很多问题，在大模型出现之前，很多人都在花时间寻找好的答案。</p>
+<p>现在答案已经不稀缺了，缺的是能否提出好的问题。</p>
+<p>但我发现，很多人连一句“为什么”都懒得去追问。</p>
+<p>所以，好奇心和探索欲是 AI 时代更重要的素质。</p>
+<p><strong>#6</strong></p>
+<p>软件工程的很多东西都变了，以前强调抽象复用，是为了让人少写重复代码，因为写代码很贵，但现在写代码很便宜了，这些东西还有必要遵守吗？</p>
+<p>我认为，熵减仍是工程师最重要的职责之一，但可以不必像从前那么遵守这些教条。</p>
+<p>现在软件工程的瓶颈，不在于 Implement Time，而在 Review Time。</p>
+<p>有能力、有判断力能够把关代码质量的人很稀缺，审核的带宽目前跟不上生产代码的速度。</p>
+<p><strong>#7</strong></p>
+<p>知识是什么？知识是用于生产的信息。</p>
+<p>古人早就回答过了，边干边学才是最高效的方式。</p>
+<p>有了 AI，只要敢硬着头皮上，头皮就真的会变硬。</p>
+<p><strong>#8</strong></p>
+<p>对于一个节奏快，时间永远不够用的人来说，找到一个营养元素全面、低GI、不晕碳、六分饱腹感，并且能在 15 分钟内解决一顿饭的快餐，还是很重要的。</p>
+<hr>
+<p>本文首发于微信公众号「罗里戴行思录」：<a href="https://mp.weixin.qq.com/s/Izu8XXMdc9PwLwQv_xiiDQ">原文链接</a></p></div></article></main><footer><span>© 2026 Rory Cai</span><span class="footer-links"><a href="/llms.txt">给 AI 读: /llms.txt</a><a href="/zh/rss.xml">RSS</a></span></footer></div></body></html>
