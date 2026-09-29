@@ -1,7 +1,7 @@
 # 列表性能优化居然会导致曝光错误？RN FlatList removeClippedSubviews 踩坑实录
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-01-22
+- Published: 2025-01-22 (Asia/Shanghai; 2025-01-22T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/rn-remove-clip-subview/
 - English version: https://coiggahou2002.github.io/blogs/rn-remove-clip-subview/

@@ -1,7 +1,7 @@
 # Prompt、Skill、MCP 都会消失：人们只为结果付费
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2026-09-19
+- Published: 2026-09-19 (Asia/Shanghai; 2026-09-18T16:34:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/pay-for-outcomes/
 - English version: https://coiggahou2002.github.io/blogs/pay-for-outcomes/

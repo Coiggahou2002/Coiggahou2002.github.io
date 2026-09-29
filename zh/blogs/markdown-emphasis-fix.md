@@ -1,7 +1,7 @@
 # 解决了一个豆包还没解决的 Markdown 渲染问题
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-03-11
+- Published: 2025-03-11 (Asia/Shanghai; 2025-03-11T13:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/markdown-emphasis-fix/
 - English version: https://coiggahou2002.github.io/blogs/markdown-emphasis-fix/

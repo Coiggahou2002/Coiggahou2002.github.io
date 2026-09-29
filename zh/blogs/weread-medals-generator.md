@@ -1,7 +1,7 @@
 # 使用 puppeteer 批量生成微信读书 423 活动勋章
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-25
+- Published: 2025-04-25 (Asia/Shanghai; 2025-04-25T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/weread-medals-generator/
 - English version: https://coiggahou2002.github.io/blogs/weread-medals-generator/

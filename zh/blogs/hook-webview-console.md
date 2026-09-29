@@ -1,7 +1,7 @@
 # 移动端 WebView 如何 hook 日志到客户端
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-08
+- Published: 2025-04-08 (Asia/Shanghai; 2025-04-08T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/hook-webview-console/
 - English version: https://coiggahou2002.github.io/blogs/hook-webview-console/

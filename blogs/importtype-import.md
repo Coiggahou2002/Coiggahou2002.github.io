@@ -1,7 +1,7 @@
 # import vs. import type: A Deep Dive Into How TypeScript Imports Get Compiled
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-23
+- Published: 2024-06-23 (Asia/Shanghai; 2024-06-23T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/importtype-import/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/importtype-import/

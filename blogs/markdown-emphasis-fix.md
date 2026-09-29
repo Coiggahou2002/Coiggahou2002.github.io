@@ -1,7 +1,7 @@
 # Fixing a Markdown Rendering Bug That Doubao Still Hasn't Fixed
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-03-11
+- Published: 2025-03-11 (Asia/Shanghai; 2025-03-11T13:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/markdown-emphasis-fix/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/markdown-emphasis-fix/

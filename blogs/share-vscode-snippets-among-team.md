@@ -1,7 +1,7 @@
 # Make VS Code Snippets Shareable in Teams
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-20
+- Published: 2024-06-20 (Asia/Shanghai; 2024-06-20T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/share-vscode-snippets-among-team/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/share-vscode-snippets-among-team/

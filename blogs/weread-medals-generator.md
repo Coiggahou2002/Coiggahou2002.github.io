@@ -1,7 +1,7 @@
 # Batch-Generating WeChat Read's World Book Day Medals with Puppeteer
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-25
+- Published: 2025-04-25 (Asia/Shanghai; 2025-04-25T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/weread-medals-generator/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/weread-medals-generator/

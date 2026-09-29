@@ -1,7 +1,7 @@
 # 如何缩短前端项目构建时间
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-06-08
+- Published: 2025-06-08 (Asia/Shanghai; 2025-06-08T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/how-to-reduce-nuxt-project-compile-time/
 - English version: https://coiggahou2002.github.io/blogs/how-to-reduce-nuxt-project-compile-time/

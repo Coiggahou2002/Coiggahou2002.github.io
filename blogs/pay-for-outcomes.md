@@ -1,7 +1,7 @@
 # Prompts, Skills, and MCP Will All Disappear. People Only Pay for Outcomes
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2026-09-19
+- Published: 2026-09-19 (Asia/Shanghai; 2026-09-18T16:34:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/pay-for-outcomes/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/pay-for-outcomes/

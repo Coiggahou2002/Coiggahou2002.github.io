@@ -1,7 +1,7 @@
 # A New Less Release Broke Tailwind's @apply, and Tailwind Took the Blame
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-09-14
+- Published: 2025-09-14 (Asia/Shanghai; 2025-09-14T10:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/tailwind-less-compatibility/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/tailwind-less-compatibility/

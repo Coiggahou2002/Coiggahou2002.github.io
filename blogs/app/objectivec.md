@@ -1,7 +1,7 @@
 # Objective-C Learning Notes
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-17
+- Published: 2025-05-17 (Asia/Shanghai; 2025-05-17T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/app/objectivec/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/app/objectivec/

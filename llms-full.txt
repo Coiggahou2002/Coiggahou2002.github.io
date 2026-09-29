@@ -1,6 +1,6 @@
 # Rory Cai: all posts (English)
 
-Rory Cai, Full-stack Developer. Graduated from Harbin Institute of Technology (Shenzhen). Currently a frontend engineer at Tencent.
+Rory Cai, Agent Engineer & Design Engineer. Agent engineer and design engineer at Parfit. Previously a frontend engineer at Tencent. Graduated from Harbin Institute of Technology (Shenzhen).
 Chinese versions: https://coiggahou2002.github.io/zh/llms-full.txt
 
 ---
@@ -8,7 +8,7 @@ Chinese versions: https://coiggahou2002.github.io/zh/llms-full.txt
 # Prompts, Skills, and MCP Will All Disappear. People Only Pay for Outcomes
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2026-09-19
+- Published: 2026-09-19 (Asia/Shanghai; 2026-09-18T16:34:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/pay-for-outcomes/
 
@@ -282,7 +282,7 @@ Originally published in Chinese on my WeChat account 罗里戴行思录: [read t
 # A New Less Release Broke Tailwind's @apply, and Tailwind Took the Blame
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-09-14
+- Published: 2025-09-14 (Asia/Shanghai; 2025-09-14T10:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/tailwind-less-compatibility/
 
@@ -638,7 +638,7 @@ Topics covered:
 # How Long Is an Emoji, Really? A Deep Dive into Emoji Strings in UTF-16
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-07-16
+- Published: 2025-07-16 (Asia/Shanghai; 2025-07-16T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/deep-into-emoji/
 
@@ -1250,7 +1250,7 @@ Build a string from a sequence of code units: [String.fromCharCode](https://deve
 # How to Speed Up Frontend Project Builds
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-06-08
+- Published: 2025-06-08 (Asia/Shanghai; 2025-06-08T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/how-to-reduce-nuxt-project-compile-time/
 
@@ -1272,7 +1272,7 @@ Build a string from a sequence of code units: [String.fromCharCode](https://deve
 # Objective-C Learning Notes
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-17
+- Published: 2025-05-17 (Asia/Shanghai; 2025-05-17T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/app/objectivec/
 
@@ -1843,7 +1843,7 @@ If you need to assign to it, you have to manually add `__block` in front of the 
 # Some Notes on Cookies
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-16
+- Published: 2025-05-16 (Asia/Shanghai; 2025-05-16T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/http-cookie/
 
@@ -2049,7 +2049,7 @@ for (NSString *pair in cookiePairs) {
 # Nginx Notes
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-15
+- Published: 2025-05-15 (Asia/Shanghai; 2025-05-15T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/nginx/
 
@@ -2459,7 +2459,7 @@ These examples cover the core features of Nginx's HTTP module. In practice, mix 
 # Batch-Generating WeChat Read's World Book Day Medals with Puppeteer
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-25
+- Published: 2025-04-25 (Asia/Shanghai; 2025-04-25T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/weread-medals-generator/
 
@@ -2767,7 +2767,7 @@ This project shows how modern web technology can be applied to image generation.
 # Piping Mobile WebView Console Logs into Native App Logs
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-08
+- Published: 2025-04-08 (Asia/Shanghai; 2025-04-08T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/hook-webview-console/
 
@@ -3086,7 +3086,7 @@ To wrap up:
 # Fixing a Markdown Rendering Bug That Doubao Still Hasn't Fixed
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-03-11
+- Published: 2025-03-11 (Asia/Shanghai; 2025-03-11T13:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/markdown-emphasis-fix/
 
@@ -3284,7 +3284,7 @@ Thanks to @gtbl for the idea. Seriously impressive.
 # When a List Optimization Breaks Impression Tracking: The RN FlatList removeClippedSubviews Trap
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-01-22
+- Published: 2025-01-22 (Asia/Shanghai; 2025-01-22T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/rn-remove-clip-subview/
 
@@ -3670,7 +3670,7 @@ It's actually quite similar to the old logic: get the ancestor node ancestorNode
 # import vs. import type: A Deep Dive Into How TypeScript Imports Get Compiled
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-23
+- Published: 2024-06-23 (Asia/Shanghai; 2024-06-23T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/importtype-import/
 
@@ -3856,7 +3856,7 @@ https://github.com/evanw/esbuild/issues/341
 # Make VS Code Snippets Shareable in Teams
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-20
+- Published: 2024-06-20 (Asia/Shanghai; 2024-06-20T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/share-vscode-snippets-among-team/
 
@@ -3959,7 +3959,7 @@ Here is an example 👇
 # Git
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2023-10-08
+- Published: 2023-10-08 (Asia/Shanghai; 2023-10-08T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/git/
 

@@ -1,7 +1,7 @@
 # 从 import 与 import type 的区别引出的深入讨论
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-23
+- Published: 2024-06-23 (Asia/Shanghai; 2024-06-23T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/importtype-import/
 - English version: https://coiggahou2002.github.io/blogs/importtype-import/

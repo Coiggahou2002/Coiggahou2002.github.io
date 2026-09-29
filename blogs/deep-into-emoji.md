@@ -1,7 +1,7 @@
 # How Long Is an Emoji, Really? A Deep Dive into Emoji Strings in UTF-16
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-07-16
+- Published: 2025-07-16 (Asia/Shanghai; 2025-07-16T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/deep-into-emoji/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/

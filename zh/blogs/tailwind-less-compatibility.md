@@ -1,7 +1,7 @@
 # less 新版搞事情，tailwind 语法糖无奈躺枪
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-09-14
+- Published: 2025-09-14 (Asia/Shanghai; 2025-09-14T10:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/tailwind-less-compatibility/
 - English version: https://coiggahou2002.github.io/blogs/tailwind-less-compatibility/

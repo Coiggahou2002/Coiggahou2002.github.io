@@ -1,7 +1,7 @@
 # emoji 的长度到底是多少？UTF-16 下 emoji 字符串原理探究
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-07-16
+- Published: 2025-07-16 (Asia/Shanghai; 2025-07-16T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/
 - English version: https://coiggahou2002.github.io/blogs/deep-into-emoji/

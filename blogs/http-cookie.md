@@ -1,7 +1,7 @@
 # Some Notes on Cookies
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-16
+- Published: 2025-05-16 (Asia/Shanghai; 2025-05-16T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/http-cookie/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/http-cookie/

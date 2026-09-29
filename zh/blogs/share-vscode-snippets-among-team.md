@@ -1,7 +1,7 @@
 # 在团队中共享 VS Code 代码片段
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-20
+- Published: 2024-06-20 (Asia/Shanghai; 2024-06-20T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/share-vscode-snippets-among-team/
 - English version: https://coiggahou2002.github.io/blogs/share-vscode-snippets-among-team/

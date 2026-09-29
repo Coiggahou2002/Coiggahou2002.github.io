@@ -1,7 +1,7 @@
 # Git
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2023-10-08
+- Published: 2023-10-08 (Asia/Shanghai; 2023-10-08T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/git/
 - English version: https://coiggahou2002.github.io/blogs/git/

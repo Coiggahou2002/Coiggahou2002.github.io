@@ -1,6 +1,6 @@
 # Rory Cai：全部文章（中文）
 
-Rory Cai，全栈开发工程师。毕业于哈尔滨工业大学（深圳）。目前在腾讯担任前端开发工程师。
+Rory Cai，Agent 工程师 / 设计工程师。现在是 Parfit 的 Agent 工程师 / 设计工程师。之前在腾讯做前端开发，毕业于哈尔滨工业大学（深圳）。
 English versions: https://coiggahou2002.github.io/llms-full.txt
 
 ---
@@ -8,7 +8,7 @@ English versions: https://coiggahou2002.github.io/llms-full.txt
 # Prompt、Skill、MCP 都会消失：人们只为结果付费
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2026-09-19
+- Published: 2026-09-19 (Asia/Shanghai; 2026-09-18T16:34:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/pay-for-outcomes/
 
@@ -288,7 +288,7 @@ Alfred North Whitehead, An Introduction to Mathematics, 1911
 # less 新版搞事情，tailwind 语法糖无奈躺枪
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-09-14
+- Published: 2025-09-14 (Asia/Shanghai; 2025-09-14T10:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/tailwind-less-compatibility/
 
@@ -644,7 +644,7 @@ less 这个预处理器会把 @apply 后面的每个 keyword 之间加上一个�
 # emoji 的长度到底是多少？UTF-16 下 emoji 字符串原理探究
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-07-16
+- Published: 2025-07-16 (Asia/Shanghai; 2025-07-16T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/
 
@@ -1256,7 +1256,7 @@ function nextUnits(i, string) {
 # 如何缩短前端项目构建时间
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-06-08
+- Published: 2025-06-08 (Asia/Shanghai; 2025-06-08T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/how-to-reduce-nuxt-project-compile-time/
 
@@ -1278,7 +1278,7 @@ function nextUnits(i, string) {
 # Objective-C 学习笔记
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-17
+- Published: 2025-05-17 (Asia/Shanghai; 2025-05-17T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/app/objectivec/
 
@@ -1849,7 +1849,7 @@ OC block 自动捕获这些类型的变量：
 # 关于 cookie 的一些总结
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-16
+- Published: 2025-05-16 (Asia/Shanghai; 2025-05-16T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/http-cookie/
 
@@ -2055,7 +2055,7 @@ for (NSString *pair in cookiePairs) {
 # nginx 笔记
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-15
+- Published: 2025-05-15 (Asia/Shanghai; 2025-05-15T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/nginx/
 
@@ -2465,7 +2465,7 @@ server {
 # 使用 puppeteer 批量生成微信读书 423 活动勋章
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-25
+- Published: 2025-04-25 (Asia/Shanghai; 2025-04-25T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/weread-medals-generator/
 
@@ -2773,7 +2773,7 @@ node index.js --year 2023 --all --parallel 4
 # 移动端 WebView 如何 hook 日志到客户端
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-08
+- Published: 2025-04-08 (Asia/Shanghai; 2025-04-08T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/hook-webview-console/
 
@@ -3092,7 +3092,7 @@ class MainActivity : AppCompatActivity() {
 # 解决了一个豆包还没解决的 Markdown 渲染问题
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-03-11
+- Published: 2025-03-11 (Asia/Shanghai; 2025-03-11T13:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/markdown-emphasis-fix/
 
@@ -3290,7 +3290,7 @@ const html = md.render(processedText);
 # 列表性能优化居然会导致曝光错误？RN FlatList removeClippedSubviews 踩坑实录
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-01-22
+- Published: 2025-01-22 (Asia/Shanghai; 2025-01-22T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/rn-remove-clip-subview/
 
@@ -3676,7 +3676,7 @@ ByteDance 开源了它的内部跨端框架 [Lynx](https://lynxjs.org/zh/)
 # 从 import 与 import type 的区别引出的深入讨论
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-23
+- Published: 2024-06-23 (Asia/Shanghai; 2024-06-23T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/importtype-import/
 
@@ -3862,7 +3862,7 @@ https://github.com/evanw/esbuild/issues/341
 # 在团队中共享 VS Code 代码片段
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2024-06-20
+- Published: 2024-06-20 (Asia/Shanghai; 2024-06-20T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/share-vscode-snippets-among-team/
 
@@ -3964,7 +3964,7 @@ React Native
 # Git
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2023-10-08
+- Published: 2023-10-08 (Asia/Shanghai; 2023-10-08T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/git/
 

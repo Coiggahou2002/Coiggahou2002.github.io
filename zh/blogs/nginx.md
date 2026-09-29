@@ -1,7 +1,7 @@
 # nginx 笔记
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-05-15
+- Published: 2025-05-15 (Asia/Shanghai; 2025-05-15T00:00:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/nginx/
 - English version: https://coiggahou2002.github.io/blogs/nginx/

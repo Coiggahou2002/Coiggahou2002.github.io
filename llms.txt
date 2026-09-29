@@ -2,7 +2,7 @@
 
 > Personal site and tech blog of Rory Cai: frontend, React Native, iOS / Android and developer productivity.
 
-Rory Cai, Full-stack Developer. Graduated from Harbin Institute of Technology (Shenzhen). Currently a frontend engineer at Tencent.
+Rory Cai, Agent Engineer & Design Engineer. Agent engineer and design engineer at Parfit. Previously a frontend engineer at Tencent. Graduated from Harbin Institute of Technology (Shenzhen).
 Tech stack: TypeScript, Vue, Nuxt, React Native, Tailwind, Kotlin, Objective-C, Golang, Node.js, Python, MongoDB, Docker, Kubernetes, Prometheus, Grafana.
 GitHub: https://github.com/Coiggahou2002
 
@@ -10,7 +10,7 @@ Every post is available in English (under /) and Chinese (under /zh/).
 
 ## For agents
 
-- Every page has a plain-Markdown twin: add `.md` to the URL without the trailing slash, e.g. https://coiggahou2002.github.io/blogs/nginx.md
+- Every page has a plain-Markdown twin: add `.md` to the URL without the trailing slash, e.g. https://coiggahou2002.github.io/blogs/nginx.md, https://coiggahou2002.github.io/blogs/app/learn-kotlin.md, https://coiggahou2002.github.io/zh/blogs/nginx.md
 - All English posts in one file: https://coiggahou2002.github.io/llms-full.txt (Chinese: https://coiggahou2002.github.io/zh/llms-full.txt)
 - Post index (JSON, both languages): https://coiggahou2002.github.io/api/posts.json
 - Résumé (JSON Resume): https://coiggahou2002.github.io/resume.json

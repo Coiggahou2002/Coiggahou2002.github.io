@@ -1,7 +1,7 @@
 # Piping Mobile WebView Console Logs into Native App Logs
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-04-08
+- Published: 2025-04-08 (Asia/Shanghai; 2025-04-08T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/hook-webview-console/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/hook-webview-console/

@@ -1,7 +1,7 @@
 # When a List Optimization Breaks Impression Tracking: The RN FlatList removeClippedSubviews Trap
 
 - Author: Rory Cai (https://coiggahou2002.github.io/)
-- Published: 2025-01-22
+- Published: 2025-01-22 (Asia/Shanghai; 2025-01-22T00:00:00.000Z)
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/rn-remove-clip-subview/
 - Chinese version: https://coiggahou2002.github.io/zh/blogs/rn-remove-clip-subview/
