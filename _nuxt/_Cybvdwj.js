@@ -1,1 +1,0 @@
-import{_ as r,o,c as s,A as t}from"./Bem5CZEe.js";const c={},a={class:"border py-2 px-4 dark:border-gray-600"};function n(e,d){return o(),s("td",a,[t(e.$slots,"default")])}const l=r(c,[["render",n]]);export{l as default};

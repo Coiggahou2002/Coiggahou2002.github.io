@@ -1,1 +1,0 @@
-import{_ as t,o,c as r,A as s}from"./Bem5CZEe.js";const a={},n={class:"font-normal text-gray-700 dark:text-gray-300 my-1 leading-7"};function c(e,l){return o(),r("li",n,[s(e.$slots,"default")])}const d=t(a,[["render",c]]);export{d as default};
