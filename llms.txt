@@ -18,7 +18,6 @@ Every post is available in English (under /) and Chinese (under /zh/).
 
 ## Posts (English)
 
-- [No Vector DB, Just a 25KB Index: Inside Claude Code's Memory System](https://coiggahou2002.github.io/blogs/claude-code-memory/) (Sep 29, 2026): Claude Code's long-term memory is a pile of Markdown files, one index, and a paragraph of system prompt. Here's how it writes, recalls, and forgets — straight from the source.
 - [Prompts, Skills, and MCP Will All Disappear. People Only Pay for Outcomes](https://coiggahou2002.github.io/blogs/pay-for-outcomes/) (Sep 19, 2026): Prompts, skills, hooks, plugins — they're all a transitional phase of AI apps. What survives is a marketplace of agents that sell nothing but results.
 - [AI Won't Close the Gap Between People, and 7 Other Notes](https://coiggahou2002.github.io/blogs/recent-thoughts/) (Aug 9, 2026): AI won't narrow the gap between people. It does the opposite. It amplifies creativity and scales judgment, but it also amplifies stupidity and bias.
 - [A New Less Release Broke Tailwind's @apply, and Tailwind Took the Blame](https://coiggahou2002.github.io/blogs/tailwind-less-compatibility/) (Sep 14, 2025): One of our large projects uses a micro-frontend architecture. The stack is SSR + Vue 3 + NestJS + Webpack4, the style preprocessor is Less, and the project also integrates Tailwind, which most of us use day to day to write styles quickly.…
