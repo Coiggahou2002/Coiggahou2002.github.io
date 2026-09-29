@@ -1,0 +1,4521 @@
+# Rory Cai: all posts (English)
+
+Rory Cai, Full-stack Developer. Graduated from Harbin Institute of Technology (Shenzhen). Currently a frontend engineer at Tencent.
+Chinese versions: https://coiggahou2002.github.io/zh/llms-full.txt
+
+---
+
+# Prompts, Skills, and MCP Will All Disappear. People Only Pay for Outcomes
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2026-09-19
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/pay-for-outcomes/
+
+Some thinking that came out of recent debates on our team.
+
+All the prompts, skills, hooks, and plugins everyone's busy studying today\
+are just a transitional phase of AI applications.
+
+They won't stick around.
+
+What sticks around will be a market:\
+a market of agents that deliver nothing but outcomes.
+
+Why?
+
+People have actually argued about this many times before, in different forms. Let's walk through it.
+
+## 1. If you can outsource anything, why do companies exist?
+
+Start with a question: why do companies exist at all?
+
+In 1937, a 26-year-old Brit wrote a paper\
+answering exactly that.\
+His name was Ronald Coase. The paper was The Nature of the Firm.\
+More than fifty years later, it won him the Nobel Prize in economics.
+
+His answer fits in one sentence:
+
+"The main reason why it is profitable to establish a firm would seem to be that there is a cost of using the price mechanism."
+
+Honestly, I only quoted that to sound smart. In plain English:\
+**Going outside to find someone, haggle, and sign a contract for every single task is too expensive.**\
+**Better to bring people together and manage them on a long-term, fixed basis.**
+
+Coase also named the most obvious of those costs:\
+**just figuring out what the price should be takes effort.**
+
+When doing it inside is cheaper than buying it outside, the firm is born.\
+Economists call this "transaction costs."
+
+Software works the same way.
+
+Take a fixed process, pay someone once to turn it into fixed logic.\
+Running it from then on is far cheaper than doing it by hand every time.
+
+Contract review works like this. Inventory management works like this. So do hospital medical records.\
+All standard processes.
+
+What did people do before there were systems? Copy by hand.\
+Paper passed back and forth: hard to manage, even harder to find.
+
+So we got software.\
+Pay a little, get a big jump in efficiency.
+
+## 2. People want the result, not the process
+
+So why does software have so many buttons, windows, workflows, and clicks?
+
+Nobody wants to learn the hundreds of features in Photoshop. We're forced to.\
+We just want the final image.
+
+Theodore Levitt of Harvard Business School,\
+in The Marketing Imagination (1983), quoted an old line:
+
+"People don't want to buy a quarter-inch drill. They want a quarter-inch hole!"
+
+When a doctor enters a medical record, what do they actually want?\
+For the record to land safely in the system.\
+So that whenever the patient is discharged, transferred, or sent for a consult, it can be found.
+
+But to get that hole, they first have to learn the drill.\
+Click this, click that. And hospital computers are usually painfully slow.\
+Forget to save once, and it's another half hour before the record is in.
+
+Photo editing is the same.\
+You don't learn all those techniques for the process.\
+You learn them to turn a plain photo of a coffee cup\
+into the ad poster your boss wanted.
+
+Now take email.\
+In Outlook you open one message, then another.\
+You scroll the mouse wheel for what feels like a mile.\
+You find the PDF, download the attachment, open it, squint and read the whole thing.\
+And finally tell your boss: here's the deal, blah blah...
+
+That one sentence is all he wanted.
+
+Design has a term for exactly this.\
+Don Norman, author of The Design of Everyday Things,\
+called the gap between "what I want" and "what the system forces me to do"\
+the **gulf of execution**.
+
+Old software built a very hard-to-cross bridge over that gulf.\
+People always wanted the result.\
+Software made them learn to cross the bridge first, then handed over the result.
+
+Not anymore.
+
+## 3. Agents arrived, and the process came right back
+
+Now we have agents, and MCP — a standard interface that lets AI read and write your data.\
+As long as the AI can reach your data,\
+you say one sentence and the result appears.
+
+In theory.
+
+In practice?
+
+First you have to understand what a large language model is.\
+ChatGPT, Claude, Kimi, Qwen, DeepSeek — what's the difference?\
+This one is MoE, that one isn't.\
+This one has more parameters, that one tops the leaderboard.\
+This one's great at code, that one's great at design.
+
+You finally pick one, sign up, and start using it.
+
+Turns out it doesn't quite listen.
+
+So you train it.\
+Connect MCP so it can touch your data.\
+Install skills so it remembers your routines.\
+Add hooks to put guardrails on it.\
+Then rewrite the prompt again and again.
+
+After a lot of tinkering, it finally runs smoothly.\
+Almost no back-and-forth rework.\
+One sentence a day, one daily report you're happy with.
+
+A long detour, all for the result.
+
+## 4. Is this really what people want?
+
+Stop and think.
+
+Why should we have to understand whether you're MoE?\
+Why should we have to know about parameter counts and reasoning effort?\
+Why should we have to scour the internet for this skill and that skill?
+
+I just want to finish my work and go home early.
+
+Isn't this just the old software road again?\
+Learn the process first to get the result.\
+The process just changed from "clicking buttons" to "tuning AI."\
+The gulf of execution didn't get any narrower. It's still a massive pain.
+
+Larry Tesler, a veteran Apple engineer, had a law:
+
+Every application has a certain amount of complexity that cannot be removed. The only question is who carries it: the user, or the developer?
+
+Today, that complexity sits on the user.
+
+Engineers who love DIY will adore all this.\
+But for a technology to be usable by ordinary people, let alone used well,\
+the engineers behind it have to carry the complexity on the user's behalf.
+
+## 5. Technology always specializes first, then goes mainstream
+
+Every technology develops gradually.
+
+In Diffusion of Innovations, the sociologist Everett Rogers\
+split the people who adopt a new technology into five groups:\
+innovators, early adopters, early majority, late majority, laggards.
+
+The first group is only 2.5%.
+
+The people fiddling with skills, MCP, and hooks today are that 2.5%.\
+They're willing to grind through the process to get the result.
+
+The other 97.5% won't.\
+They'll wait for the day the process is hidden.
+
+Specialize first, then generalize, then go mainstream.
+
+Photography went this way.\
+In the early days, you mixed your own chemicals\
+and crawled into a darkroom to develop the film.\
+In 1888, Kodak ran an ad:\
+**You press the button, we do the rest.**
+
+Driving went this way.\
+Early cars had to be started by getting out and turning a hand crank.\
+If the crank kicked back, it could break your arm.\
+In 1912, Cadillac installed an electric starter.\
+Sit down, press, and it starts.
+
+Computers went this way.\
+At first you had to memorize line after line of commands.\
+Then came graphical interfaces: just click the mouse.\
+Later still: just touch it with your finger.
+
+Every past technology went this way. AI will too.
+
+## 6. The endgame: an agent market that sells only outcomes
+
+Once the process is hidden, how does it actually work?
+
+Here's an example.
+
+You want to sue a company.\
+Today's way: open Kimi, install a skill, connect Tianyancha (a Chinese company-records service),\
+just to figure out the other side's legal representative, ownership structure, and pending lawsuits before you file.
+
+Then you install a few legal skills and connect a few legal MCP servers,\
+just to work out how to respond when the defendant starts weaseling.
+
+The future way:\
+go to the market and find an investigation agent and a legal agent.
+
+You hand over only three things:\
+**instructions, materials, context.**
+
+They use their own industry experience and deliver the result directly.\
+Priced by outcome, paid by outcome.
+
+You don't need to know how a large language model differs from an agent.\
+You don't need to understand MCP or skills,\
+or know anything about MoE, parameter counts, or reasoning effort.\
+You don't need to understand anything. None of it is any of my damn business — I just want the result.
+
+This has already started.
+
+Intercom, which builds customer-service agents,\
+charges for its AI support agent per "resolved conversation": $0.99 each.\
+Not resolved, no charge.
+
+Bret Taylor, co-founder of another agent company, Sierra, puts it even more bluntly:\
+the whole market is moving toward paying for outcomes.
+
+In The Wealth of Nations, Adam Smith titled one chapter:\
+**The division of labour is limited by the extent of the market.**
+
+The bigger the market, the finer the division of labor.\
+When anyone can buy a result with one sentence,\
+the market becomes big enough\
+to support an agent that only reviews contracts, one that only does due diligence, one that only handles medical records.
+
+People pay only for value and outcomes.\
+Never for process.
+
+## Closing
+
+In 1911, the philosopher Alfred North Whitehead wrote:
+
+"Civilization advances by extending the number of important operations which we can perform without thinking about them."
+
+---
+
+**References**
+
+Ronald Coase, The Nature of the Firm, Economica, 1937
+
+Theodore Levitt, The Marketing Imagination, 1983
+
+Don Norman, The Design of Everyday Things
+
+Larry Tesler, Law of Conservation of Complexity (c. 1984)
+
+Everett Rogers, Diffusion of Innovations, 1962
+
+Adam Smith, The Wealth of Nations, 1776, Book I, Chapter III
+
+Intercom Fin pricing page: intercom.com/pricing
+
+Alfred North Whitehead, An Introduction to Mathematics, 1911
+
+Originally published in Chinese on my WeChat account 罗里戴行思录: [read the original](https://mp.weixin.qq.com/s/owQcWuhFxdkOID1PtjtJWQ)
+
+
+---
+
+# A New Less Release Broke Tailwind's @apply, and Tailwind Took the Blame
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-09-14
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/tailwind-less-compatibility/
+
+## Background
+
+One of our large projects uses a micro-frontend architecture. The stack is [SSR](https://github.com/zhangyuang/ssr) + Vue 3 + NestJS + Webpack4, the style preprocessor is Less, and the project also integrates [Tailwind](https://tailwindcss.com/), which most of us use day to day to write styles quickly.
+
+Tailwind provides a bit of syntactic sugar called @apply that saves us some repetitive code.
+
+For example, in a Vue template we can write:
+```html
+<template>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Johnson</p>
+</template>
+```
+
+The PM asks for a few more names, so you copy a few more lines:
+```html
+<template>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Johnson</p>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Rory</p>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Jenifer</p>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Sam</p>
+</template>
+```
+
+Now what? That's a bit repetitive. Tailwind offers [@apply](https://v3.tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply), which lets you pull a fixed set of utilities into a single class:
+```html
+<template>
+    <p class="person-name">Johnson</p>
+    <p class="person-name">Rory</p>
+    <p class="person-name">Jenifer</p>
+    <p class="person-name">Sam</p>
+</template>
+<style scoped lang="css">
+.person-name {
+    @apply font-bold text-[12px] text-gray-800 mb-4 p-1;
+}
+</style>
+```
+
+
+## The Problem: Tailwind's @apply Stops Working
+
+Recently a teammate asked: has anyone changed the Tailwind config? Every @apply now throws an error. What's going on?
+
+Here's the error. It breaks the build and the component fails to render:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141052037.png)
+
+The moment I saw it, a bunch of possible suspects flashed through my head:
+
+1. This is a micro-frontend monorepo. Is one sub-app broken, or all of them?
+2. Integrating Tailwind relies on two key config files, `tailwind.config.js` and `postcss.config.js`. Has anyone changed them recently?
+3. Tailwind also needs `@tailwind utilities` in the project's global/shared CSS before its preset utility classes are available. Could that import be missing?
+4. Judging from the error message, Tailwind no longer recognizes `bg-red-400`. Could something be missing, so Tailwind can't find the rules behind those presets while processing?
+
+These are all hypotheses. Let's confirm or rule them out one at a time.
+
+## First Pass: Scope, Config, Recent Changes
+
+First, I tested other sub-apps in the same micro-frontend monorepo, including a business sub-app and a clean test sub-app. Both reproduced the problem 100% of the time, so **it's not one sub-app's problem but something shared by all of them.**
+
+Second, I checked whether the config files had changed. Using `git log --since`, I pulled files changed in the past 10 days whose names contained tailwind/postcss. Only one sub-app, livemanage, had changes, and those were two freshly initialized configs, which couldn't cause a problem this widespread. So **config changes are basically ruled out.**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141113371.png)
+
+The third point was easy to check: every sub-module's shared style file `common.less` includes `@tailwind utilities`, so **that's ruled out too**.
+
+As for the fourth: could Tailwind have gone haywire and suddenly stopped recognizing shorthands like `mb-12`? In other words, could Tailwind be at fault?
+
+First, let's look at the error again:
+
+`The 'xxx' class does not exist. If 'xxx' is a custom class, make sure it is defined within a '@layer' directive.`
+
+We know [@layer](https://v3.tailwindcss.com/docs/adding-custom-styles#using-css-and-layer) is a Tailwind feature for organizing preset style shortcuts, so this message looks like it comes from Tailwind, which means **Tailwind does get its hands on this stylesheet during processing**.
+
+We also noticed that if @apply is followed by a single rule instead of several, there's no error. Something like this:
+
+```css
+.myClass {
+    @apply mb-2; // this works
+    @apply mb-2 mx-1 bg-blue-100; // multiple in a row breaks
+}
+```
+
+That further shows Tailwind is processing the file, and it does recognize utility classes like `mb-2`, so missing utility classes aren't the issue either. It's more likely that **something goes wrong when Tailwind extracts/parses/splits the `@apply` statement**.
+
+
+## Narrowing It Down: Is Tailwind to Blame?
+
+However fancy a stylesheet is, the final output is just CSS. For Tailwind to offer syntactic sugar that browsers don't support natively, it has to process/convert all of that sugar into something browsers understand before the final CSS is produced. As shown below, `mb-24` has to become `margin-bottom: 6em;`, and so on.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141153979.png)
+
+So which tool in the frontend toolchain makes it easy to process/transform CSS? [PostCSS](https://postcss.org/), of course. And Tailwind [does in fact use a PostCSS plugin to provide its core functionality](https://github.com/tailwindlabs/tailwindcss/blob/main/packages/%40tailwindcss-postcss/package.json).
+
+So what we need to look at is how Tailwind performs its style replacement on top of PostCSS. In practice there's a very convenient trick: search for the static part of the error message.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141159411.png)
+
+That turns up the code below (irrelevant logic omitted). Tailwind uses PostCSS's walk capability: for every `@apply`, it calls `extractApplyCandidates` to pull out all the utility classes, and if an extracted class isn't in `applyClassCache` (i.e. Tailwind doesn't recognize it), it throws this error.
+
+```ts
+function processApply(root, context, localCache) {
+    let applyCandidates = new Set();
+
+    // Collect all @apply rules and candidates
+    let applies = [];
+    root.walkAtRules('apply', (rule) => {
+        // ...
+        applies.push(rule);
+    });
+
+    let applyClassCache = combineCaches([
+        localCache,
+        buildApplyCache(applyCandidates, context),
+    ]);
+    for (let apply of applies) {
+        // ...
+        let [applyCandidates, important] = extractApplyCandidates(apply.params);
+        // ...
+        for (let applyCandidate of applyCandidates) {
+            // ...
+            if (!applyClassCache.has(applyCandidate)) {
+                throw apply.error(
+                    `The \`${applyCandidate}\` class does not exist. If \`${applyCandidate}\` is a custom class, make sure it is defined within a \`@layer\` directive.`
+                );
+            }
+            let rules = applyClassCache.get(applyCandidate);
+            // ...
+            candidates.push([applyCandidate, important, rules]);
+        }
+    }
+    // ...
+}
+```
+Nothing looks wrong here. Could the extraction function be the problem? Let's look at it:
+
+```ts
+function extractApplyCandidates(params) {
+  let candidates = params.split(/[\s\t\n]+/g)
+  if (candidates[candidates.length - 1] === '!important') {
+    return [candidates.slice(0, -1), true]
+  }
+  return [candidates, false]
+}
+```
+This looks fine too. If an apply has several rules in a row, it splits them on spaces/tabs/newlines and drops a trailing `!important` if present.
+
+For example, for `@apply mb-2 pb-3`, the extracted applyCandidates should be `['mb-2', 'pb-3']`.
+
+Strange. So I added a print statement to see what applyCandidates actually looks like:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141218446.png)
+
+That's weird. Why are there commas???
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142041158.png)
+
+Is Tailwind doing something sneaky? Let me print the input:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141220072.png)
+
+What?? The commas are already there when Tailwind gets it?? Looks like this isn't so simple after all.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142042885.png)
+
+
+## Going Deeper: Tracing the Webpack Loaders
+
+I'd tried to pin this on Tailwind, but it turned out that to get an answer I had to figure out this question:
+
+From the moment we write the `<style scoped lang="less">` block in a `.vue` single-file component (SFC from here on) to the moment those styles run in the browser, how many processing steps does it go through, and what are the intermediate outputs?
+
+Some background: our stack is [SSR](https://github.com/zhangyuang/ssr) + Vue3 + Nest.js + Webpack4, so asset processing and bundling are mostly governed by the Webpack config.
+
+If you're familiar with Webpack, you'll know that Webpack4 only natively parses/processes standard JavaScript; everything else relies on third-party loaders. So the loader config is what we care about.
+
+You can read it straight from the project config, which is usually provided either as a [chainWebpack](https://github.com/neutrinojs/webpack-chain) function or as a static `webpack.config.js`.
+
+We took the simplest, most direct route: edit the `doBuild` function in `node_modules/webpack/lib/NormalModule.js` and print the names of the loaders in the chain being executed:
+
+> You can add custom conditions to filter the debug output, e.g. only print when the resource name matches your test component. Otherwise you'll drown in logs.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141336150.png)
+
+The printed loader chain, simplified:
+```text
+🔥 Processing resource: .../pages/list/render.vue?vue&type=style&index=0&id=5017db43&lang=less&scoped=true
+🔥 Loader chain to run: [
+    "node_modules/ssr-mini-css-extract-plugin/dist/loader.js",
+    "node_modules/css-loader/dist/cjs.js",
+    "node_modules/vue-loader/dist/stylePostLoader.js",
+    "node_modules/postcss-loader/dist/cjs.js",
+    "node_modules/less-loader/dist/cjs.js",
+    "node_modules/vue-loader/dist/index.js"
+]
+```
+
+Huh? What's that long resource string?
+
+When Webpack sees that we import a `render.vue` file, it first runs vue-loader to split it into three parts (template, script, style), and then Webpack requests each of them again:
+- Template: `render.vue?vue&type=template&id=123`
+- Script: `render.vue?vue&type=script&id=123`
+- Style: `render.vue?vue&type=style&id=123&scoped=true&lang=less`
+
+> **Info**
+>
+> vue-loader actually does more than you might think. It rewrites the rules in the Webpack config and inserts a pitcher and a templateLoader. The pitcher intercepts requests for the whole .vue file during the [pitch phase](https://webpack.js.org/api/loaders/#pitching-loader) and splits them into three sub-requests, template/script/style, which go through the loader chain again. Template requests hit templateLoader, which calls the compiler to compile them into render functions. Script requests, if they're TS, need to be routed through whatever TS-related loaders the user has configured. Style requests, if scoped, also get the \[data-v-xxxx\] style-isolation logic added. For details, see [How it works](https://github.com/vuejs/vue-loader?tab=readme-ov-file#how-it-works), written by Evan You.
+
+In short, for the style part the loader chain is:
+```js
+[
+    "ssr-mini-css-extract-plugin/dist/loader",
+    "css-loader",
+    "vue-loader/dist/stylePostLoader",
+    "postcss-loader",
+    "less-loader",
+    "vue-loader"
+]
+```
+
+For the template, the loader chain is:
+```js
+["babel-loader", "template-loader", "vue-loader"]
+```
+
+For the script, the loader chain is:
+```js
+["babel-loader", "vue-loader"]
+```
+
+> Normally, loaders first run in order (the pitch phase) and then in reverse order (the normal phase). That doesn't matter for this discussion, so we can simply think of them as running in reverse order.
+
+We care about the style part. This module request first hits vue-loader, which then hands off to the rest of the loader chain in this order:
+
+
+1. **less-loader**: a thin wrapper around Less. At its core it calls `less.render()` on the incoming Less code, mainly converting Less syntax (nesting, variables, etc.) into standard CSS
+2. **postcss-loader**: many plugins process the CSS here. Tailwind's expansion and injection, and autoprefixer's vendor prefixes, all happen at this stage
+3. **stylePostLoader**: a loader injected by VueLoaderPlugin. If your style is scoped, it goes through this loader, which mainly handles style isolation. We can ignore it
+4. **css-loader**: mainly resolves `@import()` and `url()` in CSS. We can ignore it for now
+5. **ssr-mini-css-extract-plugin/loader**: mainly extracts CSS into separate files. Unrelated to our problem, so ignore it for now
+
+
+After all these steps, the output should be a standalone CSS file that's referenced from the HTML via a link tag.
+
+Looking at this pipeline, the most likely culprits are clearly less-loader and postcss-loader. We can just edit their source directly and print their inputs and outputs.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142019405.png)
+
+Looks like we found the culprit: less-loader.
+
+Let's do a quick check by changing the Vue component's style lang from less to css. The loader chain is now:
+```ts
+[
+    "ssr-mini-css-extract-plugin/dist/loader",
+    "css-loader",
+    "vue-loader/dist/stylePostLoader",
+    "postcss-loader",
+    "vue-loader"
+]
+```
+
+Without less-loader in the chain, everything works as expected.
+
+```html
+<!-- Switching to CSS makes the error go away -->
+<style scoped lang="css">
+.ryteaes {
+    @apply bg-red-400 mb-24 mt-24;
+}
+</style>
+```
+
+At this point less-loader wants a word:
+
+**Not my fault! Go read my code. I'm just a wrapper. It's Less's problem!**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142050641.png)
+
+Fine. It really is Less's problem.
+
+(Who knew... I never suspected Less. If only I'd tried the [Less Playground](https://lesscss.org/less-preview/) earlier.)
+
+## Root Cause
+
+So here's the root cause:
+
+The Less preprocessor inserts an inexplicable comma between each keyword after @apply. When Tailwind's PostCSS plugin picks things up in the next step and splits on spaces/newlines, every utility class except the last ends up with a trailing comma (e.g. `mb-4,`). Tailwind can't find a mapping for them, so it can't do the replacement and injection, and it throws right in Webpack's postcss-loader step. Module compilation can't continue, and development grinds to a halt.
+
+## Why Did It Work Before?
+
+One more question: the project has plenty of `@apply` statements followed by multiple rules. Why were they fine before, and only broke recently?
+
+Experience says that changes are usually the root of problems. Something must have changed.
+
+I opened the Less source repo. The code that handles `@` rules lives in `packages/less/src/less/tree/atrule.js`.
+
+Five months ago, there was a suspicious change here: [fix(issue#4242): add support for layer at-rule](https://github.com/less/less.js/pull/4337):
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142102248.png)
+
+Searching the PR title in its `CHANGELOG.md` shows the feature shipped in v4.4.0.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142107136.png)
+
+Switching the Playground back to 4.3.0 for a quick check confirms it.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142118212.png)
+
+## Fixes
+
+1. Roll Less back to a version before 4.4.0. You can use [pnpm.overrides](https://pnpm.io/9.x/package_json#pnpmoverrides) to pin sub-dependency versions by scope.
+2. If you don't want to roll back, wait for a fixed release. There's already a fix [PR](https://github.com/less/less.js/pull/4366/files), though it hasn't been merged by the maintainer yet.
+3. If you neither want to roll back nor wait, wrap the rules after @apply in `~""`, e.g. `@apply ~"mb-2 pt-3"`. Less won't insert commas then, but the downside is that your IDE may lose Tailwind autocompletion while you type.
+4. If all of the above feel like too much and you need to ship now, the fastest option is to change the style to `lang="css"` so it skips less-loader entirely.
+
+```json
+{
+    "pnpm": {
+        "overrides": {
+            "less": "4.3.0"
+        }
+    }
+}
+```
+
+## Debugging Takeaways
+
+- Use experience and build-tooling fundamentals to list likely causes, then confirm or rule out each hypothesis one by one
+- If an error message is distinctive, search for it directly to find where it comes from
+- Editing node_modules directly is very effective, just remember to make your logging conditional
+
+Topics covered:
+- How Vue SFCs work
+- Webpack's loader mechanism and execution order
+- How Tailwind works under the hood
+
+## References
+
+[Understanding Webpack's Loader Mechanism, Once and for All](https://juejin.cn/post/7157739406835580965?searchId=20250914190226E1FE3BD8C0CA065C79ED)
+
+[Vue SFC Playground](https://play.vuejs.org/)
+
+[Less Preview](https://lesscss.org/less-preview/)
+
+[Webpack - Loaders](https://v4.webpack.js.org/loaders/)
+
+
+---
+
+# How Long Is an Emoji, Really? A Deep Dive into Emoji Strings in UTF-16
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-07-16
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/deep-into-emoji/
+
+## 0 Introduction
+In day-to-day frontend work we deal with emoji all the time. If you're new to this, you've probably run into problems like these:
+
+- You use `split` on a string that contains emoji, and it comes out broken
+- You read `.length` on a string with emoji, and the number looks off
+- Something goes wrong and weird question marks and boxes show up in your text. What are those?
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161437888.png)
+
+In practice, what we need is pretty clear:
+1. Display strings containing emoji correctly
+2. When we need to split text (say, for a character-by-character fade-in animation), split strings containing emoji correctly
+3. Compute the length of strings containing emoji correctly.
+
+**TL;DR**: If you don't have time to dig into how it works, just use [runes.js](https://github.com/dotcypress/runes). Copy the source in or install it and you're good to go. It exports two functions, `runes` and `substr`, which correctly split strings containing emoji and take substrings of them. The unminified source is only about 160 lines.
+
+But if we want to understand why, we need to dig a little deeper. While reading through the `runes.js` source, I picked up some common emoji patterns along the way. They're actually pretty fun, so let me walk you through them.
+
+---
+
+## 1 Background
+
+First, a quick primer on character encoding. If you already know this stuff, feel free to skip ahead.
+
+**Note: this isn't copy-pasted from an AI answer. I'll introduce every concept you need in my own words.**
+
+### Unicode
+Unicode is the industry standard for character encoding in computing. It assigns a single, unique binary code to every character in every language. According to [Wikipedia](https://en.wikipedia.org/wiki/Unicode), version 16.0 contains 154,998 characters.
+
+It's actually simple to think about: it's one giant map with 154,998 entries, where each entry's key is a number and the value is the actual character.
+
+The key here is called a [**Code Point**](https://en.wikipedia.org/wiki/Code_point).
+
+A code point, i.e. `UnicodeMap[key]`, uniquely identifies one character.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161456351.png)
+
+The curious among you may already be reaching for a calculator: this map has at least 154,998 keys, so how many bits does a key need?
+
+You can work it out yourself, or ask the AI built into the WeChat keyboard like I did. Either way, the answer is 18 bits.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161439327.png)
+
+In reality, though, the Unicode standard reserves more room than that. Code points range from `0x0` to `0x10FFFF`, which can hold roughly 1.1 million characters.
+
+That's why Wikipedia says Unicode can hold 1.1M+ characters.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161026287.png)
+
+Now someone will ask: by that logic, you need 24 bits in total, which is 3 bytes. Does a computer really need 3 bytes to store one character? That's not what I learned. Isn't `char` one byte?
+
+Think about it for a second: in a map that big, the keys at the very front are surely short. Can't we compress them?
+
+Exactly. Since some characters have short code points, there's no point wasting space on them. That's where the familiar encodings like `UTF-8`, `UTF-16` and `UTF-32` come from.
+
+- **UTF-8**: A variable-length encoding that uses 1 to 4 bytes per character. It's backward compatible with ASCII, and it's by far the most widely used encoding for the web and file storage.
+- **UTF-16**: Also variable-length, using either 2 or 4 bytes per character. It's mainly used in systems and technologies like Windows, Java and JavaScript.
+- **UTF-32**: A fixed-length encoding where every character takes exactly 4 bytes. Its advantage is that the encoding rules are simple and direct, but it uses a lot more storage.
+
+Let's set UTF-32 aside. Both UTF-8 and UTF-16 are variable-length, so suppose you want to represent a sequence of characters as an array. How would you do it?
+
+If you're using a dynamically typed language like JavaScript or Python, you'd say: what's the problem? That's trivial.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161440305.png)
+
+If you're using a statically typed language like C, you start scratching your head. A plain `char[]` won't do, because anything longer than 1 byte won't fit. Go bigger with something like `uint32_t[]` and you waste space.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/9b6939e10dc83ee8e3532d8f3fd41f56.gif)
+
+There's a fairly obvious fix: use the smallest possible number of bytes as the size of each element. In a given encoding, every other supported byte count is a multiple of this base unit, so that works.
+
+For example, the smallest unit in UTF-8 is 1 byte, so I use `char[]`. When a character needs 2 or 3 bytes, it just takes up 2 or 3 elements.
+
+The smallest unit in UTF-16 is 2 bytes, so I use `uint16_t[]`. When a character needs 4 bytes, it takes up 2 elements.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161508059.png)
+
+That's where the concept of a [**Code Unit**](https://en.wikipedia.org/wiki/Character_encoding#Code_unit) comes from.
+
+With code units, no matter which encoding I use, my character array is just `CodeUnit[]`.
+
+### UTF-16
+
+Back to the main topic. We're mostly talking about how to handle emoji correctly in JS, so what encoding does a JavaScript String use? UTF-16.
+
+> **Info**
+>
+> Objective-C's NSString and the String in Java's standard library also use UTF-16
+
+As we just said, a UTF-16 code unit is 2 bytes, or 16 bits. So which keys in our giant Unicode map can be stored in a single UTF-16 code unit?
+
+The answer is keys from `0x0` to `0xFFFF`. Anything larger needs two code units to fit.
+
+This is a bit like manually splitting a map into segments. Unicode splits itself into segments too, and that's where the [**Basic Multilingual Plane (BMP)**](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2) and the [**supplementary planes**](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E7%AC%AC%E4%B8%80%E8%BC%94%E5%8A%A9%E5%B9%B3%E9%9D%A2) come from.
+
+Unicode actually splits it into [many segments](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#), but to keep things simple, people usually talk about just two:
+- **Basic plane**: `0x0` to `0xFFFF`, `0x10000` characters in total, covering a huge number of commonly used characters.
+- **Supplementary planes**: `0x10000` to `0x10FFFF`, `0xFFFFF` characters in total, holding less commonly used characters. Most emoji live here.
+
+As we just said, the supplementary planes hold `0xFFFFF` characters. In binary that takes 20 bits, and a UTF-16 code unit only has 16, so it won't fit.
+
+Then use two code units. The obvious idea: you've got 20 bits, so split them into the high 10 bits and the low 10 bits and put each half in its own code unit. Done?
+
+OK, but that raises another question. If you were writing a parser for UTF-16 character sequences, how would you write it? When you hit a code unit, how do you know whether it stands on its own or has to be read together with the one after it?
+
+So some of the bits must be used as markers, telling the parser: when you see me, look one unit further.
+
+That's where the [**UTF-16 reserved ranges in the basic plane**](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2) come from.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161116565.png)
+
+The Unicode basic plane reserves two ranges for UTF-16. On top of that, people came up with [**Surrogate Pairs**](https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF_(surrogates)), which split a supplementary-plane code point into its high 10 bits and low 10 bits and pack them into two code units that land exactly inside those ranges.
+
+
+### Surrogate pairs
+
+So how does it actually work? In short, you first subtract `0x10000`, which gives you the offset within the supplementary planes. This offset is 20 bits.
+
+To pack those 20 bits into a surrogate pair, take the high 10 bits and add `0xD800` to get the first code unit (the high surrogate); then take the low 10 bits and add `0xDC00` to get the second code unit (the low surrogate). That's it.
+
+**Steps in plain words**:
+1. Subtract 0x10000 from the code point, giving a value in the range 0~0xFFFFF (at most 20 bits)
+2. Add 0xD800 to the high 10 bits to get the high surrogate (range 0xD800~0xDBFF)
+3. Add 0xDC00 to the low 10 bits to get the low surrogate (range 0xDC00~0xDFFF)
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161136354.png)
+
+So a surrogate pair can be written as `(high surrogate, low surrogate)`, and combining the two gives you the actual code point.
+
+**In code**:
+
+Code probably makes it clearer:
+```js
+const HIGH_SURROGATE_START = 0xd800
+const LOW_SURROGATE_START = 0xdc00
+
+function surrogatePairFromCodePoint(codePoint: number): string {
+  // Validate that the input is a valid code point (U+0000 to U+10FFFF)
+  if (!Number.isInteger(codePoint) || 
+      codePoint < 0 || 
+      codePoint > 0x10FFFF) {
+    throw new RangeError('Invalid code point');
+  }
+
+  // Characters in the Basic Multilingual Plane (BMP) don't need a surrogate pair
+  if (codePoint <= 0xFFFF) {
+    return String.fromCodePoint(codePoint);
+  }
+
+  // Compute the high and low surrogates
+  const offset = codePoint - 0x10000;
+  const high = HIGH_SURROGATE_START + (offset >> 10);
+  const low = LOW_SURROGATE_START + (offset & 0x3FF);
+
+  // Convert to a UTF-16 surrogate pair string
+  return String.fromCharCode(high, low);
+}
+
+```
+
+Going the other way, how do you turn a surrogate pair back into a code point? You just run the steps above in reverse: subtract `0xD800` from the first code unit and shift it left by ten bits, add the second code unit minus `0xDC00`, then add `0x10000`. See the code below
+
+```js
+const HIGH_SURROGATE_START = 0xd800
+const LOW_SURROGATE_START = 0xdc00
+
+function codePointFromSurrogatePair (pair: string): string {
+  const highOffset = pair.charCodeAt(0) - HIGH_SURROGATE_START
+  const lowOffset = pair.charCodeAt(1) - LOW_SURROGATE_START
+  return (highOffset << 10) + lowOffset + 0x10000
+}
+```
+
+At this point we've covered how every Unicode character is encoded in UTF-16. So what does this have to do with emoji?
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/07b3421783f51aa3fa13e35515fb1cb5.gif)
+
+We can already answer one of the questions from the start: why the `length` of a string with emoji looks off.
+
+Take the grinning face 😀. Its code point is `0x1F600`, which is in a supplementary plane. As a surrogate pair it's `0xD83D 0xDE00`, taking up two code units. According to the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length), a String's length property returns the number of UTF-16 code units.
+
+> The length data property of a String value contains **the length of the string in UTF-16 code units**.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161140963.png)
+
+Now someone asks: fine, I get 2 code units. But what on earth is this one with 11??
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161145298.png)
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/cffd51f1c134730a24a98d2c0c67952f.gif)
+
+Hold on. JS isn't lying to you. It really does take 11 code units to represent that one.
+
+Next, I'll go through the common patterns emoji are built from.
+
+---
+
+## 2 Common emoji types and how they're composed
+
+Emoji are not as simple as they look. There's a lot of composition logic inside them.
+
+### The most common: a single code point
+
+This is mostly the first wave of basic emoji, for example:
+| Emoji | Unicode code point | UTF-16 surrogate pair |
+|-------|-------------|---------------|
+| 😀    | U+1F600     | 0xD83D,0xDE00 |
+| 🤪    | U+1F92A     | 0xD83E,0xDD2A |
+| 🦊    | U+1F98A     | 0xD83E,0xDD8A              |
+| 🚀    | U+1F680     | 0xD83D,0xDE80             |
+| ...   | ...         | ...           |
+
+
+```js
+// If you want to play with this in the browser, here are some examples
+String.fromCodePoint(0x1F98A); // 🦊
+String.fromCharCode(0xD83E,0xDD8A); // 🦊
+'🦊'.charCodeAt(0).toString(16); // D83E
+'🦊'.charCodeAt(1).toString(16); // DD8A
+'🦊'.codePointAt(0).toString(16); // 1F98A
+```
+
+> Note: U+1F600 and 0x1F600 are just two conventional notations. Both refer to a Unicode code point
+
+
+### Skin tone modifiers
+
+You've probably used this: both the Apple keyboard and the WeChat keyboard let you pick a skin tone for emoji
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/45628e8623144a5c84c99f5a2a1a61fb.jpg)
+
+How do skin tones work? There's something called a "skin tone modifier", which comes in several variants. Append one after the code units of a person or hand-gesture emoji, and it renders with a different skin tone.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161517503.png)
+
+For example, the "👋" (waving hand) emoji can become hands of different colors by adding a skin tone modifier, like 👋🏻👋🏽👋🏾👋🏿
+
+Looking it up, the code point of 👋 is `U+1F44B`
+
+All the other colored hands are 2 code points, as shown below:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161208431.png)
+
+So appending a skin tone modifier to a base emoji changes its skin tone.
+
+These are the main skin tone modifiers. Without a modifier, you get the default yellow.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161213764.png)
+
+
+### Variation selectors
+
+Have you ever seen this in some odd app, or when sending messages across platforms? You meant to send your girlfriend a red heart ♥️, and it arrived as a black ♥. Why?
+
+Let's look at their code points:
+
+| Character | Code point          |
+| ---- | ------------- |
+| ♥    | U+2665        |
+| ♥️    | U+2665 U+FE0F |
+
+It turns out the black heart is a character that has existed for a long time. From `U+2665` alone you can tell it's in the basic plane.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161519358.png)
+
+My guess is that once the red heart emoji came along, they appended a `U+FE0F` to indicate it should be displayed in color. This is probably a leftover from history. Here's an explanation from another source:
+
+> As computing evolved, people wanted more variety in how characters are displayed. The same character might have several presentation styles; an emoji, for example, might be shown as a color image or as monochrome text. To support this, Unicode introduced variation selectors: by appending a specific variation selector after a base character, you tell software which style to render it in.
+
+In the Unicode basic plane, characters from `0xFE00` to `0xFE0F` are all Variation Selectors, and `U+FE0F` is designated to indicate that a base glyph should be displayed as a color emoji.
+
+> Characters in emoji presentation are usually in color, while characters in text presentation are black and white. To specify the presentation style explicitly, U+FE0E marks that the character should be shown in text style, and U+FE0F marks that it should be shown in emoji style.
+
+What are some other examples of variation selectors?
+
+| Base character | Code point     | With variation selector | Code point              |
+| -------- | -------- | ------------ | ----------------- |
+| ☀        | `U+2600` | ☀️            | `U+2600` `U+FE0F` |
+| ♠        | `U+2660` | ♠️️            | `U+2660` `U+FE0F` |
+| ⬆        | `U+2B06` | ⬆️️️            | `U+2B06` `U+FE0F` |
+| ☑        | `U+2611` | ️ ☑️️️          | `U+2611` `U+FE0F` |
+
+### Keycap sequences
+
+The keycap emoji we use all the time, like 1️⃣ 2️⃣ 3️⃣, belong to this family. Each one is made of a base code point + a variation selector + an enclosing keycap code point.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507211011487.png)
+
+### Flag sequences
+
+Flag emoji work a little differently, but the rule is still simple: a flag is usually made of two regional indicator letters. For example, "🇨🇳" is the Chinese flag, and it's actually the letters C + N (two code points) combined.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507182013775.png)
+
+| Part 1 | Code point      | Part 2 | Code point      | Combined | Code point              |
+| ------ | --------- | ------ | --------- | ---- | ----------------- |
+| 🇨      | `U+1F1E8` | 🇳      | `U+1F1F3` | 🇨🇳    | `U+1F1E8 U+1F1F3` |
+| 🇯      | `U+1F1EF` | 🇵      | `U+1F1F5` | 🇯🇵    | `U+1F1EF U+1F1F5` |
+| 🇺      | `U+1F1FA` | 🇸      | `U+1F1F8` | 🇺🇸    | `U+1F1FA U+1F1F8` |
+| 🇬      | `U+1F1EC` | 🇧      | `U+1F1E7` | 🇬🇧    | `U+1F1EC U+1F1E7` |
+| 🇧      | `U+1F1E7` | 🇷      | `U+1F1F7` | 🇧🇷    | `U+1F1E7 U+1F1F7` |
+
+
+### Joiner sequences
+
+The patterns above can all be thought of as "modifiers". Emoji also have a much bigger way to extend themselves: several independent emoji can be joined together to express a more complex idea. This is done with the [**Zero Width Joiner (ZWJ)**](https://en.wikipedia.org/wiki/Zero-width_joiner).
+
+The zero width joiner's code point is `U+200D`. As the name suggests, it's a "zero-width" character. It doesn't render anything itself, but it glues the emoji on either side into a new visual unit.
+
+> For brevity, I'll call the zero width joiner ZWJ from here on
+
+
+#### Professions
+
+The simplest example is profession emoji. For example, 👨‍🔬 (man scientist) is 👨 (man) combined with 🔬 (microscope):
+
+| Part | Description       | Code point    |
+| ---- | ---------- | ------- |
+| 👨    | Man       | U+1F468 |
+| ‍    | Zero width joiner | U+200D  |
+| 🔬    | Microscope     | U+1F52C |
+
+More examples:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161524234.png)
+
+```js
+👨‍🔬 = 👨 + ZWJ + 🔬 // scientist
+🧑‍💻 = 🧑 + ZWJ + 💻 // programmer
+```
+
+#### Action + gender
+Some emoji combine with gender symbols, like "♂️" (male sign) and "♀️" (female sign), to form new symbols. For example, `🙋‍♀️` (woman raising hand) is `🙋` (happy person raising hand) joined with `♀` via a ZWJ. On [emojipedia](https://emojipedia.org/woman-raising-hand#technical) we can see its code point sequence:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161313162.png)
+
+```js
+🙋‍♀️ = 🙋 + ZWJ + ♀ + 0xFE0F // woman raising hand
+```
+
+#### Families
+
+For example, 👨‍👩‍👧‍👦 (family of four) is actually 4 separate emoji joined by 3 zero width joiners:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161317103.png)
+
+```
+👨‍👩‍👧‍👦 = 👨 + ZWJ + 👩 + ZWJ + 👧 + ZWJ + 👦
+```
+
+Let's break down its code points:
+
+| Part | Description | Code point    |
+| ---- | ---- | ------- |
+| 👨    | Man | U+1F468 |
+| ‍    | ZWJ  | U+200D  |
+| 👩    | Woman | U+1F469 |
+| ‍    | ZWJ  | U+200D  |
+| 👧    | Girl | U+1F467 |
+| ‍    | ZWJ  | U+200D  |
+| 👦    | Boy | U+1F466 |
+
+Now we can answer the question from the previous part: why is `"👨‍👩‍👧‍👦".length = 11`?
+
+Because this simple-looking family emoji is actually made of 7 code points. The 3 zero width joiners take 1 code unit each, and the people are all in supplementary planes, so each needs two code units. That gives a length of `8 + 3 = 11`.
+
+
+### Complex sequences: skin tone + gender + profession + joiner
+
+Mix all of the patterns above together and you get complex sequences. For example, the woman police officer with dark skin tone 👮🏿‍♀️ is made of these elements:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161529972.png)
+
+Broken down:
+
+| Part | Description           | Code point    |
+| ---- | -------------- | ------- |
+| 👮    | Police officer           | U+1F46E |
+| 🏿    | Dark skin tone modifier | U+1F3FF |
+| ‍    | Zero width joiner     | U+200D  |
+| ♀    | Female sign       | U+2640  |
+| ️    | Variation selector     | U+FE0F  |
+
+We can run a little experiment here. My guess is that the spread operator handles surrogate pairs specially, but doesn't handle these combined sequences well.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161536505.png)
+
+### Other fun combinations
+
+Rainbow flag 🏳️‍🌈: a white flag combined with a rainbow
+   ```
+   🏳️‍🌈 = 🏳️ + U+200D + 🌈
+   ```
+
+Heart with arrow 💘: a heart combined with an arrow
+   ```
+   💘 = ❤️ + U+200D + 🏹
+   ```
+
+Woman and woman kissing
+```
+👩‍❤️‍💋‍👩 = 👩 + U+200D + ❤️ + U+200D + 💋 + U+200D + 👩
+```
+
+Two women with darker skin tones kissing
+```
+👩🏽‍❤️‍💋‍👩🏽 U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD
+```
+
+Different skin tones on each side
+```
+👩🏼‍❤️‍💋‍👩🏾' U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE
+```
+
+If you're curious, try working out the length of that last one, the two women with different skin tones kissing. Ha.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507182013596.png)
+
+### With all these combinations, how do we handle them?
+
+These patterns make emoji far more expressive, but they also make string handling harder. If you `split` a string containing emoji, compute its length, or take a substring without accounting for these structures, you can easily run into problems:
+- Split the text for a character-by-character fade-in animation, and garbled question marks show up
+- If the string travels between the backend and the frontend, the two sides may compute different lengths
+- Where you need a character count, using length directly gives the wrong answer
+
+For example, you can probably guess what happens when we split a family emoji:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161327495.png)
+
+Someone says: can't I just use the spread operator? Let's see:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161328429.png)
+
+To be fair, it does split things better than split, it just breaks the family apart 😏
+
+Because JS string methods (like `String.prototype.charAt()` or `String.prototype.substring()`) and the `length` property all work on UTF-16 code units, they all run into this problem with emoji and other characters outside the basic plane.
+
+So we need a solid solution that can "correctly identify each Unicode unit" for us.
+
+
+---
+
+
+## 3 Reading the runes.js source
+
+[runes](https://github.com/dotcypress/runes) is a JavaScript library for splitting strings that contain emoji and other Unicode characters. In JavaScript, the default `String.split('')` can't correctly handle emoji and other non-BMP (Basic Multilingual Plane) characters, and runes solves that.
+
+It's a fairly small utility library, just one file exporting two functions, `runes` and `substr`. Its handling of emoji ties in closely with the Unicode principles and encoding details covered above, and it gives frontend developers a reliable way to work with emoji strings.
+
+First, the results:
+```js
+const runes = require('runes')
+
+// Standard String.split
+'♥️'.split('') => ['♥', '️']
+'Emoji 🤖'.split('') => ['E', 'm', 'o', 'j', 'i', ' ', '�', '�']
+'👩‍👩‍👧‍👦'.split('') => ['�', '�', '‍', '�', '�', '‍', '�', '�', '‍', '�', '�']
+
+// ES6 string iterator
+[...'♥️'] => [ '♥', '️' ]
+[...'Emoji 🤖'] => [ 'E', 'm', 'o', 'j', 'i', ' ', '🤖' ]
+[...'👩‍👩‍👧‍👦'] => [ '👩', '', '👩', '', '👧', '', '👦' ]
+
+// Runes
+runes('♥️') => ['♥️']
+runes('Emoji 🤖') => ['E', 'm', 'o', 'j', 'i', ' ', '🤖']
+runes('👩‍👩‍👧‍👦') => ['👩‍👩‍👧‍👦']
+```
+
+
+### The core functions
+
+The library mainly exports two utility functions: `runes`, which replaces the built-in `split`, and `substr`, which takes substrings correctly.
+
+As you'd expect, the core is `runes`. Once you can correctly split a string into an array, taking a substring is just a matter of splicing the array and joining it back together.
+
+So let's focus on how `runes` is implemented:
+
+
+```js
+function runes(string) {
+  // Input check
+  if (typeof string !== 'string') {
+    throw new Error('string cannot be undefined or null')
+  }
+  
+  const result = []
+  let i = 0
+  let increment = 0
+  
+  while (i < string.length) {
+    // Determine how many code units the current character is made of
+    increment += nextUnits(i + increment, string)
+    
+    // Some special characters, e.g. romanization marks
+    if (isGraphem(string[i + increment])) {
+      increment++
+    }
+    // If it's a variation selector, move the cursor forward by one
+    if (isVariationSelector(string[i + increment])) {
+      increment++
+    }
+    // If it's a modifier such as an enclosing keycap, move the cursor forward by one
+    if (isDiacriticalMark(string[i + increment])) {
+      increment++
+    }
+    // If it's a zero width joiner, don't push yet; keep looking ahead
+    if (isZeroWidthJoiner(string[i + increment])) {
+      increment++
+      continue
+    }
+    
+    // Reaching here means we've extracted one complete character
+    result.push(string.substring(i, i + increment))
+    i += increment
+    increment = 0
+  }
+  
+  return result
+}
+```
+
+As you can see:
+1. The `nextUnits` function decides how many code units the current character is made of
+2. Then it checks for joiners and modifiers
+3. If it's a modifier like a variation selector, it skips ahead one unit
+4. If it's a ZWJ, the part that follows has to go through the whole process again
+
+
+Now let's look at `nextUnits`, which decides how many code units the current character is made of:
+- Basic Multilingual Plane (BMP) characters: 1 code unit
+- Characters represented by a surrogate pair: 2 code units
+- Emoji with a skin tone modifier: 4 code units
+- Flag emoji: 4 code units
+
+
+```js
+function nextUnits(i, string) {
+  const current = string[i]
+  
+  // If it's not the start of a surrogate pair, or we've hit the end of the string, take just one code unit
+  if (!isFirstOfSurrogatePair(current) || i === string.length - 1) {
+    return 1
+  }
+
+  const currentPair = current + string[i + 1]
+  let nextPair = string.substring(i + 2, i + 5)
+
+  // If it's a flag sequence, that's two code points (four code units)
+  if (isRegionalIndicator(currentPair) && isRegionalIndicator(nextPair)) {
+    return 4
+  }
+
+  // The skin tone modifier is itself a non-BMP code point (so it takes 2 code units); with the skin tone that makes 4 code units
+  if (isFitzpatrickModifier(nextPair)) {
+    return 4
+  }
+  
+  // A regular surrogate pair
+  return 2
+}
+```
+A quick explanation of the helper functions. They're short, so I won't paste the code:
+- `isFirstOfSurrogatePair` checks whether current is a high surrogate. If not, it's a basic-plane character and needs no special handling
+- `isRegionalIndicator` checks whether both the current pair and the next pair fall within the flag code point range, i.e. `0x1f1e6` to `0x1f1ff`
+- `isVariationSelector` checks whether the current code unit is in the `0xfe00` to `0xfe0f` range
+- `isZeroWidthJoiner` checks whether the current code point is `0x200D`
+- `isFitzpatrickModifier` checks for a skin tone modifier; there are only five, `0x1f3fb` to `0x1f3ff`
+
+## 4 Summary
+
+In this post we took a deep look at how emoji work and how to handle them in frontend development. We started with the basics of Unicode encoding, including Code Points and Code Units, and how UTF-16 uses Surrogate Pairs to represent characters outside the basic plane.
+
+We walked through several common emoji composition patterns:
+1. Basic single-code-point emoji
+2. Emoji with skin tone modifiers
+3. Symbols displayed in color using variation selectors
+4. Flag sequences (made of two regional indicators)
+5. Compound emoji joined with the Zero Width Joiner (ZWJ), such as families and professions
+
+These compositions make emoji much more expressive, but they also make string handling in JavaScript harder. Because JavaScript string operations are based on UTF-16 code units rather than Unicode characters, native methods like `String.split('')` or `.length` misbehave on strings containing emoji.
+
+Finally, we went through the source of the runes.js library. By understanding Unicode encoding rules and the various emoji composition patterns, this small library provides `runes()` and `substr()`, which correctly split and take substrings of strings containing complex emoji. Its core logic identifies the boundaries of each Unicode character, making sure an emoji and its modifiers are treated as a single, complete unit.
+
+By using runes.js, or understanding the principles behind it, we can correctly display, measure and manipulate strings containing emoji in frontend code, avoid garbled text and wrong length calculations, and deliver a better user experience.
+
+## 5 Functions & tools
+
+Look up emoji and their code points: [emojipedia](https://emojipedia.org/flag-brazil#technical)
+
+Look up a character by code point: [Compart Unicode](https://www.compart.com/en/unicode/U+20E3)
+
+Look up a character by code point: [Zihi (zihi.com)](https://zi-hi.com/sp/uni/1F3FF)
+
+Get the code unit at a given position in a String: [String.charCodeAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt)
+
+Get the code point at a given position in a String: [String.codePointAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt)
+
+Build a string from a sequence of code points: [String.fromCodePoint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint)
+
+Build a string from a sequence of code units: [String.fromCharCode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)
+
+
+---
+
+# How to Speed Up Frontend Project Builds
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-06-08
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/how-to-reduce-nuxt-project-compile-time/
+
+## Key ideas
+
+- Don't put the build steps in the Dockerfile
+- The Dockerfile should only be responsible for building the runtime image
+- Cache node_modules instead of installing every time; reuse it when package.json hasn't changed
+- Use `npm prune --production` to remove devDependencies, which can cut the image size by more than half
+- Use slim base images wherever possible, such as `node:20-slim`. If you don't even need npm (i.e. nothing in the Dockerfile uses npm), you can go with the even smaller `node:20-alpine`
+
+> **Info**
+>
+> Why install devDependencies and then delete them, when you could just skip them with `npm i --production` at install time? Because in most cases the build step needs devDependencies (all those TS type packages, for example). Once the build is done, you remove them with `npm prune --production`. Adjust this to fit your project.
+
+
+---
+
+# Objective-C Learning Notes
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-05-17
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/app/objectivec/
+
+## Data Types
+
+### Primitive Types
+
+Standard C data types work too
+
+```c
+int someInt = 42;
+float someFloat = 3.2f;
+```
+
+> Local variables are allocated on the stack, while objects are allocated on the heap
+
+```objc
+BOOL a = YES;
+```
+
+### Non-Primitive Types
+
+```objc
+// Root type
+NSObject
+
+// Immutable types
+NSString : NSObject
+NSNumber : NSObject
+
+// Mutable types
+NSMutableString : NSString
+NSMutableArray : NSArray
+NSMutableDictionary : NSDictionary
+
+```
+
+### Strings and Numbers
+
+```objc
+NSString *str = @"fuckyou";
+NSString *str2 = @"yes";
+
+NSUInteger len = [str length]; // 7
+NSUInteger len2 = str.length; // 7
+
+BOOL eq = [str isEqualToString:str2];
+BOOL endsWithU = [str hasSuffix:@"u"];
+
+// split
+NSArray *components = [pair componentsSeparatedByString:@"="];
+```
+
+```objc
+NSNumber *num = [[NSNumber alloc] initWithInt:42];
+
+// Use the factory method, more convenient
+NSNumber *num2 = [NSNumber numberWithInt:43];
+
+// Use a boxed expression
+NSNumber *num3 = @(84 / 2);
+```
+
+Objective-C requires manual boxing/unboxing
+```objc
+NSNumber *num1 = 10; // Won't work: no auto-boxing, you need the @
+NSNumber *num1 = @10; // OK
+int num2 = num1; // This only gets you the address of the num1 object
+int num2 = [num1 intValue]; // OK, manual unboxing
+NSLog(@"%@, %d", num1, num2);
+```
+
+`intValue` is a method of the NSValue class
+
+### Arrays
+
+Mutable / immutable
+
+```objc
+NSArray *arr = @[ @1, @2, @3 ];
+
+NSMutableArray *mutArr = [[NSMutableArray alloc] initWithArray:arr];
+[mutArr addObject:@4];
+
+// Iterate with an enumerator
+NSEnumerator *enumerator = [arr objectEnumerator];
+id thing = nil;
+while (thing = [enumerator nextObject]) {
+    NSLog(@"thing: %@", thing);
+}
+
+// The C way
+for (int i = 0; i < arr.count; i++) {
+    NSLog(@"for: %@", arr[i]);
+}
+
+// The for-in way
+for (NSNumber *num in arr) {
+    NSLog(@"for in: %@", num);
+}
+```
+
+### Dictionaries
+
+Mutable / immutable
+
+```objc
+NSDictionary *myDict = @{
+    @"name": @"John",
+    @"age": @123,
+    @"male": @YES,
+};
+
+NSMutableDictionary *mutDict = [[NSMutableDictionary alloc] initWithDictionary:myDict];
+[mutDict addEntriesFromDictionary:@{
+            @"dynamic": @YES,
+        }];
+```
+
+## Logging
+
+```objc
+NSLog(@"I am a line of log");
+
+NSLog(@"%@", greeting);
+```
+> **Info**
+>
+> %@ works like a printf format string; %@ stands for any object (it calls the object's description method, similar to toString in a Java class). **The difference is that NSLog adds a timestamp, which printf doesn't**
+
+## Methods
+
+- The call syntax is a bit different from C-like languages
+- Every parameter name is part of the method name (which ends up being roughly equivalent to overloading)
+
+### Calling
+
+```objectivec
+UIViewController *vc = [[UIViewController alloc] init];
+```
+
+In a C-like language this would be 
+```js
+UIViewController *vc = UIViewController.alloc().init()
+```
+
+### Passing Arguments
+
+```objc
+UIView *view = [[UIView alloc] init];
+view.backgroundColor = [UIColor greenColor];
+view.frame = CGRectMake(150, 150, 100, 100);
+[self.view addSubview:view];
+```
+
+Roughly equivalent to 
+```js
+UIView *view = UIView.alloc().init();
+view.backgroundColor = UIColor.greenColor();
+view.frame = {
+    x: 150,
+    y: 150,
+    width: 100,
+    height: 100
+};
+self.view.addSubView(view);
+```
+
+An example passing a single argument
+```objc
+#import "Foundation/NSObjCRuntime.h"
+#import "XYZPerson.h"
+
+@implementation XYZPerson
+
+
+- (void) saySomething:(NSString *)word {
+    NSLog(@"%@", word);
+}
+
+- (void) sayHello{
+    [self saySomething:@"Hello"];
+}
+
+@end
+```
+
+
+## OOP
+
+### Declaration / Implementation / Header Files
+
+A class declaration usually goes in a `.h` file
+
+The class implementation goes in a `.m` file
+
+
+Declaration
+```objc
+// MyViewController.h
+
+@interface MyViewController : UIViewController
+
+// Properties should go inside the interface
+@property NSString *name;
+@property NSNumber *id;
+@property (readonly) NSString *readOnlyName;
+
+// The minus sign means it's an instance method
+- (void)someMethod;
+
+@end
+```
+
+> **Info**
+>
+> A minus sign means an instance method; a plus sign means a class method
+
+Implementation
+```objc
+#import "MyViewController.h"
+
+@implementation MyViewController
+
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
+
+@end
+```
+
+> **Warning**
+>
+> Methods declared in the header file can be thought of as public API, and methods that only exist in the implementation file as private API. In reality, though, Objective-C has no truly private methods: even if a method isn't in the header, you can still call it via reflection.
+
+
+### Initialization
+
+When initializing, alloc and init must be called back to back, and you keep the final return value
+
+- alloc clears out any garbage data in the memory region being allocated
+- init assigns appropriate initial values to the various properties
+
+```objc
+// Usage 1
+MyViewController *myVc = [[MyViewController alloc] init];
+
+// Usage 2, which is effectively the same as calling alloc and init with no arguments
+MyViewController *myVc = [MyViewController new];
+```
+
+> **Info**
+>
+> If you call alloc first, you can follow it with a custom init method, e.g. `[[MyClass alloc] initWithBundleName:@"discoverV2"]`. You can't do that with new, which is just syntactic sugar for alloc + init.
+
+> **Warning**
+>
+> The init method may return an address completely different from what alloc returned, so the usual initialization pattern is `if (self = [super init]) `, check that self isn't nil, and then `return (self)`
+
+### No Abstract Classes or Virtual Functions?
+
+### Properties
+
+- Declared in the header file with `@property`
+- In the implementation file, `@synthesize` automatically generates getter/setter functions for the variable (you can skip it; they're generated automatically)
+- If you write custom getter/setter methods, they override the generated ones
+- Externally visible properties (public properties) are declared in the header file; private properties are declared in the implementation file
+
+| **Aspect**         | **Public properties (.h)**         | **Private properties (class extension)**      |
+|------------------|-----------------------------|----------------------------|
+| **Visibility**       | Visible externally, directly accessible        | Visible only inside the class               |
+| **Subclass inheritance**     | Subclasses can inherit and access them            | Not visible to subclasses                 |
+| **Memory management**     | Follows property attribute rules (e.g. `strong`) | Same as public properties                 |
+| **Use cases**     | Properties that need outside access (e.g. UI configuration) | Internal state (e.g. caches, counters) |
+
+
+```objc
+// Person.h
+@interface Person : NSObject
+@property float age;
+@property BOOL isMan;
+
+-(void)somePublicMethod;
+@end
+```
+
+```objc
+// Person.m
+@implementation Person
+
+@end
+```
+
+Private properties go in the implementation file
+
+```objc
+// Person.h
+@interface Person ()
+@property float weight;
+@end
+```
+
+> **Tip**
+>
+> Note: to declare private properties in the implementation file, you use the "class extension" syntax, i.e. `@interface YourClass ()`. **It must end with a pair of parentheses**, which distinguishes it from the `@interface` declaration in the header and marks it as a private extension of the class.
+
+**A bit of history**:
+- Originally there was no `@property` syntax. You had to write the getter/setter for every property yourself, and reading or setting a property always went through methods, e.g. `[person age]` and `[person setAge:28]`
+- Then `@property` and `@synthesize` arrived. Now you only had to declare a property in the header or implementation file, and the compiler would generate the getter/setter for you (not through plain code generation, though; Apple hides the implementation details). Reading and setting properties still went through methods at this point
+- Later came dot syntax, which finally let you read and set properties with `person.age` and `person.age = 28`. But dot syntax is just syntactic sugar too: on the left side of an assignment it implicitly calls the setter, and on the right side it calls the getter
+
+
+### Writing a Class
+
+@interface + @implementation
+
+@class creates a forward reference to speed up compilation
+
+### Categories
+
+Used to add methods to an existing class
+
+Create a header file with a plus sign in its name, `NSString+SpecialFix.h`
+```objc
+#import <Foundation/Foundation.h>
+
+@interface NSString (SpecialFix)
+-(NSNumber*)lengthAsNumber;
+@end
+```
+
+Likewise, create an implementation file with a plus sign in its name, `NSString+SpecialFix.m`
+```objc
+#import "NSString+SpecialFix.h"
+
+@implementation NSString (SpecialFix)
+-(NSNumber*)lengthAsNumber {
+    NSUInteger length = [self length];
+    return [NSNumber numberWithUnsignedInt:length];
+}
+@end
+```
+
+Now anywhere else, you just import the header `NSString+SpecialFix.h` and you can use the new method on NSString
+```objc
+#import "NSString+SpecialFix.h"
+
+NSNumber *len = [@"hello" lengthAsNumber];
+```
+
+> **Info**
+>
+> At first I was puzzled: `NSUInteger` looks like something along the lines of `NSNumber`, so why would it need this kind of boxing conversion? Jumping to its definition shows it's actually `typedef unsigned long NSUInteger`, so it's a primitive type.
+
+### Protocols
+
+Basically Java's interface
+
+Protocols are declared in a header file, e.g. `Encoder.h` contains the following
+
+```objc
+@protocol Encoder <NSObject>
+
+-(NSString*)encode;
+
+@end
+```
+
+Class A conforming to protocol B is equivalent to `class A implements B {}` in Java
+
+It takes two things:
+1. Declare in `A.h` that A conforms to protocol B
+2. Implement all of protocol B's required methods in `A.m` (there are also optional methods, which you don't have to implement)
+
+```objc
+@implementation A <B>
+
+-(NSString*) encode {
+    return @"encoded result";
+}
+
+@end
+```
+
+## Geometry
+
+- CGFloat: a floating-point number
+- CGSize: width and height
+- CGPoint: a point on a 2D plane
+- CGRect: a rectangular region on a 2D plane
+
+Shorthand constructors:
+- CGSizeMake
+- CGPointMake
+- CGRectMake
+
+```objc
+CGFloat w = 100;
+CGFloat h = 200;
+CGSize size = CGSizeMake(w, h);
+
+CGFloat x = 10;
+CGFloat y = 20;
+CGPoint point = CGPointMake(x, y);
+
+CGRect rect = CGRectMake(point.x, point.y, size.width, size.height);
+NSLog(@"%f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+// 10 20 100 200
+
+```
+
+## Header Files
+
+C uses include; Objective-C supports both, but mostly uses import
+
+> **Info**
+>
+> `#import` is smarter than `#include`: it won't import a file that's already been imported
+
+Angle brackets mean a system header; quotes mean a header from within the project
+
+```objc
+#import <Foundation/Foundation.h>
+#import "WRAIChatViewController.h"
+```
+
+
+## KVC
+
+This isn't actually an Objective-C language feature; it's provided by Cocoa.
+
+```objc
+// Shape.h
+@interface Shape : NSObject <RYCopying, RYSerializable>
+
+@property float age;
+
+@end
+
+// test.m
+Shape *sh = [[Shape alloc] init];
+[sh setAge:23.2];
+float aggg = [[sh valueForKey:@"age"] floatValue];
+NSLog(@"valueForKey: %f", aggg); // 23.20001
+NSLog(@"valueForKey at: %@", [sh valueForKey:@"age"]); // 23.2
+[sh setValue:@54.3 forKey:@"age"];
+NSLog(@"valueForKey at: %@", [sh valueForKey:@"age"]); // 54.3
+```
+
+**Pros**:
+- You can read and set properties without getter/setter methods
+- Values returned by valueForKey are boxed automatically
+- For setValue:forKey you have to wrap the value with @ yourself
+
+**Cons**: it's not a good fit for pulling deeply nested values via key paths, because key paths are expressed as strings and the compiler can't check whether they're correct
+
+## Blocks
+
+### Definition
+
+C function pointer syntax
+```c
+int (*addFunc)(int num1, int num2);
+
+int add(int a, int b) {
+    return a + b;
+}
+
+addFunc = &add;
+```
+
+JS syntax
+```ts
+const add = (a, b) => a + b;
+```
+
+Objective-C syntax
+
+```objc
+int (^addFunc)(int num1, int num2) = ^(int a, int b){
+    return num1 + num2;
+};
+
+int ress = addFunc(1,9);
+NSLog(@"ress: %d", ress);
+
+// Without a return value
+void (^printFunc)(void) = ^{
+    NSLog(@" I am printFunc result");
+};
+
+```
+
+In short, the Objective-C syntax is:
+```objc
+return_type (^block_name)(args) = ^(args) {
+    logic
+}
+```
+
+### IIFC
+
+You can actually do an IIFC just like in JS: declare it and run it right away
+
+In JS
+
+```ts
+const result = (() => {
+    const a = "prefix";
+    const b = "suffix";
+    return a + b;
+})(); // prefixsuffix
+```
+
+In Objective-C
+
+```objc
+NSString* result = (^{
+    NSString *a = @"prefix";
+    NSString *b = @"suffix";
+    NSArray *components = @[a, b];
+    return [components componentsJoinedByString:@""];
+})();
+NSLog(@"result = %d", result); // prefixsuffix
+```
+
+Now with parameters, in JS
+
+```ts
+const result = ((a, b) => a + b)("prefix", "suffix");
+```
+
+Objective-C
+```objc
+NSString* result = (^(NSString *a, NSString *b) {
+    NSArray *components = @[a, b];
+    return [components componentsJoinedByString:@""];
+})(@"prefix", @"suffix"); // prefixsuffix
+```
+
+### Variable Capture
+
+Objective-C blocks automatically capture these kinds of variables:
+- Global static variables
+- Local variables: variables in the same scope as the block declaration
+- Parameter variables
+
+My guess is that local variables are captured by copy, which is why you can't assign to a captured outer local variable inside a block
+
+If you need to assign to it, you have to manually add `__block` in front of the outer variable's declaration
+
+## References
+
+[Official documentation](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210-CH1-SW1)
+
+
+---
+
+# Some Notes on Cookies
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-05-16
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/http-cookie/
+
+## The Basics
+
+What attributes should a cookie have?
+
+### httpOnly
+When a cookie has the HttpOnly attribute, it can only be sent over HTTP (or HTTPS) and can't be accessed by client-side JavaScript. This is an effective defense against cross-site scripting (XSS), because an attacker can't read an HttpOnly cookie by injecting malicious JavaScript.
+
+### Secure
+The Secure attribute says a cookie may only be sent over a secure HTTPS connection. If the connection between the browser and the server isn't HTTPS, the browser won't send cookies marked Secure to the server. This keeps cookies from being intercepted by a man-in-the-middle in transit and protects their confidentiality.
+
+### Expires + Max-Age
+- When both Expires and Max-Age appear in the same `Set-Cookie` header, Max-Age takes precedence.
+
+## Understanding Cookies Through Native iOS
+
+### NSHTTPCookie
+`NSHTTPCookie` is a class that represents a single cookie, along with all the attributes a cookie should have.
+
+```objc
+/*	
+    NSHTTPCookie.h
+    Copyright (c) 2003-2019, Apple Inc. All rights reserved.    
+    
+    Public header file.
+*/
+
+#import <Foundation/NSObject.h>
+
+@class NSArray<ObjectType>;
+@class NSDate;
+@class NSDictionary<KeyType, ObjectType>;
+@class NSNumber;
+@class NSString;
+@class NSURL;
+
+typedef NSString * NSHTTPCookiePropertyKey NS_TYPED_EXTENSIBLE_ENUM;
+typedef NSString * NSHTTPCookieStringPolicy NS_TYPED_ENUM;
+
+NS_HEADER_AUDIT_BEGIN(nullability, sendability)
+
+- (nullable instancetype)initWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties;
+
++ (nullable NSHTTPCookie *)cookieWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties;
+
+// Quickly turn an array of cookie objects into a structure you can add to request headers
++ (NSDictionary<NSString *, NSString *> *)requestHeaderFieldsWithCookies:(NSArray<NSHTTPCookie *> *)cookies;
+
+// Pull cookies out of response headers
++ (NSArray<NSHTTPCookie *> *)cookiesWithResponseHeaderFields:(NSDictionary<NSString *, NSString *> *)headerFields forURL:(NSURL *)URL;
+
+@property (nullable, readonly, copy) NSDictionary<NSHTTPCookiePropertyKey, id> *properties;
+
+/*!
+    Cookie protocol version
+    Version 0 maps to "old-style" Netscape cookies.
+    Version 1 maps to RFC2965 cookies. There may be future versions.
+*/
+@property (readonly) NSUInteger version;
+
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *value;
+
+/*!
+    Expiration date
+    If not set, the cookie expires when the session ends
+*/
+@property (nullable, readonly, copy) NSDate *expiresDate;
+
+// Whether the cookie is session-only (true when neither Expires nor Max-Age is set)
+@property (readonly, getter=isSessionOnly) BOOL sessionOnly;
+
+@property (readonly, copy) NSString *domain;
+@property (readonly, copy) NSString *path;
+@property (readonly, getter=isSecure) BOOL secure;
+@property (readonly, getter=isHTTPOnly) BOOL HTTPOnly;
+
+@property (nullable, readonly, copy) NSString *comment;
+@property (nullable, readonly, copy) NSURL *commentURL;
+
+@property (nullable, readonly, copy) NSArray<NSNumber *> *portList;
+
+@property (nullable, readonly, copy) NSHTTPCookieStringPolicy sameSitePolicy API_AVAILABLE(macos(10.15), ios(13.0), watchos(6.0), tvos(13.0));
+
+@end
+
+NS_HEADER_AUDIT_END(nullability, sendability)
+
+```
+
+### NSHTTPCookieStorage
+
+NSHTTPCookieStorage is a class in the Foundation framework, used when developing for iOS, macOS and other Apple platforms. Its main job is managing HTTP cookies.
+
+
+```objc
+/*	
+    NSHTTPCookieStorage.h
+    Copyright (c) 2003-2019, Apple Inc. All rights reserved.    
+    
+    Public header file.
+*/
+
+#import <Foundation/NSObject.h>
+#import <Foundation/NSNotification.h>
+
+@class NSArray<ObjectType>;
+@class NSHTTPCookie;
+@class NSURL;
+@class NSDate;
+@class NSURLSessionTask;
+@class NSSortDescriptor;
+
+NS_HEADER_AUDIT_BEGIN(nullability, sendability)
+
+typedef NS_ENUM(NSUInteger, NSHTTPCookieAcceptPolicy) {
+    NSHTTPCookieAcceptPolicyAlways,
+    NSHTTPCookieAcceptPolicyNever,
+    NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain
+};
+
+@class NSHTTPCookieStorageInternal;
+
+NS_SWIFT_SENDABLE
+API_AVAILABLE(macos(10.2), ios(2.0), watchos(2.0), tvos(9.0))
+@interface NSHTTPCookieStorage : NSObject
+{
+    @private
+    NSHTTPCookieStorageInternal *_internal;
+}
+
+@property(class, readonly, strong) NSHTTPCookieStorage *sharedHTTPCookieStorage;
+
++ (NSHTTPCookieStorage *)sharedCookieStorageForGroupContainerIdentifier:(NSString *)identifier API_AVAILABLE(macos(10.11), ios(9.0), watchos(2.0), tvos(9.0));
+
+@property (nullable , readonly, copy) NSArray<NSHTTPCookie *> *cookies;
+
+- (void)setCookie:(NSHTTPCookie *)cookie;
+
+- (void)deleteCookie:(NSHTTPCookie *)cookie;
+
+- (void)removeCookiesSinceDate:(NSDate *)date API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));
+
+- (nullable NSArray<NSHTTPCookie *> *)cookiesForURL:(NSURL *)URL;
+
+- (void)setCookies:(NSArray<NSHTTPCookie *> *)cookies forURL:(nullable NSURL *)URL mainDocumentURL:(nullable NSURL *)mainDocumentURL;
+
+@property NSHTTPCookieAcceptPolicy cookieAcceptPolicy;
+
+- (NSArray<NSHTTPCookie *> *)sortedCookiesUsingDescriptors:(NSArray<NSSortDescriptor *> *) sortOrder API_AVAILABLE(macos(10.7), ios(5.0), watchos(2.0), tvos(9.0));
+
+@end
+
+@interface NSHTTPCookieStorage (NSURLSessionTaskAdditions)
+- (void)storeCookies:(NSArray<NSHTTPCookie *> *)cookies forTask:(NSURLSessionTask *)task API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));
+- (void)getCookiesForTask:(NSURLSessionTask *)task completionHandler:(void (NS_SWIFT_SENDABLE ^) (NSArray<NSHTTPCookie *> * _Nullable cookies))completionHandler API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));
+@end
+
+FOUNDATION_EXPORT NSNotificationName const NSHTTPCookieManagerAcceptPolicyChangedNotification API_AVAILABLE(macos(10.2), ios(2.0), watchos(2.0), tvos(9.0));
+
+FOUNDATION_EXPORT NSNotificationName const NSHTTPCookieManagerCookiesChangedNotification API_AVAILABLE(macos(10.2), ios(2.0), watchos(2.0), tvos(9.0));
+
+NS_HEADER_AUDIT_END(nullability, sendability)
+```
+
+### Manually Injecting Cookies for a Domain
+
+I happened to need this, so it was a good chance to practice. It's actually pretty simple: add an input field to grab the cookie string, parse it, create `NSHTTPCookie` objects, and set them with `NSHTTPCookieStorage`.
+
+```objc
+NSString* cookieString = textFromInputView;
+// First split the cookie string on semicolons and spaces
+NSArray *cookiePairs = [cookieString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"; "]];
+
+for (NSString *pair in cookiePairs) {
+    if (pair.length == 0) continue;
+    NSArray *components = [pair componentsSeparatedByString:@"="];
+    if (components.count != 2) {
+        [CustomUITips showError:@"Input must be in the form key1=value1;key2=value2"];
+        break;
+    }
+    NSString *key = components[0];
+    NSString *value = components[1];
+    NSLog(@"setCookie key=%@", key);
+    NSLog(@"setCookie value=%@", value);
+    NSDictionary *cookieProperties = @{
+        NSHTTPCookieDomain: @"weread.qq.com",
+        NSHTTPCookiePath: @"/",
+        NSHTTPCookieName: key,
+        NSHTTPCookieValue: value,
+        NSHTTPCookieExpires: [NSDate dateWithTimeIntervalSinceNow:3600] // Expires in 1 hour
+    };
+    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+}
+```
+
+
+---
+
+# Nginx Notes
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-05-15
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/nginx/
+
+Below are common examples from Nginx HTTP configuration, covering core features like static file serving, reverse proxying, load balancing, and caching:
+
+## Commands
+
+Use this command to check whether the config is valid:
+```bash
+nginx -t
+```
+
+If the config is fine, reload Nginx:
+```bash
+nginx -s reload
+```
+
+## server_name
+
+In Nginx config, the `server_name` directive specifies the domain names or IP addresses of a virtual host. It decides how Nginx routes traffic to different server blocks (`server` blocks) based on the domain in the client's request. It's the core mechanism behind name-based virtual hosting.
+
+
+### **What it does**
+1. **Domain matching**: When a client sends an HTTP request, the `Host` header carries the domain (e.g. `example.com`). Nginx matches that domain against `server_name` and routes the request to the corresponding `server` block.
+2. **Multiple domains**: A single `server` block can list multiple domains, separated by spaces.
+3. **Default server**: When the requested domain doesn't match any `server_name`, the request goes to the default `server` block (set via the `default_server` parameter of the `listen` directive).
+
+
+### **Config examples**
+```sh
+# Example 1: match a single domain
+server {
+    listen 80;
+    server_name example.com;  # only matches example.com
+    root /var/www/example;
+}
+
+# Example 2: match multiple domains
+server {
+    listen 80;
+    server_name example.com www.example.com;  # matches the domain with and without www
+    root /var/www/example;
+}
+
+# Example 3: use a wildcard
+server {
+    listen 80;
+    server_name *.example.com;  # matches all subdomains (e.g. blog.example.com)
+    root /var/www/subdomains;
+}
+
+# Example 4: use a regular expression
+server {
+    listen 80;
+    server_name ~^(.*)\.example\.com$;  # regex match; $1 can be referenced elsewhere in the config
+    root /var/www/$1;
+}
+
+# Example 5: default server
+server {
+    listen 80 default_server;  # all unmatched requests are routed here
+    server_name _;  # underscore as a placeholder
+    return 444;  # close the connection outright, or return a custom error page
+}
+```
+
+
+### **Match priority**
+When a request's `Host` header could match several `server_name`s, Nginx picks the `server` block with the highest priority in this order:
+1. **Exact match**: e.g. `server_name example.com`.
+2. **Wildcard starting with an asterisk**: e.g. `server_name *.example.com`.
+3. **Wildcard ending with an asterisk**: e.g. `server_name mail.*`.
+4. **Regular expression match**: e.g. `server_name ~^www\d+\.example\.com$`.
+5. **Default server**: set via the `default_server` parameter of the `listen` directive.
+
+
+### **Common use cases**
+1. **Hosting multiple sites on one IP**: serve several websites from a single server using different domains.
+   ```nginx
+   server {
+       listen 80;
+       server_name site1.com;
+       root /var/www/site1;
+   }
+
+   server {
+       listen 80;
+       server_name site2.com;
+       root /var/www/site2;
+   }
+   ```
+
+2. **Handling www and non-www domains**: redirect requests without www to the www domain.
+   ```nginx
+   server {
+       listen 80;
+       server_name example.com;
+       return 301 http://www.example.com$request_uri;
+   }
+
+   server {
+       listen 80;
+       server_name www.example.com;
+       root /var/www/example;
+   }
+   ```
+
+3. **Subdomain routing**: point different subdomains at different directories or backend services.
+   ```nginx
+   server {
+       listen 80;
+       server_name api.example.com;
+       proxy_pass http://backend_api;
+   }
+
+   server {
+       listen 80;
+       server_name blog.example.com;
+       root /var/www/blog;
+   }
+   ```
+
+
+### **Things to watch out for**
+1. **Case-insensitive**: `server_name` matching ignores case (`EXAMPLE.COM` and `example.com` are equivalent).
+2. **Clients must send a `Host` header**: In HTTP/1.1 the `Host` header is required. If a client doesn't send one (e.g. an HTTP/1.0 request), Nginx routes the request to the default server.
+3. **Wildcard DNS**: To match all subdomains, you need DNS configured so that every subdomain (e.g. `*.example.com`) resolves to the server's IP.
+4. **Regex performance**: Regex matching costs more than exact or wildcard matching, so avoid leaning on it heavily in high-concurrency setups.
+
+
+### **Summary**
+`server_name` is the foundation of serving multiple sites and domains with Nginx. With flexible domain-matching rules, you can efficiently route traffic to different apps or services. Setting up the default server and priority rules sensibly goes a long way toward improving your site's availability and security.
+
+## Cookbook
+
+### 1. Basic HTTP server config
+```nginx
+http {
+    # Basic settings
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile      on;
+    keepalive_timeout  65;
+    
+    # Logging
+    access_log  /var/log/nginx/access.log;
+    error_log   /var/log/nginx/error.log;
+    
+    # Gzip compression
+    gzip  on;
+    gzip_types text/plain text/css application/json application/javascript;
+    
+    # Virtual host config
+    server {
+        listen       80;
+        server_name  example.com;
+        root         /var/www/html;
+        
+        # Access control
+        location /admin/ {
+            auth_basic           "Admin Area";
+            auth_basic_user_file /etc/nginx/.htpasswd;
+        }
+        
+        # Default index page
+        index index.html index.htm;
+        
+        # Error pages
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /var/www/error_pages;
+        }
+    }
+}
+```
+
+### 2. Reverse proxy
+```nginx
+server {
+    listen 80;
+    server_name api.example.com;
+    
+    location / {
+        proxy_pass http://backend_server:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # Timeouts
+        proxy_connect_timeout 30s;
+        proxy_send_timeout    60s;
+        proxy_read_timeout    60s;
+        
+        # Buffers
+        proxy_buffer_size          128k;
+        proxy_buffers              4 256k;
+        proxy_busy_buffers_size    256k;
+    }
+}
+```
+
+### 3. Load balancing
+```nginx
+http {
+    # Load-balancing group
+    upstream backend_servers {
+        # Round robin (default)
+        server backend1.example.com weight=5;
+        server backend2.example.com weight=3;
+        server backend3.example.com backup;  # backup server
+        
+        # IP hash (keeps a given client pinned to the same server)
+        # ip_hash;
+        
+        # Least connections
+        # least_conn;
+    }
+    
+    server {
+        listen 80;
+        server_name loadbalancer.example.com;
+        
+        location / {
+            proxy_pass http://backend_servers;
+            proxy_http_version 1.1;
+            proxy_set_header Connection "";  # enable HTTP/1.1 keepalive
+        }
+    }
+}
+```
+
+### 4. Static file serving optimizations
+```nginx
+server {
+    listen 80;
+    server_name static.example.com;
+    
+    location /static/ {
+        root /data/www;
+        expires 30d;  # cache static assets for 30 days
+        add_header Cache-Control "public";
+        
+        # Disable logging for better performance
+        access_log off;
+        log_not_found off;
+    }
+    
+    # Large file download optimizations
+    location /download/ {
+        sendfile on;
+        sendfile_max_chunk 1m;  # keep the worker process from blocking
+        tcp_nopush on;
+    }
+}
+```
+
+### 5. HTTPS
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+    return 301 https://$host$request_uri;  # redirect HTTP to HTTPS
+}
+
+server {
+    listen 443 ssl http2;
+    server_name example.com;
+    
+    # SSL certificates
+    ssl_certificate      /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key  /etc/nginx/ssl/key.pem;
+    
+    # SSL tuning
+    ssl_protocols TLSv1.3 TLSv1.2;  # modern TLS protocols only
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    
+    # HSTS header (enforce HTTPS)
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    
+    # OCSP Stapling
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+}
+```
+
+### 6. Caching
+```nginx
+http {
+    # Define the cache zone
+    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=60m use_temp_path=off;
+    
+    server {
+        listen 80;
+        server_name cache.example.com;
+        
+        location / {
+            proxy_pass http://backend;
+            proxy_cache my_cache;  # use the cache zone defined above
+            
+            # Caching policy
+            proxy_cache_valid 200 302 10m;  # cache successful responses for 10 minutes
+            proxy_cache_valid 404      1m;  # cache 404s for 1 minute
+            
+            # Cache key
+            proxy_cache_key "$scheme$request_method$host$request_uri";
+            
+            # Cache penetration control
+            proxy_cache_min_uses 3;  # only cache after 3 requests
+            proxy_no_cache $cookie_auth;  # don't cache requests carrying an auth cookie
+        }
+    }
+}
+```
+
+### 7. Rate limiting
+```nginx
+http {
+    # Define the rate-limit zone
+    limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;
+    
+    server {
+        listen 80;
+        
+        location /api/ {
+            # Burst handling
+            limit_req zone=mylimit burst=20 nodelay;
+            
+            # Connection limits
+            limit_conn perip 5;  # at most 5 concurrent connections per IP
+            limit_conn perserver 100;  # cap on total concurrent connections to the server
+            
+            # Bandwidth limit
+            limit_rate 100k;  # cap download speed at 100KB/s
+        }
+    }
+}
+```
+
+### 8. URL rewrites and redirects
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+    
+    # Strip trailing slash
+    rewrite ^/(.*)/$ /$1 permanent;
+    
+    # Redirect old URLs
+    rewrite ^/old-path/(.*)$ /new-path/$1 redirect;
+    
+    # Redirect based on query args
+    if ($args ~* "id=(\d+)") {
+        return 301 /item/$1;
+    }
+    
+    # Directory-based redirect
+    location /blog/ {
+        rewrite ^/blog/(.*)$ https://blog.example.com/$1 permanent;
+    }
+}
+```
+
+### 9. WebSocket proxy
+```nginx
+server {
+    listen 80;
+    
+    location /ws/ {
+        proxy_pass http://websocket_backend;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+        
+        # Keep WebSocket connections from timing out
+        proxy_read_timeout 86400;
+    }
+}
+```
+
+### 10. Hotlink protection
+```nginx
+server {
+    listen 80;
+    
+    location ~* \.(jpg|jpeg|png|gif|pdf)$ {
+        valid_referers none blocked example.com *.example.com;
+        
+        if ($invalid_referer) {
+            return 403;
+            # or redirect to an anti-hotlinking image
+            # rewrite ^/ http://example.com/forbidden.png;
+        }
+    }
+}
+```
+
+These examples cover the core features of Nginx's HTTP module. In practice, mix and adapt them to fit your needs.
+
+
+---
+
+# Batch-Generating WeChat Read's World Book Day Medals with Puppeteer
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-04-25
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/weread-medals-generator/
+
+## Background
+
+As everyone knows, April 23 is World Book Day, and WeChat Read ran another campaign this year: generating a unique medal for every user.
+
+How unique? Each medal carries two numbers. The one in the top-left is how many years the user has been on WeChat Read, and the one in the bottom-right is how many books they've read over those years.
+
+For example, I've been on it for 8 years and read 230 books, so my medal looks like this 👇 (embarrassing, I really haven't read much
+
+![My medal](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/y8_b230.png)
+
+The WeChat Read app has been around for 10 years in total, so the top-left number ranges from 1 to 10.
+
+Of course, a person can read a lot of books, so we set a cap: anyone who has read more than 1000 books gets 999+.
+
+So the most prestigious medal looks like this:
+
+![10-year 999+ medal](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/y10_b1000.png)
+
+The medals are needed in 2 sizes, so the possible combinations are:
+
+```
+10 years * 1000 books * 2 sizes = 20000 medals
+```
+
+At that scale, if a designer drew them by hand, they'd still be at it by next year's April 23.
+
+So I threw together a tool to mass-produce them and free up the humans.
+
+The main tools:
+
+- **Node.js**: the runtime
+- **[Puppeteer](https://pptr.dev/)**: page rendering and screenshots
+- **[EJS](https://www.npmjs.com/package/ejs)**: templating
+- **[Sharp](https://www.npmjs.com/package/sharp)**: image processing and optimization
+- **[Yargs](https://www.npmjs.com/package/yargs)**: building the command-line interface
+
+## 1. Expressing the Design Structure the Right Way
+
+## 2. Template Rendering
+
+With the EJS template engine, we can turn the medal design into a template:
+
+```html
+<div class="diagram">
+    <div class="circle">
+        <div class="rectangle">
+            <div class="number-image-container">
+                <!-- Numbers rendered dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+```
+## 3. Taking Screenshots with Puppeteer
+
+Puppeteer is a Node.js library that provides a high-level API for controlling Chrome/Chromium over the DevTools Protocol. It plays a key role in this project:
+
+1. **Launch a headless browser instance**
+```javascript
+const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
+```
+
+2. **Set up the canvas**
+```javascript
+const page = await browser.newPage();
+await page.setViewport({
+    width: w,
+    height: h,
+    deviceScaleFactor: scale
+});
+```
+
+3. **Load the HTML**
+```javascript
+await page.setContent(html, {
+    waitUntil: 'networkidle0',
+    timeout: waitTime
+});
+```
+
+4. **Take the screenshot**
+```javascript
+const screenshotBuffer = await page.screenshot({
+    type: 'png',
+    omitBackground: true,
+    encoding: 'binary',
+    fromSurface: true
+});
+```
+
+## 4. Generating Medals Faster
+
+To speed up generation, we built parallelism in at several levels:
+
+1. **Worker pool**
+```javascript
+const workers = Array.from({ length: parallelCount }, async () => {
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+    const page = await browser.newPage();
+    await page.setViewport({ width: w, height: h, deviceScaleFactor });
+    return { browser, page, busy: false };
+});
+```
+
+2. **Task dispatch**
+```javascript
+const processTask = async (worker, number) => {
+    worker.busy = true;
+    try {
+        const result = await createMedal(
+            worker.page,
+            year,
+            number,
+            worker.index,
+            quality,
+            compressionLevel,
+            waitTime
+        );
+        return result;
+    } finally {
+        worker.busy = false;
+    }
+};
+```
+
+3. **Dynamic load balancing**
+```javascript
+const getIdleWorker = () => workers.find(w => !w.busy);
+const allWorkersIdle = () => workers.every(w => !w.busy);
+```
+
+4. **Progress tracking**
+```javascript
+const updateProgress = (success = true) => {
+    if (success) {
+        completed++;
+    } else {
+        failed++;
+    }
+    if ((completed + failed) % 10 === 0 || (completed + failed) === total) {
+        console.log(`Progress: ${completed}/${total} (${Math.floor(completed/total*100)}%), failed: ${failed}`);
+    }
+};
+```
+
+## 5. Performance Optimizations
+
+1. **Resource management**
+   - Reuse browser instances
+   - Adjust parallelism dynamically
+   - Free memory promptly
+
+2. **Rendering optimizations**
+   - Use the `networkidle0` wait strategy
+   - Tune the page load timeout
+   - Keep memory usage in check
+
+3. **Concurrency control**
+   - Avoid resource contention
+   - Dispatch tasks dynamically
+   - Retry on errors
+
+
+> **Info**
+>
+> Puppeteer provides [several page lifecycle hooks](https://pptr.dev/api/puppeteer.puppeteerlifecycleevent), each suited to a particular use case:
+>
+> - **networkidle0**: the page counts as loaded once there have been 0 network connections for 500ms (the strictest option; guarantees every network request has finished)
+>
+> - **networkidle2**: the page counts as loaded once there have been no more than 2 network connections for 500ms (lets a few background requests keep running)
+>
+> - **load**: the page counts as loaded when the `load` event fires (fast; only waits for the DOM to load)
+>
+> - **domcontentloaded**: the page counts as loaded when the `DOMContentLoaded` event fires (fastest, but may miss styles and images)
+
+We chose `networkidle0` for this project because it:
+1. Makes sure every image asset is fully loaded
+2. Avoids capturing half-loaded content in screenshots
+3. Guarantees the quality of the generated medal images
+
+## 6. Image Compression
+
+The medals were generated, but each one turned out to be 200-400 KB.
+
+A medal weighing a few hundred KB is still too big to show in an H5 page, so we needed to shrink it.
+
+Sharp is a Node.js image processing library, so we put it to work.
+
+1. **Basic configuration**
+```javascript
+const sharp = require('sharp');
+
+// Default options
+const defaultOptions = {
+    quality: 80,        // Image quality (0-100)
+    compressionLevel: 9 // Compression level (0-9)
+};
+```
+
+2. **Image processing pipeline**
+```javascript
+// Process and save the image
+await sharp(screenshotBuffer)
+    .png({
+        quality: quality,           // Controls image quality
+        compressionLevel: compressionLevel, // Controls compression level
+        palette: false,             // We don't want to reduce colors, so skip palette optimization
+        effort: 10                 // Compression effort (1-10)
+    })
+    .toFile(outputPath);
+```
+
+3. **Compression strategy in detail**
+
+- **Quality (quality)**
+  - Range: 0-100
+  - Higher values mean better quality and larger files
+  - Lower values mean worse quality and smaller files
+  - Recommended: 80-90, to balance quality and size
+
+- **Compression level (compressionLevel)**
+  - Range: 0-9
+  - 0: fastest, but lowest compression ratio
+  - 9: slowest, but highest compression ratio
+  - Recommended: 6-9, depending on your needs
+
+
+- **Batch processing**
+```javascript
+// Process multiple images in parallel
+const processImage = async (buffer, options) => {
+    return sharp(buffer)
+        .png(options)
+        .toBuffer();
+};
+
+const results = await Promise.all(
+    images.map(img => processImage(img, options))
+);
+```
+
+- **Error handling**
+```javascript
+try {
+    await sharp(buffer)
+        .png(options)
+        .toFile(outputPath);
+} catch (error) {
+    console.error('Image processing failed:', error);
+    // Fall back or retry
+}
+```
+
+By tuning these parameters, we got:
+- 40-60% smaller files
+- Images that stay sharp
+- 30-50% faster processing
+
+## 7. Usage Examples
+
+```bash
+# Generate a single medal
+node index.js --year 2023 --number 42
+
+# Generate all medals for a given year
+node index.js --year 2023 --all
+
+# Generate in parallel mode
+node index.js --year 2023 --all --parallel 4
+```
+
+## 8. Key Technical Takeaways
+
+1. **Template-driven design**
+   - Dynamic medal rendering with the EJS template engine
+   - Support for custom background images and number styles
+   - Flexible handling of numbers with different digit counts
+
+2. **Automated generation**
+   - Batch-generate every medal for a given year
+   - Parallel processing for better throughput
+   - Automatic image compression and optimization
+
+3. **Command-line tool**
+   - A friendly command-line interface
+   - Many configurable options
+   - Fine-grained control over the generation process
+
+## 9. Closing Thoughts
+
+This project shows how modern web technology can be applied to image generation. With a sensible architecture and some performance tuning, we built an efficient, reliable medal generator. It saved a lot of work, and it's a reusable reference for similar needs.
+
+
+---
+
+# Piping Mobile WebView Console Logs into Native App Logs
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-04-08
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/hook-webview-console/
+
+## Background
+
+In hybrid mobile development, we often embed RN or a WebView, and their JS runs in its own engine.
+
+For example: 
+- [RN](https://reactnative.dev/) runs its JS in [Hermes](https://github.com/facebook/hermes)
+- In iOS's WKWebView, JS runs on the [JavaScriptCore](https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html) engine
+- In Android's WebView, JS runs in the [V8](https://v8.dev/) engine.
+
+By default, nothing printed through their `console.log` (or info/warn/error and the rest of the family) makes it into the native app's logs.
+
+So when a bug shows up and you need to reconstruct what happened, on iOS you usually have to **open Safari and inspect the console to read the logs**, which is a real pain.
+
+Logs are usually the most complete record of the "crime scene", so the idea is to route WebView logs into the native app's own logs.
+
+Here's a quick walkthrough of how to hook web page logs into the native side on iOS and Android. **The two platforms work a bit differently.**
+
+## Groundwork
+
+On **iOS**, pages are usually loaded in a WKWebView, and we can intercept logs via the WKScriptMessageHandler protocol. The steps are:
+1. In the HTML page, override the methods on the `console` object so they send log messages to native code through `window.webkit.messageHandlers`
+2. On the native side, in the VC that owns the WebView, implement the [WKScriptMessageHandler](https://developer.apple.com/documentation/webkit/wkscriptmessagehandler?language=objc) protocol method `(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message `
+
+**Android** provides the WebChromeClient class. A WebView can take your own implementation via `setWebChromeClient(new WebChromeClient(...))`, and you can log by overriding the [onConsoleMessage](https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.ConsoleMessage)) method in that class.
+
+> **Info**
+>
+> Note that iOS needs cooperation from the HTML. The script that overrides the console methods should, in principle, run before any console.log call so we don't miss any logs. Putting it at the very top of the head tag works.
+
+## Approach
+1. In the HTML page, override `console.log`, `console.error`, `console.warn` and friends so they first pass the message to WKWebView via `window.webkit.messageHandler.postMessage`, then run their original logic.
+2. In iOS native code, have the VC that owns the WebView implement the `WKScriptMessageHandler` protocol to capture these logs, then call the native logging method.
+3. In Android native code, hook console output manually via setWebChromeClient and call the native logging method.
+
+## The HTML side
+
+### Plain HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Hook Example</title>
+    <script>
+        // Override console methods
+        const originalConsoleLog = console.log;
+        const originalConsoleInfo = console.info;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+
+        console.log = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'log', message });
+            originalConsoleLog.apply(console, arguments);
+        };
+
+        console.info = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'info', message });
+            originalConsoleInfo.apply(console, arguments);
+        };
+
+        console.error = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'error', message });
+            originalConsoleError.apply(console, arguments);
+        };
+
+        console.warn = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'warn', message });
+            originalConsoleWarn.apply(console, arguments);
+        };
+    </script>
+</head>
+<body>
+    <button onclick="console.log('This is a log message')">Print log</button>
+    <button onclick="console.info('This is an info message')">Print log</button>
+    <button onclick="console.error('This is an error message')">Print error</button>
+    <button onclick="console.warn('This is a warning message')">Print warning</button>
+</body>
+</html>
+```
+
+> **Note**
+>
+> This simply joins the arguments together, so you may end up with output like `my log: [object Object]`. Depending on your needs, you can `JSON.stringify` each argument before joining. Just remember to wrap it in a try-catch.
+
+### Next.js
+
+If you're on Next.js, you can do it like this:
+
+Next.js provides a `<Script/>` component with a prop called [strategy](https://nextjs.org/docs/pages/api-reference/components/script#strategy) that controls where the script gets injected.
+
+The loading strategy of the script. There are four different strategies that can be used:
+
+- `beforeInteractive`: Load before any Next.js code and before any page hydration occurs.
+- `afterInteractive`: (default) Load early but after some hydration on the page occurs.
+- `lazyOnload`: Load during browser idle time.
+- `worker`: (experimental) Load in a web worker.
+
+> Scripts with `beforeInteractive` will always be injected inside the head of the HTML document regardless of where it's placed in the component. This strategy should only be used for critical scripts that need to be fetched as soon as possible.
+
+We can pick the `beforeInteractive` strategy so the script is injected as early as possible.
+
+```tsx
+<Script id="hook-console-log" strategy="beforeInteractive">
+    {/* Put the script from above here`*/}
+</Script>
+```
+
+And sure enough, it ends up inside the head:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504082344198.png)
+
+
+## iOS
+
+### Steps
+
+Make `MyWebViewController` conform to the `WKScriptMessageHandler` protocol
+
+```objc
+// MyWebViewController.h
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+
+@interface MyWebViewController : UIViewController <WKScriptMessageHandler>
+
+// Other property and method declarations
+@end
+```
+
+Implement the `userContentController:didReceiveScriptMessage:` method of the `WKScriptMessageHandler` protocol.
+
+```objc
+// MyWebViewController.m
+#import "MyWebViewController.h"
+
+@implementation MyWebViewController
+
+// Implement the WKScriptMessageHandler protocol method
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    // Handle the received message
+    if ([message.name isEqualToString:@"ConsoleLog"]) {
+        // Handle this specific message
+        NSLog(@"Received message: %@", message.body);
+    }
+}
+
+// Other method implementations
+@end
+```
+
+Create a `WKUserContentController` instance that receives the event, then assign it to the userContentController of `WKWebViewConfiguration`
+
+```objc
+// Set up the message handler in some method
+WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+
+WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+
+[userContentController addScriptMessageHandler:self name:@"ConsoleLog"]; // self here is the MyWebViewController instance
+config.userContentController = userContentController;
+
+WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+```
+
+### Code example
+
+Here's a complete example:
+
+```objc
+// MyWebViewController.h
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+
+@interface MyWebViewController : UIViewController <WKScriptMessageHandler>
+
+@end
+
+// MyWebViewController.m
+#import "MyWebViewController.h"
+
+@implementation MyWebViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+    [userContentController addScriptMessageHandler:self name:@"ConsoleLog"];
+    config.userContentController = userContentController;
+
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+    [self.view addSubview:webView];
+
+    NSString *html = @"<html><body><button onclick=\"window.webkit.messageHandlers.ConsoleLog.postMessage('Hello from JavaScript')\">Send Message</button></body></html>";
+    [webView loadHTMLString:html baseURL:nil];
+}
+
+// Handle messages sent from JavaScript
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    if ([message.name isEqualToString:@"ConsoleLog"]) {
+        NSDictionary *logInfo = message.body;
+        NSString *logType = logInfo[@"type"];
+        NSString *logMessage = logInfo[@"message"];
+
+        if ([logType isEqualToString:@"log"]) {
+            NSLog(@"Console Log: %@", logMessage);
+        } else if ([logType isEqualToString:@"error"]) {
+            NSLog(@"Console Error: %@", logMessage);
+        } else if ([logType isEqualToString:@"warn"]) {
+            NSLog(@"Console Warn: %@", logMessage);
+        }
+    }
+}
+
+@end
+```
+
+This example shows how to make `MyWebViewController` conform to the `WKScriptMessageHandler` protocol and handle messages sent from JavaScript. 
+
+> **Tip**
+>
+> In practice, you'll usually swap `NSLog` out for whatever logging method your app actually uses
+
+> **Note**
+>
+> - On iOS 14 and later, to use `WKScriptMessageHandler` you need to add an `NSAppTransportSecurity` dictionary to `Info.plist` and set `NSAllowsArbitraryLoads` to `YES`.
+
+
+## Android
+
+### Code example
+
+In `MainActivity.java`, configure the WebView: enable JavaScript, set a WebChromeClient, and override `onConsoleMessage` to intercept and handle the page's console output. Based on the message level (`LOG`, `ERROR`, `WARN`, etc.), forward each message to Android's logging system.
+
+```kotlin
+import android.os.Bundle
+import android.util.Log
+import android.webkit.ConsoleMessage
+import android.webkit.WebChromeClient
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var webView: WebView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        webView = findViewById(R.id.webView)
+
+        // Enable JavaScript
+        webView.settings.javaScriptEnabled = true
+
+        // Set a WebViewClient
+        webView.webViewClient = WebViewClient()
+
+        // Set a WebChromeClient to handle console output
+        webView.webChromeClient = object : WebChromeClient() {
+            override fun onConsoleMessage(consoleMessage: ConsoleMessage): Boolean {
+                // Handle console output
+                val message = consoleMessage.message()
+                val sourceId = consoleMessage.sourceId()
+                val lineNumber = consoleMessage.lineNumber()
+                val messageLevel = consoleMessage.messageLevel()
+
+                when (messageLevel) {
+                    ConsoleMessage.MessageLevel.LOG -> {
+                        Log.d("WebViewConsole", "Log: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.ERROR -> {
+                        Log.e("WebViewConsole", "Error: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.WARN -> {
+                        Log.w("WebViewConsole", "Warn: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.DEBUG -> {
+                        Log.d("WebViewConsole", "Debug: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.TIP -> {
+                        Log.i("WebViewConsole", "Tip: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                }
+
+                return true
+            }
+        }
+
+        // Load an HTML file or URL
+        webView.loadUrl("file:///android_asset/index.html")
+    }
+}
+```
+
+
+## Summary
+
+To wrap up:
+- iOS can't hook console output directly from native code, so we inject a script at the very top of the HTML that overrides every console logging method up front, and add messaging logic on both the web and native sides. In effect, every log gets a copy siphoned off to native;
+- Android can hook console output directly, so no messaging layer is needed.
+
+
+---
+
+# Fixing a Markdown Rendering Bug That Doubao Still Hasn't Fixed
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-03-11
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/markdown-emphasis-fix/
+
+## Background
+In a recent project at work, we needed to parse Markdown generated by an LLM and render it in a WebView on mobile. Along the way we ran into a Markdown rendering problem:
+
+In the AI-generated Markdown, some bold text wasn't parsed correctly, so the raw asterisks showed up on the page.
+
+After digging in, we found the cause was a specific rule in the [**markdown-it parser**](https://github.com/markdown-it/markdown-it), and we worked around it with a neat preprocessing trick.
+
+
+## Symptoms
+When the AI-generated Markdown contains something like `**我是加粗文本**`, it should render as **我是加粗文本**, but sometimes it comes out as `**我是加粗文本**` instead, like this:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111129593.png)
+
+
+After reproducing it a bunch of times, we confirmed that the basic cases all work fine:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111133689.png)
+
+
+❗The problem clusters around**「double asterisks sitting right next to a punctuation mark (Chinese or English)」**:
+
+> If you look closely, you'll notice that the bold in the very sentence describing the problem 👆 is broken too
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111137645.png)
+
+When I was looking into this, around March 11, DeepSeek's website had the same problem. I thought: well, here's my chance to brag. Time to dig in 😂
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131136290.png)
+
+> **Update**
+>
+> As of today, while I'm writing this (June 13), Doubao still hasn't fixed this. You can reproduce it easily with a crafted prompt:
+> ![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131135154.png)
+>
+> ![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131136258.png)
+>
+
+## Root Cause
+
+Start with the basic Markdown processing pipeline:
+1. A tokenizer turns the input Markdown string into tokens
+2. The tokens are turned into an AST
+3. Rendering of each AST node is handed off to the developer to customize (or falls back to the built-in default styles)
+
+My suspicion was that when the parser turned the Markdown into tokens, it saw the double asterisks but didn't treat them as the opening marker of a bold span. So the asterisks were handled as plain text and displayed as-is.
+
+Going through the markdown-it repo's [docs](https://github.com/markdown-it/markdown-it?tab=readme-ov-file#manage-rules) and source code, you can see the parser boils down to three files:
+- [lib/parser_core.mjs](https://github.com/markdown-it/markdown-it/blob/master/lib/parser_core.mjs)
+- [lib/parser_inline.mjs](https://github.com/markdown-it/markdown-it/blob/master/lib/parser_inline.mjs)
+- [lib/parser_block.mjs](https://github.com/markdown-it/markdown-it/blob/master/lib/parser_block.mjs)
+
+
+A reasonable guess is that the rule we need to look at is the "bold rule". Bold text is an inline element, so let's start with `parser_inline.mjs`. Sure enough, there's a rule called emphasis:
+
+```js
+const _rules = [
+  ['text',            r_text],
+  ['linkify',         r_linkify],
+  ['newline',         r_newline],
+  ['escape',          r_escape],
+  ['backticks',       r_backticks],
+  ['strikethrough',   r_strikethrough.tokenize],
+  ['emphasis',        r_emphasis.tokenize], // here
+  ['link',            r_link],
+  ['image',           r_image],
+  ['autolink',        r_autolink],
+  ['html_inline',     r_html_inline],
+  ['entity',          r_entity]
+]
+```
+
+Opening it up confirms it: this rule exists specifically to handle text wrapped in `_` or `*`, and the core logic should live in this function:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111200122.png)
+
+Digging further, between the comment and all the character-position checks, it's a safe bet this is the code we're after:
+
+> Scan a sequence of emphasis-like markers, and determine whether it can start an emphasis sequence or end an emphasis sequence.
+> In other words: scan the bold markers and decide whether they can open a run of bold text.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111203198.png)
+
+Whether a bold marker can open or close a bold span comes down to the conditions for `can_open` and `can_close`.
+
+From the previous snippet, you can see that for asterisk-based bold, the second argument passed in, `canSplitWord`, is `true`. So this is equivalent to:
+
+We only need to look at:
+- if `left_flanking` is true, it can open; otherwise it can't
+- same for `right_flanking`
+
+Let's walk through `left_flanking` (`right_flanking` is its mirror image, so the same reasoning applies).
+
+We'll call the characters before and after the double asterisks lastChar and nextChar:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111213379.png)
+
+So the condition for double asterisks (`**`) to be parsed as a bold opener is: nextChar must not be whitespace, and at least one of the following must hold:
+1. nextChar is not punctuation
+2. lastChar is whitespace
+3. lastChar is punctuation
+
+That sounds a bit convoluted, but it's simple when drawn out:
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111224211.png)
+
+Looking back at our most common bad case, it's exactly the fourth situation: the double asterisks that should open the bold span are followed by a Chinese/English quotation mark and preceded by a Chinese character (not punctuation), so `can_open` ends up `false`.
+
+
+## Approach
+
+Knowing the cause, we still had to fix it. The options basically come down to one of these:
+1. Modify the parser's source so our case passes too
+2. Find a way to turn our case into one the parser accepts
+
+Option 1 essentially "changes the rules" by modifying a shared function in the parsing library, and the blast radius would be hard to pin down in the short term.
+
+Option 2 means finding a gap in the existing rules and slipping through it.
+
+My brilliant colleague @gtbl came up with an idea: **add [zero-width spaces](https://zh.wikipedia.org/zh-cn/%E9%9B%B6%E5%AE%BD%E7%A9%BA%E6%A0%BC) on both sides of every double asterisk**
+
+Let's go back and see how the parser decides what counts as whitespace:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111252404.png)
+
+To our delight, the zero-width space `​` slips past this check. In other words, when the parser sees a zero-width space next to the double asterisks, it treats it as a "non-whitespace" character.
+
+> **Zero-width space**
+>
+> The zero-width space (ZWSP) is a non-printing Unicode character that has no visual effect. In Unicode it's U+200B ZERO WIDTH SPACE, and in HTML it's `&#8203;`.
+
+So our case now becomes:
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111255199.png)
+
+One more small detail: for us (the people using this parser), it's hard to tell whether a given pair of double asterisks is meant to open or close. So we simply add zero-width spaces on both sides of every double asterisk, and that passes the checks too.
+
+## Implementation
+
+In the **preprocessing** stage, modify the Markdown string: insert a zero-width space (`​`) before and after every double asterisk, forcing the asterisks and punctuation apart.
+
+### The replace function
+
+Note: because `**` gets replaced with `​**​`, you need to avoid replacing it over and over.
+```ts
+const addZeroWidthSpaceAroundBoldMarkers = (markdown: string) => {
+
+  const TempMark = '￿'; // Use an uncommon character as a temporary marker
+  // Step 1: replace ** that is already wrapped in zero-width spaces with the temporary marker
+  const markedMarkdown = markdown.replace(/​\*\*​/g, TempMark);
+  // Step 2: wrap the remaining ** in zero-width spaces
+  const replacedMarkdown = markedMarkdown.replace(/\*\*/g, '​**​');
+  // Step 3: restore the temporary marker to its original form
+  const finalMarkdown = replacedMarkdown.replace(new RegExp(TempMark, 'g'), '​**​');
+  return finalMarkdown;
+}
+```
+
+> **About U+FFFF**
+>
+> In the Unicode standard, ￿ is the last code point in the Basic Multilingual Plane (BMP). In practice, this position usually isn't assigned to a concrete character with a defined meaning; it's mostly used as a special marker or placeholder. In certain contexts, such as text processing, character encoding conversion, or other special character manipulation, ￿ may be used to represent a special state or serve as a temporary marker character.
+
+
+### Integration example
+Call the preprocessing function before rendering with markdown-it:
+```javascript
+import MarkdownIt from 'markdown-it';
+
+const md = new MarkdownIt();
+
+// Preprocess the text
+const processedText = addZeroWidthSpaceAroundBoldMarkers(aiResponseMarkdown);
+
+// Render
+const html = md.render(processedText);
+```
+
+
+## Result
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/20250311130521.png)
+
+
+## **Summary**
+1. **The core issue**: markdown-it's parsing rules restrict certain combinations of special characters;
+2. **The fix**: use zero-width spaces to break the adjacency between symbols. It doesn't break the rules; it coexists with them;
+3. **Takeaway**: preprocessing is a general-purpose way to work around parser limitations, and it applies to other similar situations.
+
+
+Thanks to @gtbl for the idea. Seriously impressive.
+
+
+---
+
+# When a List Optimization Breaks Impression Tracking: The RN FlatList removeClippedSubviews Trap
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-01-22
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/rn-remove-clip-subview/
+
+# The removeClippedSubviews Pitfall in React Native Lists
+
+> In React Native, we often reach for the `removeClippedSubviews` prop on `FlatList` to squeeze more performance out of long lists. This innocent-looking optimization caused a data-tracking "disaster" on our team: list items that were nowhere near the viewport kept getting reported as "seen". After a deep dive, we found the cause touched RN's view-tree management, the differences between iOS and Android, and the evolution from the old architecture to the new one. This post walks through how we found the problem, why it happens, and how we fixed it.
+
+> **TLDR**
+>
+> This post covers a conflict between a performance optimization and impression tracking that shows up when using the `removeClippedSubviews` prop on `FlatList` in React Native:
+>
+> 1. `removeClippedSubviews` is an officially recommended list optimization in RN. It detaches invisible list items from the view tree.
+> 2. When you call the `measure` API on a detached list item, the view tree is cut off, so the result is relative to the wrong reference node, which produces false impressions.
+> 3. The bug only happens on iOS, because Android's implementation has stricter safeguards.
+> 4. The quick fix is to use `measureInWindow` instead of `measure`.
+> 5. The proper fix is a custom measure method that also reports which node the measurement is relative to.
+> 6. In RN's New Architecture, measurement happens on ShadowNodes, so the problem no longer exists.
+
+
+
+## 1. What the Prop Does
+
+The React Native docs, in their guide on [optimizing FlatList configuration](https://reactnative.dev/docs/0.72/optimizing-flatlist-configuration#removeclippedsubviews), mention a prop called `removeClippedSubviews`, which is said to reduce work on the main thread and therefore cut down on dropped frames.
+
+![removeClippedSubviews](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191118712.png)
+
+How it works: **views that are outside the visible area are detached from their superview (but kept in memory).**
+
+## 2. Background 
+
+We have an `IntersectionObserverView` component. It wraps a target component (called "target" from here on) in a View, and uses the [measure](https://reactnative.dev/docs/0.72/direct-manipulation#measurecallback) method provided by RN's `RCTUIManager` to check whether the area of the target visible inside RCTRootView meets a given threshold. That decides whether the component counts as an "impression", which then fires a callback. We mainly use it for impression tracking.
+
+![Wrapping diagram](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171317260.png)
+
+
+The measurement works as shown below: `measure` returns the target's distance to each of the four edges of `RCTRootView`.
+
+![How detection works](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171328452.png)
+
+From those four distances we can compute **the area where the target intersects RCTRootView**. The "visible area ratio" tells us what percentage of the element is inside the viewport, and that decides whether it counts as an impression.
+
+Here's the catch: in practice, the component sometimes reported false positives.
+
+> **Tip**
+>
+> The issue described here only happens on iOS, so we'll focus on why iOS is broken first. Why Android is fine is left for a side-by-side comparison at the end.
+
+## 3. The Symptom
+
+We have a horizontally scrolling list (structure shown below), where every item is wrapped in an IntersectionObserverView for impression tracking.
+
+A simplified version of the view structure in RN code:
+
+```tsx
+const CustomComponent = ({ item }) => {
+    return (
+        <IntersectionObserverView>
+            <Book>{item}</Book>
+        </IntersectionObserverView>
+    );
+};
+
+const App = () => {
+    const data = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7'];
+
+    return (
+        <FlatList
+            horizontal
+            removeClippedSubviews
+            data={data}
+            renderItem={({ item }) => <CustomComponent item={item} />}
+            keyExtractor={(item, index) => index.toString()}
+        />
+    );
+}
+```
+
+The list has 10+ items. On a typical phone screen, a user who doesn't scroll can only see 3–4 of them.
+
+But what we saw was:
+
+**The 4th item and everything after it always reported an impression, with a 100% impression rate.**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171339518.png)
+
+Naturally, the data analysts were not happy: your reports are all wrong, how am I supposed to analyze anything? 😤
+
+So they suggested adding a **scroll-action event** as a quick sanity check: if the scroll UV is far lower than the impression UV of the books further down the list, the impressions are wrong.
+
+After adding tracking via `onScrollBeginDrag`, we confirmed:
+
+**It was our bug. The number of scroll events reported by onScrollBeginDrag didn't match the number of impressions for items that "can only be seen after scrolling".**
+
+Time to dig in.
+
+## 4. Investigation
+
+After a round of log-based debugging, we found that for the items further down that weren't visible, the computed **"intersection ratio with the viewport"** was actually 1. So something in the area calculation was off.
+
+I reviewed the calculation logic and didn't see any obvious holes, which meant the four measured values `left/right/top/bottom` had to be wrong.
+
+And where do those four values come from? The official RN `measure` API.
+
+Time to read the source.
+
+### How measure Is Implemented
+
+In our code, we measure by calling the `measure` method on a View's ref, like this:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131631655.png)
+
+Why can we call `viewRef.current.measure` directly from the JS side?
+
+And does the logic live in JS or in native code?
+
+It turns out RN adds a type to React called HostComponent and attaches methods to it, such as `blur`, `focus`, `measure`, and `measureInWindow`, which JS can call directly. These are described in the [Direct Manipulation section of the RN docs](https://reactnative.dev/docs/legacy/direct-manipulation).
+
+Tracking down where those methods get attached, we found they actually call native methods exposed by `RCTUIManager`.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131636953.png)
+
+Now that we know where the source is, let's open Xcode and look at the implementation in `RCTUIManager.m`.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191132453.png)
+
+It's easy to see how it works: it walks up via `view.superview` to find the topmost ancestor view (stopping at RCTRootView at most), then returns the target's bounds in that ancestor's coordinate space.
+
+![How measure works](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171356410.png)
+
+Looks fine at first glance, but these few lines made me think of `removeClippedSubviews`:
+
+```objc
+UIView *rootView = view;
+while (rootView.superview && ![rootView isReactRootView]) {
+    rootView = rootView.superview;
+}
+```
+
+What if, and I mean *what if*, the target walks all the way up and the top it reaches isn't RCTRootView? Couldn't that make the measurement wrong?
+
+For example, if some chunk of nodes had been detached from the view tree.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171401513.png)
+
+
+With that question in mind, let's look at how removeClippedSubviews is implemented.
+
+
+### How removeClippedSubviews Works
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191136306.png)
+
+
+Roughly: if a View has `removeClippedSubviews={true}`, it runs the following logic:
+- If the parent view fully contains a child view, the child is mounted in full
+- If the parent and child partially intersect, the method is called recursively
+- If the parent and child don't intersect at all, `[view removeFromSuperview]` is called on the child
+
+**In one sentence: if a View has `removeClippedSubviews` enabled, every child View that isn't visible in the viewport gets `[subview removeFromSuperview]` called on it.**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131645026.png)
+
+
+### What Happens When You Combine the Two
+
+From the above, a child view that no longer intersects its parent container gets detached from its superview.
+
+So it's easy to see that if you call measure on that view now, walking up through superview never reaches RCTRootView. Instead it stops somewhere in the middle (how many levels in depends on your specific layout).
+
+As a result, the bounds returned by measure are **not** the target's bounds relative to RCTRootView.
+
+To put it more mathematically: **if the coordinate system itself is wrong, the measurement is bound to be wrong.**
+
+The intersection ratio computed inside IntersectionObserverView is therefore wrong too.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171410061.png)
+
+**A very typical case:**
+
+Suppose measure only climbs one level up from the target before stopping. The intersection ratio computed from the returned bounds is then very likely to be close to 1.
+
+Why? Because in everyday layouts we often have a container or two whose bounds are almost identical to their child's.
+
+The component then wrongly concludes that "**the target intersects the root view by a large ratio, so it's almost fully visible**", treats the target as seen, and reports bad data.
+
+## 5. The Core of the Problem
+
+- Setting removeClippedSubviews on the list detaches invisible views from their superview
+- measure returns bounds that are **not relative to RCTRootView**, so the intersection ratio is wrong and a false impression is recorded 
+- From measure's return value, there's no way to tell whether the ancestor it measured against is actually RCTRootView
+
+## 6. The Fix
+
+### (Temporary) Use `measureInWindow` Instead
+
+Because this bug affected our data, the business side wanted a fix shipped quickly via hot update, without waiting on an app release. So we came up with a stopgap: use `measureInWindow` instead.
+
+> **Note**
+>
+> This only works if RCTRootView and the window are visually about the same size. In other words, RCTRootView isn't embedded as part of the screen; it fills almost the whole screen.
+
+measureInWindow is also an RCTUIManager API, but its logic differs from measure. Instead of climbing through superview to find RCTRootView, it gets the view's window directly via `[view.window]`, then uses `convertRect` to convert coordinates.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191159405.png)
+
+And according to [UIView/removeFromSuperview - Apple documentation](https://developer.apple.com/documentation/uikit/uiview/removefromsuperview()?language=objc): **once a view is removed by calling this method, it is no longer attached to any window.**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131247010.png)
+
+
+So in this case, when we measure a target with `measureInWindow`, if the target (or one of its ancestors/parent) has already been removed from its parent View, **`[view window]` returns `nil`**. The converted bounds come out as `(0,0,0,0)`, so the intersection area is necessarily 0 and the intersection ratio is 0 as well, which is exactly what "not seen" should look like.
+
+
+### (Proper) A Custom measure
+
+The more thorough fix: bridge a custom measure method from native to RN that returns one extra piece of information, whether the ancestor it measured against is RCTRootView, and let the calling code decide whether to use or trust the result.
+
+#### Some Background
+
+- When our app initializes the RN bundle, it uses the WRRCTBundleLoader class, which is responsible for initializing the RCTBridge
+- Inside the RN framework, every RN View is identified by a reactTag
+- RN adds an isReactRootView method to UIView in the `UIView+React.m` category to check whether a View is RCTRootView (the logic is simple: it checks whether `self.reactTag` ends in 1)
+- RCTUIManager is one of RN's core modules. It uses viewRegistry to maintain the mapping between JS-side component reactTags and native view instances. Based on the component type (e.g. RCTView, RCTText) and props passed from JS, it executes the create/update view commands sent from JS on the main thread and creates the corresponding native view instances (when a component is removed from the React tree, it calls removeSubview or a similar method to release native resources).
+.
+
+#### The Code
+
+This code largely mirrors RN's original implementation in `RCTUIManager.m`. The main steps:
+1. Get the bridge instance from the bundleLoader singleton, and from that the `RCTUIManager` instance
+2. Every RN View is identified by a reactTag; read the reactTag from the params
+3. Call uiManager's addUIBlock method to queue a task on the UI thread
+4. Look up the View instance in viewRegistry by reactTag
+5. Walk up the view's parents to find the topmost ancestor view
+6. Call `[view isReactRootView]` to check whether that ancestor is RCTRootView
+7. Add a field to the callback result indicating whether the measurement is relative to RCTRootView
+
+```objc
+- (void)customMeasureReactView:(NSDictionary *)params
+                      resolver:(WRBridgeResolveBlock)resolve
+                      rejecter:(WRBridgeRejectBlock)reject
+{
+    WRRCTBundleLoader *bundleLoader = [[WRRCTBundleLoaderManager sharedInstance] bundleLoaderWithKey:BundleLoader_Default];
+    RCTBridge *bridge = bundleLoader.bridge;
+    id tagObj = [params objectForKey:@"reactTag"];
+    if (![tagObj isKindOfClass:NSNumber.class]) {
+        if (reject) {
+            reject(@"0", @"Type Error: expected parameter reactTag to be a number", nil);
+        }
+        return;
+    }
+    NSNumber *targetReactTag = (NSNumber*) tagObj;
+    dispatch_async([bridge.uiManager methodQueue] , ^{
+        [bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *,UIView *> *viewRegistry) {
+            UIView *view = viewRegistry[targetReactTag];
+            if (!view) {
+                NSLog(@"invalid empty view pointer");
+                if (reject) {
+                    reject(@"0", @"Cannot retrieve view from viewRegistry by the given reactTag", nil);
+                }
+                return;
+            }
+                
+            UIView *rootView = view;
+            while (rootView.superview && ![rootView isReactRootView]) {
+                rootView = rootView.superview;
+            }
+            BOOL relativeToRootView = [rootView isReactRootView];
+            CGRect frame = view.frame;
+            CGRect globalBounds = [view convertRect:view.bounds toView:rootView];
+            
+            NSDictionary *result = @{
+                @"x": @(frame.origin.x),
+                @"y": @(frame.origin.y),
+                @"width": @(globalBounds.size.width),
+                @"height": @(globalBounds.size.height),
+                @"pageX": @(globalBounds.origin.x),
+                @"pageY": @(globalBounds.origin.y),
+                @"isRelativeToReactRootView": @(relativeToRootView),
+            };
+            if (resolve) {
+                resolve(result);
+            }
+        }];
+    });
+}
+```
+## 7. Why Doesn't Android Have This Problem?
+
+Remember, we said earlier that this problem only exists on iOS, not Android.
+
+Let's find out why.
+
+RN's Android side has more layers of abstraction. The entry point for measure is the measure method on UIManagerModule, and the actual call chain is:
+```kotlin
+UIManagerModule.measure(reactTag, callback)
+-> mUIImplementation.measure(reactTag, callback);
+-> mOperationsQueue.enqueueMeasure(reactTag, callback);
+-> mOperations.add(new MeasureOperation(reactTag, callback));
+-> MeasureOperation.execute()
+-> mNativeViewHierarchyManager.measure(mReactTag, mMeasureBuffer);
+```
+
+The work is ultimately done in the measure method of the `NativeViewHierarchyManager` class:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131336477.png)
+
+The overall logic is much like RN iOS's measure API: get the View by reactTag, find the ancestor view, then compute relative coordinates.
+
+The key is right here. There's a defensive check: if getRootView can't find a rootView, it throws an exception instead of returning a result.
+```kotlin
+View rootView = (View) RootViewUtil.getRootView(v);
+// It is possible that the RootView can't be found because this view is no longer on the screen
+// and has been removed by clipping
+if (rootView == null) {
+    throw new NoSuchNativeViewException("Native view " + tag + " is no longer on screen");
+}
+```
+
+But is that enough? We're not 100% sure yet. Let's look at getRootView:
+
+```kotlin
+public static RootView getRootView(View reactView) {
+    View current = reactView;
+    while (true) {
+        if (current instanceof RootView) {
+            return (RootView) current;
+        }
+        ViewParent next = current.getParent();
+        if (next == null) {
+            return null;
+        }
+        Assertions.assertCondition(next instanceof View);
+        current = (View) next;
+    }
+}
+```
+
+OK, now it's clear. On both platforms, finding the root view works by walking up the view tree, but Android's implementation is stricter: it checks every View along the way with `instanceof RootView`, **so it either finds a RootView on the path or returns null**.
+
+So Android really is fine.
+
+## 8. How Similar Frameworks Handle It
+
+ByteDance open-sourced its internal cross-platform framework, [Lynx](https://lynxjs.org/zh/).
+
+It natively supports both simple and custom impression tracking through its [IntersectionObserver API](https://lynxjs.org/zh/api/lynx-api/intersection-observer.html).
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202505082053977.png)
+
+As you can see, several of its APIs let you specify the reference node for measurement:
+- `IntersectionObserver.relativeTo()`
+- `IntersectionObserver.relativeToViewport()`
+- `IntersectionObserver.relativeToScreen()`
+- `IntersectionObserver.observe()`
+- `IntersectionObserver.disconnect()`
+
+This design addresses exactly the pain point this post uncovered, and the API is both simple and enough for common business needs.
+
+Digging into the source, the iOS implementation is basically an upgraded version of RN's measure API: it takes the root node's visibility into account and checks the identity of the top-level node more thoroughly.
+
+The Android implementation lives in `LynxIntersectionObserver.java`, and its logic is almost identical to the iOS one, so I won't paste it here.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202505082051055.png)
+
+
+## 9. Can We Send a PR to RN?
+
+Already done, though it doesn't matter much anymore. In the New Architecture, the `measure` and `measureInWindow` methods exposed by RCTUIManager are deprecated, replaced by `measure` and `measureInWindow` implemented once in C++.
+
+Spinning up a demo on RN 0.78 shows that the New Architecture uses a C++ method (instead of one implementation per platform). Its logic looks like this:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506132145312.png)
+
+It's actually quite similar to the old logic: get the ancestor node ancestorNode, compute and convert coordinates via `getRelativeLayoutMetrics(ancestorNode, shadowNode)` to get a layoutMetrics struct, do a small conversion, and return an RNMeasureRect{} struct to JS via callback.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506132149629.png)
+
+**One very important difference**: in the old architecture, measure really just had RCTUIManager read the native View's frame and return the coordinates, while the removeClippedSubviews optimization happens at the native layer, so the view-tree traversal is affected by removeClippedSubviews. [The New Architecture has a ShadowNode layer that lives in C++](https://reactnative.dev/architecture/glossary#react-shadow-tree-and-react-shadow-node). ShadowNodes carry layout information and measurement happens at that layer, so even if the corresponding native view is removed, the measurement on the ShadowNode layer isn't affected. That's why the New Architecture no longer has this problem.
+
+
+---
+
+# import vs. import type: A Deep Dive Into How TypeScript Imports Get Compiled
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2024-06-23
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/importtype-import/
+
+## Background
+
+At work, one page of a Nuxt 3 app that had been running reliably for a long time suddenly started returning a 500 Server Error in production, so a colleague and I started debugging it in local dev mode.
+
+While tracking down the error locally, we found the project throwing `SyntaxError: The requested module myTypes does not provide an export named 'SomeType'`. It turned out to be caused by importing a type with import instead of import type, like this:
+
+```ts
+// How the project wrote it (causes the error)
+import { SomeType, SomeInterface, SomeEnum } from "@/types/myTypes";
+
+// A more correct way to write it
+import { type SomeType, type SomeInterface, SomeEnum } from "@/types/myTypes";
+
+// The strictest way to write it
+import type { SomeType, SomeInterface } from "@/types/myTypes";
+import { SomeEnum } from "@/types/myTypes";
+```
+
+> The third form is actually the most correct one, and the second form has a hidden pitfall. I'll hold off on why for now and explain it in detail later in this post.
+
+We already knew this was a code-style issue, but Nuxt 3 had never thrown an error over it before. So why did it suddenly start failing now?
+
+The project had just upgraded its framework, so our first thought was that the upgrade was to blame. We focused our investigation on two questions:
+1. Did the Nuxt upgrade change any TypeScript-related configuration in the framework itself?
+2. Most TypeScript constructs only exist at compile time, so how can a TypeScript type issue cause a runtime error?
+
+
+## Prerequisites
+
+### Types and Values
+
+`type` and `interface` are normally stripped out entirely during TypeScript compilation and don't end up in the emitted JS, while an `enum` stays in the emitted JS [as a bidirectional map object](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings). Here, we'll call things like `type` and `interface` that emit no JS **pure types**, and things like `enum` that do emit JS **value-bearing types**.
+
+Since the only difference we care about below is **whether they emit JS**, we'll simply call one **types** and the other **values**.
+ 
+### TS Transpilers
+
+There are plenty of tools that turn TS into JS. The official one is [typescript](https://www.npmjs.com/package/typescript) (usually called tsc), and there are others like [Babel](https://babeljs.io/docs/babel-preset-typescript), [esbuild](https://esbuild.github.io/content-types/#typescript), and [SWC](https://swc.rs/).
+
+A quick word on esbuild:
+
+It's a bundler written in Go. It can transpile TS to JS, but it doesn't do any type checking, so you need to run a type checker separately. Unlike tsc, it uses a single-file transpilation mode.
+
+> Single-file transpilation is explained in detail below.
+
+
+### Abbreviations
+
+Throughout this post, TS means TypeScript, JS means JavaScript, and tsc means Microsoft's official TypeScript compiler.
+
+## Why a Runtime Error Was Thrown
+
+To analyze this, we need a basic understanding of the Nuxt 3 framework and how TypeScript compilation behaves.
+
+Our runtime error message tells us that at client runtime, the project asked the `@types/myTypes` module for the value `SomeType` and didn't get it. That means the statement `import { SomeType } from '@types/myTypes'` survived into the bundled JS output (since what runs at runtime is obviously the transpiled JS, not TS).
+
+But think about it for a moment: that statement shouldn't have survived into the bundled JS. Why not? Because `SomeType` is a pure type. It provides no value at runtime and only matters at compile time, where it helps the type checker give the developer type checking and type hints. So the statement should have been removed during compilation.
+
+Why wasn't it removed? That's what this post is really about.
+
+## How Does the Compiler Handle import Statements?
+
+Generally, when file A imports something from file B, it's to split code sensibly using the module system and to use something B provides inside A.
+
+> **Info**
+>
+> Usually, if you have a lint plugin installed, it will flag anything that's imported but never used as an unused import and nudge you to remove it. Still, it's possible for unused imports to remain even after formatting
+
+We usually write TS, but what runs is JS, so the TS compiler has to do some work to turn our TS into JS.
+
+When the compiler hits an import statement, it may do all kinds of things (resolving module references, locating files, and so on). On top of that, it has to decide whether each import statement stays or goes. For this question (which is the one we're focusing on), the compiler has two options:
+
+
+**1. Remove the import statement**
+
+- If the compiler decides the imported thing isn't used anywhere in the code, it should of course remove it
+- If the compiler decides the imported thing is a pure type, it should remove it. Otherwise the final JS would contain `import { SomeType } from '@/types/myTypes'`, but `SomeType` wouldn't exist in the final JS (because the TS compiler strips all pure type declarations), which would trigger a runtime error: `SyntaxError: The requested module 'myTypes' does not provide an export named 'SomeType'`
+
+**2. Keep the import statement**
+
+- This is the simplest case: when the compiler isn't sure whether a statement can be removed, it keeps it
+
+---
+
+**Which raises two more questions:**
+- First, how does the compiler decide whether an imported thing is used in the code?
+- Second, how does the compiler know whether what you imported is a pure type or a value?
+
+
+### How Does It Decide Whether an Import Is Used?
+
+This can generally be done through syntax analysis. The second step of almost any compiler (the first is splitting the source string into tokens based on keywords and special symbols) turns the token list into an AST (Abstract Syntax Tree). The compiler walks the AST and the symbol table and checks whether any members of the imported module are referenced. If a member is referenced in the code, it gets marked as "used".
+
+Of course, there are edge cases the compiler can't figure out. Take a code string wrapped in `eval()`: it's a string literal that actually means code, but the compiler only sees a string literal and never turns it into an AST, so it slips through.
+
+```ts
+// The compiler will think you never used Animal
+
+import { Animal } from './animals'
+
+eval('let b = new Animal()');
+```
+
+### How Does It Tell Whether an Import Is a Type or a Value?
+
+In the first case, if you explicitly declare that you're importing a type, the compiler doesn't need to guess;
+
+In the second case, if you don't explicitly say whether the import is a type or a value...
+
+```ts
+// Explicitly declared as a type rather than a value, so the compiler doesn't need to guess and just removes this line
+import type { SomeInterface } from './types'
+
+// Not explicitly declared, and types and values are mixed together, so the compiler has to decide one by one whether each can be removed
+import { SomeInterface, SomeEnum } from './types'
+```
+
+Specifically, here's how the compiler decides:
+
+- tsc can use the information from the entire type system across multiple files to figure out that `SomeInterface` refers to a type and `SomeEnum` is a value. It then drops SomeInterface but keeps the import of SomeEnum
+- TypeScript compilers other than tsc may not be able to. For example, Babel's TS transpiler and esbuild both work in single-file transpilation mode. Unlike tsc, they can't transpile a file with the context of the whole type system, so **in some cases they can't tell whether the `A` in `import A` is a pure type**. The compiler then can't be sure the statement is safe to remove, so it keeps it.
+
+These wrongly retained statements reference type declarations that were already stripped at compile time, which means that at runtime they reference a value that doesn't exist. So this usually leads to bugs or runtime errors (this is documented in the [official TypeScript docs](https://www.typescriptlang.org/tsconfig/#isolatedModules), in [Evan Wallace's reply](https://github.com/evanw/esbuild/issues/314#issuecomment-668401819), and in the [esbuild docs](https://esbuild.github.io/content-types/#isolated-modules))
+
+[Here's what the official TypeScript docs say about single-file transpilation](https://www.typescriptlang.org/tsconfig/#isolatedModules):
+
+> While you can use TypeScript to produce JavaScript code from TypeScript code, it’s also common to use other transpilers such as Babel to do this. However, other transpilers only operate on a single file at a time, which means they can’t apply code transforms that depend on understanding the full type system. This restriction also applies to TypeScript’s ts.transpileModule API which is used by some build tools.
+
+Back to esbuild, which we set up earlier: it uses single-file transpilation, which means it can't have the full type system information at transpile time the way tsc does (but it's fast! On a TS project of the same size, esbuild, which doesn't need to care about much context, is many times faster than tsc)
+
+**A quick aside:** this also explains why Vite uses esbuild to transpile TS in dev mode: it fits Vite's "don't bundle, serve files to the browser on demand" model perfectly
+
+[From the official Vite docs](https://vitejs.dev/guide/features.html#transpile-only):
+
+> The reason Vite does not perform type checking as part of the transform process is because the two jobs work fundamentally differently. Transpilation can work on a per-file basis and aligns perfectly with Vite's on-demand compile model. In comparison, type checking requires knowledge of the entire module graph. Shoe-horning type checking into Vite's transform pipeline will inevitably compromise Vite's speed benefits.
+
+## Relevant TS Config Options
+
+TODO: explain what each option does here
+
+- isolatedModules: lets people using single-file compilers catch certain errors early
+- importsNotUsedAsValues: specifies how imports whose values are never used should be handled, remove/preserve/error
+- preserveValueImports
+- verbatimModuleSyntax
+
+## Other Notes
+
+- Before Vite 5.3.1, production builds used @rollup/plugin-typescript; after that, they switched to esbuild
+- Nuxt 3.7 shipped with isolatedModules = true
+- Nuxt 3.8 shipped with verbatimModuleSyntax = true
+- The project uses Nuxt 3.11 + Vite 4.5.3 + Rollup 3.2.9
+- That type error actually only showed up in dev, because in this project's Nuxt version, Vite uses esbuild in dev mode while production builds still use tsc. So production was fine; the production 500 was caused by a bridge issue
+
+TODO: remember to cover side effects, plus the matching typescript-eslint option
+
+## References
+
+- [The official TypeScript docs on the verbatimModuleSyntax option](https://www.typescriptlang.org/tsconfig/#verbatimModuleSyntax): Explains this option added in TypeScript 5.0, why it was added, and the history behind it.
+
+- [The TypeScript section of the esbuild docs](https://esbuild.github.io/content-types/#typescript-caveats): Covers in detail what to watch out for when bundling a TS project with esbuild, and how to configure tsconfig.json.
+
+
+- [Leverage SWC parser to transpile JSX and TypeScript · Issue #5210 · rollup/rollup](https://github.com/rollup/rollup/issues/5210): This issue suggests Rollup plans to switch to SWC as its TS and JSX transpiler in some 4.x release.
+
+- [fix(kit): apply preferred options for esbuild transpilation #22468](https://github.com/nuxt/nuxt/releases/tag/v3.8.0): The Nuxt commit that enabled isolatedModules in tsconfig, released in 3.7.0
+
+- [perf(nuxt): verbatim module syntax + restrict type discovery #23447](https://github.com/nuxt/nuxt/releases/tag/v3.8.0): The Nuxt commit that enabled verbatimModuleSyntax in tsconfig, released in 3.8.0
+
+- [Release v3.8.0 · nuxt/nuxt · GitHub](https://github.com/nuxt/nuxt/releases/tag/v3.8.0): Starting with 3.8.0, Nuxt enables the verbatimModuleSyntax option in tsconfig.json by default, with a brief explanation in the release notes.
+
+esbuild author: https://github.com/evanw/esbuild/issues/314#issuecomment-668401819
+
+How exclude type which export by third library inside output?
+
+https://github.com/evanw/esbuild/issues/341
+
+
+---
+
+# Make VS Code Snippets Shareable in Teams
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2024-06-20
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/share-vscode-snippets-among-team/
+
+# Make VS Code snippets shareable and contributable in teams
+
+## What is code snippets?
+
+Code snippets are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
+
+## User-defined Snippets
+
+VS Code allows users to define their own [snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets) in these levels:
+- **Global Snippets** applies to every file regardless of the language they use
+- **Language-Level Snippets** applies to specific language, like `javascript.json` configures snippets which only available to JavaScript etc.
+- **Project-Level Snippets** only enabled in current project directory
+
+## Examples
+
+JavaScript/TypeScript
+```json
+{
+    "Print to console with variable name": {
+        "prefix": "ll",
+        "body": [
+            "console.log('🔥 $1', $1);",
+        ],
+        "description": "Log output to console"
+    },
+    "Mark Todo": {
+        "prefix": "td",
+        "body": [
+            "// TODO: $1",
+        ]
+    }
+}
+```
+
+React Native
+```json
+{
+    "useCallback": {
+        "prefix": "ucb",
+        "body": [
+            "const $1 = useCallback(() => {",
+            "  $2",
+            "}, []);",
+        ]
+    },
+    "useMemo": {
+        "prefix": "umo",
+        "body": [
+            "const $1 = useMemo(() => {",
+            "  $2",
+            "  return (",
+            "	$3",
+            "  );",
+            "}, []);",
+        ]
+    },
+    "useEffect": {
+        "prefix": "ueff",
+        "body": [
+            "useEffect(() => {",
+            "  $1",
+            "}, []);",
+        ],
+    }
+}
+```
+
+## Sharing snippets
+
+Snippets can be easily shared between teams by placing the Snippets configuration file in the .vscode directory of your project.
+
+To enable project-level snippets, you need two steps:
+1. Install [Project Snippets](https://marketplace.visualstudio.com/items?itemName=rebornix.project-snippets) extension in VS Code
+2. Place the snippets configuration file (`${languageId}.json`) under `.vscode/snippets/`
+3. Remove `.vscode/snippets` from `.gitignore` to make it commitable and contributable
+
+Here is an example 👇
+```bash
+/
+├── .vscode
+│   └── snippets
+│       ├── typescriptreact.json
+│       ├── typescript.json
+│       ├── vue.json
+│       └── ...
+├── src
+│   ├── hooks
+│   ├── components
+│   ├── types
+│   └── ...
+└── package.json
+```
+
+
+---
+
+# Git
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2023-10-08
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/git/
+
+## 📚 Basics
+
+### Concepts
+
+- A branch is just a pointer to a snapshot node
+- Snapshot nodes form a directed acyclic graph
+- The HEAD pointer points to the snapshot node that matches the current state of the working directory
+
+### The three areas
+
+Working Directory
+
+Staging Area
+
+### The three states of a file
+
+#### Modified
+Once a file that git already knows about has been changed since the last commit, it enters this state. (A file git doesn't know about won't enter the Modified state even if it changes, e.g. a new file or a file covered by `.gitignore`.)
+
+#### Staged
+
+A file (or some of the changes in it) that you've added with git add enters the Staged state.
+
+#### Checking file status
+
+Use `git status` to see the current state of the repo: which files have been modified and which have been staged
+
+```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   components/blog/TocNav.vue
+        modified:   content/blogs/git.md
+        modified:   content/blogs/importtype-import.md
+        modified:   nuxt.config.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        components/content/ProseH4.vue
+        content/blogs/package-json.md
+        content/blogs/react-native-pitfalls.md
+        content/blogs/use-githook-to-improve-publish-process.md
+        content/zh/blogs/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+With `git status -s` you get a shorter format
+- M means the file is in the Modified state
+- A means all changes to the file are in the staging area
+- AM means some of the file's changes are staged and some are not
+- `??` means the file is unknown to git (i.e. not tracked by git)
+
+```shell
+ M components/blog/TocNav.vue
+ M content/blogs/git.md
+ M content/blogs/importtype-import.md
+ A nuxt.config.ts
+AM components/content/ProseH4.vue
+?? content/blogs/package-json.md
+?? content/blogs/react-native-pitfalls.md
+?? content/blogs/use-githook-to-improve-publish-process.md
+?? content/zh/blogs/
+```
+
+## 📄 Commands
+
+### The basics
+```sh
+git add ${files}
+git checkout ${branchName}
+git checkout -b ${newBranch}  # create a new branch from the current one and check it out
+git checkout - # switch back to the previous branch
+```
+
+### Inspecting
+
+```sh
+git status # show status
+git status -s # show status as a list of files
+git branch --show-current # print the current branch name
+git log ${branch} # show a branch's commit history
+git show ${commitHash} # show the changes in a given commit
+
+
+git diff --name-only # list the names of all files currently in the Modified state
+git diff --staged --name-only # list the names of all staged files, typically used for things like formatting before a commit
+
+# list the names of all staged files, only showing added, copied and modified files
+git diff --staged --diff-filter=ACM
+
+# format every staged file with prettier
+git diff --staged --name-only | xargs prettier --write 
+```
+
+### Stashing changes
+
+Say you've changed a bunch of code on branch A but it's not finished, and you suddenly need to switch to branch B for something else. You can stash the code
+
+```sh
+git stash  # stash unstaged changes 
+git stash apply
+git stash pop # pop the most recent stashed changes 
+git stash drop # drop the stash
+git stash list  # show the stash stack
+```
+
+Or you can just throw it all away
+```sh
+git restore ${filename}  # discard unstaged changes to a file
+git restore --staged ${filename} # remove a file from the staging area
+```
+
+
+
+### Moving changes around
+```sh
+git merge ${branch}  # merge branch into the current branch
+git cherry-pick ${commitHash} # pick the commitHash commit onto the current branch
+```
+
+### The last commit
+
+If you've committed but haven't pushed to the remote and want to undo it, use a soft reset; the changes come back out
+```sh
+git reset --soft HEAD~1
+git reset --soft HEAD~n # soft-reset several commits at once
+```
+
+If you've committed but haven't pushed and want to change the commit message, use amend
+```sh
+git commit --amend
+```
+
+### Syncing with the remote
+```sh
+git fetch --all
+git pull # equivalent to fetch + merge
+git pull --rebase
+git commit -m ${message}
+git push
+```
+
+### Hard reset
+
+Force-reset a local branch
+```sh
+git reset --hard HEAD~n
+git reset --hard origin/master
+```
+
+Force-reset the remote (danger zone)
+```sh
+git reset --hard xxx
+git push -f
+```
+
+## A few tricks
+
+You can combine the commands above into some handy shortcuts
+
+For example, I'm on branch A and want to update branch B, then merge B into A
+```sh
+# as a shell function
+update_merge() {
+  git checkout B
+  git pull
+  git checkout -
+  git merge B
+}
+
+# with aliases, it fits on one line
+gco B && pull && gco - && git merge B
+```
+
+
+
+## Tags
+```sh
+git tag v1.0.0    # tag the current HEAD
+git push --tags   # push tags
+```
+
+## alias
+
+> **Info**
+>
+> Here are the aliases I use most
+
+```sh
+alias ggr="git log --oneline --decorate --graph --all"
+alias gco="git checkout"
+alias glog="git log"
+alias gst="git status"
+
+alias gs="git stash"
+alias gsp="git stash pop"
+
+alias gdropall="git restore ." # discard all changes in unstaged
+
+alias gb="git branch"  # show the current branch
+
+alias gcp="git cherry-pick"
+
+alias gfa="git fetch --all"
+alias gplr="git pull --rebase"
+```
+
+
+---
+
+# Kotlin Learning Notes
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Language: en
+- Canonical: https://coiggahou2002.github.io/blogs/app/learn-kotlin/
+
+I've been wanting to dig into the React Native source code lately, and starting from the Android side felt easier since I already know Java. But the project I maintain mixes Java and Kotlin, so I picked up some Kotlin along the way.
+
+I mostly learn it by comparing it with TypeScript.
+
+## Basic Data Types
+
+Short, Int, Long
+
+UShort, UInt, ULong
+
+Boolean
+
+String
+
+Float
+
+Double
+
+## Variables
+
+## Strings
+
+| Kotlin            | TypeScript          |
+| ----------------- | ------------------- |
+| `val str = "abc"` | `const str = "abc`  |
+| `str.uppercase()` | `str.toUpperCase()` |
+
+## Collections
+
+### A Uniform Method Interface
+
+| Kotlin                          | TypeScript                        |
+| ------------------------------- | --------------------------------- |
+| `val list = listOf(1,2)`        | `const list = [1,2]`              |
+| `val list = mutableListOf(1,2)` | `const list = [1,2]`              |
+| `list.count()`                  | `list.length`                     |
+| `list.first()`                  | `list[0]`                         |
+| `list.last()`                   | `list[list.length-1]`             |
+| `list.add(e)`                   | `list.push(e)`                    |
+| `list.remove(e)`                | `list.filter(item => item !== e)` |
+
+
+```kotlin
+val vList = listOf(1,2,3)
+vList.count()
+vList.first()
+vList.last()
+
+val mList = mutableListOf(1,2,3)
+mList.add(4)
+mList.add(5)
+mList.remove(0)
+mList.remove(5)
+println("is 5 in mList? ${5 in mList}")
+```
+
+### List
+
+Comes in mutable and immutable flavors
+
+Initialization:
+- `listOf()`
+- `mutableListOf()`
+
+### Set
+### Map
+
+```kotlin
+val vMap = mapOf("discover" to 1, "book" to 2)
+val mMap = mutableMapOf("discover" to 100, "book" to 200)
+
+mMap["discover"] // access 100
+mMap["discover"] = 10000 // modify
+mMap.containsKey("discover") // true
+mMap.remove("discover") // delete key
+mMap.keys // ["discover", "book"]
+mMap.values // [100, 200]
+```
+
+## Type Annotations
+
+```kotlin
+val vList: List<Int> = listOf(1, 2)
+
+val mMap: MutableMap<String, Boolean> = mutableMapOf("damn" to true, "fuck" to false)
+```
+
+## Null Safety
+
+## Control Flow
+
+### Conditionals
+
+Exactly the same as TS
+
+```kotlin
+val d: Int
+val check = true
+
+if (check) {
+    d = 1
+} else {
+    d = 2
+}
+
+println(d) // 1
+```
+
+Ternary-style expressions
+
+```kotlin
+val a = 1
+val b = 2
+
+println(if (a > b) a else b) // Returns a value: 2
+```
+
+### Branching
+
+Branches are checked in order, and once one matches, the rest are skipped (so it's not quite the same as switch: without a return, a switch can fall through and match several cases in a row)
+
+#### Branch + Action
+
+Whatever follows the arrow is the action that runs on a match
+
+```kotlin
+val obj = "sofjewojfwee"
+
+when (obj) {
+    // Checks whether obj equals to "1"
+    "1" -> println("One")
+    // Checks whether obj equals to "Hello"
+    "Hello" -> println("Greeting")
+    // Default statement
+    else -> println("Unknown")     
+}
+```
+
+#### Branch + Return Value
+
+It can be combined with an assignment expression
+
+In TS, this kind of "synchronously pick a branch and assign the result" logic is usually written with an immediately invoked function
+```ts
+// TypeScript
+
+const condition = (() => {
+    if (bundle === 'discover') {
+        return 1;
+    }
+    if (bundle === 'bookDetail') {
+        return 2;
+    }
+    if (bundle === 'rewards') {
+        return 3;
+    }
+    return -1;
+})();
+```
+
+In Kotlin, you can do it with when plus a return value
+
+```kotlin
+// Kotlin
+
+val returnedValue = when(bundle) {
+    "discover" -> 1
+    "bookDetail" -> 2
+    "rewards" -> 3
+    else -> -1
+}
+```
+
+## Equality Checks
+
+TypeScript
+- `==` with implicit type coercion
+- `===` strict equality
+
+## Loops and Iteration
+
+### Range
+
+```kotlin
+for (number in 1..5) {
+    println(number); // 1,2,3,4,5
+}
+for (num in 1..<5) {
+    println(num) // 1,2,3,4
+}
+```
+
+### Iterating Over Data Structures
+
+#### List
+
+Just iterate over a List with for..in
+
+This differs from TS, where for..in iterates over an object's hasOwnProperty keys. The TS equivalent is for..of, which works on any collection that has an iterator method
+
+```kotlin
+val bundles = listOf("bookDetail", "discoverV2")
+for (bundle in bundles) {
+    println(bundle)
+}
+```
+
+#### Map
+
+Iterating over the keys
+
+```kotlin
+val myMap = mapOf("one" to 1, "two" to 2)
+for (k in myMap.keys) {
+    println(k); // one, two
+}
+```
+
+
+## Functions
+
+### Declarations, Arguments, and Defaults
+
+The syntax for declaring functions is basically the same as TypeScript, and so is the return type annotation
+
+TS has one problem, though: when a function takes too many parameters, you have to bundle them into an options object so parameter order doesn't hurt readability, and then you have to write an interface XxxOptions {} too
+
+```ts
+// TypeScript
+
+interface MyFuncParams {
+    message: string;
+    prefix?: string;
+}
+const printMessageWithPrefix(params: MyFuncParams) {
+    const { 
+        message, 
+        prefix = "DefaultPrefix"
+    } = params || {};
+    console.log(`[${prefix}] ${message}`);
+}
+printMessageWithPrefix({
+    prefix: "Log",
+    message: "hello"
+})
+```
+
+Kotlin solves this nicely: the arguments in a function call expression (FunctionCallExpression) can be passed by name
+
+```kotlin
+// Kotlin
+
+fun printMessageWithPrefix(message: String, prefix: String = "DefaultPrefix") {
+    println("[$prefix] $message")
+}
+
+fun main() {
+    // Uses named arguments with swapped parameter order
+    printMessageWithPrefix(
+        prefix = "Log",
+        message = "Hello"
+    )
+    // [Log] Hello
+}
+```
+
+### Anonymous Functions
+
+They feel basically the same as TS arrow functions, with slightly different syntax
+
+And just like in TS, anonymous functions are most often used with functions like filter and map
+
+```ts
+// TypeScript
+
+const annoFunc = (name: string) => {
+    return name.toUpperCase();
+}
+
+const arr = [-2, -1, 0, 1, 2];
+arr.filter(num => num > 0); // 1, 2
+```
+
+```kotlin
+// Kotlin
+
+val annoFunc = { name: String -> name.uppercase() }
+annoFunc("abcd") // ABCD
+
+val nums = listOf(-2, -1, 0, 1, 2)
+nums.filter({ num: Int -> num > 0 }) // 1, 2
+```
+
+The fold function seems to do the same job as reduce
+
+```kotlin
+listOf(1, 2, 3).fold(0, { x, item -> x + item })
+```
+
+
+
+## Classes / Data Classes
+
+### class
+
+You don't write new to construct an instance
+
+### data class
+
+Signature methods:
+- toString()
+- equals()
+- copy()
+
+Data class instances can be compared directly with ==, because they implement equals
+
+
+## Async
+
+### Coroutine
+
+
+
+## Key Differences and Similarities with Java
+
+- More syntactic sugar
+- OOP isn't mandatory
+- Kotlin classes don't seem to have anything like static, and you don't write the `new` keyword to construct an instance
+
+## Key Differences and Similarities with TypeScript
+
+- TS type checking is a compile-time thing, decoupled from runtime; Kotlin is a statically typed language to begin with
+- The syntax for type annotations is very similar
+- Both support a functional style well
+
+## Differences and Similarities with Golang

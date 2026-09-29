@@ -1,0 +1,4526 @@
+# Rory Cai：全部文章（中文）
+
+Rory Cai，全栈开发工程师。毕业于哈尔滨工业大学（深圳）。目前在腾讯担任前端开发工程师。
+English versions: https://coiggahou2002.github.io/llms-full.txt
+
+---
+
+# Prompt、Skill、MCP 都会消失：人们只为结果付费
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2026-09-19
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/pay-for-outcomes/
+
+分享一些最近我们团队里碰撞出的思考。
+
+今天大家忙着研究的 prompt、skill、hook、plugin，\
+全都只是 AI 应用的过渡形态。
+
+它们不会留下来。
+
+留下来的，会是一个市场：\
+一个只交付结果的 Agent 市场。
+
+为什么？
+
+这个话题过去其实以不同的形式被人讨论过很多遍，我们来梳理一下。
+
+## 一、有了外包市场，为什么还要有企业
+
+先问一个问题：为什么会有企业？
+
+1937 年，一个 26 岁的英国年轻人写了篇论文，\
+回答的就是这个问题。\
+他叫科斯，论文叫《企业的性质》（The Nature of the Firm）。\
+五十多年后，他因此拿了诺贝尔经济学奖。
+
+他的答案只有一句：
+
+"The main reason why it is profitable to establish a firm would seem to be that there is a cost of using the price mechanism."
+
+建立企业之所以有利可图，主要原因似乎是：使用价格机制是有成本的。
+
+其实上面这句话只为了装逼，用人话来说就是：\
+**每件事都去外面找人、谈价、签合同，太贵了。**\
+**不如把人聚在一起，长期、固定地管起来。**
+
+科斯还点出了最明显的那项成本：\
+**光是弄清楚该付多少钱，就得花力气。**
+
+里面比外面便宜，企业就诞生了。\
+经济学管这个叫"交易成本"。
+
+软件是同一个道理。
+
+把一个固定流程，花点钱，请人做成固定的逻辑。\
+以后照着跑，比每次手搓便宜得多。
+
+合同审核是这样。进销存是这样。医院录病历也是这样。\
+全是标准流程。
+
+没有系统的时候怎么办？手抄。\
+纸传来传去，难管，更难找。
+
+所以有了软件。\
+付一点代价，换一大截效率。
+
+## 二、人要的是结果，不是过程
+
+那软件为什么有那么多按钮、窗口、流程、点击？
+
+没有人想去学 Photoshop 里面那几百个功能，都是被迫的。\
+我们只想要最后那张图。
+
+哈佛商学院的莱维特教授，\
+在 1983 年的《营销想象力》里引过一句老话：
+
+"People don't want to buy a quarter-inch drill. They want a quarter-inch hole!"
+
+人们不想买一个四分之一英寸的钻头，他们要的是一个四分之一英寸的洞。
+
+医生录病历，要的是什么？\
+是最后病历安稳地进入系统。\
+哪天患者出院、转院、会诊，随时找得到。
+
+可为了这个洞，他得先学会用钻头。\
+点这个，点那个。医院的电脑往往还卡得不行。\
+一不小心没保存，又搞半天，病历才输进去。
+
+修图也一样。\
+学那么多技术，不是为了过程。\
+是为了把一张朴素的咖啡杯照片，\
+变成老板想要的那张广告海报。
+
+再看邮件。\
+在 Outlook 里点开一封，又一封。\
+鼠标滚轮滚出几百米。\
+找到那个 PDF，下载附件，打开，眯着眼睛全读一遍。\
+最后跟老板说一句：这事是这样的 blabla...
+
+他要的，就是最后那一句话。
+
+设计学里有个词，专门说这件事。\
+《设计心理学》的作者唐纳德·诺曼，\
+把"我想要什么"和"系统逼我怎么做"之间那道沟，\
+叫作**执行鸿沟**。
+
+过去的软件，就是在这道沟上架了一座很难走的桥。\
+人从来要的都是结果。\
+软件逼着人先学会过桥，才给结果。
+
+现在不用了。
+
+## 三、Agent 来了，过程又回来了
+
+有了 Agent，有了 MCP——一种让 AI 能读写你数据的标准接口。\
+只要 AI 碰得到你的数据，\
+你说一句话，结果就出来了。
+
+理论上是这样。
+
+实际上呢？
+
+你得先搞懂什么是大模型。\
+ChatGPT、Claude、Kimi、千问、DeepSeek，有什么不一样？\
+这个是 MoE，那个不是。\
+这个参数量大，那个榜单分高。\
+这个写代码强，那个做设计强。
+
+好不容易选好了、注册了、用上了。
+
+发现它不太听话。
+
+那就调教。\
+接 MCP，让它摸到你的数据。\
+装 skill，让它记住固定套路。\
+挂 hook，给它加约束。\
+再反复改 prompt。
+
+调了一通，终于顺了。\
+来回返工几乎为零。\
+每天一句话，一份满意的日报。
+
+绕了一大圈，还是为了结果。
+
+## 四、这真是人想要的吗？
+
+停下来想一想。
+
+我们为什么要去理解你是不是 MoE？\
+为什么要懂参数量、思考强度？\
+为什么要去网上收集这个 skill、那个 skill？
+
+我只想把工作干完，早点下班而已啊。
+
+这不就是旧软件的老路吗？\
+为了结果，先学过程。\
+过程从"点按钮"，换成了"调 AI"。\
+执行鸿沟还是没变窄，还是麻烦得一批。
+
+苹果的老工程师拉里·特斯勒，有一条定律：
+
+每个应用都有一份去不掉的复杂度。唯一的问题是：谁来扛？用户，还是开发者？
+
+今天，这份复杂度压在用户身上。
+
+喜欢 DIY 的工程师，会爱死这一套。\
+但一项技术要能够让普通人都会用，甚至用的溜。\
+背后的工程师就必须代用户来承担复杂度。
+
+## 五、技术总是先特化，再普惠
+
+任何技术的发展，都有一个渐进式的过程。
+
+社会学家罗杰斯在《创新的扩散》里，\
+把接受新技术的人分成五拨：\
+创新者、早期采用者、早期大众、晚期大众、落后者。
+
+第一拨，只有 2.5%。
+
+今天在折腾 skill、MCP、hook 的，就是这 2.5%。\
+他们愿意为了结果，先啃下过程。
+
+剩下的 97.5% 不会。\
+他们要等到过程被藏起来的那一天。
+
+先特化，再泛化，再普惠。
+
+照相是这样。\
+早年拍照，得自己配药水，\
+钻进暗房冲底片。\
+1888 年，柯达打出一句广告：\
+**你按快门，剩下的交给我们。**
+
+开车是这样。\
+早年的汽车，要下车摇曲柄点火。\
+曲柄一回弹，胳膊都能打断。\
+1912 年，凯迪拉克装上电启动器。\
+坐进去，一按就着。
+
+用电脑也是这样。\
+早年要背一行行命令。\
+后来有了图形界面，点鼠标就行。\
+再后来，手指碰一下就行。
+
+过往的技术都是这样，AI 也会这样。
+
+## 六、终局：一个只卖结果的 Agent 市场
+
+过程被藏起来了，那要怎么搞？
+
+举个例子。
+
+你要起诉一家公司。\
+今天的做法是：打开 Kimi，装一个 skill，接上天眼查，\
+只为了在起诉前，搞清楚对方的法人、股权结构、在诉案件。
+
+你又装了几个法律 skill，接了几个法律 MCP，\
+只为了想好：被告狡辩的时候，我应该怎么回答。
+
+以后的做法是：\
+去市场上，找一个调查 Agent，一个法律 Agent。
+
+你只交三样东西：\
+**指令，材料，背景。**
+
+它们用自己的行业经验，直接交结果。\
+按结果定价，按结果收钱。
+
+你不用懂大模型和 Agent 有什么区别。\
+不用懂 MCP，不用懂 skill，\
+不需要知道 MoE、参数量、思考强度。\
+什么都不用懂，这些关我屁事，我只要结果。
+
+这件事其实已经开始了。
+
+做客服 Agent 的 Intercom，\
+它的 AI 客服按"解决一个问题"收费：0.99 美元一次。\
+没解决，不收钱。
+
+另一家 Agent 公司 Sierra，创始人布雷特·泰勒说得更直接：\
+整个市场都会走向按结果付费。
+
+亚当·斯密在《国富论》里，有一章的标题是：\
+**分工受市场范围的限制。**
+
+市场越大，分工越细。\
+当每个人都能一句话买到结果，\
+就会有足够大的市场，\
+养得起专做合同审查的 Agent、专做尽调的 Agent、专做病历的 Agent。
+
+人们只为价值和结果付费。\
+从来不为过程付费。
+
+## 结尾
+
+1911 年，哲学家怀特海写过一句话：
+
+"Civilization advances by extending the number of important operations which we can perform without thinking about them."
+
+文明的进步，在于不断增加那些我们不用思考就能完成的重要事情。
+
+---
+
+**引用来源**
+
+Ronald Coase, The Nature of the Firm, Economica, 1937
+
+Theodore Levitt, The Marketing Imagination, 1983
+
+Don Norman, The Design of Everyday Things（中译《设计心理学》）
+
+Larry Tesler, Law of Conservation of Complexity（约 1984）
+
+Everett Rogers, Diffusion of Innovations, 1962
+
+Adam Smith, The Wealth of Nations, 1776, Book I, Chapter III
+
+Intercom Fin 定价页：intercom.com/pricing
+
+Alfred North Whitehead, An Introduction to Mathematics, 1911
+
+本文首发于微信公众号「罗里戴行思录」：[原文链接](https://mp.weixin.qq.com/s/owQcWuhFxdkOID1PtjtJWQ)
+
+
+---
+
+# less 新版搞事情，tailwind 语法糖无奈躺枪
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-09-14
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/tailwind-less-compatibility/
+
+## 背景
+
+我们业务某个大型项目是微前端架构，技术栈是 [SSR](https://github.com/zhangyuang/ssr) + Vue 3 + NestJS + Webpack4，样式预处理器用的是 less，项目内也集成了 [Tailwind](https://tailwindcss.com/)，平时大家习惯用 Tailwind 来快速写样式。
+
+Tailwind 提供了一个叫 @apply 的语法糖，可以帮我们节省一些冗余代码量。
+
+例如，在 Vue 的 template 中，我们可以这么写
+```html
+<template>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Johnson</p>
+</template>
+```
+
+产品说要多加几个人名，于是你多复制了几行
+```html
+<template>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Johnson</p>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Rory</p>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Jenifer</p>
+    <p class="font-bold text-[12px] text-gray-800 mb-4 p-1">Sam</p>
+</template>
+```
+
+怎么办？好像有点冗余，Tailwind 给了一个 [@apply 用法](https://v3.tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply)，你可以这么写，把一些固定的预设放到一个类下面：
+```html
+<template>
+    <p class="person-name">Johnson</p>
+    <p class="person-name">Rory</p>
+    <p class="person-name">Jenifer</p>
+    <p class="person-name">Sam</p>
+</template>
+<style scoped lang="css">
+.person-name {
+    @apply font-bold text-[12px] text-gray-800 mb-4 p-1;
+}
+</style>
+```
+
+
+## 问题来了：Tailwind @apply 用法失效
+
+最近，业务的同事反馈：有谁改过 tailwind 的配置吗？现在只要写 @apply 都会报错，怎么办？
+
+报错如下，直接导致编译失败 + 组件渲染失败：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141052037.png)
+
+看到这个报错，一瞬间，脑海中无数可能的疑点飘过：
+
+1. 此大型项目是微前端架构，是某个子应用有问题，还是全部都有问题呢？
+2. Tailwind 的集成需要两个关键配置文件，`tailwind.config.js` 和 `postcss.config.js`，这两个配置，最近是否有人修改？
+3. Tailwind 还需要在项目的全局/公共 CSS 位置写入 `@tailwind utilities` 才能使用那一系列的预设工具类，会不会少了这个引入？
+4. 从报错的信息来看，应该是 Tailwind 不认识这个 `bg-red-400` 了，会不会少引入了什么，导致 Tailwind 做处理的时候，取不到这些预设对应的规则？
+
+以上这些都是猜想，我们一步一步来证实/证伪。
+
+## 初步排查：范围/配置/变更
+
+首先，我选用了同一个微前端大仓下的其他子应用来测试，其中含有一个业务子应用，一个测试用的纯净子应用，发现都能 100% 复现该问题，说明**不是某个子应用的问题，而是所有子应用的共性问题。**
+
+第二，我们看配置文件有没有被改过，这里用 `git log --since` 的方式取了过去 10 天内修改的文件名含有 tailwind/postcss 关键字的文件，发现只有 livemanage 一个子应用改过，并且变更内容其实是全新初始化了两份配置，不可能导致大范围的问题出现，所以**基本排除配置变更这个原因。**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141113371.png)
+
+第三点就很好验证，看了一下每个子模块的公共样式文件 `common.less` 都有引入 `@tailwind utilities`，**排除此原因**。
+
+至于第四点，有没有可能是 tailwind 抽风，突然不认识那些简写（例如 `mb-12`）了呢？换句话说，有没有可能是 tailwind 的锅？
+
+首先，我们回头看一下这句报错，
+
+`The 'xxx' class does not exist. If 'xxx' is a custom class, make sure it is defined within a '@layer' directive.`
+
+我们知道，[@layer](https://v3.tailwindcss.com/docs/adding-custom-styles#using-css-and-layer)是 Tailwind 提供的一种方便组织预设样式短名的能力，所以这句话看起来是 Tailwind 抛出来的，说明 **Tailwind 在处理这份样式的过程中确实有接手**。
+
+另外，我们还发现，如果 @apply 后面只跟一条规则而不是多条，就不会有问题，类似这样：
+
+```css
+.myClass {
+    @apply mb-2; // 这样没问题
+    @apply mb-2 mx-1 bg-blue-100; // 连续多个有问题
+}
+```
+
+这进一步说明了，Tailwind 有接手处理，而且其实它也认识 `mb-2` 这些原子样式类，说明也不是原子样式类缺失的问题，更有可能是 **Tailwind 在提取/解析/切分 `@apply` 语句的时候出了问题**。
+
+
+## 缩小范围：tailwind 背锅？
+
+我们知道，任何华丽胡哨的样式文件最终产物不过都是 CSS 而已，Tailwind 之所以能够在样式文件里提供一些浏览器本身不支持的语法糖，意味着它必定要在得到最终 CSS 产物之前，把它的语法糖全部处理/转换成浏览器认识的样子，如下图，`mb-24` 要被转换为 `margin-bottom: 6em;`，其他以此类推。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141153979.png)
+
+那前端工具链里，什么工具能够方便地处理/转换 CSS 呢？那肯定是 [PostCSS](https://postcss.org/) 了。而且 Tailwind 也[确实是用了 PostCSS 插件来提供它的核心能力](https://github.com/tailwindlabs/tailwindcss/blob/main/packages/%40tailwindcss-postcss/package.json)。
+
+所以，我们要看的是 Tailwind 如何基于 PostCSS 做样式替换的逻辑，实操上有个很方便的办法——用报错语句的静态部分来搜索。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141159411.png)
+
+找到下面这段代码（省略了无关的逻辑），可以看到，Tailwind 利用了 PostCSS 提供的 walk 能力，对于所有的 `@apply`，会调用 `extractApplyCandidates` 从中提取出所有的原子类，如果提取到的原子类不在 `applyClassCache` 中（也就是 Tailwind 不认识）的话，就会报这个错。
+
+```ts
+function processApply(root, context, localCache) {
+    let applyCandidates = new Set();
+
+    // Collect all @apply rules and candidates
+    let applies = [];
+    root.walkAtRules('apply', (rule) => {
+        // ...
+        applies.push(rule);
+    });
+
+    let applyClassCache = combineCaches([
+        localCache,
+        buildApplyCache(applyCandidates, context),
+    ]);
+    for (let apply of applies) {
+        // ...
+        let [applyCandidates, important] = extractApplyCandidates(apply.params);
+        // ...
+        for (let applyCandidate of applyCandidates) {
+            // ...
+            if (!applyClassCache.has(applyCandidate)) {
+                throw apply.error(
+                    `The \`${applyCandidate}\` class does not exist. If \`${applyCandidate}\` is a custom class, make sure it is defined within a \`@layer\` directive.`
+                );
+            }
+            let rules = applyClassCache.get(applyCandidate);
+            // ...
+            candidates.push([applyCandidate, important, rules]);
+        }
+    }
+    // ...
+}
+```
+看起来没什么毛病，会不会是提取的函数有问题呢？我们看看它的代码：
+
+```ts
+function extractApplyCandidates(params) {
+  let candidates = params.split(/[\s\t\n]+/g)
+  if (candidates[candidates.length - 1] === '!important') {
+    return [candidates.slice(0, -1), true]
+  }
+  return [candidates, false]
+}
+```
+看起来没什么问题，如果一个 apply 有连续多个规则，通过空格/Tab/换行来切分，去掉最后可能的 `!important`。
+
+例如，对于 `@apply mb-2 pb-3`，经过提取后，applyCandidates 应该是 `['mb-2', 'pb-3']`
+
+那就奇怪了，我们直接加上打印语句，打印出来看看，拿到的 applyCandidates 长什么样：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141218446.png)
+
+好像有点诡异，为什么会有逗号？？？
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142041158.png)
+
+难道 Tailwind 搞了什么骚操作吗？那我把入参打印一下：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141220072.png)
+
+什么？？Tailwind 接手的时候就已经有逗号了？？看来问题并没有这么简单。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142042885.png)
+
+
+## 深入探索：Webpack Loader 追踪
+
+曾试图把锅甩给 Tailwind，没想到，事到如今，我发现必须搞清楚这个问题，才会有答案：
+
+我们写在 `.vue` 单文件组件（下文简称 SFC）里的 `<style scoped lang="less">` 部分，从被我们写下，到这个样式最后跑在浏览器端，中间到底经过了多少次处理，中间的产物分别是什么？
+
+这里补充一下背景，我们项目的技术栈是: [SSR](https://github.com/zhangyuang/ssr) + Vue3 + Nest.js + Webpack4，所以资源的处理和打包逻辑主要看 Webpack 的配置。
+
+熟悉 Webpack 的同学会知道，Webpack4 内部只需实现对标准 JavaScript 代码解析/处理能力，其他资源的解析逻辑需要第三方 loader 来补充。所以我们主要关注项目的 loader 配置。
+
+可以直接从项目配置看，一般来说会以 [chainWebpack](https://github.com/neutrinojs/webpack-chain) 函数的方式提供配置，或者以静态 `webpack.config.js` 的方式来提供。
+
+我们使用最简单直接的方式，直接修改 `node_modules/webpack/lib/NormalModule.js` 的 `doBuild` 函数，直接打印出执行的 loader 链名称：
+
+> 可以写一些自定义的打印条件来筛选调试的信息，比如资源名和自己的测试组件匹配的时候才打印，不然打印的信息太多了
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509141336150.png)
+
+打印出来的loader链，经过简化后如下：
+```text
+🔥 处理 resource: .../pages/list/render.vue?vue&type=style&index=0&id=5017db43&lang=less&scoped=true
+🔥 将执行的 loader 链: [
+    "node_modules/ssr-mini-css-extract-plugin/dist/loader.js",
+    "node_modules/css-loader/dist/cjs.js",
+    "node_modules/vue-loader/dist/stylePostLoader.js",
+    "node_modules/postcss-loader/dist/cjs.js",
+    "node_modules/less-loader/dist/cjs.js",
+    "node_modules/vue-loader/dist/index.js"
+]
+```
+
+诶？这一长串 resource 是什么？
+
+当 Webpack 分析到我们 import 一个 `render.vue` 文件，会先走 vue-loader 将它分割成三部分（template, script, style）后，Webpack 再次请求它们:
+- 模板：`render.vue?vue&type=template&id=123`
+- 脚本：`render.vue?vue&type=script&id=123`
+- 样式：`render.vue?vue&type=style&id=123&scoped=true&lang=less`
+
+> **Info**
+>
+> 其实这里 vue-loader 做的事情比我们想象的要多，它改写了 Webpack 配置的 rules，插入了 pitcher 和 templateLoader；pitcher 会在 [pitch 阶段](https://webpack.js.org/api/loaders/#pitching-loader) 拦截对完整 .vue 文件的请求，将它拆分成 tempalte/script/style 三个子请求，重新走 loader 链；template 类型会打到 templateLoader 里调用 compiler 编译成 render 函数；script 类型如果是 TS 的话，要让他能够经过用户自己配置的 ts 相关的 loader里；style 类型如果是 scoped 的话还会添加 \[data-v-xxxx\] 这类样式隔离相关的逻辑。具体可以参考尤雨溪写的 [How it works](https://github.com/vuejs/vue-loader?tab=readme-ov-file#how-it-works)
+
+简写一下，对于 style 部分，loader 链是这样的：
+```js
+[
+    "ssr-mini-css-extract-plugin/dist/loader",
+    "css-loader",
+    "vue-loader/dist/stylePostLoader",
+    "postcss-loader",
+    "less-loader",
+    "vue-loader"
+]
+```
+
+如果是 template，loader 链是这样的：
+```js
+["babel-loader", "template-loader", "vue-loader"]
+```
+
+如果是 script，loader 链是这样的：
+```js
+["babel-loader", "vue-loader"]
+```
+
+> 一般来说，loader 执行会先按顺序执行（pitch阶段），再按逆序执行（normal阶段），但这里不影响讨论，可以简化地认为它们是按照逆序执行。
+
+我们主要关注 style 部分，这个模块请求首先到达 vue-loader，然后 vue-loader 调用后续的 loader 链去处理，按照这个顺序执行：
+
+
+1. **less-loader**：给 less 包了一层，核心是调用 `less.render()` 对传入的 less 代码进行转换，主要是将 Less 语法（如嵌套、变量）转换为标准 CSS
+2. **postcss-loader**：这里会有很多插件对 CSS 进行处理，Tailwind 做展开和注入，autoprefixer 自动添加兼容前缀，都是在这个阶段去做的
+3. **stylePostLoader**：这个是 VueLoaderPlugin 注入的一个 loader，如果你写的 style 有 scoped，就会经过这个 loader，主要处理样式隔离的问题，可以忽略
+4. **css-loader**：主要作用是解析 CSS 里的 `@import()` 和 `url()`，可以先忽略
+5. **ssr-mini-css-extract-plugin/loader**：主要是把 CSS 提取到单独分开的文件中，和我们要研究的问题都没什么关系，先忽略
+
+
+经过这一系列操作最后处理完，产物应该是一个单独的 CSS 文件，最终通过 link 标签在 HTML 中被引用。
+
+从这个流程考虑，我们可以发现，最有可能导致问题的环节，无疑是 less-loader 和 postcss-loader，我们可以直接改一下它们的源码，把它们的输入和输出都打印出来看看。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142019405.png)
+
+罪魁祸首似乎找到了，是 less-loader 搞的鬼。
+
+我们来简单验证一下，把 Vue 组件里的 style 的 lang 从 less 改成 css，此时它的 loader 链是：
+```ts
+[
+    "ssr-mini-css-extract-plugin/dist/loader",
+    "css-loader",
+    "vue-loader/dist/stylePostLoader",
+    "postcss-loader",
+    "vue-loader"
+]
+```
+
+这样它就不会经过 less-loader，果然正常了。
+
+```html
+<!-- 改成 CSS 就不会报错了 -->
+<style scoped lang="css">
+.ryteaes {
+    @apply bg-red-400 mb-24 mt-24;
+}
+</style>
+```
+
+这时候 less-loader 就要站出来说了：
+
+**跟我没关系！你们去看我的代码，我只是包了一层，是 less 的问题！**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142050641.png)
+
+好吧，确实是 less 的问题。
+
+（谁知道呢...一直没怀疑过 less，要是早点来这个 [Less Playground](https://lesscss.org/less-preview/) 试一下就好了）
+
+## 原因总结
+
+至此，问题的根源找到了：
+
+less 这个预处理器会把 @apply 后面的每个 keyword 之间加上一个莫名其妙的逗号，导致下一环节到 tailwind 的 postcss 插件接手的时候，按照空格/换行分割，得到的前面几个原子类都会多一个逗号（如 `mb-4,`），从而找不到对应的映射关系，无法做替换和注入，在 Webpack 的 postcss-loader 环节直接抛异常，导致模块编译无法继续进行，影响开发。
+
+## 为什么以前没事？
+
+还有一个疑问，项目中其实有大量 `@apply` 后面 follow 多个规则的写法，为什么之前没出问题，最近才出了问题呢？
+
+经验告诉我们，变更常常是导致问题发生的根源，肯定有什么东西发生了变更。
+
+我直接打开 less 的源码仓库，处理 `@规则` 的代码就位于 `packages/less/src/less/tree/atrule.js`
+
+五个月前，这里有一个可疑的变更：[fix(issue#4242): add support for layer at-rule](https://github.com/less/less.js/pull/4337)：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142102248.png)
+
+在他的 `CHANGELOG.md` 里搜索这个 PR 名，可以看到是 v4.4.0 版本加的这个 feature
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142107136.png)
+
+到 Playground 切回 4.3.0 快速验证一下，果然。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202509142118212.png)
+
+## 解决方法
+
+1. 回滚 less 版本到 4.4.0 以前，可以使用 [pnpm.overrides](https://pnpm.io/9.x/package_json#pnpmoverrides) 根据作用域锁子依赖版本。
+2. 如果不回滚，可以等待新版本修复，看到已经有修复 [PR](https://github.com/less/less.js/pull/4366/files) 了，尚未被作者合入主干
+3. 如果不回滚也不等待新版本修复，可以用 `~""` 来包裹 @apply 后面的规则，例如 `@apply ~"mb-2 pt-3"` 这样，less就不会插入逗号，但缺点是写的时候可能IDE 会没有 Tailwind 的自动补全了
+4. 如果上面的方案都觉得麻烦，项目赶着要上线，最快的方法是直接把 style 改成 `lang="css"`，这样就不会经过 less-loader
+
+```json
+{
+    "pnpm": {
+        "overrides": {
+            "less": "4.3.0"
+        }
+    }
+}
+```
+
+## 排查技巧/原理总结
+
+- 根据经验和工程化基础知识，猜测问题可能出现的原因有哪些，逐个猜想+证实/证伪
+- 如果报错语句具有特征，可以直接搜索来定位
+- 直接改 node_modules 是很有效的手段，但记得条件性打印
+
+涉及到：
+- Vue SFC 的原理
+- Webpack 的 loader 机制和执行顺序
+- Tailwind 的作用原理
+
+## 参考
+
+[彻底弄懂Webpack中的Loader机制](https://juejin.cn/post/7157739406835580965?searchId=20250914190226E1FE3BD8C0CA065C79ED)
+
+[Vue SFC Playground](https://play.vuejs.org/)
+
+[Less Preview](https://lesscss.org/less-preview/)
+
+[Webpack - Loaders](https://v4.webpack.js.org/loaders/)
+
+
+---
+
+# emoji 的长度到底是多少？UTF-16 下 emoji 字符串原理探究
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-07-16
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/deep-into-emoji/
+
+## 0 前言
+在日常前端开发过程中，我们经常会与 emoji 打交道。相信刚入门的新手们或多或少会遇到类似这样的问题：
+
+- 使用`split`方法拆开含有 emoji 的字符串，拆坏了
+- 使用`.length`获取含 emoji 字符串的长度，发现好像不太对劲
+- 处理不当，正文出现一些奇怪的问号、框框，到底是什么？
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161437888.png)
+
+在实际开发中，其实我们的需求十分明确：
+1. 正确地显示含 emoji 的字符串
+2. 在有切分需求（例如逐字 fade-in 动画）时，正确地切开含 emoji 的字符串
+3. 正确计算含 emoji 字符串的长度。
+
+**太长不看版**：倘若你无暇深入探究原理，可以直接使用 [runes.js](https://github.com/dotcypress/runes) ，直接引入源码 or 安装后直接使用即可，该库导出了两个函数 `runes` 和 `substr` 用于对含 emoji 的字符串执行正确的切分、取子串操作。未压缩的源代码只有 160 行左右。
+
+但如果我们想要知其所以然，就有必要深入研究一下，笔者在研究 `runes.js` 的源码过程中，顺带了解了一些 emoji 的常见模式，其实还挺有趣的，给各位看官介绍一下。
+
+---
+
+## 1 前置知识
+
+先来一波字符编码的前置知识补充，熟悉的大佬可以直接跳过。
+
+**注意，这里并非直接 copy AI 的回答，笔者将用自己的理解引出所有必要的概念。**
+
+### Unicode
+Unicode是计算机领域字符编码的业界标准，它为每种语言中的每个字符设定了统一且唯一的二进制编码。根据 [Wikipedia](https://en.wikipedia.org/wiki/Unicode)，它的 16.0 版本含有 154,998 个字符。
+
+其实理解起来很简单，他就是一个超大的 map，含有 154,998 个条目，其中每个条目的 key 是一个数字，value 就是实际对应的字符。
+
+其中，这里的 key 就叫[**码点(Code Point)**](https://en.wikipedia.org/wiki/Code_point)。
+
+通过一个码点，也就是 `UnicodeMap[key]` ，就可以唯一定位到一个字符。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161456351.png)
+
+有兴趣的小伙伴可能已经开始抄起计算器算了，这个 map 的 key 数至少有 154,998 个，那这个 key 需要多少个二进制位来表示？
+
+我们可以自己算，也可以用微信输入法问 AI 算，反正最后是需要 18 个二进制位。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161439327.png)
+
+但其实 Unicode 标准预留的位置比这个多，它的码点取值范围是从 `0x0` 到 `0x10FFFF`，这个范围可以容纳 110 万个左右的字符。
+
+所以，这就是为什么 Wikipedia 称 Unicode 可以存 110w+ 字符。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161026287.png)
+
+到这里又有人要问了，那按你这么说，总共加起来都需要 24 位了，也就是 3 个字节，难道计算机上存一个字符需要 3 个字节吗？这跟我学过的计算机知识不一样啊，`char` 类型不是一个字节吗？
+
+随便拍脑袋一想，那么大的 map，最前面的那些 key，肯定是很短的，就不能压缩一下吗？
+
+没错，因为有些字符的码点很短，我们没必要浪费空间，这就是我们日常熟知的 `UTF-8`, `UTF-16`, `UTF-32` 等编码方式的由来。
+
+- **UTF-8**：一种变长编码方式，使用 1 到 4 个字节来表示不同的字符。它具备良好的向后兼容性，能与 ASCII 编码无缝衔接，是网页和文件存储领域应用最为广泛的编码标准。
+- **UTF-16**：同样属于变长编码，采用 2 个或 4 个字节来表示字符。它主要应用于 Windows、Java 以及 JavaScript 等系统和技术中。
+- **UTF-32**：这是一种定长编码，每个字符固定占用 4 个字节。其优势在于编码规则简单直接，但会占用较多的存储空间。
+
+UTF-32 我们先不讨论，我们可以看到，UTF-8 和 UTF-16 都是变长的，此时假设你要用一个数组来表示一个字符序列，你要怎么办呢？
+
+如果你使用 JavaScript/Python 这类动态类型语言，你就会说，这还不简单？有手就行。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161440305.png)
+
+如果你是用 C 这类静态类型语言，就要开始挠头了。简单搞个 `char[]` 又不行，碰到 1 字节以上的就放不下，搞多点用个什么 `uint32_t[]` 又浪费空间。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/9b6939e10dc83ee8e3532d8f3fd41f56.gif)
+
+那其实也比较容易想到一种办法，我取可能的最短字节数作为每个元素的大小，在此编码方式下，其他支持的字节数，都是这个基本单位的倍数，就可以了。
+
+例如 UTF-8 最短的单元是 1 字节，我就用 `char[]`，当他需要 2 字节、3 字节的时候，就占 2 个、3 个元素就好了。
+
+UTF-16 最短的单元是 2 字节，我就用 `uint16_t[]`，当他需要 4 字节的时候，就占 2 个元素。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161508059.png)
+
+这就是 [**码元(CodeUnit)**](https://en.wikipedia.org/wiki/Character_encoding#Code_unit) 概念的由来。
+
+有了码元的概念，无论我用什么编码方式，我的字符数组都是 `CodeUnit[]` 就 OK 了。
+
+### UTF-16
+
+回到本文重点，我们主要讨论在 JS 下如何正确处理 emoji，那么 JavaScript 的 String 采用的是什么字符编码呢？是 UTF-16.
+
+> **Info**
+>
+> 其实 Objective-C 的 NSString 和 Java 标准库的 String 用的也都是 UTF-16
+
+我们刚刚有说到，对于 UTF-16，它的码元长度是 2 字节，也就是 16 位，我们那个庞大的 Unicode 字符 map 里，哪些 key 可以只用一个 UTF-16 码元来存呢？
+
+答案是从 `0x0` 到 `0xFFFF` 范围的 key。比这更大的 key，就需要两个码元才能放得下了。
+
+这个有点类似于给一个 map 人为分段，Unicode 也自己分了几个段，这就是 [**基本多文种平面(Basic Multilingual Plane, BMP)**](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2) 和 [**辅助平面**](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E7%AC%AC%E4%B8%80%E8%BC%94%E5%8A%A9%E5%B9%B3%E9%9D%A2) 的由来。
+
+其实 Unicode 把他分成了[很多段](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#)，但为了方便讨论，一般都只划分两段：
+- **基本平面**：`0x0` 到 `0xFFFF`，一共 `0x10000` 个字符，涵盖了大量常用字符。
+- **辅助平面**：`0x10000` 到 `0x10FFFF`，一共 `0xFFFFF` 个字符，用于容纳相对不那么常用的字符，大部分 emoji 在这个段上。
+
+我们刚说了，辅助平面上，一共有 `0xFFFFF` 个字符，假设用二进制表示需要 20 位才够，一个 UTF-16 码元只有 16 位，是放不下的。
+
+那就用两个码元咯，一拍脑袋就想到，你不是说 20 位嘛，我拆成高 10 位和低 10 位，分别放在两个码元里，不就行了？
+
+好的，我们引出了另一个问题：那如果你是那个写 UTF-16 字符序列解析器的人，你要怎么写呢？遇到一个码元，你怎么知道它自己就是完整的，还是要连着它后面那个一起看？
+
+所以，我们肯定有一些二进制位是用来做标记的，告诉解析器，遇到我的时候，请你再往后看一位。
+
+这就是 [**基本平面内 UTF-16 保留区**](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2) 的由来。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161116565.png)
+
+Unicode 基本平面为 UTF-16 保留了两个区段，于是人们发明了一种叫 [**代理对(Surrogate Pairs)**](https://en.wikipedia.org/wiki/UTF-16#U+D800_to_U+DFFF_(surrogates)) 的东西，用来把一个辅助平面的码点的高 10 位和低 10 位分开，然后塞到两个码元里，并且恰好位于这个区段。
+
+
+### 代理对
+
+具体是如何操作呢？简单来说，先减去 `0x10000`，得到的就是在辅助平面内的偏移量，这个偏移量是 20 位。
+
+此时要把 20 位的东西塞进代理对，取高 10 位加上 `0xD800`，作为第一个码元（称为高代理, high surrogate）;再取低 10 位加上 `0xDC00`，作为第二个码元（成为低代理，low surrogate），就 OK 了。
+
+**文字版步骤**：
+1. 先将码点减去0x10000，得到一个0~0xFFFFF范围内的值(最多20位)
+2. 高10位加上0xD800得到高位代理值(范围0xD800~0xDBFF)
+3. 低10位加上0xDC00得到低位代理值(范围0xDC00~0xDFFF)
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161136354.png)
+
+所以一个代理对可以表示为：`(高位代理, 低位代理)`，两者结合计算出实际的码点值。
+
+**代码版**:
+
+用代码来讲可能更清晰一些：
+```js
+const HIGH_SURROGATE_START = 0xd800
+const LOW_SURROGATE_START = 0xdc00
+
+function surrogatePairFromCodePoint(codePoint: number): string {
+  // 验证输入是否为有效码点 (U+0000 至 U+10FFFF)
+  if (!Number.isInteger(codePoint) || 
+      codePoint < 0 || 
+      codePoint > 0x10FFFF) {
+    throw new RangeError('Invalid code point');
+  }
+
+  // 基本多文种平面 (BMP) 字符无需使用代理对
+  if (codePoint <= 0xFFFF) {
+    return String.fromCodePoint(codePoint);
+  }
+
+  // 计算高代理和低代理值
+  const offset = codePoint - 0x10000;
+  const high = HIGH_SURROGATE_START + (offset >> 10);
+  const low = LOW_SURROGATE_START + (offset & 0x3FF);
+
+  // 转换为 UTF-16 代理对字符串
+  return String.fromCharCode(high, low);
+}
+
+```
+
+反过来，如何把代理对转换回一个码点？其实就是执行上面的逆操作：第一个码元减去 `0xD800` 再左移十位，加上第二个码元减去 `0xDC00`的结果，在加上 `0x10000`，具体可以看下面代码
+
+```js
+const HIGH_SURROGATE_START = 0xd800
+const LOW_SURROGATE_START = 0xdc00
+
+function codePointFromSurrogatePair (pair: string): string {
+  const highOffset = pair.charCodeAt(0) - HIGH_SURROGATE_START
+  const lowOffset = pair.charCodeAt(1) - LOW_SURROGATE_START
+  return (highOffset << 10) + lowOffset + 0x10000
+}
+```
+
+讲到这里，我们已经解决了所有 Unicode 在 UTF-16 编码方式下应该如何编码的问题。这和 emoji 又有什么关系呢？
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/07b3421783f51aa3fa13e35515fb1cb5.gif)
+
+其实我们已经可以回答开篇的其中一个问题，为什么含有 emoji 字符串的 `length` 看起来不太对劲。
+
+以笑脸😀为例，它的码点是 `0x1F600`，位于辅助平面，它的代理对表示为 `0xD83D 0xDE00`，占用两个码元。根据 [MDN 文档](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)，String 的 length 属性返回的是 UTF-16 码元的个数。
+
+> The length data property of a String value contains **the length of the string in UTF-16 code units**.
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161140963.png)
+
+有的人又要问了，2 个码元我可以理解啊，这种 11 的是什么玩意？？
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161145298.png)
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/cffd51f1c134730a24a98d2c0c67952f.gif)
+
+别急，JS 又不会骗你，说明人家要 11 个码元才能表示出来。
+
+接下来，我会列举一下常见的 emoji 组合模式。
+
+---
+
+## 2 常见的 emoji 类型及其组合模式
+
+其实 emoji 并没有那么简单，里面含有很多组合的逻辑。
+
+### 最常见的单码点模式
+
+这里主要有最开始的一波基础 emoji 表情，例如：
+| Emoji | Unicode 码点 | UTF-16 代理对 |
+|-------|-------------|---------------|
+| 😀    | U+1F600     | 0xD83D,0xDE00 |
+| 🤪    | U+1F92A     | 0xD83E,0xDD2A |
+| 🦊    | U+1F98A     | 0xD83E,0xDD8A              |
+| 🚀    | U+1F680     | 0xD83D,0xDE80             |
+| ...   | ...         | ...           |
+
+
+```js
+// 如果你想在浏览器玩玩，这里提供了一些示例
+String.fromCodePoint(0x1F98A); // 🦊
+String.fromCharCode(0xD83E,0xDD8A); // 🦊
+'🦊'.charCodeAt(0).toString(16); // D83E
+'🦊'.charCodeAt(1).toString(16); // DD8A
+'🦊'.codePointAt(0).toString(16); // 1F98A
+```
+
+> 注：这里 U+1F600 和 0x1F600 只是两种习惯的表示方法，表示的都是 Unicode 码点
+
+
+### 肤色修饰模式
+
+大家都应该使用过，苹果输入法/微信输入法，都可以选择 emoji 的肤色
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/45628e8623144a5c84c99f5a2a1a61fb.jpg)
+
+肤色是怎么实现的呢？有种叫做「肤色修饰器」的东西，有好几个类型，把他加在人物/手势 emoji 码元的后面，显示出来就会变成不同的肤色。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161517503.png)
+
+例如，“👋”（你好）这个 emoji，通过添加肤色修饰器，可以变成不同颜色的手，如 👋🏻👋🏽👋🏾👋🏿
+
+我们找了一下，发现👋这个 emoji 的码点是：`U+1F44B`
+
+其他颜色的手都是 2 个码点，如下图:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161208431.png)
+
+我们发现，在基础 emoji 后面加上肤色修饰器，就可以改变基础 emoji 的肤色。
+
+主要的肤色修饰器有这么几种，如果不写修饰器，就是默认的黄色。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161213764.png)
+
+
+### 变体选择器
+
+在某些奇怪的应用/跨平台消息发送场景中，你是否遇到过这种情况？本想发给女朋友的爱心♥️，发过去之后变成了黑色的♥，这是为什么呢？
+
+此时我们查看一下他们的码点分别是什么：
+
+| 字符 | 码点          |
+| ---- | ------------- |
+| ♥    | U+2665        |
+| ♥️    | U+2665 U+FE0F |
+
+我们发现，黑色的爱心其实是一个早就存在的字符，看它是 `U+2665` 就知道它位于基本平面。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161519358.png)
+
+估计后来有了红心 emoji 之后，才通过在它后面加一个 `U+FE0F` 来表示这个应该以彩色形式显示。我估计这个应该是历史的尘埃（产物）了，下面附上一些来自其他资料的解释：
+
+> 随着计算机技术的发展，人们对字符显示的多样性需求增加。同一字符可能有多种显示样式，例如表情符号可能希望以彩色图像形式显示，也可能希望以单色文本形式显示。为了满足这种需求，Unicode 引入了变体选择器机制，通过在基本字符后添加特定的变体选择器，来告知软件以何种样式呈现字符。
+
+Unicode 的基本平面中，`0xFE00` 到 `0xFE0F` 范围的字符，都属于变体选择器(Variation Selector)，其中 `U+FE0F` 被指定用来表示一个基本图案应该以彩色 emoji 方式来显示。
+
+> 一般 emoji 风格呈现的字符是彩色的，而文本风格渲染的字符是黑白的。为了明确指定 emoji 字符的显示风格，U+FE0E 被用于标明该文字应显示为文本样式，U+FE0F 则用于标明该文字应显示为 emoji 样式。
+
+还有哪些使用变体选择器的例子呢？
+
+| 基础字符 | 码点     | 带变体选择器 | 码点              |
+| -------- | -------- | ------------ | ----------------- |
+| ☀        | `U+2600` | ☀️            | `U+2600` `U+FE0F` |
+| ♠        | `U+2660` | ♠️️            | `U+2660` `U+FE0F` |
+| ⬆        | `U+2B06` | ⬆️️️            | `U+2B06` `U+FE0F` |
+| ☑        | `U+2611` | ️ ☑️️️          | `U+2611` `U+FE0F` |
+
+### 按键组合模式
+
+我们平时经常会用到的 1️⃣ 2️⃣ 3️⃣ 这类按键 emoji 就属于这个系列，它是由一个基础码点+变体选择器+框选码点来组成的。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507211011487.png)
+
+### 国旗组合模式
+
+国旗 emoji 的玩法稍微特殊一点，但规则也比较简单：通常是由两个区域指示符号字母组成，比如“🇨🇳”代表中国国旗，其实他是 C + N 两面旗（两个码点）组合起来表示的。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507182013775.png)
+
+| Part 1 | 码点      | Part 2 | 码点      | 组合 | 码点              |
+| ------ | --------- | ------ | --------- | ---- | ----------------- |
+| 🇨      | `U+1F1E8` | 🇳      | `U+1F1F3` | 🇨🇳    | `U+1F1E8 U+1F1F3` |
+| 🇯      | `U+1F1EF` | 🇵      | `U+1F1F5` | 🇯🇵    | `U+1F1EF U+1F1F5` |
+| 🇺      | `U+1F1FA` | 🇸      | `U+1F1F8` | 🇺🇸    | `U+1F1FA U+1F1F8` |
+| 🇬      | `U+1F1EC` | 🇧      | `U+1F1E7` | 🇬🇧    | `U+1F1EC U+1F1E7` |
+| 🇧      | `U+1F1E7` | 🇷      | `U+1F1F7` | 🇧🇷    | `U+1F1E7 U+1F1F7` |
+
+
+### 连接组合模式
+
+上面主要讲的几种都可以理解为「修饰器」，emoji 还有一种更大的扩充自身的方式，它允许多个独立的 emoji 连接起来表达更复杂的概念，这就是通过[**零宽连接符(Zero Width Joiner, ZWJ)**](https://en.wikipedia.org/wiki/Zero-width_joiner) 实现的组合模式。
+
+零宽连接符的码点是 `U+200D`，顾名思义，它是一个"零宽度"的字符，本身不显示，但能将前后的 emoji 粘合在一起，形成一个新的视觉单元。
+
+> 为了方便表述，下面统一将零宽连接符简称为 ZWJ
+
+
+#### 职业组合
+
+最简单的例子是职业 emoji。例如👨‍🔬（男科学家）是由👨（男人）和🔬（显微镜）组合：
+
+| 部分 | 描述       | 码点    |
+| ---- | ---------- | ------- |
+| 👨    | 男人       | U+1F468 |
+| ‍    | 零宽连接符 | U+200D  |
+| 🔬    | 显微镜     | U+1F52C |
+
+其他例子：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161524234.png)
+
+```js
+👨‍🔬 = 👨 + ZWJ + 🔬 // 科学家
+🧑‍💻 = 🧑 + ZWJ + 💻 // 程序员
+```
+
+#### 动作 + 性别组合
+一些emoji会结合性别符号，如“♂️”（男性符号）和“♀️”（女性符号），与其他emoji组合形成新的表意符号。例如，`🙋‍♀️`（女性举手）就是将 `🙋`（开心举手的人）与`♀` 通过 ZWJ 组合在一起。通过 [emojipedia](https://emojipedia.org/woman-raising-hand#technical) 我们可以看到它的码点序列：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161313162.png)
+
+```js
+🙋‍♀️ = 🙋 + ZWJ + ♀ + 0xFE0F // 女性举手
+```
+
+#### 家庭组合
+
+例如👨‍👩‍👧‍👦（一家四口）实际上是由4个独立的emoji通过3个零宽连接符连接而成：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161317103.png)
+
+```
+👨‍👩‍👧‍👦 = 👨 + ZWJ + 👩 + ZWJ + 👧 + ZWJ + 👦
+```
+
+我们来分析一下它的码点构成：
+
+| 部分 | 描述 | 码点    |
+| ---- | ---- | ------- |
+| 👨    | 男人 | U+1F468 |
+| ‍    | ZWJ  | U+200D  |
+| 👩    | 女人 | U+1F469 |
+| ‍    | ZWJ  | U+200D  |
+| 👧    | 女孩 | U+1F467 |
+| ‍    | ZWJ  | U+200D  |
+| 👦    | 男孩 | U+1F466 |
+
+到这里，我们已经可以回答上一 Part 提出的问题：为什么 `"👨‍👩‍👧‍👦".length = 11`
+
+因为一个看似简单的家庭 emoji 实际上由 7 个码点组成，其中零宽连接符 3 个（每个占 1 个码元），另外的人物都在辅助平面，需要用两个码元来表示，所以最后得到的长度是 `8 + 3 = 11`。
+
+
+### 复杂组合模式：肤色+性别+职业+连接
+
+上面讲过的所有模式，混在一起，就是复杂组合模式。例如，深色皮肤女警察👮🏿‍♀️是由以下元素组合而成：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161529972.png)
+
+具体分解为：
+
+| 部分 | 描述           | 码点    |
+| ---- | -------------- | ------- |
+| 👮    | 警察           | U+1F46E |
+| 🏿    | 深色肤色修饰符 | U+1F3FF |
+| ‍    | 零宽连接符     | U+200D  |
+| ♀    | 女性符号       | U+2640  |
+| ️    | 变体选择器     | U+FE0F  |
+
+其实我们这里可以做个实验，我猜 spread 运算符应该是特殊处理了代理对，但是并没能处理好组合的情况。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161536505.png)
+
+### 其他有趣的组合
+
+彩虹旗🏳️‍🌈：白旗与彩虹的组合
+   ```
+   🏳️‍🌈 = 🏳️ + U+200D + 🌈
+   ```
+
+带着爱心飞的箭头💘：爱心与箭头的组合
+   ```
+   💘 = ❤️ + U+200D + 🏹
+   ```
+
+女人和女人亲嘴
+```
+👩‍❤️‍💋‍👩 = 👩 + U+200D + ❤️ + U+200D + 💋 + U+200D + 👩
+```
+
+两个深色皮肤女人亲嘴
+```
+👩🏽‍❤️‍💋‍👩🏽 U+1F469 U+1F3FD U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FD
+```
+
+两边肤色不一样
+```
+👩🏼‍❤️‍💋‍👩🏾' U+1F469 U+1F3FC U+200D U+2764 U+FE0F U+200D U+1F48B U+200D U+1F469 U+1F3FE
+```
+
+有兴趣的朋友可以算算最后这个不同肤色女人亲嘴的 emoji 的长度是多少，哈哈。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507182013596.png)
+
+### 这么多组合，怎么处理呢？
+
+上面说的这些模式，极大地丰富了 emoji 的表现力，但也给字符串处理带来了挑战。当你尝试对含 emoji 的字符串进行 `split` 拆分、计算长度或取子串操作时，如果不考虑这些特殊结构，容易导致一些问题：
+- 先拆开，然后做逐字 fade-in 动画，会出现问号乱码
+- 如果字符串会在后台和前端之间流转，两段计算的长度可能对不上
+- 在需要统计字数的场景，直接使用 length 计算，也不准确
+
+例如，我们尝试 split 一个家庭 emoji 会产生什么，大家应该心里有数了：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161327495.png)
+
+有人说：我用扩展运算符不行吗？我们看看：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202507161328429.png)
+
+不得不说，这个还是比 split 拆分得好一些，只不过把人家一家人拆散了 (doge
+
+其实，因为 JS 的字符串操作函数(如`String.prototype.charAt()`或`String.prototype.substring()`)还有 `length` 属性都是基于 UTF-16 码元的，所以在面对 emoji 和其他非基本平面字符时，都会有这种问题。
+
+所以，我们需要一个成熟的方案来帮我们「正确地识别每个 Unicode 单元」。
+
+
+---
+
+
+## 3 runes.js 源码解读
+
+[runes](https://github.com/dotcypress/runes) 是一个专门用于处理含有 emoji 和其他 Unicode 字符的 JavaScript 字符串分割库。在 JavaScript 中，默认的`String.split('')`方法无法正确处理 emoji 和其他非 BMP(Basic Multilingual Plane) 字符，runes 库解决了这个问题。
+
+这是一个比较简单的工具库，只有一个文件，导出两个函数 `runes` 和 `substr`，它在处理emoji相关操作时，紧密结合了前面提到的Unicode原理和编码知识，为前端开发中处理emoji字符串提供了可靠的解决方案。
+
+先看效果：
+```js
+const runes = require('runes')
+
+// Standard String.split
+'♥️'.split('') => ['♥', '️']
+'Emoji 🤖'.split('') => ['E', 'm', 'o', 'j', 'i', ' ', '�', '�']
+'👩‍👩‍👧‍👦'.split('') => ['�', '�', '‍', '�', '�', '‍', '�', '�', '‍', '�', '�']
+
+// ES6 string iterator
+[...'♥️'] => [ '♥', '️' ]
+[...'Emoji 🤖'] => [ 'E', 'm', 'o', 'j', 'i', ' ', '🤖' ]
+[...'👩‍👩‍👧‍👦'] => [ '👩', '', '👩', '', '👧', '', '👦' ]
+
+// Runes
+runes('♥️') => ['♥️']
+runes('Emoji 🤖') => ['E', 'm', 'o', 'j', 'i', ' ', '🤖']
+runes('👩‍👩‍👧‍👦') => ['👩‍👩‍👧‍👦']
+```
+
+
+### 核心函数分析
+
+这个库主要导出两个工具函数，一个是 `runes`，用来替代原有的 `split`；另一个是 `substr`，用来正确地取出子串。
+
+其实可以想到，最核心的肯定是 `runes`，当你能正确拆分一个字符串成为数组的时候，取子串无非就是把数组 splice 然后再 join 起来就行了。
+
+所以我们主要分析下 `runes` 函数是怎么实现的：
+
+
+```js
+function runes(string) {
+  // 输入检查
+  if (typeof string !== 'string') {
+    throw new Error('string cannot be undefined or null')
+  }
+  
+  const result = []
+  let i = 0
+  let increment = 0
+  
+  while (i < string.length) {
+    // 确定当前字符由多少个代码单元组成
+    increment += nextUnits(i + increment, string)
+    
+    // 一些特殊字符，例如罗马音标
+    if (isGraphem(string[i + increment])) {
+      increment++
+    }
+    // 如果是变体选择器，游标向后移动一位
+    if (isVariationSelector(string[i + increment])) {
+      increment++
+    }
+    // 如果是框之类的修饰符，游标向后移动一位
+    if (isDiacriticalMark(string[i + increment])) {
+      increment++
+    }
+    // 如果是零宽连接符，先不要 push 进去，再继续往后看
+    if (isZeroWidthJoiner(string[i + increment])) {
+      increment++
+      continue
+    }
+    
+    // 走到这就说明提取到了一个完整的字符
+    result.push(string.substring(i, i + increment))
+    i += increment
+    increment = 0
+  }
+  
+  return result
+}
+```
+
+可以看到：
+1. `nextUnits` 函数决定当前字符由几个码元组成
+2. 然后看连接符、修饰符
+3. 如果是变体选择器这类修饰符，就往后跳一位
+4. 如果是 ZWJ，说明得对后面的部分重新走一次该流程
+
+
+再来看看 `nextUnits` 函数，该函数决定当前字符由多少个代码单元组成：
+- 基本多文种平面(BMP)字符：1个代码单元
+- 代理对表示的字符：2个代码单元
+- 带肤色修饰符的emoji：4个代码单元
+- 国旗emoji：4个代码单元
+
+
+```js
+function nextUnits(i, string) {
+  const current = string[i]
+  
+  // 如果不是代理对的首部或到达字符串末尾，则只取一个代码单元
+  if (!isFirstOfSurrogatePair(current) || i === string.length - 1) {
+    return 1
+  }
+
+  const currentPair = current + string[i + 1]
+  let nextPair = string.substring(i + 2, i + 5)
+
+  // 如果是国旗组合模式，那就是两个码点（四个码元）
+  if (isRegionalIndicator(currentPair) && isRegionalIndicator(nextPair)) {
+    return 4
+  }
+
+  // 肤色修饰符本身是一个非 BMP 的码点（所以要用 2 个码元表示），加上肤色就是 4 个码元
+  if (isFitzpatrickModifier(nextPair)) {
+    return 4
+  }
+  
+  // 正常代理对
+  return 2
+}
+```
+解释一下里面的函数，因为很简短，就不贴代码了：
+- `isFirstOfSurrogatePair` 其实就判断 current 是不是一个高代理对，如果不是，说明它是一个基本平面的字符，不需要特殊处理
+- `isRegionalIndicator` 其实就是判断当前代理对和下个代理对，是否都在国旗组合码点的范围内，即 `0x1f1e6` 到 `0x1f1ff`
+- `isVariationSelector` 就是判断当前码元在不在 `0xfe00` 到 `0xfe0f` 范围内
+- `isZeroWidthJoiner` 就是判断当前码点是不是 `0x200D`
+- `isFitzpatrickModifier` 判断是不是肤色选择器，其实就五个，`0x1f3fb` 到 `0x1f3ff`
+
+## 4 总结
+
+在这篇文章中，我们深入探究了emoji的工作原理及其在前端开发中的处理方法。首先了解了Unicode编码的基础概念，包括码点(Code Point)和码元(Code Unit)，以及UTF-16编码如何通过代理对(Surrogate Pairs)表示超出基本平面的字符。
+
+我们详细分析了几种常见的emoji组合模式：
+1. 基本的单码点emoji
+2. 带肤色修饰符的emoji
+3. 使用变体选择器显示为彩色的符号
+4. 国旗组合（由两个区域指示符组成）
+5. 使用零宽连接符(ZWJ)组合的复合emoji（如家庭、职业组合）
+
+这些复杂的组合方式使得emoji表达更加丰富，但也给JavaScript字符串处理带来了挑战。由于JavaScript的字符串操作基于UTF-16码元而非Unicode字符，导致使用原生方法如`String.split('')`或`.length`处理含emoji字符串时出现问题。
+
+最后，我们分析了runes.js库的源码实现。这个小巧的库通过理解Unicode编码规则和各种emoji组合模式，提供了`runes()`和`substr()`函数，能够正确处理包含复杂emoji的字符串分割和子串提取操作。其核心逻辑是识别各种Unicode字符的边界，确保emoji及其修饰符被视为单一的完整单元。
+
+通过使用runes.js或理解其背后的原理，我们可以在前端开发中正确地显示、计算和操作含有emoji的字符串，避免出现乱码、长度计算错误等问题，从而提升用户体验。
+
+## 5 函数 & 工具参考
+
+查询 emoji 及其对应的码点：[emojipedia](https://emojipedia.org/flag-brazil#technical)
+
+根据码点来查字符：[Compart Unicode](https://www.compart.com/en/unicode/U+20E3)
+
+根据码点查询字符：[字嗨 zihi.com](https://zi-hi.com/sp/uni/1F3FF)
+
+获取 String 指定位置的码元：[String.charCodeAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt)
+
+获取 String 指定位置的码点：[String.codePointAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt)
+
+通过码点序列构造字符串: [String.fromCodePoint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint)
+
+通过码元序列构造字符串: [String.fromCharCode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode)
+
+
+---
+
+# 如何缩短前端项目构建时间
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-06-08
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/how-to-reduce-nuxt-project-compile-time/
+
+## 核心思路
+
+- 构建的步骤不要放在 Dockerfile 里
+- Dockerfile 只负责构建运行时镜像
+- 缓存 node_modules, 不要每次都安装，当 package.json 没有发生变化时复用
+- 使用 `npm prune --production` 删掉 devDependencies，能有效缩减一半以上的镜像体积
+- 镜像基础层尽量使用瘦身版本的，例如 `node:20-slim`，如果连 npm 都不需要（指在 Dockerfile 里用不上 npm），可以用更小的 `node:20-alpine`
+
+> **Info**
+>
+> 其实明明可以安装的时候直接 `npm i --production` 来跳过 devDependencies，为什么要装了之后又删掉呢？因为多数情况下，build 的步骤是需要 devDependencies 的（例如各种 TS 类型的包），build 阶段完成之后，再用 `npm prune --production` 删掉，具体可以视项目情况而定。
+
+
+---
+
+# Objective-C 学习笔记
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-05-17
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/app/objectivec/
+
+## 数据类型
+
+### 基本数据类型
+
+标准 C 数据类型也是可以用的
+
+```c
+int someInt = 42;
+float someFloat = 3.2f;
+```
+
+> 局部变量在栈上分配，而对象在堆上分配
+
+```objc
+BOOL a = YES;
+```
+
+### 非基本
+
+```objc
+// 根类型
+NSObject
+
+// 不可变类型
+NSString : NSObject
+NSNumber : NSObject
+
+// 可变类型
+NSMutableString : NSString
+NSMutableArray : NSArray
+NSMutableDictionary : NSDictionary
+
+```
+
+### 字符串和数字
+
+```objc
+NSString *str = @"fuckyou";
+NSString *str2 = @"yes";
+
+NSUInteger len = [str length]; // 7
+NSUInteger len2 = str.length; // 7
+
+BOOL eq = [str isEqualToString:str2];
+BOOL endsWithU = [str hasSuffix:@"u"];
+
+// split
+NSArray *components = [pair componentsSeparatedByString:@"="];
+```
+
+```objc
+NSNumber *num = [[NSNumber alloc] initWithInt:42];
+
+// 使用工厂方法 更方便
+NSNumber *num2 = [NSNumber numberWithInt:43];
+
+// 使用 boxed expression
+NSNumber *num3 = @(84 / 2);
+```
+
+oc 需要手动装箱/拆箱
+```objc
+NSNumber *num1 = 10; // 不行，不会自动装箱，需要加 @
+NSNumber *num1 = @10; // OK
+int num2 = num1; // 这样只会拿到 num1 对象的地址
+int num2 = [num1 intValue]; // OK 手动拆箱
+NSLog(@"%@, %d", num1, num2);
+```
+
+`intValue` 是 NSValue 类的方法
+
+### 数组
+
+可变 / 不可变
+
+```objc
+NSArray *arr = @[ @1, @2, @3 ];
+
+NSMutableArray *mutArr = [[NSMutableArray alloc] initWithArray:arr];
+[mutArr addObject:@4];
+
+// enumerator 遍历
+NSEnumerator *enumerator = [arr objectEnumerator];
+id thing = nil;
+while (thing = [enumerator nextObject]) {
+    NSLog(@"thing: %@", thing);
+}
+
+// C 语言方式
+for (int i = 0; i < arr.count; i++) {
+    NSLog(@"for: %@", arr[i]);
+}
+
+// for-in 方式
+for (NSNumber *num in arr) {
+    NSLog(@"for in: %@", num);
+}
+```
+
+### 字典
+
+可变 / 不可变
+
+```objc
+NSDictionary *myDict = @{
+    @"name": @"John",
+    @"age": @123,
+    @"male": @YES,
+};
+
+NSMutableDictionary *mutDict = [[NSMutableDictionary alloc] initWithDictionary:myDict];
+[mutDict addEntriesFromDictionary:@{
+            @"dynamic": @YES,
+        }];
+```
+
+## 打印
+
+```objc
+NSLog(@"I am a line of log");
+
+NSLog(@"%@", greeting);
+```
+> **Info**
+>
+> %@ 的行为类似 printf 的模板串，%@表示任何对象（会调用对象的 description 方法，类似 Java 类的 toString 方法），**不同的是，NSLog 比 printf 多了时间戳**
+
+## 方法
+
+- 调用的语法和类 C 语法略有不同
+- 每个参数名都是方法名的一部分（这样一来跟重载也差不多了）
+
+### 调用
+
+```objectivec
+UIViewController *vc = [[UIViewController alloc] init];
+```
+
+在类 C 语言中相当于 
+```js
+UIViewController *vc = UIViewController.alloc().init()
+```
+
+### 传参
+
+```objc
+UIView *view = [[UIView alloc] init];
+view.backgroundColor = [UIColor greenColor];
+view.frame = CGRectMake(150, 150, 100, 100);
+[self.view addSubview:view];
+```
+
+类似于 
+```js
+UIView *view = UIView.alloc().init();
+view.backgroundColor = UIColor.greenColor();
+view.frame = {
+    x: 150,
+    y: 150,
+    width: 100,
+    height: 100
+};
+self.view.addSubView(view);
+```
+
+传单个参数的例子
+```objc
+#import "Foundation/NSObjCRuntime.h"
+#import "XYZPerson.h"
+
+@implementation XYZPerson
+
+
+- (void) saySomething:(NSString *)word {
+    NSLog(@"%@", word);
+}
+
+- (void) sayHello{
+    [self saySomething:@"Hello"];
+}
+
+@end
+```
+
+
+## OOP
+
+### 声明/实现/头文件
+
+类的声明一般放在 `.h` 文件
+
+类的实现放在 `.m` 文件
+
+
+声明
+```objc
+// MyViewController.h
+
+@interface MyViewController : UIViewController
+
+// 属性应该写到 interface 里面
+@property NSString *name;
+@property NSNumber *id;
+@property (readonly) NSString *readOnlyName;
+
+// 减号表示是实例的方法
+- (void)someMethod;
+
+@end
+```
+
+> **Info**
+>
+> 减号表示是实例的方法，加号表示是类的方法
+
+实现
+```objc
+#import "MyViewController.h"
+
+@implementation MyViewController
+
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
+
+@end
+```
+
+> **Warning**
+>
+> 在头文件有声明的方法可以认为是公有 API，只在实现文件里的方法可以认为是私有 API，但实际上，在 oc 里面没有真正的私有方法，因为即使头文件没写，也可以通过反射方式调用。
+
+
+### 初始化
+
+初始化的时候，alloc 和 init 必须连续调用，然后拿最后那个返回值
+
+- alloc 的作用是清除要分配的内存区域的脏数据
+- init 的作用是给各种属性分配合适的初始值
+
+```objc
+// 用法 1
+MyViewController *myVc = [[MyViewController alloc] init];
+
+// 用法 2, 它实际上与不带参数调用alloc和init相同
+MyViewController *myVc = [MyViewController new];
+```
+
+> **Info**
+>
+> 先用 alloc 的话，可以再调用自定义的 init 方法，例如 `[[MyClass alloc] initWithBundleName:@"discoverV2"]`，用 new 的话就不行，相当于 alloc + init 的语法糖。
+
+> **Warning**
+>
+> init 方法可能返回跟 alloc 返回值完全不同的地址，所以初始化的模式一般都是 `if (self = [super init]) ` 之后再判断 self 不为空，然后 `return (self)`
+
+### 似乎没有抽象类和虚函数？
+
+### 属性
+
+- 在头文件中使用 `@property` 声明
+- 在实现文件中使用 `@synthesize` 为变量自动创建 getter/setter 函数（可以忽略，会自动创建）
+- 如果有自定义的 getter/setter 方法，会覆盖默认创建的方法
+- 外部可见的属性（公开属性），在头文件里写声明；私有属性在实现文件里写声明
+
+| **特性**         | **公开属性（.h）**         | **私有属性（类扩展）**      |
+|------------------|-----------------------------|----------------------------|
+| **可见性**       | 外部可见，可直接访问        | 仅类内部可见               |
+| **子类继承**     | 子类可继承和访问            | 子类不可见                 |
+| **内存管理**     | 需遵循属性修饰符规则（如 `strong`） | 同公开属性                 |
+| **适用场景**     | 需外部访问的属性（如 UI 配置） | 内部状态（如缓存、计数器） |
+
+
+```objc
+// Person.h
+@interface Person : NSObject
+@property float age;
+@property BOOL isMan;
+
+-(void)somePublicMethod;
+@end
+```
+
+```objc
+// Person.m
+@implementation Person
+
+@end
+```
+
+私有属性在实现文件里写
+
+```objc
+// Person.h
+@interface Person ()
+@property float weight;
+@end
+```
+
+> **提示**
+>
+> 注意：在实现文件里声明私有属性，需要用「类扩展」写法，也就是 `@interface YourClass ()`，**最后面要跟一个括号**，括号用来和头文件的 `@interface` 声明区分开，表示这是类的私有扩展。
+
+**一些发展历程**：
+- 最开始的时候没有 `@property` 语法，每个属性的 getter/setter 方法要自己去写，访问属性/设置属性，都是通过方法来进行的，例如 `[person age]` 和 `[person setAge:28]`
+- 后来有了 `@property` 和 `@synthesize` 之后，属性只需要在头文件或者实现文件里声明，编译器会自动生成 getter/setter 方法（但走的不是单纯代码生成的逻辑，苹果隐藏了实现细节），此时访问属性和设置属性，仍然都要用方法
+- 再后来有了点语法，才能够通过点语法来访问和设置属性，例如 `person.age` 和 `person.age = 28`，但其实点语法也只是语法糖，出现在等号左边的时候其实是会隐式调用 setter 方法，出现在等号右边的时候会调用 getter 方法
+
+
+### 类的写法
+
+@interface + @implementation
+
+@class 用来创建一个前向引用，加快编译速度
+
+### 类别 category
+
+用于给现有的类添加方法
+
+创建一个带加号的头文件 `NSString+SpecialFix.h`
+```objc
+#import <Foundation/Foundation.h>
+
+@interface NSString (SpecialFix)
+-(NSNumber*)lengthAsNumber;
+@end
+```
+
+同样地，创建一个带加号的实现文件 `NSString+SpecialFix.m`
+```objc
+#import "NSString+SpecialFix.h"
+
+@implementation NSString (SpecialFix)
+-(NSNumber*)lengthAsNumber {
+    NSUInteger length = [self length];
+    return [NSNumber numberWithUnsignedInt:length];
+}
+@end
+```
+
+此时在其他地方，只需要引入头文件 `NSString+SpecialFix.h`，就能够在 NSString 上使用新方法了
+```objc
+#import "NSString+SpecialFix.h"
+
+NSNumber *len = [@"hello" lengthAsNumber];
+```
+
+> **Info**
+>
+> 一开始我还在疑惑，`NSUInteger` 看起来像是个 `NSNumber` 之类的样子，为什么需要有这种装箱转换，点进去一看，其实是 `typedef unsigned long NSUInteger`，其实他是个基本类型。
+
+### 协议 protocol
+
+基本上就是 Java 的 interface
+
+协议用头文件声明，例如 `Encoder.h` 写以下内容
+
+```objc
+@protocol Encoder <NSObject>
+
+-(NSString*)encode;
+
+@end
+```
+
+类 A 遵守协议 B，等同于 Java 里面 `class A implements B {}`
+
+需要做两件事情：
+1. 需要在 `A.h` 里说明 A 遵守协议 B
+2. 需要在 `A.m` 里实现协议 B 的所有必须实现的方法（也有可选实现的方法，这种可以不实现）
+
+```objc
+@implementation A <B>
+
+-(NSString*) encode {
+    return @"encoded result";
+}
+
+@end
+```
+
+## 几何
+
+- CGFloat 浮点数
+- CGSize 宽高
+- CGPoint 二维平面点
+- CGRect 二维矩形区域表示
+
+快速创建的方法：
+- CGSizeMake
+- CGPointMake
+- CGRectMake
+
+```objc
+CGFloat w = 100;
+CGFloat h = 200;
+CGSize size = CGSizeMake(w, h);
+
+CGFloat x = 10;
+CGFloat y = 20;
+CGPoint point = CGPointMake(x, y);
+
+CGRect rect = CGRectMake(point.x, point.y, size.width, size.height);
+NSLog(@"%f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+// 10 20 100 200
+
+```
+
+## 头文件
+
+C 语言用 include，oc 两种都可以，主要用 import
+
+> **Info**
+>
+> `#import` 比 `#include` 聪明，不会重复导入已导入的文件
+
+尖括号表示系统头文件，引号表示是项目内的头文件
+
+```objc
+#import <Foundation/Foundation.h>
+#import "WRAIChatViewController.h"
+```
+
+
+## KVC
+
+该特性不是 Objective-C 的特性，其实是 Cocoa 提供的特性。
+
+```objc
+// Shape.h
+@interface Shape : NSObject <RYCopying, RYSerializable>
+
+@property float age;
+
+@end
+
+// test.m
+Shape *sh = [[Shape alloc] init];
+[sh setAge:23.2];
+float aggg = [[sh valueForKey:@"age"] floatValue];
+NSLog(@"valueForKey: %f", aggg); // 23.20001
+NSLog(@"valueForKey at: %@", [sh valueForKey:@"age"]); // 23.2
+[sh setValue:@54.3 forKey:@"age"];
+NSLog(@"valueForKey at: %@", [sh valueForKey:@"age"]); // 54.3
+```
+
+**优点**：
+- 不需要 getter/setter 方法也能访问和设置属性
+- valueForKey 拿出来的值会自动装箱
+- setValue:forKey 需要自己用 @ 包装
+
+**缺点**：不适合用键路径方式来取深嵌套的属性值，因为键路径用字符串来表达，编译器无法检查它是否正确
+
+## block
+
+### 定义
+
+C 语言函数指针写法
+```c
+int (*addFunc)(int num1, int num2);
+
+int add(int a, int b) {
+    return a + b;
+}
+
+addFunc = &add;
+```
+
+JS 写法
+```ts
+const add = (a, b) => a + b;
+```
+
+OC 写法
+
+```objc
+int (^addFunc)(int num1, int num2) = ^(int a, int b){
+    return num1 + num2;
+};
+
+int ress = addFunc(1,9);
+NSLog(@"ress: %d", ress);
+
+// 没返回值的写法
+void (^printFunc)(void) = ^{
+    NSLog(@" I am printFunc result");
+};
+
+```
+
+总而言之，OC 的语法：
+```objc
+return_type (^block_name)(args) = ^(args) {
+    logic
+}
+```
+
+### IIFC
+
+其实也可以像 JS 一样搞一个 IIFC，声明完马上执行
+
+JS 这样写
+
+```ts
+const result = (() => {
+    const a = "prefix";
+    const b = "suffix";
+    return a + b;
+})(); // prefixsuffix
+```
+
+OC 这样写
+
+```objc
+NSString* result = (^{
+    NSString *a = @"prefix";
+    NSString *b = @"suffix";
+    NSArray *components = @[a, b];
+    return [components componentsJoinedByString:@""];
+})();
+NSLog(@"result = %d", result); // prefixsuffix
+```
+
+再加个参数，JS
+
+```ts
+const result = ((a, b) => a + b)("prefix", "suffix");
+```
+
+OC
+```objc
+NSString* result = (^(NSString *a, NSString *b) {
+    NSArray *components = @[a, b];
+    return [components componentsJoinedByString:@""];
+})(@"prefix", @"suffix"); // prefixsuffix
+```
+
+### 变量捕获
+
+OC block 自动捕获这些类型的变量：
+- 全局静态变量
+- 本地变量：和 block 声明处在同一作用域内的变量
+- 参数变量
+
+捕获本地变量的时候，我猜是拷贝方式的捕获，所以在 block 中无法对引用的外部本地变量赋值
+
+需要赋值的话，引用的外部变量需要手动在声明前加一个 `__block`
+
+## 参考资料备忘
+
+[官方文档](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210-CH1-SW1)
+
+
+---
+
+# 关于 cookie 的一些总结
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-05-16
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/http-cookie/
+
+## 基本
+
+一条 cookie 应该有什么属性？
+
+### httpOnly
+当一个 Cookie 被设置为 HttpOnly 属性后，它只能通过 HTTP（或 HTTPS）协议传输，不能被客户端的 JavaScript 脚本访问。这可以有效防止跨站脚本攻击（XSS），因为攻击者无法通过注入恶意的 JavaScript 代码来获取 HttpOnly Cookie 的信息。
+
+### Secure
+Secure 属性用于指定 Cookie 只能通过安全的 HTTPS 连接传输。当浏览器与服务器之间的连接不是 HTTPS 时，浏览器不会将带有 Secure 属性的 Cookie 发送给服务器。这可以防止 Cookie 在传输过程中被中间人截获，保护 Cookie 信息的保密性。
+
+### Expires + Max-Age
+- 当 Expires 和 Max-Age 同时出现在一个 `Set-Cookie` 头中时，Max - Age 的优先级更高。
+
+## 结合 iOS 原生知识来理解 cookie
+
+### NSHTTPCookie
+`NSHTTPCookie` 是一个类，代表一条 cookie，以及含有 cookie 应该有的属性
+
+```objc
+/*	
+    NSHTTPCookie.h
+    Copyright (c) 2003-2019, Apple Inc. All rights reserved.    
+    
+    Public header file.
+*/
+
+#import <Foundation/NSObject.h>
+
+@class NSArray<ObjectType>;
+@class NSDate;
+@class NSDictionary<KeyType, ObjectType>;
+@class NSNumber;
+@class NSString;
+@class NSURL;
+
+typedef NSString * NSHTTPCookiePropertyKey NS_TYPED_EXTENSIBLE_ENUM;
+typedef NSString * NSHTTPCookieStringPolicy NS_TYPED_ENUM;
+
+NS_HEADER_AUDIT_BEGIN(nullability, sendability)
+
+- (nullable instancetype)initWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties;
+
++ (nullable NSHTTPCookie *)cookieWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties;
+
+// 快速把一系列 cookie 对象转成可以添加到请求 header 的结构
++ (NSDictionary<NSString *, NSString *> *)requestHeaderFieldsWithCookies:(NSArray<NSHTTPCookie *> *)cookies;
+
+// 从回包 header 里面找出 cookie
++ (NSArray<NSHTTPCookie *> *)cookiesWithResponseHeaderFields:(NSDictionary<NSString *, NSString *> *)headerFields forURL:(NSURL *)URL;
+
+@property (nullable, readonly, copy) NSDictionary<NSHTTPCookiePropertyKey, id> *properties;
+
+/*!
+    cookie 协议版本
+    Version 0 maps to "old-style" Netscape cookies.
+    Version 1 maps to RFC2965 cookies. There may be future versions.
+*/
+@property (readonly) NSUInteger version;
+
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *value;
+
+/*!
+    过期时间
+    如果没有定义，cookie 会在对话结束时过期
+*/
+@property (nullable, readonly, copy) NSDate *expiresDate;
+
+// 是否会话级别有效（当 Expires 和 Max-Age 都没设置的时候就是）
+@property (readonly, getter=isSessionOnly) BOOL sessionOnly;
+
+@property (readonly, copy) NSString *domain;
+@property (readonly, copy) NSString *path;
+@property (readonly, getter=isSecure) BOOL secure;
+@property (readonly, getter=isHTTPOnly) BOOL HTTPOnly;
+
+@property (nullable, readonly, copy) NSString *comment;
+@property (nullable, readonly, copy) NSURL *commentURL;
+
+@property (nullable, readonly, copy) NSArray<NSNumber *> *portList;
+
+@property (nullable, readonly, copy) NSHTTPCookieStringPolicy sameSitePolicy API_AVAILABLE(macos(10.15), ios(13.0), watchos(6.0), tvos(13.0));
+
+@end
+
+NS_HEADER_AUDIT_END(nullability, sendability)
+
+```
+
+### NSHTTPCookieStorage
+
+NSHTTPCookieStorage 是 Foundation 框架里的一个类，在 iOS、macOS 等苹果操作系统的开发中使用，主要用于管理 HTTP 协议里的 Cookie。
+
+
+```objc
+/*	
+    NSHTTPCookieStorage.h
+    Copyright (c) 2003-2019, Apple Inc. All rights reserved.    
+    
+    Public header file.
+*/
+
+#import <Foundation/NSObject.h>
+#import <Foundation/NSNotification.h>
+
+@class NSArray<ObjectType>;
+@class NSHTTPCookie;
+@class NSURL;
+@class NSDate;
+@class NSURLSessionTask;
+@class NSSortDescriptor;
+
+NS_HEADER_AUDIT_BEGIN(nullability, sendability)
+
+typedef NS_ENUM(NSUInteger, NSHTTPCookieAcceptPolicy) {
+    NSHTTPCookieAcceptPolicyAlways,
+    NSHTTPCookieAcceptPolicyNever,
+    NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain
+};
+
+@class NSHTTPCookieStorageInternal;
+
+NS_SWIFT_SENDABLE
+API_AVAILABLE(macos(10.2), ios(2.0), watchos(2.0), tvos(9.0))
+@interface NSHTTPCookieStorage : NSObject
+{
+    @private
+    NSHTTPCookieStorageInternal *_internal;
+}
+
+@property(class, readonly, strong) NSHTTPCookieStorage *sharedHTTPCookieStorage;
+
++ (NSHTTPCookieStorage *)sharedCookieStorageForGroupContainerIdentifier:(NSString *)identifier API_AVAILABLE(macos(10.11), ios(9.0), watchos(2.0), tvos(9.0));
+
+@property (nullable , readonly, copy) NSArray<NSHTTPCookie *> *cookies;
+
+- (void)setCookie:(NSHTTPCookie *)cookie;
+
+- (void)deleteCookie:(NSHTTPCookie *)cookie;
+
+- (void)removeCookiesSinceDate:(NSDate *)date API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));
+
+- (nullable NSArray<NSHTTPCookie *> *)cookiesForURL:(NSURL *)URL;
+
+- (void)setCookies:(NSArray<NSHTTPCookie *> *)cookies forURL:(nullable NSURL *)URL mainDocumentURL:(nullable NSURL *)mainDocumentURL;
+
+@property NSHTTPCookieAcceptPolicy cookieAcceptPolicy;
+
+- (NSArray<NSHTTPCookie *> *)sortedCookiesUsingDescriptors:(NSArray<NSSortDescriptor *> *) sortOrder API_AVAILABLE(macos(10.7), ios(5.0), watchos(2.0), tvos(9.0));
+
+@end
+
+@interface NSHTTPCookieStorage (NSURLSessionTaskAdditions)
+- (void)storeCookies:(NSArray<NSHTTPCookie *> *)cookies forTask:(NSURLSessionTask *)task API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));
+- (void)getCookiesForTask:(NSURLSessionTask *)task completionHandler:(void (NS_SWIFT_SENDABLE ^) (NSArray<NSHTTPCookie *> * _Nullable cookies))completionHandler API_AVAILABLE(macos(10.10), ios(8.0), watchos(2.0), tvos(9.0));
+@end
+
+FOUNDATION_EXPORT NSNotificationName const NSHTTPCookieManagerAcceptPolicyChangedNotification API_AVAILABLE(macos(10.2), ios(2.0), watchos(2.0), tvos(9.0));
+
+FOUNDATION_EXPORT NSNotificationName const NSHTTPCookieManagerCookiesChangedNotification API_AVAILABLE(macos(10.2), ios(2.0), watchos(2.0), tvos(9.0));
+
+NS_HEADER_AUDIT_END(nullability, sendability)
+```
+
+### 手动给某个域注入 cookie
+
+正好遇到这种需求，来练练手，其实比较简单，搞个输入框获取一下 cookie，然后解析，再创建 NSHTTPCookie 对象，用 NSHTTPCookieStorage 设置进去就好了
+
+```objc
+NSString* cookieString = textFromInputView;
+// 先按分号和空格分割Cookie字符串
+NSArray *cookiePairs = [cookieString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"; "]];
+
+for (NSString *pair in cookiePairs) {
+    if (pair.length == 0) continue;
+    NSArray *components = [pair componentsSeparatedByString:@"="];
+    if (components.count != 2) {
+        [CustomUITips showError:@"输入必须是 key1=value1;key2=value2 的形式"];
+        break;
+    }
+    NSString *key = components[0];
+    NSString *value = components[1];
+    NSLog(@"setCookie key=%@", key);
+    NSLog(@"setCookie value=%@", value);
+    NSDictionary *cookieProperties = @{
+        NSHTTPCookieDomain: @"weread.qq.com",
+        NSHTTPCookiePath: @"/",
+        NSHTTPCookieName: key,
+        NSHTTPCookieValue: value,
+        NSHTTPCookieExpires: [NSDate dateWithTimeIntervalSinceNow:3600] // 1小时后过期
+    };
+    NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+}
+```
+
+
+---
+
+# nginx 笔记
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-05-15
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/nginx/
+
+下面是Nginx HTTP配置中常见的配置实例，涵盖了静态文件服务、反向代理、负载均衡、缓存设置等核心功能：
+
+## Commands
+
+使用以下命令测试配置是否正确：
+```bash
+nginx -t
+```
+
+如果配置无误，Nginx 会重新加载配置：
+```bash
+nginx -s reload
+```
+
+## server_name
+
+在 Nginx 配置中，`server_name` 指令用于指定虚拟主机（Virtual Host）的域名或 IP 地址，它决定了 Nginx 如何根据客户端请求的域名来分发流量到不同的服务器块（`server` 块）。这是实现基于名称的虚拟主机（Name-based Virtual Hosting）的核心机制。
+
+
+### **核心作用**
+1. **域名匹配**：当客户端发送 HTTP 请求时，请求头中的 `Host` 字段会携带域名（如 `example.com`），Nginx 通过 `server_name` 匹配该域名，将请求路由到对应的 `server` 块。
+2. **多域名支持**：一个 `server` 块可以配置多个域名，用空格分隔。
+3. **默认服务器**：当请求的域名没有匹配到任何 `server_name` 时，请求会被路由到默认的 `server` 块（由 `listen` 指令的 `default_server` 参数指定）。
+
+
+### **配置示例**
+```sh
+# 示例1：匹配单个域名
+server {
+    listen 80;
+    server_name example.com;  # 仅匹配 example.com
+    root /var/www/example;
+}
+
+# 示例2：匹配多个域名
+server {
+    listen 80;
+    server_name example.com www.example.com;  # 同时匹配带www和不带www的域名
+    root /var/www/example;
+}
+
+# 示例3：使用通配符
+server {
+    listen 80;
+    server_name *.example.com;  # 匹配所有子域名（如 blog.example.com）
+    root /var/www/subdomains;
+}
+
+# 示例4：使用正则表达式
+server {
+    listen 80;
+    server_name ~^(.*)\.example\.com$;  # 正则匹配，$1 可在配置中引用
+    root /var/www/$1;
+}
+
+# 示例5：默认服务器
+server {
+    listen 80 default_server;  # 所有未匹配的请求都会路由到这里
+    server_name _;  # 使用下划线作为占位符
+    return 444;  # 直接关闭连接或返回自定义错误页
+}
+```
+
+
+### **匹配优先级规则**
+当一个请求的 `Host` 头可以匹配多个 `server_name` 时，Nginx 按以下顺序选择最高优先级的 `server` 块：
+1. **精确匹配**：例如 `server_name example.com`。
+2. **以星号开头的通配符匹配**：例如 `server_name *.example.com`。
+3. **以星号结尾的通配符匹配**：例如 `server_name mail.*`。
+4. **正则表达式匹配**：例如 `server_name ~^www\d+\.example\.com$`。
+5. **默认服务器**：由 `listen` 指令的 `default_server` 参数指定。
+
+
+### **常见应用场景**
+1. **同一 IP 托管多个网站**：在一台服务器上通过不同域名提供多个网站服务。
+   ```nginx
+   server {
+       listen 80;
+       server_name site1.com;
+       root /var/www/site1;
+   }
+
+   server {
+       listen 80;
+       server_name site2.com;
+       root /var/www/site2;
+   }
+   ```
+
+2. **处理 www 和非 www 域名**：将不带 www 的请求重定向到带 www 的域名。
+   ```nginx
+   server {
+       listen 80;
+       server_name example.com;
+       return 301 http://www.example.com$request_uri;
+   }
+
+   server {
+       listen 80;
+       server_name www.example.com;
+       root /var/www/example;
+   }
+   ```
+
+3. **子域名分发**：将不同子域名指向不同目录或后端服务。
+   ```nginx
+   server {
+       listen 80;
+       server_name api.example.com;
+       proxy_pass http://backend_api;
+   }
+
+   server {
+       listen 80;
+       server_name blog.example.com;
+       root /var/www/blog;
+   }
+   ```
+
+
+### **注意事项**
+1. **大小写不敏感**：`server_name` 匹配时不区分大小写（如 `EXAMPLE.COM` 和 `example.com` 等效）。
+2. **客户端必须发送 `Host` 头**：在 HTTP/1.1 中，`Host` 头是必需的。如果客户端不发送（如 HTTP/1.0 请求），Nginx 会将请求路由到默认服务器。
+3. **泛域名解析**：若要匹配所有子域名，需配置 DNS 将所有子域名（如 `*.example.com`）解析到服务器 IP。
+4. **正则表达式性能**：正则表达式匹配比精确匹配和通配符匹配更消耗性能，应尽量避免在高并发场景中大量使用。
+
+
+### **总结**
+`server_name` 是 Nginx 实现多站点、多域名服务的基础，通过灵活配置域名匹配规则，可以高效地将流量分发到不同的应用或服务中。合理设置默认服务器和优先级规则，能有效提升网站的可用性和安全性。
+
+## 手册
+
+### 1. 基础HTTP服务器配置
+```nginx
+http {
+    # 基本设置
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile      on;
+    keepalive_timeout  65;
+    
+    # 日志设置
+    access_log  /var/log/nginx/access.log;
+    error_log   /var/log/nginx/error.log;
+    
+    # Gzip压缩
+    gzip  on;
+    gzip_types text/plain text/css application/json application/javascript;
+    
+    # 虚拟主机配置
+    server {
+        listen       80;
+        server_name  example.com;
+        root         /var/www/html;
+        
+        # 访问控制
+        location /admin/ {
+            auth_basic           "Admin Area";
+            auth_basic_user_file /etc/nginx/.htpasswd;
+        }
+        
+        # 默认首页
+        index index.html index.htm;
+        
+        # 错误页面
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /var/www/error_pages;
+        }
+    }
+}
+```
+
+### 2. 反向代理配置
+```nginx
+server {
+    listen 80;
+    server_name api.example.com;
+    
+    location / {
+        proxy_pass http://backend_server:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # 超时设置
+        proxy_connect_timeout 30s;
+        proxy_send_timeout    60s;
+        proxy_read_timeout    60s;
+        
+        # 缓冲区设置
+        proxy_buffer_size          128k;
+        proxy_buffers              4 256k;
+        proxy_busy_buffers_size    256k;
+    }
+}
+```
+
+### 3. 负载均衡配置
+```nginx
+http {
+    # 负载均衡组
+    upstream backend_servers {
+        # 轮询策略（默认）
+        server backend1.example.com weight=5;
+        server backend2.example.com weight=3;
+        server backend3.example.com backup;  # 备用服务器
+        
+        # IP哈希策略（保证同一客户端请求到同一服务器）
+        # ip_hash;
+        
+        # 最少连接策略
+        # least_conn;
+    }
+    
+    server {
+        listen 80;
+        server_name loadbalancer.example.com;
+        
+        location / {
+            proxy_pass http://backend_servers;
+            proxy_http_version 1.1;
+            proxy_set_header Connection "";  # 启用HTTP/1.1的keepalive
+        }
+    }
+}
+```
+
+### 4. 静态文件服务优化
+```nginx
+server {
+    listen 80;
+    server_name static.example.com;
+    
+    location /static/ {
+        root /data/www;
+        expires 30d;  # 静态资源缓存30天
+        add_header Cache-Control "public";
+        
+        # 禁用日志以提高性能
+        access_log off;
+        log_not_found off;
+    }
+    
+    # 大文件下载优化
+    location /download/ {
+        sendfile on;
+        sendfile_max_chunk 1m;  # 防止worker进程阻塞
+        tcp_nopush on;
+    }
+}
+```
+
+### 5. HTTPS配置
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+    return 301 https://$host$request_uri;  # HTTP重定向到HTTPS
+}
+
+server {
+    listen 443 ssl http2;
+    server_name example.com;
+    
+    # SSL证书配置
+    ssl_certificate      /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key  /etc/nginx/ssl/key.pem;
+    
+    # SSL优化
+    ssl_protocols TLSv1.3 TLSv1.2;  # 仅支持现代TLS协议
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    
+    # HSTS头部（强制HTTPS）
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    
+    # OCSP Stapling
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+}
+```
+
+### 6. 缓存配置
+```nginx
+http {
+    # 定义缓存区域
+    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=60m use_temp_path=off;
+    
+    server {
+        listen 80;
+        server_name cache.example.com;
+        
+        location / {
+            proxy_pass http://backend;
+            proxy_cache my_cache;  # 使用上面定义的缓存区域
+            
+            # 缓存策略
+            proxy_cache_valid 200 302 10m;  # 成功响应缓存10分钟
+            proxy_cache_valid 404      1m;  # 404缓存1分钟
+            
+            # 缓存键设置
+            proxy_cache_key "$scheme$request_method$host$request_uri";
+            
+            # 缓存穿透控制
+            proxy_cache_min_uses 3;  # 请求3次后才缓存
+            proxy_no_cache $cookie_auth;  # 带认证cookie的请求不缓存
+        }
+    }
+}
+```
+
+### 7. 限流配置
+```nginx
+http {
+    # 定义限流区域
+    limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;
+    
+    server {
+        listen 80;
+        
+        location /api/ {
+            # 突发请求处理
+            limit_req zone=mylimit burst=20 nodelay;
+            
+            # 连接数限制
+            limit_conn perip 5;  # 每个IP最多5个并发连接
+            limit_conn perserver 100;  # 服务器总并发连接数限制
+            
+            # 带宽限制
+            limit_rate 100k;  # 限制下载速度为100KB/s
+        }
+    }
+}
+```
+
+### 8. URL重写与跳转
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+    
+    # 移除尾部斜杠
+    rewrite ^/(.*)/$ /$1 permanent;
+    
+    # 旧URL跳转
+    rewrite ^/old-path/(.*)$ /new-path/$1 redirect;
+    
+    # 根据参数跳转
+    if ($args ~* "id=(\d+)") {
+        return 301 /item/$1;
+    }
+    
+    # 基于目录的跳转
+    location /blog/ {
+        rewrite ^/blog/(.*)$ https://blog.example.com/$1 permanent;
+    }
+}
+```
+
+### 9. WebSocket代理
+```nginx
+server {
+    listen 80;
+    
+    location /ws/ {
+        proxy_pass http://websocket_backend;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+        
+        # 防止WebSocket连接超时
+        proxy_read_timeout 86400;
+    }
+}
+```
+
+### 10. 防盗链配置
+```nginx
+server {
+    listen 80;
+    
+    location ~* \.(jpg|jpeg|png|gif|pdf)$ {
+        valid_referers none blocked example.com *.example.com;
+        
+        if ($invalid_referer) {
+            return 403;
+            # 或者重定向到防盗链图片
+            # rewrite ^/ http://example.com/forbidden.png;
+        }
+    }
+}
+```
+
+这些配置示例覆盖了Nginx HTTP模块的核心功能，实际使用时可以根据需求进行组合和调整。
+
+
+---
+
+# 使用 puppeteer 批量生成微信读书 423 活动勋章
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-04-25
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/weread-medals-generator/
+
+## 背景
+
+众所周知，每年 4 月 23 日是世界读书日，微信读书这次又搞活动了，要给每个用户生成一个独特的勋章。
+
+这个勋章有多独特呢？勋章上面会有两个数字，左上角的数字代表用户注册微信读书到现在的总年数，右下角的数字代表用户这些年来总共读过多少本书。
+
+例如我注册了 8 年，读过 230 本书，勋章就是下面这个样子👇（惭愧，没怎么好好读书
+
+![我的勋章](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/y8_b230.png)
+
+微信读书 App 上架至今总共 10 年，所以左上角数字的范围是 1～10。
+
+当然，一个人可以读过很多本书，我们这里做了限制，如果读过超过 1000 本书，就展示 999+
+
+所以，最尊贵的勋章，是这个样子的：
+
+![10周年999+勋章](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/y10_b1000.png)
+
+勋章需要 2 种尺寸，可能的组合有:
+
+```
+10 年 * 1000 本 * 2 种尺寸 = 20000 个
+```
+
+这样的量级，让设计师手撸，画到明年 423 才能画完。
+
+于是简单搞个工具来批量生产它！解放人力。
+
+我们主要用到:
+
+- **Node.js**: 作为主要的运行环境
+- **[Puppeteer](https://pptr.dev/)**: 用于网页渲染和截图
+- **[EJS](https://www.npmjs.com/package/ejs)**: 用于模板渲染
+- **[Sharp](https://www.npmjs.com/package/sharp)**: 用于图片处理和优化
+- **[Yargs](https://www.npmjs.com/package/yargs)**: 用于构建命令行接口
+
+## 一、使用合适的方式表达设计结构
+
+## 二、模板渲染
+
+使用 EJS 模板引擎，我们可以将勋章的设计模板化：
+
+```html
+<div class="diagram">
+    <div class="circle">
+        <div class="rectangle">
+            <div class="number-image-container">
+                <!-- 动态渲染数字 -->
+            </div>
+        </div>
+    </div>
+</div>
+```
+## 三、使用 Puppeteer 截图
+
+Puppeteer 是一个 Node.js 库，它提供了一个高级 API 来通过 DevTools 协议控制 Chrome/Chromium。在我们的项目中，它扮演着关键角色：
+
+1. **创建无头浏览器实例**
+```javascript
+const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
+```
+
+2. **初始化画布**
+```javascript
+const page = await browser.newPage();
+await page.setViewport({
+    width: w,
+    height: h,
+    deviceScaleFactor: scale
+});
+```
+
+3. **加载 HTML**
+```javascript
+await page.setContent(html, {
+    waitUntil: 'networkidle0',
+    timeout: waitTime
+});
+```
+
+4. **截图**
+```javascript
+const screenshotBuffer = await page.screenshot({
+    type: 'png',
+    omitBackground: true,
+    encoding: 'binary',
+    fromSurface: true
+});
+```
+
+## 四、让勋章生成得更快
+
+为了提高生成效率，我们实现了多层次的并行处理机制：
+
+1. **工作进程池**
+```javascript
+const workers = Array.from({ length: parallelCount }, async () => {
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+    const page = await browser.newPage();
+    await page.setViewport({ width: w, height: h, deviceScaleFactor });
+    return { browser, page, busy: false };
+});
+```
+
+2. **任务分配机制**
+```javascript
+const processTask = async (worker, number) => {
+    worker.busy = true;
+    try {
+        const result = await createMedal(
+            worker.page,
+            year,
+            number,
+            worker.index,
+            quality,
+            compressionLevel,
+            waitTime
+        );
+        return result;
+    } finally {
+        worker.busy = false;
+    }
+};
+```
+
+3. **动态负载均衡**
+```javascript
+const getIdleWorker = () => workers.find(w => !w.busy);
+const allWorkersIdle = () => workers.every(w => !w.busy);
+```
+
+4. **进度监控**
+```javascript
+const updateProgress = (success = true) => {
+    if (success) {
+        completed++;
+    } else {
+        failed++;
+    }
+    if ((completed + failed) % 10 === 0 || (completed + failed) === total) {
+        console.log(`进度: ${completed}/${total} (${Math.floor(completed/total*100)}%), 失败: ${failed}`);
+    }
+};
+```
+
+## 五、性能优化策略
+
+1. **资源管理**
+   - 复用浏览器实例
+   - 动态调整并行数量
+   - 及时释放内存
+
+2. **渲染优化**
+   - 使用 `networkidle0` 等待策略
+   - 优化页面加载超时
+   - 控制内存使用
+
+3. **并发控制**
+   - 避免资源竞争
+   - 动态任务分配
+   - 错误重试机制
+
+
+> **Info**
+>
+> Puppeteer 提供了[多种页面生命周期 hook](https://pptr.dev/api/puppeteer.puppeteerlifecycleevent)，每种都有其特定的使用场景：
+>
+> - **networkidle0**: 当网络连接数在 500ms 内为 0 时，认为页面加载完成（最严格，确保所有网络请求都完成）
+>
+> - **networkidle2**: 当网络连接数在 500ms 内不超过 2 个时，认为页面加载完成（允许少量后台请求继续运行）
+>
+> - **load**: 当 `load` 事件触发时，认为页面加载完成（速度快，只需要等待 DOM 加载完成）
+>
+> - **domcontentloaded**: 当 `DOMContentLoaded` 事件触发时，认为页面加载完成（速度最快，但可能错过样式和图片加载）
+
+在我们的项目中，选择 `networkidle0` 策略的原因是：
+1. 确保所有图片资源完全加载
+2. 避免截图时出现未加载完成的内容
+3. 保证生成的勋章图片质量
+
+## 六、图片压缩
+
+勋章生成是生成完了，发现每一张都要 200-400 KB
+
+一个几百 KB 的勋章，对于 H5 展示来说还是太大了，我们要压一下大小。
+
+Sharp 是一个 Node.js 图片处理库，用它来搞一搞。
+
+1. **基础配置**
+```javascript
+const sharp = require('sharp');
+
+// 配置默认参数
+const defaultOptions = {
+    quality: 80,        // 图片质量（0-100）
+    compressionLevel: 9 // 压缩级别（0-9）
+};
+```
+
+2. **图片处理流程**
+```javascript
+// 处理并保存图片
+await sharp(screenshotBuffer)
+    .png({
+        quality: quality,           // 控制图片质量
+        compressionLevel: compressionLevel, // 控制压缩级别
+        palette: false,             // 不希望减少颜色，所以不使用调色板优化
+        effort: 10                 // 压缩努力程度（1-10）
+    })
+    .toFile(outputPath);
+```
+
+3. **压缩策略详解**
+
+- **质量控制（quality）**
+  - 范围：0-100
+  - 值越大，图片质量越高，文件越大
+  - 值越小，图片质量越低，文件越小
+  - 建议值：80-90 之间，平衡质量和大小
+
+- **压缩级别（compressionLevel）**
+  - 范围：0-9
+  - 0：最快但压缩率最低
+  - 9：最慢但压缩率最高
+  - 建议值：6-9 之间，根据需求平衡
+
+
+- **批量处理**
+```javascript
+// 并行处理多张图片
+const processImage = async (buffer, options) => {
+    return sharp(buffer)
+        .png(options)
+        .toBuffer();
+};
+
+const results = await Promise.all(
+    images.map(img => processImage(img, options))
+);
+```
+
+- **错误处理**
+```javascript
+try {
+    await sharp(buffer)
+        .png(options)
+        .toFile(outputPath);
+} catch (error) {
+    console.error('图片处理失败:', error);
+    // 降级处理或重试
+}
+```
+
+在我们的项目中，通过调整这些参数，我们实现了：
+- 文件大小减少 40-60%
+- 保持图片清晰度
+- 处理速度提升 30-50%
+
+## 七、使用示例
+
+```bash
+# 生成单个勋章
+node index.js --year 2023 --number 42
+
+# 生成某年的所有勋章
+node index.js --year 2023 --all
+
+# 使用并行模式生成
+node index.js --year 2023 --all --parallel 4
+```
+
+## 八、技术要点总结
+
+1. **模板化设计**
+   - 使用 EJS 模板引擎实现勋章的动态渲染
+   - 支持自定义背景图片和数字样式
+   - 灵活处理不同位数的数字显示
+
+2. **自动化生成**
+   - 支持批量生成指定年份的所有勋章
+   - 支持并行处理提高效率
+   - 自动处理图片压缩和优化
+
+3. **命令行工具**
+   - 提供友好的命令行接口
+   - 支持多种参数配置
+   - 灵活控制生成过程
+
+## 九、结语
+
+这个项目展示了如何将现代 Web 技术应用于图片生成领域。通过合理的架构设计和性能优化，我们实现了一个高效、可靠的勋章生成工具。这不仅提高了工作效率，也为类似需求提供了可参考的解决方案。
+
+
+---
+
+# 移动端 WebView 如何 hook 日志到客户端
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-04-08
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/hook-webview-console/
+
+## 背景
+
+移动端混合开发中，我们可能会嵌入 RN 或者嵌入 WebView，他们的 JS 都是在自己的引擎里运行的。
+
+例如: 
+- [RN](https://reactnative.dev/) 的 js 在 [Hermes](https://github.com/facebook/hermes) 里运行
+- iOS 上的 WKWebView 中，js 在[JavaScriptCore](https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html) 引擎上运行
+- Android 上的 WebView 中，js 在 [V8](https://v8.dev/) 引擎里运行。
+
+默认情况下，它们的 `console.log`（包括 info/warn/error 等一系列方法）打印的日志都不会输出到客户端。
+
+这种条件下，出 bug 需要还原现场的时候，以 iOS 为例，往往需要**打开 Safari 去 inspect 控制台里看日志**，非常麻烦。
+
+最完整的「案发现场」往往是日志，所以我们想到把 WebView 的日志打到原生 App 的日志里面去。
+
+这里简单介绍如何在 iOS 和 Android 平台上将网页日志信息 hook 到客户端，**两端实现略有差异**。
+
+## 基础调研
+
+在 **iOS** 中，通常使用 WKWebView 来加载网页，我们可以通过 WKScriptMessageHandler 协议来实现拦截日志。具体步骤如下：
+1. 在 HTML 页面中重写 `console` 对象的方法，将日志信息通过 `window.webkit.messageHandlers` 发送给原生代码
+2. 在原生代码中，在持有 WebView 的那个 VC 中，实现 [WKScriptMessageHandler](https://developer.apple.com/documentation/webkit/wkscriptmessagehandler?language=objc) 协议的 `(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message `
+
+**Android** 提供了 WebChromeClient 这个类，WebView 可以通过 `setWebChromeClient(new WebChromeClient(...))` 来设置一个自己的实现，可以通过重写这个类里面的 [onConsoleMessage](https://developer.android.com/reference/android/webkit/WebChromeClient#onConsoleMessage(android.webkit.ConsoleMessage)) 方法来打日志。
+
+> **Info**
+>
+> 注意，iOS 需要在 HTML 中做配合，重写 console 方法的那段 script 理论上应该放在任何 console.log 之前，以避免我们抓漏日志，可以放在 head 标签最前面。
+
+## 实现思路
+1. 在 HTML 页面中，对 `console.log`、`console.error`、`console.warn` 等方法进行重写，让它们先走 `window.webkit.messageHandler.postMessage` 向 WKWebView 传递信息，然后再执行原本的逻辑。
+2. 在 iOS 原生代码里，让持有 WebView 的 VC 实现 `WKScriptMessageHandler` 协议捕获这些日志信息，然后调用原生侧的打日志方法。
+3. 在 Android 原生代码中，手动通过 setWebChromeClient 来 hook 控制台的输出，调用原生侧打日志的方法。
+
+## HTML 侧
+
+### 纯 HTML 写法
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Hook Example</title>
+    <script>
+        // 重写 console 方法
+        const originalConsoleLog = console.log;
+        const originalConsoleInfo = console.info;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+
+        console.log = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'log', message });
+            originalConsoleLog.apply(console, arguments);
+        };
+
+        console.info = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'info', message });
+            originalConsoleInfo.apply(console, arguments);
+        };
+
+        console.error = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'error', message });
+            originalConsoleError.apply(console, arguments);
+        };
+
+        console.warn = function() {
+            const message = Array.from(arguments).join(' ');
+            window.webkit.messageHandlers.ConsoleLog.postMessage({ type: 'warn', message });
+            originalConsoleWarn.apply(console, arguments);
+        };
+    </script>
+</head>
+<body>
+    <button onclick="console.log('这是一条 log 信息')">打印日志</button>
+    <button onclick="console.info('这是一条 info 信息')">打印日志</button>
+    <button onclick="console.error('这是一条错误信息')">打印错误</button>
+    <button onclick="console.warn('这是一条警告信息')">打印警告</button>
+</body>
+</html>
+```
+
+> **注意**
+>
+> 这里只是简单的把参数拼接了起来，可能会出现 `my log: [object Object]` 这样的输出，可以视业务需要，在 join 之前把每个参数 `JSON.stringify` 一下，当然，要记得添加 try-catch
+
+### NextJS 写法
+
+如果框架是 NextJS 可以这么写:
+
+Next.js 提供了 `<Script/>` 组件，有一个名为 [strategy](https://nextjs.org/docs/pages/api-reference/components/script#strategy) 的 prop 可以控制它应该被插入在哪里
+
+The loading strategy of the script. There are four different strategies that can be used:
+
+- `beforeInteractive`: Load before any Next.js code and before any page hydration occurs.
+- `afterInteractive`: (default) Load early but after some hydration on the page occurs.
+- `lazyOnload`: Load during browser idle time.
+- `worker`: (experimental) Load in a web worker.
+
+> Scripts with `beforeInteractive` will always be injected inside the head of the HTML document regardless of where it's placed in the component. This strategy should only be used for critical scripts that need to be fetched as soon as possible.
+
+我们可以选择 `beforeInteractive` 策略，使得脚本插入位置尽可能早
+
+```tsx
+<Script id="hook-console-log" strategy="beforeInteractive">
+    {/* 这里放一下上面那段脚本`*/}
+</Script>
+```
+
+最后会发现它就插入在 head 里面:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504082344198.png)
+
+
+## iOS
+
+### 步骤
+
+让 `MyWebViewController` 遵循 `WKScriptMessageHandler` 协议
+
+```objc
+// MyWebViewController.h
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+
+@interface MyWebViewController : UIViewController <WKScriptMessageHandler>
+
+// 其他属性和方法声明
+@end
+```
+
+实现 `WKScriptMessageHandler` 协议的 `userContentController:didReceiveScriptMessage:` 方法。
+
+```objc
+// MyWebViewController.m
+#import "MyWebViewController.h"
+
+@implementation MyWebViewController
+
+// 实现 WKScriptMessageHandler 协议的方法
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    // 处理接收到的消息
+    if ([message.name isEqualToString:@"ConsoleLog"]) {
+        // 处理特定消息
+        NSLog(@"Received message: %@", message.body);
+    }
+}
+
+// 其他方法实现
+@end
+```
+
+创建 `WKUserContentController` 实例，接收对应的事件，然后赋值给 `WKWebViewConfiguration` 的 userContentController
+
+```objc
+// 在某个方法中设置消息处理程序
+WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+
+WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+
+[userContentController addScriptMessageHandler:self name:@"ConsoleLog"]; // 这里的 self 就是 MyWebViewController 实例
+config.userContentController = userContentController;
+
+WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+```
+
+### 代码示例
+
+下面是一个完整的示例代码：
+
+```objc
+// MyWebViewController.h
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+
+@interface MyWebViewController : UIViewController <WKScriptMessageHandler>
+
+@end
+
+// MyWebViewController.m
+#import "MyWebViewController.h"
+
+@implementation MyWebViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+    [userContentController addScriptMessageHandler:self name:@"ConsoleLog"];
+    config.userContentController = userContentController;
+
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+    [self.view addSubview:webView];
+
+    NSString *html = @"<html><body><button onclick=\"window.webkit.messageHandlers.ConsoleLog.postMessage('Hello from JavaScript')\">Send Message</button></body></html>";
+    [webView loadHTMLString:html baseURL:nil];
+}
+
+// 处理 JavaScript 发送的消息
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    if ([message.name isEqualToString:@"ConsoleLog"]) {
+        NSDictionary *logInfo = message.body;
+        NSString *logType = logInfo[@"type"];
+        NSString *logMessage = logInfo[@"message"];
+
+        if ([logType isEqualToString:@"log"]) {
+            NSLog(@"Console Log: %@", logMessage);
+        } else if ([logType isEqualToString:@"error"]) {
+            NSLog(@"Console Error: %@", logMessage);
+        } else if ([logType isEqualToString:@"warn"]) {
+            NSLog(@"Console Warn: %@", logMessage);
+        }
+    }
+}
+
+@end
+```
+
+这个示例代码展示了如何让 `MyWebViewController` 遵循 `WKScriptMessageHandler` 协议，并且处理从 JavaScript 发送过来的消息。 
+
+> **提醒**
+>
+> 这里的 `NSLog` 一般需要替代成业务实际使用的日志方法
+
+> **注意**
+>
+> - 在 iOS 14 及以上版本中，若要使用 `WKScriptMessageHandler`，需在 `Info.plist` 文件里添加 `NSAppTransportSecurity` 字典，并将 `NSAllowsArbitraryLoads` 设置为 `YES`。
+
+
+## Android
+
+### 代码示例
+
+在 `MainActivity.java` 中对 WebView 进行配置，启用 JavaScript 支持，设置 WebChromeClient 并重写 `onConsoleMessage` 方法，用于拦截和处理 HTML 控制台的输出。根据控制台消息的级别（如 `LOG`、`ERROR`、`WARN` 等），将消息输出到 Android 的日志系统中。
+
+```kotlin
+import android.os.Bundle
+import android.util.Log
+import android.webkit.ConsoleMessage
+import android.webkit.WebChromeClient
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var webView: WebView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        webView = findViewById(R.id.webView)
+
+        // 启用 JavaScript 支持
+        webView.settings.javaScriptEnabled = true
+
+        // 设置 WebViewClient
+        webView.webViewClient = WebViewClient()
+
+        // 设置 WebChromeClient 来处理控制台输出
+        webView.webChromeClient = object : WebChromeClient() {
+            override fun onConsoleMessage(consoleMessage: ConsoleMessage): Boolean {
+                // 处理控制台输出
+                val message = consoleMessage.message()
+                val sourceId = consoleMessage.sourceId()
+                val lineNumber = consoleMessage.lineNumber()
+                val messageLevel = consoleMessage.messageLevel()
+
+                when (messageLevel) {
+                    ConsoleMessage.MessageLevel.LOG -> {
+                        Log.d("WebViewConsole", "Log: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.ERROR -> {
+                        Log.e("WebViewConsole", "Error: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.WARN -> {
+                        Log.w("WebViewConsole", "Warn: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.DEBUG -> {
+                        Log.d("WebViewConsole", "Debug: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                    ConsoleMessage.MessageLevel.TIP -> {
+                        Log.i("WebViewConsole", "Tip: $message (Source: $sourceId, Line: $lineNumber)")
+                    }
+                }
+
+                return true
+            }
+        }
+
+        // 加载 HTML 文件或 URL
+        webView.loadUrl("file:///android_asset/index.html")
+    }
+}
+```
+
+
+## 总结
+
+最后来总结一下：
+- iOS 无法从原生直接 hook，所以在 HTML 最前面插入一段脚本，预先把所有 console 日志方法全部改写，Web 和原生两侧都加入通信逻辑，相当于所有日志旁路一份给原生；
+- Android 可以直接 hook 控制台输出，所以不需要用通信的方式。
+
+
+---
+
+# 解决了一个豆包还没解决的 Markdown 渲染问题
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-03-11
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/markdown-emphasis-fix/
+
+## 背景
+在近期公司业务开发中，需要对大模型生成的 Markdown 文本进行解析并在移动端 WebView 上渲染，我们遇到了一个 Markdown 渲染问题：
+
+AI 生成的Markdown文本中，部分加粗内容无法正确解析，导致原始星号直接显示在页面上。
+
+经过深入分析，我们发现这是 [**markdown-it 解析器**](https://github.com/markdown-it/markdown-it)的特定规则导致的，并通过巧妙的预处理方案解决了该问题。
+
+
+## 问题表现
+当 AI 生成的 Markdown 文本中存在类似 `**我是加粗文本**` 的格式时，渲染结果本应是 **我是加粗文本**，但有时会变成 `**我是加粗文本**`，如下图: 
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111129593.png)
+
+
+经过多次复现，发现这些基本 case 都是没问题的：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111133689.png)
+
+
+❗问题集中出现在**「双星号紧跟着标点符号（无论中文还是英文标点）」**的情况：
+
+> 如果你仔细点看，你会发现我描述问题的这句话 👆，加粗识别也是有问题的
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111137645.png)
+
+当时查这个问题的时候，大概是 3-11 左右，当时 DeepSeek 官网也有这个问题，我一想，吹牛逼的机会这不就来了吗，马上查一下😂
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131136290.png)
+
+> **补充**
+>
+> 截至码字的今天（6 月 13 日），豆包也还没有解决这个问题，我们构造一个问题就可以轻松复现：
+> ![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131135154.png)
+>
+> ![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131136258.png)
+>
+
+## 原因分析
+
+结合 Markdown 处理的基本流程考虑：
+1. tokenizer 将输入的 Markdown 字符串转为 tokens
+2. 将 tokens 转换为 AST
+3. 将每个 AST 块的渲染权交给开发者定制（或者使用内置默认样式）
+
+怀疑背后原因是解析器在将 Markdown 文本转 token 的时候，识别到了双星号，但未将其作为加粗结构的开启符，导致双星号被当成普通文本处理，从而直接显示出来。
+
+通过查阅 markdown-it 仓库的[指示](https://github.com/markdown-it/markdown-it?tab=readme-ov-file#manage-rules)及其源码，可以发现解析器的核心就是三个文件：
+- [lib/parser_core.mjs](https://github.com/markdown-it/markdown-it/blob/master/lib/parser_core.mjs)
+- [lib/parser_inline.mjs](https://github.com/markdown-it/markdown-it/blob/master/lib/parser_inline.mjs)
+- [lib/parser_block.mjs](https://github.com/markdown-it/markdown-it/blob/master/lib/parser_block.mjs)
+
+
+合理猜测，我们需要排查的规则是「加粗规则」，加粗文本属于 inline 元素，可以先看一下 `parser_inline.mjs`，果然找到了一条叫 emphasis 的规则:
+
+```js
+const _rules = [
+  ['text',            r_text],
+  ['linkify',         r_linkify],
+  ['newline',         r_newline],
+  ['escape',          r_escape],
+  ['backticks',       r_backticks],
+  ['strikethrough',   r_strikethrough.tokenize],
+  ['emphasis',        r_emphasis.tokenize], // here
+  ['link',            r_link],
+  ['image',           r_image],
+  ['autolink',        r_autolink],
+  ['html_inline',     r_html_inline],
+  ['entity',          r_entity]
+]
+```
+
+进去之后，果然，这条规则就是专门处理被 `_` 或 `*` 包围的文本的，并且核心逻辑应该位于这个函数里：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111200122.png)
+
+继续往里看，从注释以及大量的字符位置判断处理，可以大胆猜测这就是我们想找的代码：
+
+> Scan a sequence of emphasis-like markers, and determine whether it can start an emphasis sequence or end an emphasis sequence.
+> 扫描加粗标记，并判断他们是否能够开启一段加粗文本序列。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111203198.png)
+
+加粗符号能否开启 or 关闭一段加粗序列，我们只需要关注 `can_open` 和 `can_close` 的判断条件
+
+从上一段代码可以注意到，星号加粗的情况，带进来的第二个参数 `canSplitWord` 是 `true`，所以等价于：
+
+只需要看:
+- `left_flanking` 为 true 就是可开启，否则不可开启
+- `right_flanking` 同理
+
+我们分析下 `left_flanking` 的情况（因为 `right_flanking` 和他是镜面对称的，可以以此类推）
+
+我们将双星号前后分别称为 lastChar 和 nextChar:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111213379.png)
+
+所以我们发现双星号（`**`）被解析为加粗开启符的条件是：nextChar 必须非空, 再满足以下三个条件任意一个：
+1. nextChar 不是标点
+2. lastChar 是空格
+3. lastChar 是标点
+
+这里听起来有点绕，其实用图来表示很简单：
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111224211.png)
+
+回顾一下我们最常见的 bad case，其实就是第四种情况，本应作为开启符的双星号，后面跟了个中文/英文引号，前面又是个汉字（非标点），所以最后出来 `can_open` 为 `false`
+
+
+## 解决思路
+
+知道了原因之后，还得想办法解决，解决思路无非是这几个之一：
+1. 修改解析器源码，让我们的 case 也能通过
+2. 想办法让我们的 case 变成解析器认可的情况
+
+方法 1 本质上是通过修改解析库的公共方法来「修改规则」，可能影响面短时间有点难摸清楚
+
+方法 2 是在现有的规则里找漏洞，绕过去
+
+我的大佬同事 @gtbl 提了一个办法: **在所有双星号两边加两个[零宽空格](https://zh.wikipedia.org/zh-cn/%E9%9B%B6%E5%AE%BD%E7%A9%BA%E6%A0%BC)**
+
+回过头来看看这个解析器是怎么判断空格的：
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111252404.png)
+
+我们惊喜地发现：零宽空格 `\u200B` 逃过了这个判断，换句话说，如果遇到在双星号旁边的零宽空格，解析器会把它认为是「非空格」字符
+
+> **零宽空格**
+>
+> 零宽空格（英语：zero-width space, ZWSP）是一种不可打印的 Unicode 字符，不影响视觉呈现。在Unicode中，该字符为U+200B 零宽空格, 在 HTML 中为`&#8203;`。
+
+那么我们的情况就变成了：
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503111255199.png)
+
+还有个小细节：对于我们（使用这个解析器的人）来讲，不太好判断一个双星号是用来开启还是用来关闭的，于是我们索性在所有双星号两边都加上零宽空格，也是能通过检测的。
+
+## 具体操作
+
+在「**前处理**」阶段修改 Markdown 字符串：在连续的双星号前后插入零宽空格符（`\u200B`），强制分隔星号与标点的直接接触。
+
+### 替换方法
+
+注意：因为 `**` 被替换成 `\u200B**\u200B`，需要避免循环替换的问题
+```ts
+const addZeroWidthSpaceAroundBoldMarkers = (markdown: string) => {
+
+  const TempMark = '\uFFFF'; // 使用一个不常见的字符作为临时标记
+  // 第一步：将已经被零宽空格符包围的 ** 替换为临时标记
+  const markedMarkdown = markdown.replace(/\u200B\*\*\u200B/g, TempMark);
+  // 第二步：将剩余的 ** 替换为加上零宽空格符的形式
+  const replacedMarkdown = markedMarkdown.replace(/\*\*/g, '\u200B**\u200B');
+  // 第三步：将临时标记还原为原来的形式
+  const finalMarkdown = replacedMarkdown.replace(new RegExp(TempMark, 'g'), '\u200B**\u200B');
+  return finalMarkdown;
+}
+```
+
+> **关于U+FFFF**
+>
+> 在 Unicode 标准中，\uFFFF 表示的是基本多文种平面（BMP）中的最后一个字符位置。在实际使用中，这个位置通常没有被分配给一个具体的、有明确语义的字符，它更多地是被用作一种特殊标记或占位符等。在某些特定的上下文中，比如在处理文本、字符编码转换或进行一些特殊的字符操作时，可能会使用 \uFFFF 来表示一些特殊的状态或作为临时的标记字符等。
+
+
+### 集成示例
+在使用Markdown-it渲染前调用预处理函数：
+```javascript
+import MarkdownIt from 'markdown-it';
+
+const md = new MarkdownIt();
+
+// 前处理文本
+const processedText = addZeroWidthSpaceAroundBoldMarkers(aiResponseMarkdown);
+
+// 渲染
+const html = md.render(processedText);
+```
+
+
+## 效果验证
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/20250311130521.png)
+
+
+## **总结**
+1. **问题本质**：markdown-it 对特殊符号组合的解析规则限制；
+2. **解决方案**：通过零宽空格符破坏符号相邻关系，不破坏规则，而是与已有的规则共存；
+3. **扩展思考**：预处理是解决解析器限制的通用手段，可应用于其他类似场景。
+
+
+感谢 @gtbl 提供的解决思路，非常牛逼。
+
+
+---
+
+# 列表性能优化居然会导致曝光错误？RN FlatList removeClippedSubviews 踩坑实录
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2025-01-22
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/rn-remove-clip-subview/
+
+# React Native 列表 removeClippedSubviews 的坑
+
+> 在 React Native 开发中，我们经常会使用 `FlatList` 的 `removeClippedSubviews` 属性来优化列表性能。这个看似简单的优化属性，却在我们团队中引发了一场数据统计的"灾难"：列表中的元素明明没有出现在视口中，却总是被错误地统计为"已曝光"。经过深入排查，我们发现这背后涉及到了 RN 的视图树管理机制、iOS 和 Android 的平台差异，以及新旧架构的演进。本文将详细讲述这个问题的发现过程、原因分析，以及最终的解决方案。
+
+> **TLDR**
+>
+> 本文讲述了在 React Native 中使用 `FlatList` 的 `removeClippedSubviews` 属性时遇到的一个性能优化与曝光统计冲突的问题：
+>
+> 1. `removeClippedSubviews` 是 RN 官方推荐的列表性能优化方案，它会将不可见的列表项从视图树中卸载。
+> 2. 当使用 `measure` API 测量被卸载的列表项时，由于视图树被截断，测量结果会相对于错误的参考节点，导致曝光统计出现误报。
+> 3. 这个问题仅在 iOS 上出现，因为 Android 的实现有更严格的保护机制。
+> 4. 临时解决方案是使用 `measureInWindow` 替代 `measure`。
+> 5. 彻底解决方案是自定义 measure 方法，增加测量参考节点的判断。
+> 6. 在 RN 新架构中，由于使用了 ShadowNode，这个问题已经不存在了。
+
+
+
+## 一、属性简介
+
+React Native 官方文档在[如何优化 FlatList 性能](https://reactnative.dev/docs/0.72/optimizing-flatlist-configuration#removeclippedsubviews) 这篇博客，提到过一个名为 `removeClippedSubviews` 的属性，说是可以减轻主线程的计算负担，从而减少掉帧的出现。
+
+![removeClippedSubviews](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191118712.png)
+
+其原理是: **把一些没出现在视图里的 view 从它的 superview 上卸载下来（但仍然保留在内存中）**
+
+## 二、背景 
+
+我们业务有一个 `IntersectionObserverView` 组件，它使用一个 View 包裹一个目标组件（此处简称 target），使用 RN 的 `RCTUIManager` 提供的 [measure](https://reactnative.dev/docs/0.72/direct-manipulation#measurecallback) 方法来测量 target 出现在 RCTRootView 中的面积是否达到指定的要求，从而判定此组件是否「曝光」，然后触发对应的回调，主要用于业务曝光埋点需求。
+
+![包裹示意图](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171317260.png)
+
+
+测量原理如下图，`measure` 方法会返回 target 相对于 `RCTRootView` 四边的距离。
+
+![检测原理](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171328452.png)
+
+根据这四个距离，我们可以计算出 **target 与 RCTRootView 相交的面积**，通过「暴露面积比例」这个指标，判定元素有百分之多少暴露在视口内，从而判定它曝光。
+
+问题来了：在使用过程中，发现该组件在某些情况下会出现误报的情况。
+
+> **提示**
+>
+> 这里所讲的问题，只有在 iOS 上才会出现，所以我们主要先讨论 iOS 上为什么会有问题，至于 Android 为什么是好的，先按下不表，留到文末对比叙述。
+
+## 三、问题表现
+
+我们有一个横向滑动列表（结构见下方例子），每个元素都套了一个 IntersectionObserverView，用于曝光埋点。
+
+视图结构的简要 RN 代码表示如下：
+
+```tsx
+const CustomComponent = ({ item }) => {
+    return (
+        <IntersectionObserverView>
+            <Book>{item}</Book>
+        </IntersectionObserverView>
+    );
+};
+
+const App = () => {
+    const data = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7'];
+
+    return (
+        <FlatList
+            horizontal
+            removeClippedSubviews
+            data={data}
+            renderItem={({ item }) => <CustomComponent item={item} />}
+            keyExtractor={(item, index) => index.toString()}
+        />
+    );
+}
+```
+
+这个列表大概有 10+ 个元素，一般来说，手机屏幕下，如果用户不滑动，只能看到 3～4 个
+
+但我们发现:
+
+**第 4 个及它之后的元素，总是会上报曝光，而且曝光率是 100%**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171339518.png)
+
+到这里，数据分析师们就不乐意了：你这上报都是错的，我要怎么统计！抓狂！😤
+
+于是他们提出: 再补充一个**滑动动作埋点**，简单验证一下，如果滑动的 UV 远远少于后面书本的曝光 UV，就说明曝光是有问题的。
+
+我们通过 `onScrollBeginDrag` 添加埋点后发现: 
+
+**上述问题是我们的 bug，因为通过 onScrollBeginDrag 反映的滑动上报数量和「需要滑动才能看到的」元素曝光数量是对不上的。**
+
+那就要查一查了。
+
+## 四、分析排查
+
+通过一波打日志 debug，发现后面那几个视觉不可见的元素， 计算出来 **「与视口相交的面积比」** 竟然是 1，说明计算面积部分的代码有问题。
+
+我 Review 了一下计算逻辑，没有看到明显的漏洞，说明是 `left/right/top/bottom` 四个测量值有问题。
+
+而这四个值是谁给出的呢？是 RN 官方提供的 `measure` API 给出的。
+
+这就要看看源码里的实现了。
+
+### measure 的具体实现
+
+我们业务中的使用方式，是通过调用某个 View 的 ref 上面的 `measure` 方法来测量的，使用的方式如下？
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131631655.png)
+
+为什么能够在 JS 层直接调用 `viewRef.current.measure` 方法呢？
+
+那方法的逻辑在 JS 层还是 Native 层呢？
+
+实际上，RN 框架给 React 加了一种类型，叫 HostComponent（宿主组件类型），并往上面挂了一些方法，例如 `blur`, `focus`, `measure`, `measureInWindow` 等方法，供 JS 直接调用，这些方法在 [RN 文档关于 Direct Manipulation 的部分](https://reactnative.dev/docs/legacy/direct-manipulation)有介绍。
+
+我们找到挂载方法的地方，发现实际上调用的是 `RCTUIManager` 上面暴露的 native 方法。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131636953.png)
+
+这下知道源码在哪了，我们打开 XCode， 到 `RCTUIManager.m` 看看实现。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191132453.png)
+
+容易看出，其原理是通过 `view.superview` 向上找到最顶部（最多到达 RCTRootView 结束）的祖先 view，然后返回 target 在祖先 view 坐标下的 bounds。
+
+![measure 原理示意图](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171356410.png)
+
+看起来似乎没啥问题，但是这几行代码让我联想到了 `removeClippedSubviews`
+
+```objc
+UIView *rootView = view;
+while (rootView.superview && ![rootView isReactRootView]) {
+    rootView = rootView.superview;
+}
+```
+
+如果，我是说如果，target 一直往上找，到达的终点不是 RCTRootView，是不是就有可能出现测量不准的情况？
+
+例如某一坨节点被从整个 View 树上卸载了下来。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171401513.png)
+
+
+既然有这个疑问，再来看看 removeClippedSubviews 的实现。
+
+
+### removeClippedSubviews 的逻辑
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191136306.png)
+
+
+大致原理就是，如果对一个 View 设置了 `removeClippedSubviews={true}`，就会走下面的逻辑：
+- 如果父 view 完全包含子 view，就把子 view 完整挂载上来
+- 如果父 view 和子 view 有相交部分，就递归调用此方法
+- 如果父 view 和子 view 完全不相交，就对子 view 调用 `[view removeFromSuperview]`
+
+**一言以蔽之：如果一个 View 开启了 `removeClippedSubviews` 选项，它的「视口内不可见的」子 View 都会被调用 `[subview removeFromSuperview]`**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131645026.png)
+
+
+### 两者结合产生的问题
+
+由上面可以知道，如果子 view 与其父容器已经不相交，就会被从它的 superview 上卸载下来。
+
+那么很容易想到，此时如果对这个 view 调用 measure 方法，在通过 superview 往上走的过程中，并不能够到达 RCTRootView，而是在到达之前就会停在中途某个 view 上（具体中间有多少层级，取决于用户的具体布局）
+
+这样一来，measure 得到的 bounds，就**不是** target 相对于 RCTRootView 的 bounds。
+
+用数学一点的语言来讲，**连相对的坐标系都是错的，测量的结果肯定是错的。**
+
+此时 IntersectionObserverView 内部逻辑计算得到的相交比例就是错误的。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202504171410061.png)
+
+**有一种很典型的情况:**
+
+假设 measure 方法在 target 往上爬的时候，只爬了一层就停下来了，那么此时通过返回的 bounds 计算出来的相交比例，很有可能接近于 1。
+
+为什么呢，因为在日常布局中，我们往往会有一两层 bounds 几乎是一样的容器。
+
+此时，就会被误判为「**target 和根视图的相交比例很高，可以认为 target 几乎整个完全暴露在视图内了**」，从而误认为target 曝光，然后上报错误的数据。
+
+## 五、问题的本质
+
+- 对列表设置 removeClippedSubviews 属性，导致列表中不可见的 view 被从 superview 上卸载
+- measure 得到了**不是相对于 RCTRootView 的** bounds，导致相交比例是错的，并误认为曝光 
+- 从 measure 的返回值中，我们无法得知最终测量的相对祖先到底是不是 RCTRootView
+
+## 六、解决方法
+
+### (临时) 使用 `measureInWindow` 替代
+
+业务上因为这个问题关联到数据，所以希望能尽快热更新出去，不受版本限制，所以想了个临时的办法——使用 `measureInWindow` 来代替。
+
+> **注意**
+>
+> 使用此方法的前提是，RCTRootView 和 window 在视觉尺寸上几乎等价，或者换句话说，RCTRootView 不是以部分形式存在的，而是几乎占满整个屏幕。
+
+measureInWindow 也是 RCTUIManager 提供的 API，不过它的逻辑和 measure 有点不同，它不会通过 superview 来一直往上爬来获取 RCTRootView，而是直接通过 `[view.window]` 获取 view 关联的 window 对象，然后使用 `convertRect` 来转换坐标。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202503191159405.png)
+
+而我们参考 [UIView/removeFromSuperview - Apple 文档](https://developer.apple.com/documentation/uikit/uiview/removefromsuperview()?language=objc) 可以知道：**当一个 view 被通过调用该方法移除时，它不再连接到任何 window。**
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131247010.png)
+
+
+所以，在这种情况下，我们使用 `measureInWindow` 方法去测量一个 target 时，如果 target（或target 的某个祖先/父亲）已经被从它的父 View 移除，**则我们通过 `[view window]` 拿到的是 `nil`**，从而转换坐标得到的 bounds 是 `(0,0,0,0)`，由此得出的相交面积必然为 0，从而相交比例也是 0，恰好符合「未曝光」的性质。
+
+
+### (彻底) 自定义 measure
+
+比较彻底的解决方案是：原生桥一个自定义的 measure 方法给 RN，多带一个信息，告诉我们相对祖先是不是 RCTRootView，然后交由业务侧自己判断是否要采用 or 相信它的返回结果。
+
+#### 背景知识补充
+
+- 业务初始化 RN bundle 的时候，会使用 WRRCTBundleLoader 类，这个类负责初始化 RCTBridge
+- 在 RN 框架内部，RN 的每个 View 都通过 reactTag 来标识
+- RN 在 `UIView+React.m` 这个类别里为 UIView 增加了 isReactRootView 方法，用来判断一个 View 是不是 RCTRootView（其实逻辑很简单，就是看 `self.reactTag` 尾数是否为 1）
+- RCTUIManager 是 RN 的一个核心模块，它使用 viewRegistry 来维护 JS 端组件 reactTag 与原生视图实例之间的映射关系，根据 JS 端传递的组件类型（如 RCTView、RCTText）和属性，在主线层执行 JS 发送过来的创建/更新视图的命令，在原生端创建对应的视图实例（当组件从 React 树中移除时，调用 removeSubview 或类似方法释放原生资源）。
+。
+
+#### 代码逻辑
+
+这段代码主要是模仿 RN 原来 `RCTUIManager.m` 中的实现，主要步骤如下：
+1. 先通过 bundleLoader 单例拿到 bridge 实例，从而拿到 `RCTUIManager` 实例
+2. RN 的每个 View 都通过 reactTag 来标识，从参数里拿到 reactTag
+3. 调用 uiManager 的 addUIBlock 方法，在 UI 线程添加一个任务
+4. 根据 reactTag 从 viewRegistry 中拿到 View 实例
+5. 沿着拿到的 view 的父 view 一直往上查找，找到最顶部的祖先 view
+6. 调用 `[view isReactRootView]` 方法判断祖先 view 是否为 RCTRootView
+7. 给回调增加一个返回值，用于表明此测量结果是否相对于 RCTRootView
+
+```objc
+- (void)customMeasureReactView:(NSDictionary *)params
+                      resolver:(WRBridgeResolveBlock)resolve
+                      rejecter:(WRBridgeRejectBlock)reject
+{
+    WRRCTBundleLoader *bundleLoader = [[WRRCTBundleLoaderManager sharedInstance] bundleLoaderWithKey:BundleLoader_Default];
+    RCTBridge *bridge = bundleLoader.bridge;
+    id tagObj = [params objectForKey:@"reactTag"];
+    if (![tagObj isKindOfClass:NSNumber.class]) {
+        if (reject) {
+            reject(@"0", @"Type Error: expected parameter reactTag to be a number", nil);
+        }
+        return;
+    }
+    NSNumber *targetReactTag = (NSNumber*) tagObj;
+    dispatch_async([bridge.uiManager methodQueue] , ^{
+        [bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *,UIView *> *viewRegistry) {
+            UIView *view = viewRegistry[targetReactTag];
+            if (!view) {
+                NSLog(@"invalid empty view pointer");
+                if (reject) {
+                    reject(@"0", @"Cannot retrieve view from viewRegistry by the given reactTag", nil);
+                }
+                return;
+            }
+                
+            UIView *rootView = view;
+            while (rootView.superview && ![rootView isReactRootView]) {
+                rootView = rootView.superview;
+            }
+            BOOL relativeToRootView = [rootView isReactRootView];
+            CGRect frame = view.frame;
+            CGRect globalBounds = [view convertRect:view.bounds toView:rootView];
+            
+            NSDictionary *result = @{
+                @"x": @(frame.origin.x),
+                @"y": @(frame.origin.y),
+                @"width": @(globalBounds.size.width),
+                @"height": @(globalBounds.size.height),
+                @"pageX": @(globalBounds.origin.x),
+                @"pageY": @(globalBounds.origin.y),
+                @"isRelativeToReactRootView": @(relativeToRootView),
+            };
+            if (resolve) {
+                resolve(result);
+            }
+        }];
+    });
+}
+```
+## 七、为什么 Android 没有这个问题？
+
+还记得我们前文说过，本文所叙述的问题只存在于 iOS 上，Android 没有这个问题。
+
+下面让我们一探究竟。
+
+RN 的 Android 部分封装层数比较多，measure 的入口在 UIManagerModule 的 measure 方法，实际调用链路是
+```kotlin
+UIManagerModule.measure(reactTag, callback)
+-> mUIImplementation.measure(reactTag, callback);
+-> mOperationsQueue.enqueueMeasure(reactTag, callback);
+-> mOperations.add(new MeasureOperation(reactTag, callback));
+-> MeasureOperation.execute()
+-> mNativeViewHierarchyManager.measure(mReactTag, mMeasureBuffer);
+```
+
+最终是在 `NativeViewHierarchyManager` 类 measure 方法中完成的:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506131336477.png)
+
+可以看到，大致逻辑和 RN iOS 的 measure API 差不多，先根据 reactTag 拿到 View，然后拿到祖先 view，然后计算相对坐标。
+
+核心在这个位置，这里有一个保护性的判断，如果 getRootView 方法拿不到 rootView，就会直接抛异常，不会返回结果
+```kotlin
+View rootView = (View) RootViewUtil.getRootView(v);
+// It is possible that the RootView can't be found because this view is no longer on the screen
+// and has been removed by clipping
+if (rootView == null) {
+    throw new NoSuchNativeViewException("Native view " + tag + " is no longer on screen");
+}
+```
+
+但这样足够了吗？还没 100% 确认呢，我们看看 getRootView 的实现
+
+```kotlin
+public static RootView getRootView(View reactView) {
+    View current = reactView;
+    while (true) {
+        if (current instanceof RootView) {
+            return (RootView) current;
+        }
+        ViewParent next = current.getParent();
+        if (next == null) {
+            return null;
+        }
+        Assertions.assertCondition(next instanceof View);
+        current = (View) next;
+    }
+}
+```
+
+OK，现在很清晰了，getRootView 的实现，在两端都是通过在 View 树往上层遍历得到的，但 Android 的实现更严谨，往上走的过程中，对遇到的 View 都使用 `instanceof RootView` 来判断，**所以最终要么在路径上找到一个 RootView，要么返回空**。
+
+所以，Android 确实没问题。
+
+## 八、同类框架实现对比
+
+ByteDance 开源了它的内部跨端框架 [Lynx](https://lynxjs.org/zh/)
+
+该框架原生支持简单曝光能力和自定义曝光能力 [IntersectionObserver API](https://lynxjs.org/zh/api/lynx-api/intersection-observer.html)
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202505082053977.png)
+
+可以看到，它提供的几个 API 中，可以指定 measure 时的参照节点：
+- `IntersectionObserver.relativeTo()`
+- `IntersectionObserver.relativeToViewport()`
+- `IntersectionObserver.relativeToScreen()`
+- `IntersectionObserver.observe()`
+- `IntersectionObserver.disconnect()`
+
+这样设计刚好解决了本文发现的痛点，API 既简单又能满足业务的常见需求。
+
+进一步看看源码, iOS 的实现，基本就是 RN measure API 的升级版，考虑了 root 节点的可见性，对顶层节点的身份进行了更详尽的判断：
+
+安卓的实现在 `LynxIntersectionObserver.java`，逻辑和 iOS 的几乎完全一样，这里就不贴代码了。
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202505082051055.png)
+
+
+## 九、可以给 RN 提 PR 吗？
+
+已经提了，不过意义已经不大，在 RN 新架构版本，RCTUIManager 暴露的 `measure` 和 `measureInWindow` 方法，已经被弃用了，取而代之的是新架构下统一用 C++ 实现的 `measure` 和 `measureInWindow`。
+
+用 0.78 版本的 RN 起个 demo，可以看到，新架构下的 RN 用的是 C++ 方法（不再两端各自实现一份），方法的逻辑如下:
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506132145312.png)
+
+其实跟原来的逻辑都基本类似：拿到祖先节点 ancestorNode，通过 `getRelativeLayoutMetrics(ancestorNode, shadowNode)` 方法进行坐标计算和转换，得到 layoutMetrics 结构，稍作转换，返回一个 RNMeasureRect{} 结构，回调给 JS
+
+![](https://cjpark-1304138896.cos.ap-guangzhou.myqcloud.com/blog_img/202506132149629.png)
+
+**有个很重要的区别**：旧 RN 架构的 measure，实际上是 RCTUIManager 读取原生 View 的 frame 把坐标返回，而 removeClippedSubviews 的优化操作是在 Native 层面去做的，所以视图树的遍历会受到 s 的影响， [新架构的 RN 有一层 ShadowNode 存在于 C++ 层](https://reactnative.dev/architecture/glossary#react-shadow-tree-and-react-shadow-node)，ShadowNode 含有布局信息，测量也是发生在这一层的，所以哪怕原生对应的 view 被 remove 掉，也不影响 ShadowNode 这一层的测量结果，所以新架构已经不存在这个问题了。
+
+
+---
+
+# 从 import 与 import type 的区别引出的深入讨论
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2024-06-23
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/importtype-import/
+
+## 背景
+
+工作中，一直稳定运行的 Nuxt 3 框架的其中一个页面突然在生产环境出现 500 Server Error，遂与同事用本地 dev 模式排查问题。
+
+以本地开发模式排查报错的过程中，发现了项目抛出了一个错误 `SyntaxError: The requested module myTypes does not provide an export named 'SomeType'`，是由于在引入一个类型时，使用了 import 而不是 import type 导致的, 如下所示。
+
+```ts
+// 项目里的写法 (导致报错)
+import { SomeType, SomeInterface, SomeEnum } from "@/types/myTypes";
+
+// 规范些应该这样写
+import { type SomeType, type SomeInterface, SomeEnum } from "@/types/myTypes";
+
+// 最严格的写法应该是
+import type { SomeType, SomeInterface } from "@/types/myTypes";
+import { SomeEnum } from "@/types/myTypes";
+```
+
+> 其实第三种写法是最规范的，第二种写法是有隐患的，至于为什么先按下不表，在本文后面详细解释。
+
+在此之前，我们已经知道有这个写法规范的问题存在，但 Nuxt 3 框架在之前并不会因为这个问题而报错，为什么现在突然因为这个问题报错了呢？
+
+因为该项目近段时间刚升级过框架，第一想法是框架升级导致的，所以查原因的重点主要在以下几个方面：
+1. Nuxt 框架升级过程中，框架本身是否有 TS 相关的配置性变动？
+2. TS 相关的东西大部分都只存在于编译期，为什么 TS 类型的问题会导致抛出运行时错误？
+
+
+## 前置知识
+
+### 类型和值
+
+`type` 和 `interface` 在 TypeScript 编译过程中一般会直接被删除，不会留在产物 JS 代码中, 而 `enum` 是会以[双向 map 对象的形式](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings)留在产物 JS 代码中，此中我们称 `type` 和 `interface` 这种不产生 JS 代码产物的类型为**纯类型**，把 `enum` 这种会产生 JS 代码产物的类型称为**带值类型**。
+
+由于我们在下文中只关心它们**是否产生 JS 产物**这项区别，所以我们把他们一个叫作**类型**，一个叫作**值**。
+ 
+### TS 转译器
+
+负责将 TS 转成 JS 的工具，有很多种，官方的工具是 [typescript](https://www.npmjs.com/package/typescript)（一般称为 tsc）, 此外还有 [Babel](https://babeljs.io/docs/babel-preset-typescript), [esbuild](https://esbuild.github.io/content-types/#typescript), [SWC](https://swc.rs/) 等。
+
+这里简单介绍下 esbuild:
+
+它是一个用 golang 语言编写的打包器（bundler），能够将 TS 转为 JS，但并不会进行类型检查，需要额外运行类型检查器。不同于 tsc，它使用的是单文件转译模式。
+
+> 单文件转译模式在下文会详细解释。
+
+
+### 缩写和简称的声明
+
+下文中均用 TS 代指 TypeScript，用 JS 代指 JavaScript，用 tsc 代指微软官方的 TypeScript 编译器。
+
+## 抛出运行时错误的原因分析
+
+要分析这一点，我们需要对 Nuxt 3 这个框架和 TypeScript 的编译行为有基本的了解。
+
+我们的运行时错误信息说明，项目在客户端运行时(Client Runtime)向 `@types/myTypes` 这个模块请求了 `SomeType` 这个值，但却没有拿到，这说明 `import { SomeType } from '@types/myTypes'` 这句话，被留到了打包后的 JS 产物中（因为运行时跑的肯定是转译后的 JS 而不是 TS）。
+
+但仔细一想，这句话其实不应该被留掉打包后的 JS 产物中，为什么呢？因为 `SomeType` 是一个纯类型，它并不为运行时提供任何值，只在编译时起作用，用来辅助类型检查器为写代码的人提供类型检查和类型提示，所以这句话应该在编译期被去除。
+
+为什么没有被去除呢？这个就是本文的重点了。
+
+## 编译器是怎么处理 import 语句的？
+
+通常来说，我们在文件 A 中 import 文件 B 提供的东西，是为了使用模块化机制合理拆分代码，以及为了在 A 文件中使用 B 提供的某些东西。
+
+> **Info**
+>
+> 一般来说，如果我们安装了 lint 插件，对于那些 import 了但是没有使用的东西，lint 会提示 unused import，引导我们移除它们，但不排除格式化后的代码仍然有未使用的 import 存在
+
+通常来说，我们写的是 TS，但运行时跑的是 JS，TS 编译器要做一些工作将我们的 JS 转换成 TS。
+
+编译器在遇到 import 语句的时候，可能会做各种行为（包括解析模块引用、查找文件等），除此之外，编译器还需要决定每一条 import 语句的去留，面对这个问题（我们这里主要讨论这个问题），编译器可以做两个选择：
+
+
+**1. 移除这个 import 语句**
+
+- 如果编译器认为， import 的这个东西并没有在代码中被使用，当然要移除它
+- 如果编译器认为，import 的这个东西，是一个纯类型，编译器就应该把它移除，因为如果不移除，最后的 JS 代码里就会有 `import { SomeType } from '@/types/myTypes'`，但最后的 JS 代码里并不会有 `SomeType`（因为 TS 编译器会直接移除所有纯类型的声明），此时就会引发运行时的报错：`SyntaxError: The requested module 'myTypes' does not provide an export named 'SomeType'`
+
+**2. 留下这个 import 语句**
+
+- 这个最简单，当编译器不确定一条语句是否能够被移除时，他就会保留
+
+---
+
+**那么问题又来了：**
+- 第一个问题，编译器如何判定import的东西是否在代码中被使用？
+- 第二个问题，编译器如何知道你 import 的东西是一个纯类型，还是一个值？
+
+
+### 如何判定 import 的东西是否在代码中被使用？
+
+这个一般通过语法分析就可以实现，几乎所有代码编译的第二步（第一步是将字符串根据关键字和特定符号切分成 tokens）都是将 tokens 列表转换为 AST（Abstract Syntax Tree，抽象语法树），编译器会遍历 AST 和符号表，检查是否有对导入模块的成员进行引用。如果一个成员在代码中被引用，它就会被标记为“已使用”。
+
+当然，也有编译器判定不了的特殊情况，例如被 `eval()` 包裹的代码字符串，里面是一个字符串字面量，但实际意义却是代码，但编译器只是将其识别为了字符串字面量，并没有转换成AST，所以是漏网之鱼。
+
+```ts
+// 编译器会认为你并没有使用到 Animal 这个东西
+
+import { Animal } from './animals'
+
+eval('let b = new Animal()');
+```
+
+### 如何判断 import 的东西是类型还是值？
+
+第一种情况，如果你显式声明了引用的是类型，编译器就不用猜了;
+
+第二种情况，如果你并没有显式声明 import 的是类型还是值...
+
+```ts
+// 显式声明引用的是一个类型而不是值，编译器就不用猜了，直接移除这一行
+import type { SomeInterface } from './types'
+
+// 没有显式声明，而且类型和值混在一起，编译器需要逐个判断是否能去除
+import { SomeInterface, SomeEnum } from './types'
+```
+
+具体来说，编译器是这样判断的：
+
+- 对于 tsc 来说，它有办法利用多个文件蕴含的整个类型系统的信息，来发现你这个 `SomeInterface` 指代的是一个类型，而 `SomeEnum` 是一个值，它就会去除掉 SomeInterface，但保留 SomeEnum 的引入语句
+- 对于 tsc 以外的 TypeScript 编译器来说，就不一定了——例如 Babel 的 TS 转译器和 esbuild 都是单文件转译的模式，他们不像 tsc 一样具备在整个类型系统信息的背景下转译这个文件的能力，所以**在某些情况下，他们没办法判断一个 `import A` 的 `A` 到底是不是一个纯类型**，那么此时编译器就并不能肯定地认为这个语句能够去掉，于是就会保留它。
+
+这种被错误保留的语句，它们引用了在编译时已经被去除的类型声明，也就是在运行时引用了一个不存在的值，所以这种情况一般会引发一些 bug 或者运行时错误（这一点在 [TypeScript 官方文档](https://www.typescriptlang.org/tsconfig/#isolatedModules)和 [Evan Wallace 的回复](https://github.com/evanw/esbuild/issues/314#issuecomment-668401819)，以及 [esbuild 的文档](https://esbuild.github.io/content-types/#isolated-modules)中都有说明）
+
+[TypeScript 官方文档关于单文件转译模式的说明原话](https://www.typescriptlang.org/tsconfig/#isolatedModules)如下：
+
+> While you can use TypeScript to produce JavaScript code from TypeScript code, it’s also common to use other transpilers such as Babel to do this. However, other transpilers only operate on a single file at a time, which means they can’t apply code transforms that depend on understanding the full type system. This restriction also applies to TypeScript’s ts.transpileModule API which is used by some build tools.
+
+回到前面铺垫的 esbuild，它是单文件转译模式，也就意味着它无法像 tsc 那样在转译时拥有整个类型系统的信息（但是它快啊！在转译同样代码量的 TS 项目时，不需要关心太多上下文的 esbuild 比 tsc 快很多倍）
+
+**题外话：** 这里恰好解释了为什么 Vite 在开发模式选用了 esbuild 来做 TS 的转译，因为这刚好符合 Vite 的「不打包、对浏览器按需提供文件」的模式
+
+[Vite 官方文档的原话](https://vitejs.dev/guide/features.html#transpile-only)为：
+
+> The reason Vite does not perform type checking as part of the transform process is because the two jobs work fundamentally differently. Transpilation can work on a per-file basis and aligns perfectly with Vite's on-demand compile model. In comparison, type checking requires knowledge of the entire module graph. Shoe-horning type checking into Vite's transform pipeline will inevitably compromise Vite's speed benefits.
+
+## TS 的相关配置
+
+TODO: 这里讲一下每个配置有什么作用
+
+- isolatedModules: 为了让用单文件的编译器的用户，也能及时爆出一些错误
+- importsNotUsedAsValues: 规定那些没有用到的 import 值应该怎么处理，remove/preserve/error
+- preserveValueImports
+- verbatimModuleSyntax
+
+## 其他信息
+
+- Vite 5.3.1 之前，生产打包用的是 @rollup/plugin-typescript, 之后换成了 esbuild
+- Nuxt 3.7 发布的时候带上了 isolatedModules = true
+- Nuxt 3.8 发布带上了 verbatimModuleSyntax = true
+- 项目用的是 Nuxt 3.11 + Vite 4.5.3 + Rollup 3.2.9
+- 那个type错误其实只有dev环境有，因为目前项目这个版本的 Nuxt 的vite在dev模式用的esbuild，生产打包还是tsc，所以生产没事，生产500是因为bridge的问题
+
+TODO: 还有副作用记得说一下，以及配套的 typescript-eslint 的那个选项
+
+## 参考资料
+
+- [TypeScript 官方文档对 verbatimModuleSyntax 配置项的说明](https://www.typescriptlang.org/tsconfig/#verbatimModuleSyntax): 这里说明了 TypeScript 5.0 后新增的这个配置项，为什么新增这个配置项，以及相关的历史原因。
+
+- [esbuild 文档的 TypeScript 部分](https://esbuild.github.io/content-types/#typescript-caveats): 这里详细叙述了如果用 esbuild 来打包 TS 项目，需要注意什么，以及需要如何配置 tsconfig.json。
+
+
+- [Leverage SWC parser to transpile JSX and TypeScript · Issue #5210 · rollup/rollup](https://github.com/rollup/rollup/issues/5210): 这个 issue 似乎表明 Rollup 计划在 4.x 某个版本后改用 SWC 作为 TS 和 JSX 的转译器。
+
+- [fix(kit): apply preferred options for esbuild transpilation #22468](https://github.com/nuxt/nuxt/releases/tag/v3.8.0): Nuxt 在 tsconfig 中启用 isolatedModules 的提交，此提交在 3.7.0 版本被发布
+
+- [perf(nuxt): verbatim module syntax + restrict type discovery #23447](https://github.com/nuxt/nuxt/releases/tag/v3.8.0): Nuxt 在 tsconfig 中启用 verbatimModuleSyntax 的提交，此提交在 3.8.0 版本被发布
+
+- [Release v3.8.0 · nuxt/nuxt · GitHub](https://github.com/nuxt/nuxt/releases/tag/v3.8.0): Nuxt 在 3.8.0 以后的版本默认开启了 tsconfig.json 的 verbatimModuleSyntax 配置项，并在版本 Release 中对此作了简单的说明。
+
+esbuild 作者：https://github.com/evanw/esbuild/issues/314#issuecomment-668401819
+
+How exclude type which export by third library inside output?
+
+https://github.com/evanw/esbuild/issues/341
+
+
+---
+
+# 在团队中共享 VS Code 代码片段
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2024-06-20
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/share-vscode-snippets-among-team/
+
+## 什么是代码片段?
+
+代码片段是可以更轻松地输入重复代码模式（例如循环或条件语句）的模板。
+
+## 用户自定义代码片段
+
+VS Code 允许用户在以下级别定义自己的代码片段：
+- 全局片段适用于每个文件（语言无关）
+- 语言级片段适用于特定语言，例如 javascript.json 配置仅适用于 JavaScript 文件。
+- 项目级片段仅在当前项目目录中生效
+VS Code allows users to define their own [snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets) in these levels:
+
+## 一些例子
+
+JavaScript/TypeScript
+```json
+{
+    "Print to console with variable name": {
+        "prefix": "ll",
+        "body": [
+            "console.log('🔥 $1', $1);",
+        ],
+        "description": "Log output to console"
+    },
+    "Mark Todo": {
+        "prefix": "td",
+        "body": [
+            "// TODO: $1",
+        ]
+    }
+}
+```
+
+React Native
+```json
+{
+    "useCallback": {
+        "prefix": "ucb",
+        "body": [
+            "const $1 = useCallback(() => {",
+            "  $2",
+            "}, []);",
+        ]
+    },
+    "useMemo": {
+        "prefix": "umo",
+        "body": [
+            "const $1 = useMemo(() => {",
+            "  $2",
+            "  return (",
+            "	$3",
+            "  );",
+            "}, []);",
+        ]
+    },
+    "useEffect": {
+        "prefix": "ueff",
+        "body": [
+            "useEffect(() => {",
+            "  $1",
+            "}, []);",
+        ],
+    }
+}
+```
+
+## 共享代码片段
+
+通过将代码片段配置文件放置在项目的 .vscode 目录中，可以在团队之间轻松共享代码片段。
+
+要启用项目级片段，您需要两个步骤：
+1. 在 VS Code 中安装[Project Snippets](https://marketplace.visualstudio.com/items?itemName=rebornix.project-snippets)扩展
+2. 将代码片段配置文件 (`${languageId}.json`) 放在 `.vscode/snippets/` 目录下
+3. 从 `.gitignore` 中删除 `.vscode/snippets`, 让代码片段提交能够被 git 识别，以便于团队成员作贡献
+
+目录具体例子如下 👇
+```bash
+/
+├── .vscode
+│   └── snippets
+│       ├── typescriptreact.json
+│       ├── typescript.json
+│       ├── vue.json
+│       └── ...
+├── src
+│   ├── hooks
+│   ├── components
+│   ├── types
+│   └── ...
+└── package.json
+```
+
+
+---
+
+# Git
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Published: 2023-10-08
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/git/
+
+## 📚 基础知识
+
+### 概念
+
+- 分支只是指向 snapshot 节点的指针
+- snapshot 节点组成一幅有向无环图
+- HEAD 指针指向当前工作区状态对应的 snapshot 节点
+
+### 三个区域
+
+工作区(Working Directory)
+
+暂存区(Staging Area)
+
+### 文件的三种状态
+
+#### Modified
+自上一次提交后，git 知道的文件，产生了修改后，就会进入这个状态（如果是 git 不知道的文件，即使它产生了修改，也不会进入 Modified 状态，例如新的文件或者 `.gitignore` 所包含的文件。
+
+#### Staged
+
+使用 git add 添加过的文件（或文件里的部分改动），就会进入 Staged 状态。
+
+#### 查看文件状态
+
+使用 `git status` 可以查看当前仓库的状态，会显示修改了哪些文件、暂存了哪些文件
+
+```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   components/blog/TocNav.vue
+        modified:   content/blogs/git.md
+        modified:   content/blogs/importtype-import.md
+        modified:   nuxt.config.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        components/content/ProseH4.vue
+        content/blogs/package-json.md
+        content/blogs/react-native-pitfalls.md
+        content/blogs/use-githook-to-improve-publish-process.md
+        content/zh/blogs/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+如果使用 `git status -s` 就会以更短的模式展示
+- M 表示处于 Modified 状态的文件
+- A 表示该文件所有改动已经进入暂存区
+- AM 表示该文件有部分改动进入了暂存区，有部分改动未进入暂存区
+- `??` 表示属于 git 未知的文件（也就是未被 git 追踪）
+
+```shell
+ M components/blog/TocNav.vue
+ M content/blogs/git.md
+ M content/blogs/importtype-import.md
+ A nuxt.config.ts
+AM components/content/ProseH4.vue
+?? content/blogs/package-json.md
+?? content/blogs/react-native-pitfalls.md
+?? content/blogs/use-githook-to-improve-publish-process.md
+?? content/zh/blogs/
+```
+
+## 📄 命令
+
+### 基础的
+```sh
+git add ${files}
+git checkout ${branchName}
+git checkout -b ${newBranch}  # 从当前分支创建一个分支并签出
+git checkout - # 切回上一个分支
+```
+
+### 查看类
+
+```sh
+git status # 查看状态
+git status -s # 以文件列表方式查看状态
+git branch --show-current # 打印当前分支名
+git log ${branch} # 查看分支提交历史
+git show ${commitHash} # 查看指定 commit 的具体改动
+
+
+git diff --name-only # 列出当前处于 Modified 状态的所有文件名
+git diff --staged --name-only # 列出当前处于缓冲区的所有文件的文件名，通常用于提交前格式化等作用
+
+# 列出缓冲区中所有文件的文件名，只显示新添加、复制、修改文件
+git diff --staged --diff-filter=ACM
+
+# 将缓存区中所有文件用 prettier 格式化
+git diff --staged --name-only | xargs prettier --write 
+```
+
+### 关于更改缓冲区
+
+可能你在 A 分支改了一堆代码，但属于未完成状态，此时临时要切到 B 分支去做其他工作，可以将代码暂存
+
+```sh
+git stash  # 暂存 unstaged 更改 
+git stash apply
+git stash pop # 吐出最近一次的暂存更改 
+git stash drop # 丢掉 stash
+git stash list  # 查看暂存栈
+```
+
+当然，也可以选择全部丢弃
+```sh
+git restore ${filename}  # 清除 unstaged 文件
+git restore --staged ${filename} # 从暂存区清除指定文件
+```
+
+
+
+### 关于转移改动
+```sh
+git merge ${branch}  # 把 branch 合并到当前所在分支来
+git cherry-pick ${commitHash} # 把 commitHash 提交 pick 到当前分支上
+```
+
+### 关于最近一次 commit
+
+如果提交了但没推到远程，想撤回来，可以用软重置，改动会吐出来
+```sh
+git reset --soft HEAD~1
+git reset --soft HEAD~n # 可以一次性软重置多个 commit
+```
+
+如果提交了但没推到远程，想改一下 commit message，可以用 amend
+```sh
+git commit --amend
+```
+
+### 和远程同步
+```sh
+git fetch --all
+git pull # 相当于 fetch + merge
+git pull --rebase
+git commit -m ${message}
+git push
+```
+
+### 硬重置
+
+强行重置本地的分支
+```sh
+git reset --hard HEAD~n
+git reset --hard origin/master
+```
+
+强行重置远端的 (危险警告)
+```sh
+git reset --hard xxx
+git push -f
+```
+
+## 一些小技巧
+
+可以用上面的一些命令进行组合得到一些常用命令
+
+例如，我在分支 A，希望更新一下分支 B，然后把 B 合到 A
+```sh
+# shell 函数形式
+update_merge() {
+  git checkout B
+  git pull
+  git checkout -
+  git merge B
+}
+
+# 配合 alias 可以一行简写
+gco B && pull && gco - && git merge B
+```
+
+
+
+## tag 相关
+```sh
+git tag v1.0.0    # 在当前头打 tag
+git push --tags   # 推送 tag
+```
+
+## alias
+
+> **Info**
+>
+> 分享下我的常用 alias
+
+```sh
+alias ggr="git log --oneline --decorate --graph --all"
+alias gco="git checkout"
+alias glog="git log"
+alias gst="git status"
+
+alias gs="git stash"
+alias gsp="git stash pop"
+
+alias gdropall="git restore ." # discard all changes in unstaged
+
+alias gb="git branch"  # 查看当前 branch
+
+alias gcp="git cherry-pick"
+
+alias gfa="git fetch --all"
+alias gplr="git pull --rebase"
+```
+
+
+---
+
+# Kotlin 学习笔记
+
+- Author: Rory Cai (https://coiggahou2002.github.io/)
+- Language: zh-CN
+- Canonical: https://coiggahou2002.github.io/zh/blogs/app/learn-kotlin/
+
+最近想要深入一下 React Native 的源码，感觉从 Android 入手会相对好一点，因为本身就熟悉 Java，但是现在维护的项目是 Java 和 Kotlin 混合的，所以 Kotlin 也顺带看了一下。
+
+主要和 TypeScript 结合对比来理解。
+
+## 基本数据类型
+
+Short, Int, Long
+
+UShort, UInt, ULong
+
+Boolean
+
+String
+
+Float
+
+Double
+
+## 变量
+
+## 字符串
+
+| Kotlin            | TypeScript          |
+| ----------------- | ------------------- |
+| `val str = "abc"` | `const str = "abc`  |
+| `str.uppercase()` | `str.toUpperCase()` |
+
+## 集合
+
+### 统一方法接口
+
+| Kotlin                          | TypeScript                        |
+| ------------------------------- | --------------------------------- |
+| `val list = listOf(1,2)`        | `const list = [1,2]`              |
+| `val list = mutableListOf(1,2)` | `const list = [1,2]`              |
+| `list.count()`                  | `list.length`                     |
+| `list.first()`                  | `list[0]`                         |
+| `list.last()`                   | `list[list.length-1]`             |
+| `list.add(e)`                   | `list.push(e)`                    |
+| `list.remove(e)`                | `list.filter(item => item !== e)` |
+
+
+```kotlin
+val vList = listOf(1,2,3)
+vList.count()
+vList.first()
+vList.last()
+
+val mList = mutableListOf(1,2,3)
+mList.add(4)
+mList.add(5)
+mList.remove(0)
+mList.remove(5)
+println("is 5 in mList? ${5 in mList}")
+```
+
+### List
+
+分为可变和不可变
+
+初始化：
+- `listOf()`
+- `mutableListOf()`
+
+### Set
+### Map
+
+```kotlin
+val vMap = mapOf("discover" to 1, "book" to 2)
+val mMap = mutableMapOf("discover" to 100, "book" to 200)
+
+mMap["discover"] // access 100
+mMap["discover"] = 10000 // modify
+mMap.containsKey("discover") // true
+mMap.remove("discover") // delete key
+mMap.keys // ["discover", "book"]
+mMap.values // [100, 200]
+```
+
+## 类型标记
+
+```kotlin
+val vList: List<Int> = listOf(1, 2)
+
+val mMap: MutableMap<String, Boolean> = mutableMapOf("damn" to true, "fuck" to false)
+```
+
+## 空值安全
+
+## 控制流
+
+### 条件
+
+和 TS 一模一样
+
+```kotlin
+val d: Int
+val check = true
+
+if (check) {
+    d = 1
+} else {
+    d = 2
+}
+
+println(d) // 1
+```
+
+类三元表达式
+
+```kotlin
+val a = 1
+val b = 2
+
+println(if (a > b) a else b) // Returns a value: 2
+```
+
+### 分支
+
+按顺序执行，命中一个就不会再走后面的（行为和 switch 还是不太一样的, switch 如果不写 return 是可以连续命中多个的）
+
+#### 分支 + action
+
+箭头后面就是命中之后的 action
+
+```kotlin
+val obj = "sofjewojfwee"
+
+when (obj) {
+    // Checks whether obj equals to "1"
+    "1" -> println("One")
+    // Checks whether obj equals to "Hello"
+    "Hello" -> println("Greeting")
+    // Default statement
+    else -> println("Unknown")     
+}
+```
+
+#### 分支 + 返回值
+
+可以结合赋值表达式使用
+
+TS 里面一般用立即执行函数来表达这种「同步分支决策赋值」的逻辑
+```ts
+// TypeScript
+
+const condition = (() => {
+    if (bundle === 'discover') {
+        return 1;
+    }
+    if (bundle === 'bookDetail') {
+        return 2;
+    }
+    if (bundle === 'rewards') {
+        return 3;
+    }
+    return -1;
+})();
+```
+
+换到 Kotlin 里可以用 when 结合返回值来做
+
+```kotlin
+// Kotlin
+
+val returnedValue = when(bundle) {
+    "discover" -> 1
+    "bookDetail" -> 2
+    "rewards" -> 3
+    else -> -1
+}
+```
+
+## 相等性判断
+
+TypeScript
+- `==` 带隐式转换
+- `===` 完全相等
+
+## 循环和迭代
+
+### Range
+
+```kotlin
+for (number in 1..5) {
+    println(number); // 1,2,3,4,5
+}
+for (num in 1..<5) {
+    println(num) // 1,2,3,4
+}
+```
+
+### 迭代数据结构
+
+#### List
+
+直接使用 for..in 迭代 List 即可
+
+跟 TS 不太一样，TS 的 for..in 是用来迭代对象的 hasOwnProperty 键的，TS 里类似的迭代方法应该是 for..of，只要迭代的集合具有迭代器方法就可以使用这个方法来迭代
+
+```kotlin
+val bundles = listOf("bookDetail", "discoverV2")
+for (bundle in bundles) {
+    println(bundle)
+}
+```
+
+#### Map
+
+遍历 keys
+
+```kotlin
+val myMap = mapOf("one" to 1, "two" to 2)
+for (k in myMap.keys) {
+    println(k); // one, two
+}
+```
+
+
+## 函数
+
+### 声明 & 传参 & 默认值
+
+声明函数的语法基本和 TypeScript 一样，返回值的标识也是一样
+
+但 TS 有个问题，当参数太多的时候，需要用一个 options 收起来，以避免让参数的顺序干扰可读性，然后还要写个 interface XxxOptions {}
+
+```ts
+// TypeScript
+
+interface MyFuncParams {
+    message: string;
+    prefix?: string;
+}
+const printMessageWithPrefix(params: MyFuncParams) {
+    const { 
+        message, 
+        prefix = "DefaultPrefix"
+    } = params || {};
+    console.log(`[${prefix}] ${message}`);
+}
+printMessageWithPrefix({
+    prefix: "Log",
+    message: "hello"
+})
+```
+
+Kotlin 就很好地解决了这个问题，函数调用表达式 (FunctionCallExpression) 所传的参数可以写明名字
+
+```kotlin
+// Kotlin
+
+fun printMessageWithPrefix(message: String, prefix: String = "DefaultPrefix") {
+    println("[$prefix] $message")
+}
+
+fun main() {
+    // Uses named arguments with swapped parameter order
+    printMessageWithPrefix(
+        prefix = "Log",
+        message = "Hello"
+    )
+    // [Log] Hello
+}
+```
+
+### 匿名函数
+
+感觉和 TS 的箭头函数基本一样，只是语法上有一点点不一样
+
+而且和 TS 类似，匿名函数最常用在 filter, map 等函数上
+
+```ts
+// TypeScript
+
+const annoFunc = (name: string) => {
+    return name.toUpperCase();
+}
+
+const arr = [-2, -1, 0, 1, 2];
+arr.filter(num => num > 0); // 1, 2
+```
+
+```kotlin
+// Kotlin
+
+val annoFunc = { name: String -> name.uppercase() }
+annoFunc("abcd") // ABCD
+
+val nums = listOf(-2, -1, 0, 1, 2)
+nums.filter({ num: Int -> num > 0 }) // 1, 2
+```
+
+fold 函数，感觉和 reduce 干的是一样的事情
+
+```kotlin
+listOf(1, 2, 3).fold(0, { x, item -> x + item })
+```
+
+
+
+## 类/数据类
+
+### class
+
+构造实例不用写 new
+
+### data class
+
+标志性方法：
+- toString()
+- equals()
+- copy()
+
+数据类实例之间可以直接用 == 比较，因为实现了 equals 方法
+
+
+## 异步
+
+### Coroutine
+
+
+
+## 和 Java 的主要区别和联系
+
+- 语法糖更多
+- 不强制 OOP
+- Kotlin 的类似乎没有 static 一类的东西，构造实例的时候也不用写 `new` 关键字
+
+## 和 TypeScript 的主要区别和联系
+
+- TS 的类型检查是编译时行为，和运行时脱钩；Kotlin 本身就是静态语言
+- 标记类型的语法非常相似
+- 函数式风格都支持得比较好
+
+## 和 Golang 的区别和联系

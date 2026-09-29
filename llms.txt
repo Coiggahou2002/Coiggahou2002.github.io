@@ -8,6 +8,13 @@ GitHub: https://github.com/Coiggahou2002
 
 Every post is available in English (under /) and Chinese (under /zh/).
 
+## For agents
+
+- Every page has a plain-Markdown twin: add `.md` to the URL without the trailing slash, e.g. https://coiggahou2002.github.io/blogs/nginx.md
+- All English posts in one file: https://coiggahou2002.github.io/llms-full.txt (Chinese: https://coiggahou2002.github.io/zh/llms-full.txt)
+- Post index (JSON, both languages): https://coiggahou2002.github.io/api/posts.json
+- Résumé (JSON Resume): https://coiggahou2002.github.io/resume.json
+
 ## Posts (English)
 
 - [Prompts, Skills, and MCP Will All Disappear. People Only Pay for Outcomes](https://coiggahou2002.github.io/blogs/pay-for-outcomes/) (Sep 19, 2026): Prompts, skills, hooks, plugins — they're all a transitional phase of AI apps. What survives is a marketplace of agents that sell nothing but results.
