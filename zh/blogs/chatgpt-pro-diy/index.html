@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>不找代充，自己开 ChatGPT Pro 5x：一晚上踩完的所有坑 · Rory Cai</title><meta name="description" content="美区 Apple ID + Amazon 买 Apple 礼品卡 + iOS App 内订阅，不找代充自己开通 ChatGPT Pro 100 的完整踩坑记录。"><link rel="canonical" href="https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+    // Runs before first paint so a light-mode reader never sees a dark flash.
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="text/markdown" href="/zh/blogs/chatgpt-pro-diy.md"><link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="不找代充，自己开 ChatGPT Pro 5x：一晚上踩完的所有坑"><meta property="og:description" content="美区 Apple ID + Amazon 买 Apple 礼品卡 + iOS App 内订阅，不找代充自己开通 ChatGPT Pro 100 的完整踩坑记录。"><meta property="og:url" content="https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2026-10-09T00:00:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"不找代充，自己开 ChatGPT Pro 5x：一晚上踩完的所有坑","description":"美区 Apple ID + Amazon 买 Apple 礼品卡 + iOS App 内订阅，不找代充自己开通 ChatGPT Pro 100 的完整踩坑记录。","url":"https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/","mainEntityOfPage":"https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/","inLanguage":"zh-CN","datePublished":"2026-10-09T00:00:00.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Agent 工程师 / 设计工程师","worksFor":{"@type":"Organization","name":"Parfit"},"alumniOf":{"@type":"CollegeOrUniversity","name":"哈尔滨工业大学","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002","https://x.com/royccc000"]}}</script><link rel="stylesheet" href="/_astro/Base.dMidIquv.css"></head><body><nav class="pill-nav" aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/blogs/" aria-current="page">文章</a><a href="/zh/menu/uses/">工具</a><a href="/zh/menu/journal/">手账</a><a class="lang-switch" href="/blogs/chatgpt-pro-diy/" hreflang="en" lang="en" aria-label="Switch to English">EN</a><button class="theme-toggle" type="button" aria-label="切换深浅色" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+    // The toggle only exists with JavaScript; without it the site stays dark.
+    (() => {
+      const btn = document.querySelector('.theme-toggle');
+      const root = document.documentElement;
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
+      });
+    })();
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>不找代充，自己开 ChatGPT Pro 5x：一晚上踩完的所有坑</h1><time datetime="2026-10-09T00:00:00.000Z">2026-10-09</time></header><nav class="toc" aria-label="目录"><p>目录</p><ol><li class="d2"><a href="#一为什么不找代充">一、为什么不找代充</a></li><li class="d2"><a href="#二apple-id从台湾区绕到美区">二、Apple ID：从台湾区绕到美区</a></li><li class="d2"><a href="#三买礼品卡apple-官网失败amazon-成功">三、买礼品卡：Apple 官网失败，Amazon 成功</a></li><li class="d3"><a href="#在-applecom-买失败">在 apple.com 买：失败</a></li><li class="d3"><a href="#换-amazoncom成功">换 Amazon.com：成功</a></li><li class="d2"><a href="#四apple-id-的账单地址">四、Apple ID 的账单地址</a></li><li class="d2"><a href="#五订阅pro-在哪">五、订阅：Pro 在哪？</a></li><li class="d2"><a href="#六联系-apple-支持">六、联系 Apple 支持</a></li><li class="d2"><a href="#七接下来的计划">七、接下来的计划</a></li><li class="d2"><a href="#八几个补充">八、几个补充</a></li><li class="d2"><a href="#九自查清单">九、自查清单</a></li><li class="d2"><a href="#十教训汇总">十、教训汇总</a></li><li class="d2"><a href="#十一72-小时后更新结果">十一、72 小时后更新结果</a></li><li class="d3"><a href="#参考资料">参考资料</a></li></ol></nav><div class="prose"><blockquote>
+<p>先说结论：<strong>不找代充，自己开成功了。</strong> 美区 Apple ID + Apple 礼品卡 + iOS App 内订阅，最终开通了 ChatGPT Pro 100（$100/月）。中间踩了不少坑，下面按时间线记。</p>
+</blockquote>
+<h2 id="一为什么不找代充">一、为什么不找代充</h2>
+<p>目标很简单：自己订阅 ChatGPT Pro 5x。OpenAI 现在把它叫 <strong>Pro 100</strong>，每月 100 美元，用量约为 Plus 的 5 倍（Pro 档位分 100 / 200 / 500）。</p>
+<p>我排除了两条路：</p>
+<ul>
+<li><strong>代充</strong>：卡源可能是盗刷卡，一旦被拒付（chargeback），封的是你的账号。有说法称便宜代充平均三天左右被封——我没验证过，但不想当那个样本。</li>
+<li><strong>虚拟卡 / U 卡</strong>：手续费、扣款失败是常态；2026 年 8 月起还有用户反馈 OpenAI 开始拦截 Bybit 卡。</li>
+</ul>
+<p>翻了一圈 X、V2EX 和几篇博客，目前主流的 DIY 路线是：</p>
+<p><strong>外区 Apple ID + Apple 礼品卡 + iOS App 内订阅。</strong></p>
+<h2 id="二apple-id从台湾区绕到美区">二、Apple ID：从台湾区绕到美区</h2>
+<ol>
+<li>我先在 <strong>iCloud.com</strong> 注册了台湾区 Apple ID。经验：从 iCloud.com 入口注册比 appleid.apple.com 成功率高；<strong>注册时关掉代理</strong>。</li>
+<li>第一个坑：台湾 Apple 官网卖的「Apple Store 禮品卡」<strong>只能在 Apple Store 买硬件</strong>，不能充 App Store。</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/01-taiwan-apple-store-gift-card.png" alt="台湾 Apple 官网的「Apple Store 禮品卡」：页面写明无法在 App Store 兑换">
+<em>台湾 Apple 官网的「Apple Store 禮品卡」：页面写明无法在 App Store 兑换</em></p>
+<ol start="3">
+<li>第二个坑：美国礼品卡<strong>不能</strong>兑换到台湾区 ID。</li>
+<li>那就注册美区——直接提示”此时无法创建你的账户”。</li>
+<li>最后我选择买了一个现成的美区 Apple ID。</li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>如果你也买现成账号，拿到后立刻：</strong></p>
+<ul>
+<li>改密码、改账号邮箱、加救援邮箱、改密保问题——否则原主人能把账号找回去，连你的余额一起带走；</li>
+<li><strong>只在 App Store 里登录</strong>，千万别在”设置 → iCloud”登录（有激活锁风险）；</li>
+<li>提示升级双重认证时，选”其他选项 → 不升级”。</li>
+</ul>
+</blockquote>
+<p><img src="/images/chatgpt-pro-diy/09-apple-2fa-prompt.png" alt="网页登录时弹出的双重认证升级提示：点 Other Options，别点 Continue（账号信息已打码）">
+<em>网页登录时弹出的双重认证升级提示：点 Other Options，别点 Continue（账号信息已打码）</em></p>
+<h2 id="三买礼品卡apple-官网失败amazon-成功">三、买礼品卡：Apple 官网失败，Amazon 成功</h2>
+<h3 id="在-applecom-买失败">在 apple.com 买：失败</h3>
+<p>用 HSBC 香港万事达卡买 110 美元的电子礼品卡，报”payment authorization failed”。</p>
+<p><img src="/images/chatgpt-pro-diy/02-us-apple-gift-card-page.png" alt="美国 apple.com 的 Apple Gift Card 页面，选 Email 寄送">
+<em>美国 apple.com 的 Apple Gift Card 页面，选 Email 寄送</em></p>
+<p><img src="/images/chatgpt-pro-diy/03-apple-checkout.png" alt="结账页：110 美元，Estimated Tax 为 0（收件人、卡号、账单地址已打码）">
+<em>结账页：110 美元，Estimated Tax 为 0（收件人、卡号、账单地址已打码）</em></p>
+<p><img src="/images/chatgpt-pro-diy/04-apple-payment-failed.png" alt="结果：payment authorization failed（卡号已打码）">
+<em>结果：payment authorization failed（卡号已打码）</em></p>
+<ul>
+<li>第一次失败是我手滑：账单地址填了一个和银行登记不一致的广州地址；</li>
+</ul>
+<p><img src="/images/chatgpt-pro-diy/05-billing-address-typed.png" alt="我当时手填的账单地址，和银行登记的不一致（具体地址已打码）">
+<em>我当时手填的账单地址，和银行登记的不一致（具体地址已打码）</em></p>
+<ul>
+<li>改成和银行登记<strong>一字不差</strong>的地址后，<strong>依然失败</strong>。我猜是发卡行对”境外商户买礼品卡”的风控，但没法确认。</li>
+</ul>
+<p>小知识：Apple 礼品卡结账时本身不收销售税。</p>
+<h3 id="换-amazoncom成功">换 Amazon.com：成功</h3>
+<ol>
+<li>搜索 “Apple Gift Card - Email Delivery”；</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/06-amazon-search.png" alt="Amazon.com 搜 apple gift card 的结果">
+<em>Amazon.com 搜 apple gift card 的结果</em></p>
+<ol start="2">
+<li>看购买框里的 <strong>Sold by</strong>，要是 <strong>ACI Gift Cards LLC, an Amazon company</strong>（Amazon 自家礼品卡子公司）；</li>
+<li>不支持自定义金额，只有固定面额（15、25、50、75、100、200……），我买了 <strong>100 + 15 = 115 美元</strong>；</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/07-amazon-product-aci-seller.png" alt="商品页：右侧 Shipper / Seller 是 ACI Gift Cards LLC, an Amazon company；面额只能选固定档位">
+<em>商品页：右侧 Shipper / Seller 是 ACI Gift Cards LLC, an Amazon company；面额只能选固定档位</em></p>
+<ol start="4">
+<li>账单地址：<strong>Country 选 China</strong>，填银行登记的原地址。别给卡填美国地址。</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/08-amazon-billing-address-china.png" alt="Amazon 账单地址：Country/Region 选 China，按银行登记信息填写（姓名、电话、街道、邮编已打码）">
+<em>Amazon 账单地址：Country/Region 选 China，按银行登记信息填写（姓名、电话、街道、邮编已打码）</em></p>
+<p>两张卡都到账并成功兑换。之后 Amazon 以”异常付款活动”限制了我这个新账号，要求验证身份（证件——中国护照可用——或付款证明/账单）。** 不影响已经兑换进 Apple ID 的余额。**</p>
+<p><img src="/images/chatgpt-pro-diy/15-amazon-account-limited.png" alt="Amazon 事后限制账号：要求用证件或付款证明验证（卡号已打码）">
+<em>Amazon 事后限制账号：要求用证件或付款证明验证（卡号已打码）</em></p>
+<h2 id="四apple-id-的账单地址">四、Apple ID 的账单地址</h2>
+<p>这个和信用卡的账单地址是两回事。付款方式选 <strong>None</strong>，填一个格式正确的美国地址就行。俄勒冈州没有销售税，比如 Portland, OR 97201。</p>
+<h2 id="五订阅pro-在哪">五、订阅：Pro 在哪？</h2>
+<p>ChatGPT iOS App 的升级页面里<strong>只有 Go 和 Plus，没有 Pro</strong>。几篇教程给的路线是：</p>
+<ol>
+<li>先在 App 里订阅 Go（约 8 美元）或 Plus；</li>
+<li>再去 App Store → 头像 → 订阅 → ChatGPT → 查看所有方案 → 选 Pro（100 美元）；</li>
+<li>之前的小额订阅会按比例折算/几天内退回。</li>
+</ol>
+<blockquote>
+<p>⚠️ 升级那一刻，余额要<strong>同时够付</strong>两笔，所以我才充了 115 而不是 100。</p>
+</blockquote>
+<p>然后我点了 Go，弹出：</p>
+<p><strong>“购买未完成，请提交申请至 Apple 支持以供审核。”</strong></p>
+<p>新账号/买来的账号首次消费很容易触发这个。</p>
+<blockquote>
+<p>⚠️ <strong>别反复重试。</strong> 越点越像异常行为。</p>
+</blockquote>
+<h2 id="六联系-apple-支持">六、联系 Apple 支持</h2>
+<ol>
+<li>登录 id.apple.com（account.apple.com）→ 登录与安全 → 页面底部 → <strong>支持 PIN</strong> → 生成；</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/10-sign-in-security.png" alt="Apple 账户的「登录与安全」页，往下拉到底就是支持 PIN。顺便看到：救援邮箱「Not set up」——买来的号记得补上（账号信息已打码）">
+<em>Apple 账户的「登录与安全」页，往下拉到底就是支持 PIN。顺便看到：救援邮箱「Not set up」——买来的号记得补上（账号信息已打码）</em></p>
+<ol start="2">
+<li>打开 getsupport.apple.com → App Store → 无法购买 →（获取更多帮助）→ <strong>Chat</strong>；</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/11-unable-to-purchase.png" alt="「Unable to purchase」页面：前面那些文章都不用看，直接点最下面的 Get more help">
+<em>「Unable to purchase」页面：前面那些文章都不用看，直接点最下面的 Get more help</em></p>
+<p><img src="/images/chatgpt-pro-diy/12-chat-form.png" alt="Chat 表单：名字、邮箱会自动带出，Additional Details 可以先空着（个人信息已打码）">
+<em>Chat 表单：名字、邮箱会自动带出，Additional Details 可以先空着（个人信息已打码）</em></p>
+<ol start="3">
+<li>客服核对 PIN 后说：这是针对账单操作的<strong>临时安全限制</strong>，已提交解除申请，<strong>最多 72 小时</strong>；在此之前不要尝试购买，否则可能干扰处理流程。</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/13-chat-pin-request.png" alt="说明情况后，客服让我去 account.apple.com 拿 4 位支持 PIN（PIN 已打码）">
+<em>说明情况后，客服让我去 account.apple.com 拿 4 位支持 PIN（PIN 已打码）</em></p>
+<p><img src="/images/chatgpt-pro-diy/14-advisor-72h.png" alt="客服的答复：临时安全限制，最多 72 小时解除，期间别再尝试购买（PIN 已打码）">
+<em>客服的答复：临时安全限制，最多 72 小时解除，期间别再尝试购买（PIN 已打码）</em></p>
+<p>我用的英文开场白，直接复制即可：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Hi, I'm trying to subscribe to ChatGPT in the App Store using my Apple Gift Card balance, but I get "Purchase not completed, please contact Apple Support for review." Could you please review my account and remove the purchase restriction?</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>(If asked for verification) Sure, here is my Support PIN: [your PIN]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>(Follow-up) Thank you. Just to confirm: should I wait the full 72 hours before trying to purchase again?</span></span></code></pre>
+<h2 id="七接下来的计划">七、接下来的计划</h2>
+<ol>
+<li>等满 72 小时；</li>
+<li>订阅 Go → 在 App Store 订阅管理里升级 Pro；</li>
+<li><strong>立刻关闭自动续费</strong>（App Store → 订阅 → 取消订阅，当月照常可用），之后每月手动充值。</li>
+</ol>
+<h2 id="八几个补充">八、几个补充</h2>
+<ul>
+<li><strong>和伴侣共用</strong>：在 Windows 上登录同一个 ChatGPT 账号技术上可行（订阅绑的是 ChatGPT 账号，不是 Apple ID），但违反 OpenAI 条款、有封号风险。至少别同时用、别跨地区用。</li>
+<li><strong>Mac 也行</strong>：如果 ChatGPT 是从 Mac App Store 装的，也能兑换和订阅；不过 iPhone 最稳。</li>
+<li><strong>网络</strong>：除了注册 Apple ID 时关代理，全程用稳定的美国节点。</li>
+<li><strong>成本</strong>：115 美元，约合人民币 820 元（HSBC 港币卡，含汇兑手续费约 900 港币），仅供参考。</li>
+</ul>
+<h2 id="九自查清单">九、自查清单</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 外区 Apple ID 已改密码、邮箱、救援邮箱、密保</li>
+<li class="task-list-item"><input type="checkbox" disabled> 只在 App Store 登录，没碰 iCloud</li>
+<li class="task-list-item"><input type="checkbox" disabled> 礼品卡区域 = Apple ID 区域</li>
+<li class="task-list-item"><input type="checkbox" disabled> 卡的账单地址与银行登记完全一致</li>
+<li class="task-list-item"><input type="checkbox" disabled> Amazon 卖家是 ACI Gift Cards LLC</li>
+<li class="task-list-item"><input type="checkbox" disabled> 余额够付”小档 + Pro”</li>
+<li class="task-list-item"><input type="checkbox" disabled> 遇到”购买未完成”→ 找客服，不狂点</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> 订阅后关闭自动续费</li>
+<li class="task-list-item"><input type="checkbox" disabled> 重要对话已备份</li>
+</ul>
+<h2 id="十教训汇总">十、教训汇总</h2>
+<ol>
+<li><strong>卡的区域必须和 Apple ID 区域一致</strong>，台湾 ID 吃不下美国卡。</li>
+<li><strong>账单地址要和银行记录一字不差。</strong></li>
+<li><strong>新账号首次付款大概率触发风控</strong>——联系客服，别连续重试。</li>
+<li>礼品卡<strong>用固定面额凑出需要的金额</strong>。</li>
+<li><strong>按月订阅，不买年付</strong>，风险可控。</li>
+<li><strong>备份重要聊天记录</strong>，以防万一。</li>
+<li>在不支持的地区这么用，违反 OpenAI / Anthropic 的服务条款，<strong>没有任何保证</strong>，自己权衡。</li>
+</ol>
+<h2 id="十一72-小时后更新结果">十一、72 小时后更新结果</h2>
+<p>10 月 6 日，Apple 客服解除了美区 Apple ID 的购买限制，让我再等 72 小时，期间别重试。</p>
+<p>72 小时到了（北京时间 10 月 9 日晚），按原计划走：</p>
+<ol>
+<li>先在 ChatGPT iOS App 里订阅 <strong>Go</strong>——成功；</li>
+<li>再打开 App Store → 头像 → 订阅 → ChatGPT → <strong>查看所有方案</strong>，选 <strong>ChatGPT Pro 100</strong>（$100/月）升级——也成功了。</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/16-pro-plans.png" alt="App Store「可用方案」页：Go $8、Plus $19.99、Pro 100 $100、Pro 200 $200；已选 Pro 100">
+<em>App Store「可用方案」页：Go $8、Plus $19.99、Pro 100 $100、Pro 200 $200；已选 Pro 100</em></p>
+<ol start="3">
+<li>升级完立刻在同一页点 <strong>「取消订阅」</strong>，关掉自动续费。取消后 Pro 仍可用到 <strong>11 月 9 日</strong>，到期不会再扣。</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/17-cancel-autorenew.png" alt="「编辑订阅项目」页：ChatGPT Pro 100，$100/月，11 月 9 日续期；底部「取消订阅」">
+<em>「编辑订阅项目」页：ChatGPT Pro 100，$100/月，11 月 9 日续期；底部「取消订阅」</em></p>
+<p>结论：<strong>不找代充，自己开 ChatGPT Pro 成功了。</strong> 整条链路就是：外区 Apple ID → Amazon 买美国 Apple 礼品卡充值 → 先订 Go → App Store 订阅管理里升级 Pro → 马上关自动续费。</p>
+<hr>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li>@zureA255062 的 X 文章（2026-09-26）：<a href="https://x.com/zureA255062/status/2103672988524855361">https://x.com/zureA255062/status/2103672988524855361</a></li>
+<li>大脸猪：<a href="https://www.superpig.win/blog/how-to-buy-chatgpt-pro-ios-us">https://www.superpig.win/blog/how-to-buy-chatgpt-pro-ios-us</a></li>
+<li>短裤哥：<a href="https://869hr.uk/2026/tech/openai-gpt-pro-5x-5-compare-vs-guide/">https://869hr.uk/2026/tech/openai-gpt-pro-5x-5-compare-vs-guide/</a></li>
+<li>V2EX（菲区 + U 卡）：<a href="https://www.v2ex.com/t/1236473">https://www.v2ex.com/t/1236473</a></li>
+<li>王若风：<a href="https://wangruofeng007.com/blog/2026-08/us-apple-gift-card-chatgpt-claude-subscription/">https://wangruofeng007.com/blog/2026-08/us-apple-gift-card-chatgpt-claude-subscription/</a></li>
+</ul></div></article></main><footer><span>© 2026 Rory Cai</span><span class="footer-links"><a href="/llms.txt">给 AI 读: /llms.txt</a><a href="/zh/rss.xml">RSS</a></span></footer></div></body></html>

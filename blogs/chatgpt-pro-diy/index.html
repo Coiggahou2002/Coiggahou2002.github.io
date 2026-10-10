@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>No Reseller: I Opened ChatGPT Pro 5x Myself, and Every Pitfall I Hit in One Night · Rory Cai</title><meta name="description" content="The full pitfall log of opening ChatGPT Pro 100 myself, without a reseller: a US Apple ID, an Apple gift card from Amazon, and an in-app iOS subscription."><link rel="canonical" href="https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+    // Runs before first paint so a light-mode reader never sees a dark flash.
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="text/markdown" href="/blogs/chatgpt-pro-diy.md"><link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="en_US"><meta property="og:title" content="No Reseller: I Opened ChatGPT Pro 5x Myself, and Every Pitfall I Hit in One Night"><meta property="og:description" content="The full pitfall log of opening ChatGPT Pro 100 myself, without a reseller: a US Apple ID, an Apple gift card from Amazon, and an in-app iOS subscription."><meta property="og:url" content="https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2026-10-09T00:00:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"No Reseller: I Opened ChatGPT Pro 5x Myself, and Every Pitfall I Hit in One Night","description":"The full pitfall log of opening ChatGPT Pro 100 myself, without a reseller: a US Apple ID, an Apple gift card from Amazon, and an in-app iOS subscription.","url":"https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/","mainEntityOfPage":"https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/","inLanguage":"en","datePublished":"2026-10-09T00:00:00.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Agent Engineer & Design Engineer","worksFor":{"@type":"Organization","name":"Parfit"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Harbin Institute of Technology","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002","https://x.com/royccc000"]}}</script><link rel="stylesheet" href="/_astro/Base.dMidIquv.css"></head><body><nav class="pill-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blogs/" aria-current="page">Posts</a><a href="/menu/uses/">Uses</a><a href="/menu/journal/">Journal</a><a class="lang-switch" href="/zh/blogs/chatgpt-pro-diy/" hreflang="zh-CN" lang="zh-CN" aria-label="切换到中文">中文</a><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+    // The toggle only exists with JavaScript; without it the site stays dark.
+    (() => {
+      const btn = document.querySelector('.theme-toggle');
+      const root = document.documentElement;
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
+      });
+    })();
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>No Reseller: I Opened ChatGPT Pro 5x Myself, and Every Pitfall I Hit in One Night</h1><time datetime="2026-10-09T00:00:00.000Z">Oct 9, 2026</time></header><nav class="toc" aria-label="Contents"><p>Contents</p><ol><li class="d2"><a href="#1-why-i-didnt-use-a-reseller">1. Why I didn’t use a reseller</a></li><li class="d2"><a href="#2-apple-id-the-long-way-from-taiwan-to-the-us">2. Apple ID: the long way from Taiwan to the US</a></li><li class="d2"><a href="#3-buying-the-gift-card-applecom-failed-amazon-worked">3. Buying the gift card: apple.com failed, Amazon worked</a></li><li class="d3"><a href="#buying-on-applecom-failed">Buying on apple.com: failed</a></li><li class="d3"><a href="#switching-to-amazoncom-it-worked">Switching to Amazon.com: it worked</a></li><li class="d2"><a href="#4-the-apple-ids-billing-address">4. The Apple ID’s billing address</a></li><li class="d2"><a href="#5-subscribing-where-is-pro">5. Subscribing: where is Pro?</a></li><li class="d2"><a href="#6-contacting-apple-support">6. Contacting Apple Support</a></li><li class="d2"><a href="#7-what-i-planned-to-do-next">7. What I planned to do next</a></li><li class="d2"><a href="#8-a-few-extras">8. A few extras</a></li><li class="d2"><a href="#9-checklist">9. Checklist</a></li><li class="d2"><a href="#10-lessons">10. Lessons</a></li><li class="d2"><a href="#11-what-happened-after-72-hours">11. What happened after 72 hours</a></li><li class="d3"><a href="#references">References</a></li></ol></nav><div class="prose"><blockquote>
+<p>Short version: <strong>I did it myself. No reseller.</strong> A US Apple ID, an Apple gift card, and an in-app iOS subscription, and I ended up on ChatGPT Pro 100 ($100/month). I hit plenty of pitfalls along the way. Here’s the timeline.</p>
+</blockquote>
+<h2 id="1-why-i-didnt-use-a-reseller">1. Why I didn’t use a reseller</h2>
+<p>The goal was simple: subscribe to ChatGPT Pro 5x myself. OpenAI now calls it <strong>Pro 100</strong> — $100 a month, with usage about 5× Plus. The Pro tiers are 100 / 200 / 500.</p>
+<p>I ruled out two paths:</p>
+<ul>
+<li><strong>Resellers</strong>: the card may be stolen. Once there’s a chargeback, the account that gets banned is yours. There’s a claim that cheap reseller subscriptions get banned in about three days on average. I never verified that, but I didn’t want to be the sample.</li>
+<li><strong>Virtual cards / U cards</strong>: fees and failed charges are the norm. Starting in August 2026, some users have also reported that OpenAI began blocking Bybit cards.</li>
+</ul>
+<p>After a pass through X, V2EX, and a few blogs, the mainstream DIY route right now is:</p>
+<p><strong>A foreign-region Apple ID + an Apple gift card + an in-app iOS subscription.</strong></p>
+<h2 id="2-apple-id-the-long-way-from-taiwan-to-the-us">2. Apple ID: the long way from Taiwan to the US</h2>
+<ol>
+<li>I first registered a Taiwan-region Apple ID on <strong>iCloud.com</strong>. From experience, signing up through iCloud.com succeeds more often than appleid.apple.com. <strong>Turn the proxy off while you register.</strong></li>
+<li>First pitfall: the “Apple Store Gift Card” sold on Taiwan’s Apple site <strong>can only buy hardware at the Apple Store</strong>. It cannot top up the App Store.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/01-taiwan-apple-store-gift-card.png" alt="The &#x22;Apple Store Gift Card&#x22; on Taiwan&#x27;s Apple site: the page says it cannot be redeemed in the App Store">
+<em>The “Apple Store Gift Card” on Taiwan’s Apple site: the page says it cannot be redeemed in the App Store</em></p>
+<ol start="3">
+<li>Second pitfall: a US gift card <strong>cannot</strong> be redeemed onto a Taiwan-region ID.</li>
+<li>So I tried to register a US one, and got told “Your account cannot be created at this time.”</li>
+<li>In the end I bought a ready-made US Apple ID.</li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>If you buy a ready-made account too, do this the moment you get it:</strong></p>
+<ul>
+<li>Change the password, change the account email, add a rescue email, and change the security questions. Otherwise the original owner can recover the account and take your balance with it.</li>
+<li><strong>Only sign in inside the App Store.</strong> Never sign in under Settings → iCloud. There’s an Activation Lock risk.</li>
+<li>When it prompts you to upgrade to two-factor authentication, pick “Other Options → Don’t Upgrade.”</li>
+</ul>
+</blockquote>
+<p><img src="/images/chatgpt-pro-diy/09-apple-2fa-prompt.png" alt="The two-factor upgrade prompt on web sign-in: tap Other Options, not Continue (account details redacted)">
+<em>The two-factor upgrade prompt on web sign-in: tap Other Options, not Continue (account details redacted)</em></p>
+<h2 id="3-buying-the-gift-card-applecom-failed-amazon-worked">3. Buying the gift card: apple.com failed, Amazon worked</h2>
+<h3 id="buying-on-applecom-failed">Buying on apple.com: failed</h3>
+<p>I tried to buy a $110 electronic gift card with an HSBC Hong Kong Mastercard. It came back “payment authorization failed.”</p>
+<p><img src="/images/chatgpt-pro-diy/02-us-apple-gift-card-page.png" alt="The Apple Gift Card page on US apple.com, with Email delivery selected">
+<em>The Apple Gift Card page on US apple.com, with Email delivery selected</em></p>
+<p><img src="/images/chatgpt-pro-diy/03-apple-checkout.png" alt="Checkout: $110, Estimated Tax is 0 (recipient, card number, and billing address redacted)">
+<em>Checkout: $110, Estimated Tax is 0 (recipient, card number, and billing address redacted)</em></p>
+<p><img src="/images/chatgpt-pro-diy/04-apple-payment-failed.png" alt="The result: payment authorization failed (card number redacted)">
+<em>The result: payment authorization failed (card number redacted)</em></p>
+<ul>
+<li>The first failure was my own slip: I typed a Guangzhou billing address that didn’t match what the bank had on file.</li>
+</ul>
+<p><img src="/images/chatgpt-pro-diy/05-billing-address-typed.png" alt="The billing address I typed by hand. It didn&#x27;t match the bank&#x27;s records (the actual address is redacted)">
+<em>The billing address I typed by hand. It didn’t match the bank’s records (the actual address is redacted)</em></p>
+<ul>
+<li>After I changed it to the address that matched the bank’s records <strong>character for character</strong>, <strong>it still failed</strong>. My guess is the issuing bank’s risk check on “buying a gift card from an overseas merchant,” but I couldn’t confirm that.</li>
+</ul>
+<p>Side note: Apple gift card checkout itself doesn’t charge sales tax.</p>
+<h3 id="switching-to-amazoncom-it-worked">Switching to Amazon.com: it worked</h3>
+<ol>
+<li>Search for “Apple Gift Card - Email Delivery”.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/06-amazon-search.png" alt="Amazon.com search results for apple gift card">
+<em>Amazon.com search results for apple gift card</em></p>
+<ol start="2">
+<li>Check <strong>Sold by</strong> in the buy box. It needs to be <strong>ACI Gift Cards LLC, an Amazon company</strong> (Amazon’s own gift-card subsidiary).</li>
+<li>Custom amounts aren’t supported, only fixed denominations (15, 25, 50, 75, 100, 200, and so on). I bought <strong>100 + 15 = $115</strong>.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/07-amazon-product-aci-seller.png" alt="Product page: Shipper / Seller on the right is ACI Gift Cards LLC, an Amazon company. Denominations are fixed tiers only">
+<em>Product page: Shipper / Seller on the right is ACI Gift Cards LLC, an Amazon company. Denominations are fixed tiers only</em></p>
+<ol start="4">
+<li>Billing address: <strong>set Country to China</strong>, and fill in the original address on file with the bank. Don’t put a US address on the card.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/08-amazon-billing-address-china.png" alt="Amazon billing address: Country/Region set to China, filled in from the bank&#x27;s records (name, phone, street, and postal code redacted)">
+<em>Amazon billing address: Country/Region set to China, filled in from the bank’s records (name, phone, street, and postal code redacted)</em></p>
+<p>Both cards arrived and redeemed successfully. Amazon then restricted this new account for “unusual payment activity” and asked me to verify my identity (an ID — a Chinese passport works — or proof of payment / a statement). <strong>That does not affect the balance already redeemed into the Apple ID.</strong></p>
+<p><img src="/images/chatgpt-pro-diy/15-amazon-account-limited.png" alt="Amazon later restricted the account and asked me to verify with an ID or proof of payment (card number redacted)">
+<em>Amazon later restricted the account and asked me to verify with an ID or proof of payment (card number redacted)</em></p>
+<h2 id="4-the-apple-ids-billing-address">4. The Apple ID’s billing address</h2>
+<p>This is a different thing from the credit card’s billing address. Set the payment method to <strong>None</strong>, and fill in a correctly formatted US address. Oregon has no sales tax. Portland, OR 97201, for example.</p>
+<h2 id="5-subscribing-where-is-pro">5. Subscribing: where is Pro?</h2>
+<p>The upgrade screen in the ChatGPT iOS app <strong>only shows Go and Plus. No Pro.</strong> The route from a few tutorials is:</p>
+<ol>
+<li>First subscribe to Go (about $8) or Plus inside the app.</li>
+<li>Then go to the App Store → your avatar → Subscriptions → ChatGPT → See All Plans → pick Pro ($100).</li>
+<li>The smaller subscription from before gets prorated / refunded within a few days.</li>
+</ol>
+<blockquote>
+<p>⚠️ At the moment you upgrade, the balance has to <strong>cover both charges at the same time</strong>. That’s why I loaded $115 instead of $100.</p>
+</blockquote>
+<p>Then I tapped Go, and this popped up:</p>
+<p><strong>“Purchase not completed. Please submit a request to Apple Support for review.”</strong></p>
+<p>A new account, or a bought one, very easily triggers this on the first purchase.</p>
+<blockquote>
+<p>⚠️ <strong>Don’t keep retrying.</strong> The more you tap, the more it looks like abnormal behavior.</p>
+</blockquote>
+<h2 id="6-contacting-apple-support">6. Contacting Apple Support</h2>
+<ol>
+<li>Sign in at id.apple.com (account.apple.com) → Sign-In and Security → scroll to the bottom of the page → <strong>Support PIN</strong> → generate one.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/10-sign-in-security.png" alt="The Apple Account &#x22;Sign-In and Security&#x22; page. Scroll to the bottom and the Support PIN is there. Also visible: rescue email &#x22;Not set up&#x22; — if you bought the account, add one (account details redacted)">
+<em>The Apple Account “Sign-In and Security” page. Scroll to the bottom and the Support PIN is there. Also visible: rescue email “Not set up” — if you bought the account, add one (account details redacted)</em></p>
+<ol start="2">
+<li>Open getsupport.apple.com → App Store → Unable to purchase → (Get more help) → <strong>Chat</strong>.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/11-unable-to-purchase.png" alt="The &#x22;Unable to purchase&#x22; page: skip the articles above and tap Get more help at the very bottom">
+<em>The “Unable to purchase” page: skip the articles above and tap Get more help at the very bottom</em></p>
+<p><img src="/images/chatgpt-pro-diy/12-chat-form.png" alt="The Chat form: name and email are filled in automatically. Additional Details can stay empty for now (personal details redacted)">
+<em>The Chat form: name and email are filled in automatically. Additional Details can stay empty for now (personal details redacted)</em></p>
+<ol start="3">
+<li>After the advisor checked the PIN, they said this was a <strong>temporary security restriction</strong> on billing activity, that a request to lift it had been submitted, and that it would take <strong>up to 72 hours</strong>. Don’t try to purchase before then, or you may interfere with the review.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/13-chat-pin-request.png" alt="After I explained, the advisor sent me to account.apple.com for a 4-digit Support PIN (PIN redacted)">
+<em>After I explained, the advisor sent me to account.apple.com for a 4-digit Support PIN (PIN redacted)</em></p>
+<p><img src="/images/chatgpt-pro-diy/14-advisor-72h.png" alt="The advisor&#x27;s reply: a temporary security restriction, lifted within 72 hours at most, and don&#x27;t try to purchase in the meantime (PIN redacted)">
+<em>The advisor’s reply: a temporary security restriction, lifted within 72 hours at most, and don’t try to purchase in the meantime (PIN redacted)</em></p>
+<p>I opened in English. Copy it straight across:</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Hi, I'm trying to subscribe to ChatGPT in the App Store using my Apple Gift Card balance, but I get "Purchase not completed, please contact Apple Support for review." Could you please review my account and remove the purchase restriction?</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>(If asked for verification) Sure, here is my Support PIN: [your PIN]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>(Follow-up) Thank you. Just to confirm: should I wait the full 72 hours before trying to purchase again?</span></span></code></pre>
+<h2 id="7-what-i-planned-to-do-next">7. What I planned to do next</h2>
+<ol>
+<li>Wait out the full 72 hours.</li>
+<li>Subscribe to Go, then upgrade to Pro in App Store subscription management.</li>
+<li><strong>Turn off auto-renew immediately</strong> (App Store → Subscriptions → Cancel Subscription; the current month still works). After that, top up manually each month.</li>
+</ol>
+<h2 id="8-a-few-extras">8. A few extras</h2>
+<ul>
+<li><strong>Sharing with a partner</strong>: signing in to the same ChatGPT account on Windows is technically possible (the subscription is tied to the ChatGPT account, not the Apple ID), but it violates OpenAI’s terms and can get the account banned. At the very least, don’t use it at the same time, and don’t use it across regions.</li>
+<li><strong>A Mac works too</strong>: if ChatGPT was installed from the Mac App Store, you can redeem and subscribe there as well. An iPhone is still the most reliable.</li>
+<li><strong>Network</strong>: other than turning the proxy off while registering the Apple ID, use a stable US node the whole way.</li>
+<li><strong>Cost</strong>: $115, about 820 yuan (an HSBC HKD card, roughly 900 HKD including the FX fee). For reference only.</li>
+</ul>
+<h2 id="9-checklist">9. Checklist</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Foreign-region Apple ID: password, email, rescue email, and security questions changed</li>
+<li class="task-list-item"><input type="checkbox" disabled> Signed in only in the App Store, never touched iCloud</li>
+<li class="task-list-item"><input type="checkbox" disabled> Gift card region = Apple ID region</li>
+<li class="task-list-item"><input type="checkbox" disabled> The card’s billing address matches the bank’s records exactly</li>
+<li class="task-list-item"><input type="checkbox" disabled> The Amazon seller is ACI Gift Cards LLC</li>
+<li class="task-list-item"><input type="checkbox" disabled> Balance covers “the small tier + Pro”</li>
+<li class="task-list-item"><input type="checkbox" disabled> Hit “purchase not completed” → contact support, don’t mash the button</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Auto-renew turned off after subscribing</li>
+<li class="task-list-item"><input type="checkbox" disabled> Important chats backed up</li>
+</ul>
+<h2 id="10-lessons">10. Lessons</h2>
+<ol>
+<li><strong>The card’s region has to match the Apple ID’s region.</strong> A Taiwan ID cannot take a US card.</li>
+<li><strong>The billing address has to match the bank’s records character for character.</strong></li>
+<li><strong>A new account’s first payment will probably trip risk controls.</strong> Contact support. Don’t retry in a loop.</li>
+<li><strong>Make the amount you need out of fixed gift-card denominations.</strong></li>
+<li><strong>Subscribe month to month. Don’t buy the annual plan.</strong> The risk stays manageable.</li>
+<li><strong>Back up important chats</strong>, just in case.</li>
+<li>Using it this way from an unsupported region violates OpenAI’s and Anthropic’s terms of service. <strong>There is no guarantee.</strong> Weigh it yourself.</li>
+</ol>
+<h2 id="11-what-happened-after-72-hours">11. What happened after 72 hours</h2>
+<p>On October 6, Apple Support lifted the purchase restriction on the US Apple ID and told me to wait another 72 hours, and not to retry during that time.</p>
+<p>When the 72 hours were up (the evening of October 9, Beijing time), I followed the original plan:</p>
+<ol>
+<li>Subscribe to <strong>Go</strong> in the ChatGPT iOS app first. It went through.</li>
+<li>Then open the App Store → avatar → Subscriptions → ChatGPT → <strong>See All Plans</strong>, pick <strong>ChatGPT Pro 100</strong> ($100/month), and upgrade. That went through too.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/16-pro-plans.png" alt="The App Store &#x22;Available Plans&#x22; page: Go $8, Plus $19.99, Pro 100 $100, Pro 200 $200. Pro 100 is selected">
+<em>The App Store “Available Plans” page: Go $8, Plus $19.99, Pro 100 $100, Pro 200 $200. Pro 100 is selected</em></p>
+<ol start="3">
+<li>Right after the upgrade, on the same page, tap <strong>Cancel Subscription</strong> and turn off auto-renew. After canceling, Pro stays usable until <strong>November 9</strong>, and it won’t charge again when that date hits.</li>
+</ol>
+<p><img src="/images/chatgpt-pro-diy/17-cancel-autorenew.png" alt="The &#x22;Edit Subscription&#x22; page: ChatGPT Pro 100, $100/month, renews November 9. &#x22;Cancel Subscription&#x22; is at the bottom">
+<em>The “Edit Subscription” page: ChatGPT Pro 100, $100/month, renews November 9. “Cancel Subscription” is at the bottom</em></p>
+<p>The conclusion: <strong>I opened ChatGPT Pro myself, with no reseller.</strong> The whole chain is: a foreign-region Apple ID → buy a US Apple gift card on Amazon and redeem it → subscribe to Go first → upgrade to Pro in App Store subscription management → turn off auto-renew immediately.</p>
+<hr>
+<h3 id="references">References</h3>
+<ul>
+<li>@zureA255062’s X article (2026-09-26): <a href="https://x.com/zureA255062/status/2103672988524855361">https://x.com/zureA255062/status/2103672988524855361</a></li>
+<li>大脸猪: <a href="https://www.superpig.win/blog/how-to-buy-chatgpt-pro-ios-us">https://www.superpig.win/blog/how-to-buy-chatgpt-pro-ios-us</a></li>
+<li>短裤哥: <a href="https://869hr.uk/2026/tech/openai-gpt-pro-5x-5-compare-vs-guide/">https://869hr.uk/2026/tech/openai-gpt-pro-5x-5-compare-vs-guide/</a></li>
+<li>V2EX (Philippines region + U card): <a href="https://www.v2ex.com/t/1236473">https://www.v2ex.com/t/1236473</a></li>
+<li>王若风: <a href="https://wangruofeng007.com/blog/2026-08/us-apple-gift-card-chatgpt-claude-subscription/">https://wangruofeng007.com/blog/2026-08/us-apple-gift-card-chatgpt-claude-subscription/</a></li>
+</ul></div></article></main><footer><span>© 2026 Rory Cai</span><span class="footer-links"><a href="/llms.txt">For AI agents: /llms.txt</a><a href="/rss.xml">RSS</a></span></footer></div></body></html>

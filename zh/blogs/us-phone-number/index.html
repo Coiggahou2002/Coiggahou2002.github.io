@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>搞一个真·美国手机号：从紫卡到 WiFi 通话收验证码 · Rory Cai</title><meta name="description" content="用 Ultra Mobile PayGo 紫卡加 WiFi 通话，人在国内也能用真美国手机号收验证码的完整过程和踩坑记录。"><link rel="canonical" href="https://coiggahou2002.github.io/zh/blogs/us-phone-number/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/us-phone-number/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/us-phone-number/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/us-phone-number/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+    // Runs before first paint so a light-mode reader never sees a dark flash.
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="text/markdown" href="/zh/blogs/us-phone-number.md"><link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="搞一个真·美国手机号：从紫卡到 WiFi 通话收验证码"><meta property="og:description" content="用 Ultra Mobile PayGo 紫卡加 WiFi 通话，人在国内也能用真美国手机号收验证码的完整过程和踩坑记录。"><meta property="og:url" content="https://coiggahou2002.github.io/zh/blogs/us-phone-number/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2026-10-08T00:00:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"搞一个真·美国手机号：从紫卡到 WiFi 通话收验证码","description":"用 Ultra Mobile PayGo 紫卡加 WiFi 通话，人在国内也能用真美国手机号收验证码的完整过程和踩坑记录。","url":"https://coiggahou2002.github.io/zh/blogs/us-phone-number/","mainEntityOfPage":"https://coiggahou2002.github.io/zh/blogs/us-phone-number/","inLanguage":"zh-CN","datePublished":"2026-10-08T00:00:00.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Agent 工程师 / 设计工程师","worksFor":{"@type":"Organization","name":"Parfit"},"alumniOf":{"@type":"CollegeOrUniversity","name":"哈尔滨工业大学","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002","https://x.com/royccc000"]}}</script><link rel="stylesheet" href="/_astro/Base.dMidIquv.css"></head><body><nav class="pill-nav" aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/blogs/" aria-current="page">文章</a><a href="/zh/menu/uses/">工具</a><a href="/zh/menu/journal/">手账</a><a class="lang-switch" href="/blogs/us-phone-number/" hreflang="en" lang="en" aria-label="Switch to English">EN</a><button class="theme-toggle" type="button" aria-label="切换深浅色" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+    // The toggle only exists with JavaScript; without it the site stays dark.
+    (() => {
+      const btn = document.querySelector('.theme-toggle');
+      const root = document.documentElement;
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
+      });
+    })();
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>搞一个真·美国手机号：从紫卡到 WiFi 通话收验证码</h1><time datetime="2026-10-08T00:00:00.000Z">2026-10-08</time></header><nav class="toc" aria-label="目录"><p>目录</p><ol><li class="d2"><a href="#一为什么要折腾一张实体卡">一、为什么要折腾一张实体卡</a></li><li class="d2"><a href="#二买卡ultra-mobile-paygo-紫卡">二、买卡：Ultra Mobile PayGo 紫卡</a></li><li class="d2"><a href="#三登录-ultra我花-66-美元买了个教训">三、登录 Ultra：我花 6.6 美元买了个教训</a></li><li class="d3"><a href="#买住宅-ip">买住宅 IP</a></li><li class="d3"><a href="#链式代理住宅-ip-套在自建节点后面">链式代理：住宅 IP 套在自建节点后面</a></li><li class="d3"><a href="#然后403">然后：403</a></li><li class="d3"><a href="#朋友一句话解决">朋友一句话解决</a></li><li class="d2"><a href="#四app-里的两个小坑">四、App 里的两个小坑</a></li><li class="d2"><a href="#五开-wifi-通话人在国外也能收短信">五、开 WiFi 通话：人在国外也能收短信</a></li><li class="d2"><a href="#六充值被几笔旧订阅绕了一大圈">六、充值：被几笔旧订阅绕了一大圈</a></li><li class="d3"><a href="#先发现卡里没钱旧订阅一直在扣">先发现：卡里没钱，旧订阅一直在扣</a></li><li class="d3"><a href="#vercel有欠款降不了级也删不了卡">Vercel：有欠款，降不了级，也删不了卡</a></li><li class="d3"><a href="#massive订阅已经没了但卡只能换不能删">Massive：订阅已经没了，但卡只能换不能删</a></li><li class="d3"><a href="#终于充上了">终于充上了</a></li><li class="d3"><a href="#auto-renew-要不要开">Auto Renew 要不要开？</a></li><li class="d2"><a href="#七能拿来干嘛以及怎么保号">七、能拿来干嘛，以及怎么保号</a></li><li class="d3"><a href="#能注册什么">能注册什么</a></li><li class="d3"><a href="#怎么保号">怎么保号</a></li><li class="d3"><a href="#什么是虚拟运营商">什么是”虚拟运营商”</a></li><li class="d2"><a href="#八花了多少钱">八、花了多少钱</a></li><li class="d2"><a href="#九自查清单">九、自查清单</a></li><li class="d2"><a href="#十教训汇总">十、教训汇总</a></li></ol></nav><div class="prose"><blockquote>
+<p>先说结论：<strong>号码到手了，能用。</strong> 一张 Ultra Mobile PayGo 紫卡，每月 3 美元，开了 WiFi 通话，人不在美国也能收验证码。整个过程最大的坑不在卡上，而在”怎么登录 Ultra”和”怎么给它充钱”这两件事上：花了冤枉钱买住宅 IP，又被几笔扣款失败的旧订阅绕了一大圈。</p>
+</blockquote>
+<h2 id="一为什么要折腾一张实体卡">一、为什么要折腾一张实体卡</h2>
+<p>现在不少服务注册、做二次验证都要求美国手机号。我一开始图省事，用的是 Twilio 买的号码，结果<strong>收不到验证码</strong>：Twilio 后台显示短信被过滤，错误码 <strong>30038</strong>。</p>
+<p>这类 API 号码，很多平台一看号段就知道是”程序号”，验证码短信直接被拦。要稳定收验证码，还是得有一张<strong>真正由运营商发的 SIM 卡</strong>。</p>
+<h2 id="二买卡ultra-mobile-paygo-紫卡">二、买卡：Ultra Mobile PayGo 紫卡</h2>
+<p>我选的是 <strong>Ultra Mobile 的 PayGo 套餐</strong>，大家叫它”紫卡”：</p>
+<ul>
+<li>走 <strong>T-Mobile 的网络</strong>；</li>
+<li>月租 <strong>3 美元</strong>，包里写着 100 分钟通话 + 100 条短信 + 100MB 流量；</li>
+<li>网上有卖家卖实体卡，还提供<strong>免费代激活</strong>。</li>
+</ul>
+<p><img src="/images/us-phone-number/01-ultra-purple-sim-listing.png" alt="卖家的 Ultra Mobile 紫卡页面：实体卡 + 代激活，月付 3 美元">
+<em>卖家的 Ultra Mobile 紫卡页面：实体卡 + 代激活，月付 3 美元</em></p>
+<p>卖家页面写得很明白：<strong>非美国原生 IP 自己去激活，容易触发风控，卡作废不补发、不退款。</strong> 所以我老老实实选了代激活。</p>
+<p>收到卡后，按卖家的流程提交代激活申请：填下单邮箱、订单号，上传<strong>卡背面照片</strong>（要拍清楚激活码 ACT CODE 和条形码）。</p>
+<p><img src="/images/us-phone-number/02-activation-request-form.png" alt="代激活申请表：「期望激活地区」我填了一个俄勒冈州的邮编（邮箱、订单号已打码）">
+<em>代激活申请表：「期望激活地区」我填了一个俄勒冈州的邮编（邮箱、订单号已打码）</em></p>
+<p>「期望激活地区」决定号码归属地。我填的是<strong>俄勒冈州（Oregon）的邮编</strong>，留空的话卖家会帮你分配。</p>
+<p>没多久就收到了激活邮件：</p>
+<p><img src="/images/us-phone-number/03-activation-email.png" alt="激活完成的邮件：插卡后半小时左右有信号；第 4 条要求登录 Ultra 用「全局美国住宅 IP」（订单号已打码）">
+<em>激活完成的邮件：插卡后半小时左右有信号；第 4 条要求登录 Ultra 用「全局美国住宅 IP」（订单号已打码）</em></p>
+<p>插卡后<strong>大约 30 分钟</strong>有了信号。想知道自己号码是多少，拨 <strong><code>#686#</code></strong> 就会显示。</p>
+<blockquote>
+<p>注意邮件第 4 条：<strong>“登录 Ultra 官方 App / 官网请使用全局美国住宅 IP”</strong>。我后面花冤枉钱，就是因为这一句。</p>
+</blockquote>
+<h2 id="三登录-ultra我花-66-美元买了个教训">三、登录 Ultra：我花 6.6 美元买了个教训</h2>
+<h3 id="买住宅-ip">买住宅 IP</h3>
+<p>为了满足”美国住宅 IP”，我去 <strong>IPRoyal</strong> 买了一个 <strong>ISP 静态住宅 IP</strong>：</p>
+<ul>
+<li>套餐：ISP / Dedicated，30 天，1 个 IP；</li>
+<li>位置：United States → <strong>Seattle (Washington)</strong>；</li>
+<li>结算 <strong>6.60 美元</strong>，用<strong>支付宝</strong>付的。</li>
+</ul>
+<p><img src="/images/us-phone-number/04-iproyal-isp-seattle.png" alt="IPRoyal 下单页：选 Seattle，30 天，合计 6.60 美元">
+<em>IPRoyal 下单页：选 Seattle，30 天，合计 6.60 美元</em></p>
+<p>付完款，后台会给你 IP、端口、用户名、密码：</p>
+<p><img src="/images/us-phone-number/05-iproyal-proxy-details.png" alt="IPRoyal 后台的代理信息：HOST:PORT:USER:PASS（IP、端口、用户名、密码已打码）">
+<em>IPRoyal 后台的代理信息：HOST:PORT:USER:PASS（IP、端口、用户名、密码已打码）</em></p>
+<h3 id="链式代理住宅-ip-套在自建节点后面">链式代理：住宅 IP 套在自建节点后面</h3>
+<p>在国内没法直连这个住宅 IP，所以要做<strong>链式代理</strong>：先连我自己在搬瓦工上搭的 <strong>VLESS + Reality</strong> 节点，再从那里出去连住宅 IP。</p>
+<p><strong>电脑上（Clash Verge Rev）</strong>：给住宅 IP 节点加一行 <code>dialer-proxy</code>，指向自建节点。大概长这样（全是占位符）：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">proxies</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">name</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">US-Resi</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    type</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">http</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    server</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;住宅IP></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    port</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;端口></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    username</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;用户名></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    password</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;密码></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    dialer-proxy</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;我的搬瓦工节点></span></span></code></pre>
+<p><img src="/images/us-phone-number/06-clash-chain-proxy.png" alt="Clash Verge Rev 也有图形化的「链式代理」，界面底部还提醒：链式代理会显著降低网速">
+<em>Clash Verge Rev 也有图形化的「链式代理」，界面底部还提醒：链式代理会显著降低网速</em></p>
+<p><img src="/images/us-phone-number/07-clash-us-resi-timeout.png" alt="折腾过程中，测延迟时 US-Resi 一度显示 Timeout">
+<em>折腾过程中，测延迟时 US-Resi 一度显示 Timeout</em></p>
+<p><strong>手机上（Shadowrocket）</strong>：添加一个 HTTP 节点，填住宅 IP 的地址、端口、用户名、密码，然后在「<strong>代理通过</strong>」里选自建节点。</p>
+<p><img src="/images/us-phone-number/08-shadowrocket-add-node.png" alt="Shadowrocket 添加节点：类型 HTTP，关键是下面的「代理通过」（地址、端口、用户名、密码已打码）">
+<em>Shadowrocket 添加节点：类型 HTTP，关键是下面的「代理通过」（地址、端口、用户名、密码已打码）</em></p>
+<p><img src="/images/us-phone-number/09-shadowrocket-proxy-via.png" alt="配好之后，节点下面显示 HTTP / AUTO > VLESS，说明链上了（自建节点地址已打码）">
+<em>配好之后，节点下面显示 HTTP / AUTO > VLESS，说明链上了（自建节点地址已打码）</em></p>
+<h3 id="然后403">然后：403</h3>
+<p>链是通了，但打开 <strong>ultramobile.com 直接 403</strong>，顺手试了下 <strong>apple.com，也是 403</strong>。</p>
+<p>原因在 IPRoyal 自己的规则里：<strong>账户没做身份认证，很多网站是被限制访问的</strong>。</p>
+<p><img src="/images/us-phone-number/10-iproyal-verification-limits.png" alt="IPRoyal 的身份认证页：不认证的话，ISP 和机房代理会限制访问所有政府和银行网站">
+<em>IPRoyal 的身份认证页：不认证的话，ISP 和机房代理会限制访问所有政府和银行网站</em></p>
+<p>那就去认证呗——结果：</p>
+<p><img src="/images/us-phone-number/11-iproyal-verify-after-10usd.png" alt="「消费满 10 美元后即可进行身份验证。」我才花了 6.6">
+<em>「消费满 10 美元后即可进行身份验证。」我才花了 6.6</em></p>
+<p><strong>要先消费满 10 美元才能认证。</strong> 我不想为了一个登录再往里砸钱。</p>
+<h3 id="朋友一句话解决">朋友一句话解决</h3>
+<p>后来朋友跟我说：<strong>别折腾住宅 IP 了，直接用你搬瓦工那台机器的 IP，开全局模式试试。</strong></p>
+<p>我把代理切回搬瓦工节点、开<strong>全局</strong>，登录 Ultra——<strong>直接登上了。</strong></p>
+<blockquote>
+<p>💡 <strong>教训：住宅 IP 不一定必要。</strong> 卖家说”必须住宅 IP”是求稳的说法；至少我这次，用自己的美国机房 IP + 全局模式就够了。先用手头的节点试，不行再花钱。</p>
+</blockquote>
+<h2 id="四app-里的两个小坑">四、App 里的两个小坑</h2>
+<ol>
+<li><strong>忘记密码</strong>：我没记住代激活时设的密码，直接在 App 里走”忘记密码”重置就行。</li>
+<li><strong>改姓名、邮箱</strong>：在 <strong>My Details</strong> 里改。这里有个坑：<strong>验证通过后，按「返回」，别按「保存」</strong>。我按了保存，结果它又让我验证，验证完再保存，又让验证……无限循环。按返回反而改好了。</li>
+</ol>
+<h2 id="五开-wifi-通话人在国外也能收短信">五、开 WiFi 通话：人在国外也能收短信</h2>
+<p>紫卡的灵魂是 <strong>WiFi 通话（WLAN 通话）</strong>：手机不需要连美国基站，只要连着 WiFi，就能用这个号收发短信、接打电话。</p>
+<p>有教程说 iPhone 上直接开 WiFi 通话的方法已经失效了，但<strong>我实测可以直接开</strong>：</p>
+<p><strong>iPhone 设置 → 蜂窝网络 → 选这张卡 → WLAN 通话 → 打开。</strong></p>
+<p>打开时会要你填一个 <strong>Emergency 911 地址</strong>：</p>
+<p><img src="/images/us-phone-number/12-wifi-calling-911-address.png" alt="开 WiFi 通话要填 Emergency 911 地址（街道和邮编已打码）">
+<em>开 WiFi 通话要填 Emergency 911 地址（街道和邮编已打码）</em></p>
+<blockquote>
+<p>⚠️ 这里要填一个<strong>真实存在的美国地址</strong>，格式对、能查到的那种。</p>
+</blockquote>
+<p>开好之后，状态栏显示 WiFi 通话，验证码短信就能收了。</p>
+<h2 id="六充值被几笔旧订阅绕了一大圈">六、充值：被几笔旧订阅绕了一大圈</h2>
+<p>号码有了，还得往 PayGo 钱包里充钱，不然断了就白干。</p>
+<h3 id="先发现卡里没钱旧订阅一直在扣">先发现：卡里没钱，旧订阅一直在扣</h3>
+<p>我准备用来付款的卡里没钱，翻邮箱一看，一排”payment was unsuccessful again”：</p>
+<p><img src="/images/us-phone-number/13-unsuccessful-payment-emails.png" alt="邮箱里一排扣款失败：Vercel 20 美元、Massive 29 美元、Soniox 5 美元，隔几天重试一次">
+<em>邮箱里一排扣款失败：Vercel 20 美元、Massive 29 美元、Soniox 5 美元，隔几天重试一次</em></p>
+<p>这些都是 Stripe 的自动重试。问题是：<strong>卡里一充钱，下次重试就会扣成功。</strong> 这几个服务我都不打算用了，所以得先处理掉，再充钱。</p>
+<h3 id="vercel有欠款降不了级也删不了卡">Vercel：有欠款，降不了级，也删不了卡</h3>
+<p>Vercel 想降回免费的 Hobby，点 Downgrade 直接报错：</p>
+<p><img src="/images/us-phone-number/14-vercel-cannot-downgrade.png" alt="有一张逾期账单，就不让降级：You cannot downgrade while your plan has an overdue payment（团队名、卡号已打码）">
+<em>有一张逾期账单，就不让降级：You cannot downgrade while your plan has an overdue payment（团队名、卡号已打码）</em></p>
+<p>想着那我把卡删了总行吧：</p>
+<p><img src="/images/us-phone-number/15-vercel-remove-card.png" alt="删唯一的一张卡？要先加一张新卡（卡号已打码）">
+<em>删唯一的一张卡？要先加一张新卡（卡号已打码）</em></p>
+<p><strong>账上只有一张卡时，Vercel 不让删。</strong> 能走的路只剩：付掉欠款再降级，或者提工单请他们免单取消。</p>
+<h3 id="massive订阅已经没了但卡只能换不能删">Massive：订阅已经没了，但卡只能换不能删</h3>
+<p>Massive（以前的 Polygon.io）的账单页倒是让我放心了：</p>
+<p><img src="/images/us-phone-number/16-massive-no-active-subscriptions.png" alt="Massive：No Active Subscriptions，下次扣款为空，最后一次扣款停在 9 月 22 日（卡号、发票号已打码）">
+<em>Massive：No Active Subscriptions，下次扣款为空，最后一次扣款停在 9 月 22 日（卡号、发票号已打码）</em></p>
+<p><strong>没有在扣的订阅</strong>，Next payment 也是空的。想顺手把卡删掉，结果：</p>
+<p><img src="/images/us-phone-number/17-massive-change-card-only.png" alt="You can only have a single card associated with your account——只能换，不能删（卡号已打码）">
+<em>You can only have a single card associated with your account——只能换，不能删（卡号已打码）</em></p>
+<p>只能换卡，不能删。好在订阅已经没了，就不管它了。</p>
+<h3 id="终于充上了">终于充上了</h3>
+<p>卡里充上钱后，用 <strong>PayPal（中国区账户，绑的国内卡）</strong> 在 Ultra 付款成功，<strong>充了 20 美元</strong>。</p>
+<blockquote>
+<p>小插曲：我有了美国号，是不是该注册美区 PayPal？不用。PayPal 是哪个区，看的是注册时选的国家，不是手机号。美区要美国地址、美国卡，额度高了还要 SSN；中国区绑国内卡就能付。美国号加进去当备用手机号就行。</p>
+</blockquote>
+<h3 id="auto-renew-要不要开">Auto Renew 要不要开？</h3>
+<p>充值后 App 会问你要不要开 <strong>Auto Renew</strong>：</p>
+<p><img src="/images/us-phone-number/18-ultra-auto-renew.png" alt="Auto Renew：选的金额是每个月自动往 PayGo 钱包里充多少（PayPal 账号已打码）">
+<em>Auto Renew：选的金额是每个月自动往 PayGo 钱包里充多少（PayPal 账号已打码）</em></p>
+<p>这里的 5 / 10 / 20 美元，意思是<strong>每次套餐续期的那天晚上，自动从 PayPal 扣这么多，充进钱包</strong>——不管余额还剩多少，每月都充。</p>
+<p>我的建议：</p>
+<ul>
+<li><strong>不开</strong>：每月 3 美元从余额里扣，<strong>20 美元大约够 6 个月</strong>，到时候手动充；</li>
+<li><strong>真要开就选 5 美元</strong>，刚好覆盖月租还略有结余。</li>
+</ul>
+<p>我没开。刚经历完 Vercel 那一出，不想再有一个”卡里没钱就一直扣款失败”的东西。</p>
+<h2 id="七能拿来干嘛以及怎么保号">七、能拿来干嘛，以及怎么保号</h2>
+<h3 id="能注册什么">能注册什么</h3>
+<p>AI 工具、WhatsApp、Telegram、Signal、Discord 这类需要手机号的应用都可以试。个别平台会拦虚拟运营商的号，收不到就换个平台或联系客服。</p>
+<p>以 <strong>WhatsApp</strong> 为例：美国号只在注册时收一次验证码，之后<strong>发消息、打语音走的都是互联网</strong>（WiFi 或国内流量都行），<strong>不花美国号的钱</strong>。当然，在国内用要开着代理。</p>
+<h3 id="怎么保号">怎么保号</h3>
+<ul>
+<li><strong>余额别断</strong>：每月 3 美元，余额不够扣就会停机，停太久号码会被回收。</li>
+<li><strong>开两步验证</strong>：换手机、重新登录 WhatsApp 这类应用时，会再往这个号发验证码，号没了账号就危险了。所以 WhatsApp 里记得开「两步验证」。</li>
+<li><strong>收验证码时</strong>：手机连着 WiFi，并且 WLAN 通话是开着的。</li>
+</ul>
+<h3 id="什么是虚拟运营商">什么是”虚拟运营商”</h3>
+<p>Ultra 是<strong>虚拟运营商（MVNO）</strong>：自己不建基站，租大运营商的网络来卖号码和套餐。Ultra 租的是 T-Mobile 的网络，所以信号和 T-Mobile 一样，价格便宜很多。国内的类比，就是那些用移动、联通网络的 170 / 171 号段。</p>
+<p>有些平台查号码时能看出是虚拟运营商，可能会当成风险号码拒收。我目前还没遇到大问题。</p>
+<h2 id="八花了多少钱">八、花了多少钱</h2>
+<ul>
+<li>紫卡（实体卡 + 代激活）：卖家标价 ¥276；</li>
+<li>IPRoyal 住宅 IP：6.60 美元（<strong>事后看，这笔可以省</strong>）；</li>
+<li>第一次充值：20 美元，之后每月 3 美元。</li>
+</ul>
+<p>仅供参考。</p>
+<h2 id="九自查清单">九、自查清单</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 卡是代激活的，没用国内 IP 自己乱激活</li>
+<li class="task-list-item"><input type="checkbox" disabled> 拨 <code>#686#</code> 记下自己的号码</li>
+<li class="task-list-item"><input type="checkbox" disabled> 能用美国 IP 登录 Ultra App（先试自己的节点 + 全局模式）</li>
+<li class="task-list-item"><input type="checkbox" disabled> 重置过密码，改好姓名、邮箱（My Details 验证后按返回）</li>
+<li class="task-list-item"><input type="checkbox" disabled> WLAN 通话已打开，911 地址是真实存在的美国地址</li>
+<li class="task-list-item"><input type="checkbox" disabled> 充值前，已处理掉会自动扣款的旧订阅</li>
+<li class="task-list-item"><input type="checkbox" disabled> 钱包余额够几个月，Auto Renew 不开或选 5 美元</li>
+<li class="task-list-item"><input type="checkbox" disabled> 用这个号注册的重要应用，都开了两步验证</li>
+</ul>
+<h2 id="十教训汇总">十、教训汇总</h2>
+<ol>
+<li><strong>API 号码（如 Twilio）收验证码不靠谱</strong>，要收验证码就上真 SIM 卡。</li>
+<li><strong>激活交给卖家</strong>，非美国 IP 自己激活容易废卡。</li>
+<li><strong>住宅 IP 不一定必要</strong>，先用自己的美国节点 + 全局模式试。</li>
+<li><strong>代理商有自己的访问限制</strong>：IPRoyal 没认证会 403，认证还得先消费满 10 美元。</li>
+<li><strong>充钱之前，先清理旧订阅</strong>，不然钱一进卡就被扣走。</li>
+<li><strong>有欠款的服务往往不让降级、不让删唯一的卡</strong>，要么付清，要么找客服。</li>
+<li><strong>自动充值慎开</strong>，手动充 + 定期看余额更可控。</li>
+<li><strong>保号 = 余额不断 + 两步验证。</strong></li>
+</ol></div></article></main><footer><span>© 2026 Rory Cai</span><span class="footer-links"><a href="/llms.txt">给 AI 读: /llms.txt</a><a href="/zh/rss.xml">RSS</a></span></footer></div></body></html>

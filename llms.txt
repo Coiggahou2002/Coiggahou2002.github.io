@@ -18,6 +18,8 @@ Every post is available in English (under /) and Chinese (under /zh/).
 
 ## Posts (English)
 
+- [No Reseller: I Opened ChatGPT Pro 5x Myself, and Every Pitfall I Hit in One Night](https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/) (Oct 9, 2026): The full pitfall log of opening ChatGPT Pro 100 myself, without a reseller: a US Apple ID, an Apple gift card from Amazon, and an in-app iOS subscription.
+- [Getting a Real US Phone Number: From the Purple SIM to Receiving Codes over Wi-Fi Calling](https://coiggahou2002.github.io/blogs/us-phone-number/) (Oct 8, 2026): The full process, pitfalls included, of using an Ultra Mobile PayGo purple SIM plus Wi-Fi Calling so I can receive verification codes on a real US number while I'm in China.
 - [Prompts, Skills, and MCP Will All Disappear. People Only Pay for Outcomes](https://coiggahou2002.github.io/blogs/pay-for-outcomes/) (Sep 19, 2026): Prompts, skills, hooks, plugins — they're all a transitional phase of AI apps. What survives is a marketplace of agents that sell nothing but results.
 - [AI Won't Close the Gap Between People, and 7 Other Notes](https://coiggahou2002.github.io/blogs/recent-thoughts/) (Aug 9, 2026): AI won't narrow the gap between people. It does the opposite. It amplifies creativity and scales judgment, but it also amplifies stupidity and bias.
 - [A New Less Release Broke Tailwind's @apply, and Tailwind Took the Blame](https://coiggahou2002.github.io/blogs/tailwind-less-compatibility/) (Sep 14, 2025): One of our large projects uses a micro-frontend architecture. The stack is SSR + Vue 3 + NestJS + Webpack4, the style preprocessor is Less, and the project also integrates Tailwind, which most of us use day to day to write styles quickly.…
@@ -37,6 +39,8 @@ Every post is available in English (under /) and Chinese (under /zh/).
 
 ## 文章（中文）
 
+- [不找代充，自己开 ChatGPT Pro 5x：一晚上踩完的所有坑](https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/) (2026-10-09): 美区 Apple ID + Amazon 买 Apple 礼品卡 + iOS App 内订阅，不找代充自己开通 ChatGPT Pro 100 的完整踩坑记录。
+- [搞一个真·美国手机号：从紫卡到 WiFi 通话收验证码](https://coiggahou2002.github.io/zh/blogs/us-phone-number/) (2026-10-08): 用 Ultra Mobile PayGo 紫卡加 WiFi 通话，人在国内也能用真美国手机号收验证码的完整过程和踩坑记录。
 - [Prompt、Skill、MCP 都会消失：人们只为结果付费](https://coiggahou2002.github.io/zh/blogs/pay-for-outcomes/) (2026-09-19): Prompt、Skill、Hook、Plugin，全都只是 AI 应用的过渡形态。留下来的，会是一个只交付结果的 Agent 市场。
 - [AI 不会缩小人与人的差距，以及另外 7 条思考](https://coiggahou2002.github.io/zh/blogs/recent-thoughts/) (2026-08-09): AI 并不会让人与人之间的差距缩小，真实的情况恰恰相反。它放大人的创造力，scale 人的判断力，但也会放大人的愚蠢和偏见。
 - [less 新版搞事情，tailwind 语法糖无奈躺枪](https://coiggahou2002.github.io/zh/blogs/tailwind-less-compatibility/) (2025-09-14): 我们业务某个大型项目是微前端架构，技术栈是 SSR + Vue 3 + NestJS + Webpack4，样式预处理器用的是 less，项目内也集成了 Tailwind，平时大家习惯用 Tailwind 来快速写样式。 Tailwind…

@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Getting a Real US Phone Number: From the Purple SIM to Receiving Codes over Wi-Fi Calling · Rory Cai</title><meta name="description" content="The full process, pitfalls included, of using an Ultra Mobile PayGo purple SIM plus Wi-Fi Calling so I can receive verification codes on a real US number while I'm in China."><link rel="canonical" href="https://coiggahou2002.github.io/blogs/us-phone-number/"><link rel="alternate" hreflang="en" href="https://coiggahou2002.github.io/blogs/us-phone-number/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/us-phone-number/"><link rel="alternate" hreflang="x-default" href="https://coiggahou2002.github.io/blogs/us-phone-number/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+    // Runs before first paint so a light-mode reader never sees a dark flash.
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="text/markdown" href="/blogs/us-phone-number.md"><link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="en_US"><meta property="og:title" content="Getting a Real US Phone Number: From the Purple SIM to Receiving Codes over Wi-Fi Calling"><meta property="og:description" content="The full process, pitfalls included, of using an Ultra Mobile PayGo purple SIM plus Wi-Fi Calling so I can receive verification codes on a real US number while I'm in China."><meta property="og:url" content="https://coiggahou2002.github.io/blogs/us-phone-number/"><meta property="og:image" content="https://coiggahou2002.github.io/images/avatar.png"><meta name="twitter:card" content="summary"><meta property="article:published_time" content="2026-10-08T00:00:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Getting a Real US Phone Number: From the Purple SIM to Receiving Codes over Wi-Fi Calling","description":"The full process, pitfalls included, of using an Ultra Mobile PayGo purple SIM plus Wi-Fi Calling so I can receive verification codes on a real US number while I'm in China.","url":"https://coiggahou2002.github.io/blogs/us-phone-number/","mainEntityOfPage":"https://coiggahou2002.github.io/blogs/us-phone-number/","inLanguage":"en","datePublished":"2026-10-08T00:00:00.000Z","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Agent Engineer & Design Engineer","worksFor":{"@type":"Organization","name":"Parfit"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Harbin Institute of Technology","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002","https://x.com/royccc000"]}}</script><link rel="stylesheet" href="/_astro/Base.dMidIquv.css"></head><body><nav class="pill-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/blogs/" aria-current="page">Posts</a><a href="/menu/uses/">Uses</a><a href="/menu/journal/">Journal</a><a class="lang-switch" href="/zh/blogs/us-phone-number/" hreflang="zh-CN" lang="zh-CN" aria-label="切换到中文">中文</a><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+    // The toggle only exists with JavaScript; without it the site stays dark.
+    (() => {
+      const btn = document.querySelector('.theme-toggle');
+      const root = document.documentElement;
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
+      });
+    })();
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>Getting a Real US Phone Number: From the Purple SIM to Receiving Codes over Wi-Fi Calling</h1><time datetime="2026-10-08T00:00:00.000Z">Oct 8, 2026</time></header><nav class="toc" aria-label="Contents"><p>Contents</p><ol><li class="d2"><a href="#1-why-bother-with-a-physical-sim">1. Why bother with a physical SIM</a></li><li class="d2"><a href="#2-buying-the-sim-the-ultra-mobile-paygo-purple-card">2. Buying the SIM: the Ultra Mobile PayGo purple card</a></li><li class="d2"><a href="#3-signing-in-to-ultra-a-660-lesson">3. Signing in to Ultra: a $6.60 lesson</a></li><li class="d3"><a href="#buying-a-residential-ip">Buying a residential IP</a></li><li class="d3"><a href="#a-proxy-chain-the-residential-ip-behind-my-own-node">A proxy chain: the residential IP behind my own node</a></li><li class="d3"><a href="#then-403">Then: 403</a></li><li class="d3"><a href="#a-friend-solved-it-in-one-sentence">A friend solved it in one sentence</a></li><li class="d2"><a href="#4-two-small-pitfalls-inside-the-app">4. Two small pitfalls inside the app</a></li><li class="d2"><a href="#5-turning-on-wi-fi-calling-receive-texts-while-youre-abroad">5. Turning on Wi-Fi Calling: receive texts while you’re abroad</a></li><li class="d2"><a href="#6-topping-up-a-long-loop-through-a-few-old-subscriptions">6. Topping up: a long loop through a few old subscriptions</a></li><li class="d3"><a href="#first-discovery-the-card-was-empty-and-old-subscriptions-were-still-charging-it">First discovery: the card was empty, and old subscriptions were still charging it</a></li><li class="d3"><a href="#vercel-theres-an-overdue-bill-so-i-cant-downgrade-and-i-cant-delete-the-card">Vercel: there’s an overdue bill, so I can’t downgrade, and I can’t delete the card</a></li><li class="d3"><a href="#massive-the-subscription-is-already-gone-but-the-card-can-only-be-swapped-not-deleted">Massive: the subscription is already gone, but the card can only be swapped, not deleted</a></li><li class="d3"><a href="#it-finally-went-through">It finally went through</a></li><li class="d3"><a href="#should-i-turn-on-auto-renew">Should I turn on Auto Renew?</a></li><li class="d2"><a href="#7-what-its-good-for-and-how-to-keep-the-number">7. What it’s good for, and how to keep the number</a></li><li class="d3"><a href="#what-you-can-sign-up-for">What you can sign up for</a></li><li class="d3"><a href="#how-to-keep-the-number">How to keep the number</a></li><li class="d3"><a href="#what-an-mvno-is">What an “MVNO” is</a></li><li class="d2"><a href="#8-what-it-cost">8. What it cost</a></li><li class="d2"><a href="#9-checklist">9. Checklist</a></li><li class="d2"><a href="#10-lessons">10. Lessons</a></li></ol></nav><div class="prose"><blockquote>
+<p>Short version: <strong>I’ve got the number, and it works.</strong> An Ultra Mobile PayGo purple SIM, $3 a month, with Wi-Fi Calling turned on, so I can receive verification codes even when I’m not in the US. The biggest pitfalls weren’t the SIM. They were “how do I sign in to Ultra” and “how do I put money on it”: I wasted money on a residential IP, then got sent in a long loop by a few old subscriptions whose charges kept failing.</p>
+</blockquote>
+<h2 id="1-why-bother-with-a-physical-sim">1. Why bother with a physical SIM</h2>
+<p>A lot of sign-ups and second-factor checks now want a US phone number. I started with the easy option, a number bought from Twilio, and <strong>the verification codes never arrived</strong>. Twilio’s dashboard showed the messages were filtered, error code <strong>30038</strong>.</p>
+<p>With this kind of API number, a lot of platforms can tell from the number range that it’s a “programmatic number,” and they drop the verification SMS outright. If you want codes to arrive reliably, you still need a <strong>SIM actually issued by a carrier</strong>.</p>
+<h2 id="2-buying-the-sim-the-ultra-mobile-paygo-purple-card">2. Buying the SIM: the Ultra Mobile PayGo purple card</h2>
+<p>I went with <strong>Ultra Mobile’s PayGo plan</strong>. People call it the “purple card”:</p>
+<ul>
+<li>It runs on <strong>T-Mobile’s network</strong>.</li>
+<li>The monthly fee is <strong>$3</strong>, and the plan lists 100 minutes + 100 texts + 100MB of data.</li>
+<li>Sellers online offer the physical SIM and also <strong>free activation on your behalf</strong>.</li>
+</ul>
+<p><img src="/images/us-phone-number/01-ultra-purple-sim-listing.png" alt="The seller&#x27;s Ultra Mobile purple-SIM page: a physical SIM plus activation service, $3 a month">
+<em>The seller’s Ultra Mobile purple-SIM page: a physical SIM plus activation service, $3 a month</em></p>
+<p>The seller’s page is clear about it: <strong>if you activate it yourself from a non-US native IP, you can easily trip risk controls. A voided SIM is not replaced and not refunded.</strong> So I did the sensible thing and chose their activation service.</p>
+<p>Once the SIM arrived, I submitted the activation request the way the seller asked: the order email, the order number, and a <strong>photo of the back of the card</strong> (the ACT CODE and the barcode need to be readable).</p>
+<p><img src="/images/us-phone-number/02-activation-request-form.png" alt="The activation request form. For &#x22;preferred activation region&#x22; I entered an Oregon ZIP code (email and order number redacted)">
+<em>The activation request form. For “preferred activation region” I entered an Oregon ZIP code (email and order number redacted)</em></p>
+<p>“Preferred activation region” decides where the number is based. I entered a <strong>ZIP code in Oregon</strong>. Leave it blank and the seller assigns one for you.</p>
+<p>The activation email showed up not long after:</p>
+<p><img src="/images/us-phone-number/03-activation-email.png" alt="The activation-complete email: signal comes up about half an hour after you insert the SIM. Item 4 says to use a &#x22;global US residential IP&#x22; when signing in to Ultra (order number redacted)">
+<em>The activation-complete email: signal comes up about half an hour after you insert the SIM. Item 4 says to use a “global US residential IP” when signing in to Ultra (order number redacted)</em></p>
+<p>About <strong>30 minutes</strong> after I inserted the SIM, it had signal. To find out what your number is, dial <strong><code>#686#</code></strong> and it shows up.</p>
+<blockquote>
+<p>Note item 4 of the email: <strong>“use a global US residential IP when signing in to the official Ultra app or website.”</strong> The money I wasted later started with that one sentence.</p>
+</blockquote>
+<h2 id="3-signing-in-to-ultra-a-660-lesson">3. Signing in to Ultra: a $6.60 lesson</h2>
+<h3 id="buying-a-residential-ip">Buying a residential IP</h3>
+<p>To satisfy “US residential IP,” I went to <strong>IPRoyal</strong> and bought an <strong>ISP static residential IP</strong>:</p>
+<ul>
+<li>Plan: ISP / Dedicated, 30 days, 1 IP.</li>
+<li>Location: United States → <strong>Seattle (Washington)</strong>.</li>
+<li>The total was <strong>$6.60</strong>, paid with <strong>Alipay</strong>.</li>
+</ul>
+<p><img src="/images/us-phone-number/04-iproyal-isp-seattle.png" alt="The IPRoyal checkout page: Seattle selected, 30 days, $6.60 total">
+<em>The IPRoyal checkout page: Seattle selected, 30 days, $6.60 total</em></p>
+<p>After payment, the dashboard gives you an IP, a port, a username, and a password:</p>
+<p><img src="/images/us-phone-number/05-iproyal-proxy-details.png" alt="Proxy details in the IPRoyal dashboard: HOST:PORT:USER:PASS (IP, port, username, and password redacted)">
+<em>Proxy details in the IPRoyal dashboard: HOST:PORT:USER:PASS (IP, port, username, and password redacted)</em></p>
+<h3 id="a-proxy-chain-the-residential-ip-behind-my-own-node">A proxy chain: the residential IP behind my own node</h3>
+<p>From inside China I can’t connect straight to that residential IP, so I needed a <strong>proxy chain</strong>: first connect to the <strong>VLESS + Reality</strong> node I run on BandwagonHost, then go out from there to the residential IP.</p>
+<p><strong>On the computer (Clash Verge Rev)</strong>: add a <code>dialer-proxy</code> line to the residential-IP node, pointing at my own node. Roughly like this (everything is a placeholder):</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">proxies</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">name</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">US-Resi</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    type</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">http</span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    server</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;residential IP></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    port</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;port></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    username</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;username></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    password</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;password></span></span>
+<span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#8DDB8C">    dialer-proxy</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">&#x3C;my BandwagonHost node></span></span></code></pre>
+<p><img src="/images/us-phone-number/06-clash-chain-proxy.png" alt="Clash Verge Rev also has a graphical Chain Proxy. The bottom of the screen warns that a chain proxy will significantly slow you down">
+<em>Clash Verge Rev also has a graphical Chain Proxy. The bottom of the screen warns that a chain proxy will significantly slow you down</em></p>
+<p><img src="/images/us-phone-number/07-clash-us-resi-timeout.png" alt="While I was fighting with it, US-Resi showed Timeout once during a latency test">
+<em>While I was fighting with it, US-Resi showed Timeout once during a latency test</em></p>
+<p><strong>On the phone (Shadowrocket)</strong>: add an HTTP node, fill in the residential IP’s address, port, username, and password, then under <strong>Proxy Via</strong> select the node I run myself.</p>
+<p><img src="/images/us-phone-number/08-shadowrocket-add-node.png" alt="Adding a node in Shadowrocket: type HTTP. The important part is Proxy Via below (address, port, username, and password redacted)">
+<em>Adding a node in Shadowrocket: type HTTP. The important part is Proxy Via below (address, port, username, and password redacted)</em></p>
+<p><img src="/images/us-phone-number/09-shadowrocket-proxy-via.png" alt="Once it was set, the node showed HTTP / AUTO > VLESS underneath, which means the chain is up (my own node&#x27;s address redacted)">
+<em>Once it was set, the node showed HTTP / AUTO > VLESS underneath, which means the chain is up (my own node’s address redacted)</em></p>
+<h3 id="then-403">Then: 403</h3>
+<p>The chain worked, but <strong>ultramobile.com returned 403 immediately</strong>. I tried <strong>apple.com while I was at it. Also 403.</strong></p>
+<p>The reason is in IPRoyal’s own rules: <strong>if the account hasn’t passed identity verification, access to a lot of sites is restricted.</strong></p>
+<p><img src="/images/us-phone-number/10-iproyal-verification-limits.png" alt="IPRoyal&#x27;s identity-verification page: without verification, ISP and datacenter proxies restrict access to all government and banking sites">
+<em>IPRoyal’s identity-verification page: without verification, ISP and datacenter proxies restrict access to all government and banking sites</em></p>
+<p>So I went to verify. The result:</p>
+<p><img src="/images/us-phone-number/11-iproyal-verify-after-10usd.png" alt="&#x22;Identity verification is available after you&#x27;ve spent $10.&#x22; I&#x27;d only spent $6.60">
+<em>“Identity verification is available after you’ve spent $10.” I’d only spent $6.60</em></p>
+<p><strong>You have to spend $10 before you can verify.</strong> I didn’t want to throw more money in just to sign in.</p>
+<h3 id="a-friend-solved-it-in-one-sentence">A friend solved it in one sentence</h3>
+<p>A friend told me later: <strong>stop fussing with the residential IP. Use the IP of that BandwagonHost machine, turn on Global mode, and try.</strong></p>
+<p>I switched the proxy back to the BandwagonHost node, turned on <strong>Global</strong> mode, and signed in to Ultra. <strong>I was in.</strong></p>
+<blockquote>
+<p>💡 <strong>Lesson: a residential IP isn’t necessarily required.</strong> The seller saying “it has to be a residential IP” is the safe version of the advice. At least this time, my own US datacenter IP plus Global mode was enough. Try the node you already have first. Spend money only if that fails.</p>
+</blockquote>
+<h2 id="4-two-small-pitfalls-inside-the-app">4. Two small pitfalls inside the app</h2>
+<ol>
+<li><strong>Forgot the password</strong>: I didn’t remember the password set during activation. Resetting it with “Forgot password” inside the app is enough.</li>
+<li><strong>Changing the name and email</strong>: do it in <strong>My Details</strong>. There’s a trap here: <strong>after verification succeeds, tap Back. Don’t tap Save.</strong> I tapped Save, and it asked me to verify again. I verified, tapped Save, and it asked again. An infinite loop. Tapping Back is what actually saved the change.</li>
+</ol>
+<h2 id="5-turning-on-wi-fi-calling-receive-texts-while-youre-abroad">5. Turning on Wi-Fi Calling: receive texts while you’re abroad</h2>
+<p>The point of the purple SIM is <strong>Wi-Fi Calling (WLAN Calling)</strong>: the phone doesn’t need to be on a US cell tower. As long as it’s on Wi-Fi, this number can send and receive texts and make and take calls.</p>
+<p>Some tutorials say the method of turning on Wi-Fi Calling directly on an iPhone no longer works, but <strong>when I tried it, I could turn it on directly</strong>:</p>
+<p><strong>iPhone Settings → Cellular → select this SIM → WLAN Calling → On.</strong></p>
+<p>Turning it on asks you for an <strong>Emergency 911 address</strong>:</p>
+<p><img src="/images/us-phone-number/12-wifi-calling-911-address.png" alt="Turning on Wi-Fi Calling asks for an Emergency 911 address (street and ZIP redacted)">
+<em>Turning on Wi-Fi Calling asks for an Emergency 911 address (street and ZIP redacted)</em></p>
+<blockquote>
+<p>⚠️ This has to be a <strong>US address that actually exists</strong>, one with a valid format that can be looked up.</p>
+</blockquote>
+<p>Once it’s on, the status bar shows Wi-Fi Calling, and verification texts come through.</p>
+<h2 id="6-topping-up-a-long-loop-through-a-few-old-subscriptions">6. Topping up: a long loop through a few old subscriptions</h2>
+<p>I had the number. I still had to put money in the PayGo wallet, or the whole thing dies the moment the balance runs out.</p>
+<h3 id="first-discovery-the-card-was-empty-and-old-subscriptions-were-still-charging-it">First discovery: the card was empty, and old subscriptions were still charging it</h3>
+<p>The card I planned to pay with was empty. I opened my inbox and found a row of “payment was unsuccessful again”:</p>
+<p><img src="/images/us-phone-number/13-unsuccessful-payment-emails.png" alt="A row of failed charges in the inbox: Vercel $20, Massive $29, Soniox $5, retried every few days">
+<em>A row of failed charges in the inbox: Vercel $20, Massive $29, Soniox $5, retried every few days</em></p>
+<p>These are Stripe’s automatic retries. The problem: <strong>the moment money lands on the card, the next retry succeeds.</strong> I don’t plan to use any of these services anymore, so I had to deal with them before topping up.</p>
+<h3 id="vercel-theres-an-overdue-bill-so-i-cant-downgrade-and-i-cant-delete-the-card">Vercel: there’s an overdue bill, so I can’t downgrade, and I can’t delete the card</h3>
+<p>I wanted to drop Vercel back to the free Hobby plan. Tapping Downgrade errored immediately:</p>
+<p><img src="/images/us-phone-number/14-vercel-cannot-downgrade.png" alt="One overdue invoice and downgrade is blocked: You cannot downgrade while your plan has an overdue payment (team name and card number redacted)">
+<em>One overdue invoice and downgrade is blocked: You cannot downgrade while your plan has an overdue payment (team name and card number redacted)</em></p>
+<p>Fine, I thought, I’ll just delete the card:</p>
+<p><img src="/images/us-phone-number/15-vercel-remove-card.png" alt="Delete the only card? You have to add a new one first (card number redacted)">
+<em>Delete the only card? You have to add a new one first (card number redacted)</em></p>
+<p><strong>When the account has only one card, Vercel won’t let you delete it.</strong> The only paths left: pay the balance and then downgrade, or open a ticket and ask them to waive it and cancel.</p>
+<h3 id="massive-the-subscription-is-already-gone-but-the-card-can-only-be-swapped-not-deleted">Massive: the subscription is already gone, but the card can only be swapped, not deleted</h3>
+<p>The billing page at Massive (formerly Polygon.io) was a relief:</p>
+<p><img src="/images/us-phone-number/16-massive-no-active-subscriptions.png" alt="Massive: No Active Subscriptions, next charge is empty, and the last charge stopped on September 22 (card number and invoice number redacted)">
+<em>Massive: No Active Subscriptions, next charge is empty, and the last charge stopped on September 22 (card number and invoice number redacted)</em></p>
+<p><strong>No subscription currently charging.</strong> Next payment is empty too. I tried to delete the card while I was there:</p>
+<p><img src="/images/us-phone-number/17-massive-change-card-only.png" alt="You can only have a single card associated with your account — you can swap it, you can&#x27;t delete it (card number redacted)">
+<em>You can only have a single card associated with your account — you can swap it, you can’t delete it (card number redacted)</em></p>
+<p>Swap only, no delete. The subscription is already gone, so I left it alone.</p>
+<h3 id="it-finally-went-through">It finally went through</h3>
+<p>After I put money on the card, I paid Ultra successfully with <strong>PayPal (a China-region account, with a domestic card linked)</strong> and <strong>added $20</strong>.</p>
+<blockquote>
+<p>A side note: now that I have a US number, should I register a US PayPal? No. Which region a PayPal account is in depends on the country you picked at signup, not on the phone number. A US account wants a US address and a US card, and once the limits get high it also wants an SSN. A China-region account can pay with a domestic card linked. Adding the US number as a backup phone is enough.</p>
+</blockquote>
+<h3 id="should-i-turn-on-auto-renew">Should I turn on Auto Renew?</h3>
+<p>After the top-up, the app asks whether you want <strong>Auto Renew</strong>:</p>
+<p><img src="/images/us-phone-number/18-ultra-auto-renew.png" alt="Auto Renew: the amount you pick is how much gets added to the PayGo wallet automatically each month (PayPal account redacted)">
+<em>Auto Renew: the amount you pick is how much gets added to the PayGo wallet automatically each month (PayPal account redacted)</em></p>
+<p>The $5 / $10 / $20 here means <strong>on the evening the plan renews, that amount is charged to PayPal automatically and deposited into the wallet</strong>. It doesn’t matter how much balance is left. It tops up every month.</p>
+<p>My suggestion:</p>
+<ul>
+<li><strong>Leave it off</strong>: $3 comes out of the balance each month, so <strong>$20 lasts about 6 months</strong>. Top up by hand when it’s time.</li>
+<li><strong>If you really turn it on, pick $5.</strong> That covers the monthly fee with a little left over.</li>
+</ul>
+<p>I left it off. I’d just been through the Vercel episode and didn’t want another thing that “keeps failing charges whenever the card is empty.”</p>
+<h2 id="7-what-its-good-for-and-how-to-keep-the-number">7. What it’s good for, and how to keep the number</h2>
+<h3 id="what-you-can-sign-up-for">What you can sign up for</h3>
+<p>AI tools, WhatsApp, Telegram, Signal, Discord — that kind of app that wants a phone number — are all worth a try. A few platforms block virtual-carrier numbers. If a code doesn’t arrive, try another platform or contact support.</p>
+<p>Take <strong>WhatsApp</strong> as the example: the US number only receives a verification code once, at signup. After that, <strong>messages and voice calls all go over the internet</strong> (Wi-Fi or a domestic data plan both work) and <strong>don’t cost the US number anything</strong>. Of course, using it from inside China means the proxy stays on.</p>
+<h3 id="how-to-keep-the-number">How to keep the number</h3>
+<ul>
+<li><strong>Don’t let the balance run out.</strong> It’s $3 a month. If the balance can’t cover a charge, the line is suspended, and if it stays that way too long the number gets reclaimed.</li>
+<li><strong>Turn on two-step verification.</strong> When you switch phones or sign in to something like WhatsApp again, another code gets sent to this number. If the number is gone, the account is in trouble. So turn on two-step verification inside WhatsApp.</li>
+<li><strong>When you’re waiting for a code</strong>: the phone is on Wi-Fi, and WLAN Calling is on.</li>
+</ul>
+<h3 id="what-an-mvno-is">What an “MVNO” is</h3>
+<p>Ultra is an <strong>MVNO</strong>: it doesn’t build its own towers. It rents a big carrier’s network and sells numbers and plans on top. Ultra rents T-Mobile’s network, so the signal is the same as T-Mobile and the price is much lower. The domestic analogy is those 170 / 171 numbers that run on China Mobile’s or China Unicom’s network.</p>
+<p>Some platforms can tell a number is an MVNO when they look it up, and they may treat it as risky and refuse the message. I haven’t hit a big problem with that so far.</p>
+<h2 id="8-what-it-cost">8. What it cost</h2>
+<ul>
+<li>Purple SIM (physical card + activation): the seller’s price was ¥276.</li>
+<li>IPRoyal residential IP: $6.60 (<strong>looking back, this one could have been skipped</strong>).</li>
+<li>First top-up: $20, then $3 a month.</li>
+</ul>
+<p>For reference only.</p>
+<h2 id="9-checklist">9. Checklist</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> The SIM was activated by the seller. I didn’t activate it myself from a China IP</li>
+<li class="task-list-item"><input type="checkbox" disabled> Dialed <code>#686#</code> and wrote the number down</li>
+<li class="task-list-item"><input type="checkbox" disabled> Can sign in to the Ultra app over a US IP (try your own node + Global mode first)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Password reset, name and email updated (in My Details, tap Back after verification)</li>
+<li class="task-list-item"><input type="checkbox" disabled> WLAN Calling is on, and the 911 address is a US address that actually exists</li>
+<li class="task-list-item"><input type="checkbox" disabled> Before topping up, old subscriptions that auto-charge have been dealt with</li>
+<li class="task-list-item"><input type="checkbox" disabled> Wallet balance covers a few months. Auto Renew is off, or set to $5</li>
+<li class="task-list-item"><input type="checkbox" disabled> Two-step verification is on for every important app registered with this number</li>
+</ul>
+<h2 id="10-lessons">10. Lessons</h2>
+<ol>
+<li><strong>API numbers (Twilio, for example) are unreliable for verification codes.</strong> If you need codes, get a real SIM.</li>
+<li><strong>Let the seller activate it.</strong> Activating it yourself from a non-US IP can kill the SIM.</li>
+<li><strong>A residential IP isn’t necessarily required.</strong> Try your own US node plus Global mode first.</li>
+<li><strong>The proxy vendor has its own access limits.</strong> Unverified IPRoyal returns 403, and verification itself requires spending $10 first.</li>
+<li><strong>Before you add money, clean up old subscriptions.</strong> Otherwise the money gets charged off the moment it hits the card.</li>
+<li><strong>A service you owe money to often won’t let you downgrade, and won’t let you delete the only card.</strong> Either pay it off or talk to support.</li>
+<li><strong>Be careful with automatic top-up.</strong> Manual top-ups plus checking the balance regularly is easier to control.</li>
+<li><strong>Keeping the number = never letting the balance run out + two-step verification.</strong></li>
+</ol></div></article></main><footer><span>© 2026 Rory Cai</span><span class="footer-links"><a href="/llms.txt">For AI agents: /llms.txt</a><a href="/rss.xml">RSS</a></span></footer></div></body></html>
