@@ -223,7 +223,7 @@ The conclusion: **I opened ChatGPT Pro myself, with no reseller.** The whole cha
 - Language: en
 - Canonical: https://coiggahou2002.github.io/blogs/us-phone-number/
 
-> Short version: **I've got the number, and it works.** An Ultra Mobile PayGo purple SIM, $3 a month, with Wi-Fi Calling turned on, so I can receive verification codes even when I'm not in the US. The biggest pitfalls weren't the SIM. They were "how do I sign in to Ultra" and "how do I put money on it": I wasted money on a residential IP, then got sent in a long loop by a few old subscriptions whose charges kept failing.
+> Short version: **I've got the number, and it works.** An Ultra Mobile PayGo purple SIM, $3 a month, with Wi-Fi Calling turned on, so I can receive verification codes even when I'm not in the US. The biggest pitfalls weren't the SIM. They were "how do I sign in to Ultra" and "how do I put money on it": I wasted money on a residential IP.
 
 ## 1. Why bother with a physical SIM
 
@@ -355,50 +355,11 @@ Turning it on asks you for an **Emergency 911 address**:
 
 Once it's on, the status bar shows Wi-Fi Calling, and verification texts come through.
 
-## 6. Topping up: a long loop through a few old subscriptions
+## 6. Topping up
 
 I had the number. I still had to put money in the PayGo wallet, or the whole thing dies the moment the balance runs out.
 
-### First discovery: the card was empty, and old subscriptions were still charging it
-
-The card I planned to pay with was empty. I opened my inbox and found a row of "payment was unsuccessful again":
-
-![A row of failed charges in the inbox: Vercel $20, Massive $29, Soniox $5, retried every few days](/images/us-phone-number/13-unsuccessful-payment-emails.png)
-*A row of failed charges in the inbox: Vercel $20, Massive $29, Soniox $5, retried every few days*
-
-These are Stripe's automatic retries. The problem: **the moment money lands on the card, the next retry succeeds.** I don't plan to use any of these services anymore, so I had to deal with them before topping up.
-
-### Vercel: there's an overdue bill, so I can't downgrade, and I can't delete the card
-
-I wanted to drop Vercel back to the free Hobby plan. Tapping Downgrade errored immediately:
-
-![One overdue invoice and downgrade is blocked: You cannot downgrade while your plan has an overdue payment (team name and card number redacted)](/images/us-phone-number/14-vercel-cannot-downgrade.png)
-*One overdue invoice and downgrade is blocked: You cannot downgrade while your plan has an overdue payment (team name and card number redacted)*
-
-Fine, I thought, I'll just delete the card:
-
-![Delete the only card? You have to add a new one first (card number redacted)](/images/us-phone-number/15-vercel-remove-card.png)
-*Delete the only card? You have to add a new one first (card number redacted)*
-
-**When the account has only one card, Vercel won't let you delete it.** The only paths left: pay the balance and then downgrade, or open a ticket and ask them to waive it and cancel.
-
-### Massive: the subscription is already gone, but the card can only be swapped, not deleted
-
-The billing page at Massive (formerly Polygon.io) was a relief:
-
-![Massive: No Active Subscriptions, next charge is empty, and the last charge stopped on September 22 (card number and invoice number redacted)](/images/us-phone-number/16-massive-no-active-subscriptions.png)
-*Massive: No Active Subscriptions, next charge is empty, and the last charge stopped on September 22 (card number and invoice number redacted)*
-
-**No subscription currently charging.** Next payment is empty too. I tried to delete the card while I was there:
-
-![You can only have a single card associated with your account — you can swap it, you can't delete it (card number redacted)](/images/us-phone-number/17-massive-change-card-only.png)
-*You can only have a single card associated with your account — you can swap it, you can't delete it (card number redacted)*
-
-Swap only, no delete. The subscription is already gone, so I left it alone.
-
-### It finally went through
-
-After I put money on the card, I paid Ultra successfully with **PayPal (a China-region account, with a domestic card linked)** and **added $20**.
+I paid Ultra with **PayPal (a China-region account, with a domestic card linked)** and **added $20**.
 
 > A side note: now that I have a US number, should I register a US PayPal? No. Which region a PayPal account is in depends on the country you picked at signup, not on the phone number. A US account wants a US address and a US card, and once the limits get high it also wants an SSN. A China-region account can pay with a domestic card linked. Adding the US number as a backup phone is enough.
 
@@ -416,7 +377,7 @@ My suggestion:
 - **Leave it off**: $3 comes out of the balance each month, so **$20 lasts about 6 months**. Top up by hand when it's time.
 - **If you really turn it on, pick $5.** That covers the monthly fee with a little left over.
 
-I left it off. I'd just been through the Vercel episode and didn't want another thing that "keeps failing charges whenever the card is empty."
+I left it off.
 
 ## 7. What it's good for, and how to keep the number
 
@@ -453,7 +414,6 @@ For reference only.
 - [ ] Can sign in to the Ultra app over a US IP (try your own node + Global mode first)
 - [ ] Password reset, name and email updated (in My Details, tap Back after verification)
 - [ ] WLAN Calling is on, and the 911 address is a US address that actually exists
-- [ ] Before topping up, old subscriptions that auto-charge have been dealt with
 - [ ] Wallet balance covers a few months. Auto Renew is off, or set to $5
 - [ ] Two-step verification is on for every important app registered with this number
 
@@ -463,10 +423,8 @@ For reference only.
 2. **Let the seller activate it.** Activating it yourself from a non-US IP can kill the SIM.
 3. **A residential IP isn't necessarily required.** Try your own US node plus Global mode first.
 4. **The proxy vendor has its own access limits.** Unverified IPRoyal returns 403, and verification itself requires spending $10 first.
-5. **Before you add money, clean up old subscriptions.** Otherwise the money gets charged off the moment it hits the card.
-6. **A service you owe money to often won't let you downgrade, and won't let you delete the only card.** Either pay it off or talk to support.
-7. **Be careful with automatic top-up.** Manual top-ups plus checking the balance regularly is easier to control.
-8. **Keeping the number = never letting the balance run out + two-step verification.**
+5. **Be careful with automatic top-up.** Manual top-ups plus checking the balance regularly is easier to control.
+6. **Keeping the number = never letting the balance run out + two-step verification.**
 
 
 ---

@@ -232,7 +232,7 @@ Hi, I'm trying to subscribe to ChatGPT in the App Store using my Apple Gift Card
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/us-phone-number/
 
-> 先说结论：**号码到手了，能用。** 一张 Ultra Mobile PayGo 紫卡，每月 3 美元，开了 WiFi 通话，人不在美国也能收验证码。整个过程最大的坑不在卡上，而在"怎么登录 Ultra"和"怎么给它充钱"这两件事上：花了冤枉钱买住宅 IP，又被几笔扣款失败的旧订阅绕了一大圈。
+> 先说结论：**号码到手了，能用。** 一张 Ultra Mobile PayGo 紫卡，每月 3 美元，开了 WiFi 通话，人不在美国也能收验证码。整个过程最大的坑不在卡上，而在"怎么登录 Ultra"和"怎么给它充钱"这两件事上：花了冤枉钱买住宅 IP。
 
 ## 一、为什么要折腾一张实体卡
 
@@ -364,50 +364,11 @@ proxies:
 
 开好之后，状态栏显示 WiFi 通话，验证码短信就能收了。
 
-## 六、充值：被几笔旧订阅绕了一大圈
+## 六、充值
 
 号码有了，还得往 PayGo 钱包里充钱，不然断了就白干。
 
-### 先发现：卡里没钱，旧订阅一直在扣
-
-我准备用来付款的卡里没钱，翻邮箱一看，一排"payment was unsuccessful again"：
-
-![邮箱里一排扣款失败：Vercel 20 美元、Massive 29 美元、Soniox 5 美元，隔几天重试一次](/images/us-phone-number/13-unsuccessful-payment-emails.png)
-*邮箱里一排扣款失败：Vercel 20 美元、Massive 29 美元、Soniox 5 美元，隔几天重试一次*
-
-这些都是 Stripe 的自动重试。问题是：**卡里一充钱，下次重试就会扣成功。** 这几个服务我都不打算用了，所以得先处理掉，再充钱。
-
-### Vercel：有欠款，降不了级，也删不了卡
-
-Vercel 想降回免费的 Hobby，点 Downgrade 直接报错：
-
-![有一张逾期账单，就不让降级：You cannot downgrade while your plan has an overdue payment（团队名、卡号已打码）](/images/us-phone-number/14-vercel-cannot-downgrade.png)
-*有一张逾期账单，就不让降级：You cannot downgrade while your plan has an overdue payment（团队名、卡号已打码）*
-
-想着那我把卡删了总行吧：
-
-![删唯一的一张卡？要先加一张新卡（卡号已打码）](/images/us-phone-number/15-vercel-remove-card.png)
-*删唯一的一张卡？要先加一张新卡（卡号已打码）*
-
-**账上只有一张卡时，Vercel 不让删。** 能走的路只剩：付掉欠款再降级，或者提工单请他们免单取消。
-
-### Massive：订阅已经没了，但卡只能换不能删
-
-Massive（以前的 Polygon.io）的账单页倒是让我放心了：
-
-![Massive：No Active Subscriptions，下次扣款为空，最后一次扣款停在 9 月 22 日（卡号、发票号已打码）](/images/us-phone-number/16-massive-no-active-subscriptions.png)
-*Massive：No Active Subscriptions，下次扣款为空，最后一次扣款停在 9 月 22 日（卡号、发票号已打码）*
-
-**没有在扣的订阅**，Next payment 也是空的。想顺手把卡删掉，结果：
-
-![You can only have a single card associated with your account——只能换，不能删（卡号已打码）](/images/us-phone-number/17-massive-change-card-only.png)
-*You can only have a single card associated with your account——只能换，不能删（卡号已打码）*
-
-只能换卡，不能删。好在订阅已经没了，就不管它了。
-
-### 终于充上了
-
-卡里充上钱后，用 **PayPal（中国区账户，绑的国内卡）** 在 Ultra 付款成功，**充了 20 美元**。
+用 **PayPal（中国区账户，绑的国内卡）** 在 Ultra 付款成功，**充了 20 美元**。
 
 > 小插曲：我有了美国号，是不是该注册美区 PayPal？不用。PayPal 是哪个区，看的是注册时选的国家，不是手机号。美区要美国地址、美国卡，额度高了还要 SSN；中国区绑国内卡就能付。美国号加进去当备用手机号就行。
 
@@ -425,7 +386,7 @@ Massive（以前的 Polygon.io）的账单页倒是让我放心了：
 - **不开**：每月 3 美元从余额里扣，**20 美元大约够 6 个月**，到时候手动充；
 - **真要开就选 5 美元**，刚好覆盖月租还略有结余。
 
-我没开。刚经历完 Vercel 那一出，不想再有一个"卡里没钱就一直扣款失败"的东西。
+我没开。
 
 ## 七、能拿来干嘛，以及怎么保号
 
@@ -462,7 +423,6 @@ Ultra 是**虚拟运营商（MVNO）**：自己不建基站，租大运营商的
 - [ ] 能用美国 IP 登录 Ultra App（先试自己的节点 + 全局模式）
 - [ ] 重置过密码，改好姓名、邮箱（My Details 验证后按返回）
 - [ ] WLAN 通话已打开，911 地址是真实存在的美国地址
-- [ ] 充值前，已处理掉会自动扣款的旧订阅
 - [ ] 钱包余额够几个月，Auto Renew 不开或选 5 美元
 - [ ] 用这个号注册的重要应用，都开了两步验证
 
@@ -472,10 +432,8 @@ Ultra 是**虚拟运营商（MVNO）**：自己不建基站，租大运营商的
 2. **激活交给卖家**，非美国 IP 自己激活容易废卡。
 3. **住宅 IP 不一定必要**，先用自己的美国节点 + 全局模式试。
 4. **代理商有自己的访问限制**：IPRoyal 没认证会 403，认证还得先消费满 10 美元。
-5. **充钱之前，先清理旧订阅**，不然钱一进卡就被扣走。
-6. **有欠款的服务往往不让降级、不让删唯一的卡**，要么付清，要么找客服。
-7. **自动充值慎开**，手动充 + 定期看余额更可控。
-8. **保号 = 余额不断 + 两步验证。**
+5. **自动充值慎开**，手动充 + 定期看余额更可控。
+6. **保号 = 余额不断 + 两步验证。**
 
 
 ---

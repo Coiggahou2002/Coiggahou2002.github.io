@@ -25,3 +25,19 @@
 > — Richard Phillips Feynman
 
 > 条件受限是好事，因为条件受限可以让你小材大用，让你没有办法再用蛮力来完成工作，让你必需去思考使用知识密集型的解决方案来更聪明的解决问题。
+
+> 很多人有点想要，不如少数人特别想要。
+>
+> — Paul Graham, How to Get Startup Ideas
+
+> 关掉过滤器，别一上来就问「能不能做成大公司」。挤满人的市场反而是好信号。
+>
+> — Paul Graham, How to Get Startup Ideas
+
+> 活在未来，然后去做缺的东西。
+>
+> — Paul Graham, How to Get Startup Ideas
+
+> 别盯着对手，要盯着用户。
+>
+> — Paul Graham, How to Get Startup Ideas
