@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>从 Grok Bot 的讲座说起：聊聊做 Agent 半年的 12 条经验 · Rory Cai</title><meta name="description" content="一个号称 7×24 在线的 agent，其实大部分时间都在睡觉。"><link rel="canonical" href="https://coiggahou2002.github.io/zh/blogs/agent-12-lessons/"><link rel="alternate" hreflang="zh-CN" href="https://coiggahou2002.github.io/zh/blogs/agent-12-lessons/"><meta name="author" content="Rory Cai"><meta name="theme-color" content="#161616"><script>
+    // Runs before first paint so a light-mode reader never sees a dark flash.
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}
+  </script><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/rss+xml" title="Rory Cai" href="/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="text/markdown" href="/zh/blogs/agent-12-lessons.md"><link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt"><meta property="og:type" content="article"><meta property="og:site_name" content="Rory Cai"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="从 Grok Bot 的讲座说起：聊聊做 Agent 半年的 12 条经验"><meta property="og:description" content="一个号称 7×24 在线的 agent，其实大部分时间都在睡觉。"><meta property="og:url" content="https://coiggahou2002.github.io/zh/blogs/agent-12-lessons/"><meta property="og:image" content="https://coiggahou2002.github.io/images/posts/agent-12-lessons-og.jpg"><meta name="twitter:card" content="summary_large_image"><meta property="article:published_time" content="2026-10-13T06:16:00.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"从 Grok Bot 的讲座说起：聊聊做 Agent 半年的 12 条经验","description":"一个号称 7×24 在线的 agent，其实大部分时间都在睡觉。","url":"https://coiggahou2002.github.io/zh/blogs/agent-12-lessons/","mainEntityOfPage":"https://coiggahou2002.github.io/zh/blogs/agent-12-lessons/","inLanguage":"zh-CN","datePublished":"2026-10-13T06:16:00.000Z","image":"https://coiggahou2002.github.io/images/posts/agent-12-lessons-og.jpg","author":{"@type":"Person","@id":"https://coiggahou2002.github.io/#person","name":"Rory Cai","url":"https://coiggahou2002.github.io/","image":"https://coiggahou2002.github.io/images/avatar.png","jobTitle":"Agent 工程师 / 设计工程师","worksFor":{"@type":"Organization","name":"Parfit"},"alumniOf":{"@type":"CollegeOrUniversity","name":"哈尔滨工业大学","url":"https://www.hitsz.edu.cn/"},"knowsAbout":["TypeScript","Vue","Nuxt","React Native","Tailwind","Kotlin","Objective-C","Golang","Node.js","Python","MongoDB","Docker","Kubernetes","Prometheus","Grafana"],"sameAs":["https://github.com/Coiggahou2002","https://x.com/royccc000"]}}</script><link rel="stylesheet" href="/_astro/Base.Cfo2sX-Y.css"></head><body><nav class="pill-nav" aria-label="主导航"><a href="/zh/">首页</a><a href="/zh/blogs/" aria-current="page">文章</a><a href="/zh/menu/uses/">工具</a><a href="/zh/menu/journal/">手账</a><a class="lang-switch" href="/" hreflang="en" lang="en" aria-label="Switch to English">EN</a><button class="theme-toggle" type="button" aria-label="切换深浅色" hidden><svg class="moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></g></svg></button></nav><script>
+    // The toggle only exists with JavaScript; without it the site stays dark.
+    (() => {
+      const btn = document.querySelector('.theme-toggle');
+      const root = document.documentElement;
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const light = root.dataset.theme !== 'light';
+        if (light) root.dataset.theme = 'light'; else delete root.dataset.theme;
+        try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch {}
+      });
+    })();
+  </script><div class="frame"><main><article class="post"><header class="post-head"><h1>从 Grok Bot 的讲座说起：聊聊做 Agent 半年的 12 条经验</h1><time datetime="2026-10-13T06:16:00.000Z">2026-10-13</time></header><nav class="toc" aria-label="目录"><p>目录</p><ol><li class="d2"><a href="#agent-是怎么一步步走到今天的">Agent 是怎么一步步走到今天的？</a></li><li class="d2"><a href="#1-状态持久化agent-真的需要-24h-跑吗">1. 状态持久化：Agent 真的需要 24h 跑吗？</a></li><li class="d2"><a href="#2-什么时机叫醒-agent">2. 什么时机叫醒 Agent？</a></li><li class="d2"><a href="#3-agent-醒来之后在哪儿干活">3. Agent 醒来之后在哪儿干活？</a></li><li class="d2"><a href="#4-醒来了agent-怎么知道现在几点">4. 醒来了，Agent 怎么知道现在几点</a></li><li class="d2"><a href="#5-外部状态变了怎么告诉-agent">5. 外部状态变了，怎么告诉 Agent？</a></li><li class="d2"><a href="#6-上下文管理位置降权和缓存">6. 上下文管理：位置、降权和缓存</a></li><li class="d2"><a href="#7-工具结果太大怎么办">7. 工具结果太大怎么办？</a></li><li class="d2"><a href="#8-上下文快满了怎么压缩">8. 上下文快满了，怎么压缩？</a></li><li class="d3"><a href="#81-压缩之后到底要保留什么信息">8.1 压缩之后到底要保留什么信息？</a></li><li class="d3"><a href="#82-如何准确计算剩余-token">8.2 如何准确计算剩余 token？</a></li><li class="d3"><a href="#83-已经用了多少-token图片怎么算">8.3 已经用了多少 token？图片怎么算</a></li><li class="d3"><a href="#84-compaction-如何在-event-log-中体现">8.4 Compaction 如何在 event log 中体现？</a></li><li class="d3"><a href="#85-microcompact">8.5 MicroCompact</a></li><li class="d2"><a href="#9-agent-的回复怎么送到你的手上">9. Agent 的回复怎么送到你的手上？</a></li><li class="d2"><a href="#10-不想管多-session怎么样保证单会话体验">10. 不想管多 Session，怎么样保证单会话体验？</a></li><li class="d2"><a href="#写在最后">写在最后</a></li></ol></nav><div class="prose"><blockquote>
+<p><strong>创作声明</strong></p>
+<p>观点和正文主体，都是我用 Typeless 口述、转写之后再自己修改润色的；配图是 AI 画的，部分事实和数据也请 AI 帮忙查证、补充过。未经作者同意，不得转载。</p>
+<p>保证不给大家喂 AI slop。</p>
+</blockquote>
+<p>10 月 9 日，在 SpaceX 做机器学习、参与打造 Grok Bot 的 Lee Robinson（以下简称 @leerob）在 X 上发布了他们团队对 always-on agent 的理解。</p>
+<p><img src="/images/posts/agent-12-lessons/leerob-tweet.png" alt="Lee Robinson 发布讲座的推文（2026-10-09）"></p>
+<p>看完之后最大的感受是：他们讲到的很多设计取舍，跟我们过去几个月做 agent 产品时踩过的坑非常像。所以这一系列不是讲座笔记，而是借着讲座的框架，结合我们自己的实践，聊聊 Agent 工程里那些容易被忽略的小细节。</p>
+<h2 id="agent-是怎么一步步走到今天的">Agent 是怎么一步步走到今天的？</h2>
+<p>众所周知，一个最简单的手搓 agent 是这样的：</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 一个最小的 agent（简化）</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">messages </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> [</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    {</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"role"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"system"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"content"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">SYSTEM_PROMPT</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    {</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"role"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"user"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"content"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: user_input},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">while</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> True</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    reply </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> llm(messages, </span><span style="--shiki-light:#E36209;--shiki-dark:#F69D50">tools</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">TOOLS</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">)    </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 调一次模型，告诉它手上有哪些工具</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    messages.append(reply)                </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 模型说的话记进对话历史</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    if</span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067"> not</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> reply.tool_calls:              </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 不再调工具 = 这件事做完了</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF">        print</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">(reply.text)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">        break</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> call </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">in</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> reply.tool_calls:         </span><span style="--shiki-light:#6A737D;--shiki-dark:#768390"># 要调工具：真的去执行</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">        result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F47067">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7"> run_tool(call.name, call.args)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">        messages.append({</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"role"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"tool"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"tool_call_id"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: call.id, </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"content"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: result})</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#768390">        # 工具结果喂回去，进入下一圈</span></span></code></pre>
+<p>如果用程序员自己用 AI 的经历来举例子，我们可以细数一下从开始用 AI 辅助写代码，到现在经历了哪些变化。</p>
+<p>我按我自己的经历举例。</p>
+<ol>
+<li>最开始是跟模型对话，问某个 dockerfile 怎么写，模型给我代码片段，我摘取需要的部分 copy-paste 到我的代码里，自己测试是否能 work。</li>
+<li>然后有了 GitHub Copilot，可以按 Tab 补全代码。</li>
+<li>然后又有了 Cursor，他把 Tab-Completion 做得更好，更丝滑。后来推出了侧边栏 Copilot，可以对话，可以调用 Claude 模型来编码，模型开始有 function-calling 的能力，工具调用的数据在变多，也在反哺模型的进步。</li>
+<li>Claude Code 出世，工程师有了活在终端里的 Coding Agent，可以轻松地调用 Tools 完成绝大部分任务，交付结果。</li>
+<li>工作开始大量并行化，工程师要同时管理很多个 Claude Code session，甚至还同时要管理 Kimi/Codex session。</li>
+<li>慢慢发现不应该按照会话来跟进，应该按照事情（issue）来跟进/追踪 agent 的工作，于是 Multica 这样的产品开始火起来，我们也用了一段时间的 Multica。</li>
+<li>发现团队高吞吐量的情况下，PR 收敛是个很耗费工程师精力和注意力的事情，开始做一个活在云端 sandbox 里的 agent，专门负责 review PR，发现问题，修复 commit，最终收敛并把 PR 合入主干。</li>
+<li>Agent 从最初的在 Coding 领域表现良好，开始扩展到非 Coding 领域和消费级领域，对非工程师人群来说，理解 Agent 最好的办法就是把他当成人来看，只需要发信息、发邮件就可以跟他交互、让他做事情，不需要理解和管理多 session。</li>
+</ol>
+<p>以上是我个人体感的发展历程，跟 @leerob 分享的 slide 还是蛮像的。</p>
+<p>下面会有一些比较有趣的工程实践的例子，分享给大家。</p>
+<h2 id="1-状态持久化agent-真的需要-24h-跑吗">1. 状态持久化：Agent 真的需要 24h 跑吗？</h2>
+<p>表面上看，大家都希望 Agent 像是一个 24 小时一直运行的实体。</p>
+<p>但从软硬件原理来看，如果真的在一个沙箱里让一个进程永远不停地工作，既不合理，也非常浪费资源。</p>
+<p>所以，从技术实现上，我们必须让 Agent 能够原地 shutdown，并且之后随时能够原地恢复。</p>
+<p><strong>要让系统变得 recoverable（可恢复），首先要解决的就是随时随地把当前状态持久化，也就是 persistence。</strong></p>
+<p>回到 Claude Code，大家都知道，可以通过 <code>claude --resume</code> 去重新把一个旧的会话恢复起来，然后继续交互。它靠的是一个只追加写入的 <code>.jsonl</code> 文件，也就是 transcript。文件里每一行都是一个 event：</p>
+<ul>
+<li>用户说的一句话</li>
+<li>Agent 说的一句话</li>
+<li>Agent 调用工具（单个 tool 调用或一系列 tool 的并行调用）</li>
+<li>Agent 开始 thinking（记录思考过程）</li>
+<li>tool result 的返回（单个或批量）</li>
+<li>某些 tool 的报错</li>
+<li>平台给出的额外提示</li>
+</ul>
+<p>有新事件发生，就往文件末尾追加一行。一旦 Agent 意外崩溃或正常结束，下次唤醒时读这个文件，就能把对话历史还原。</p>
+<p>其实这样的问题，在计算机科学和工程史上，早就被人解决过。</p>
+<p>上世纪 70 年代，IBM 做数据库时就遇到了：<strong>断电了，写了一半的事务怎么办？</strong></p>
+<p>Jim Gray 在 IBM 研究院把答案总结成了 WAL（Write-Ahead Log）：先把要改什么追加写进日志，再去改数据；崩溃了就照着日志，把已提交的重做、没提交的撤销。PostgreSQL 在 2001 年的 7.1 版本里引入了 WAL；MySQL 的 InnoDB 引擎里，同样的东西叫 redo log，他们都采用了 WAL 的方式，顺带还省掉了磁头来回寻道的开销。</p>
+<p><img src="/images/posts/agent-12-lessons/binlog-vs-transcript.png" alt="MySQL 的 binlog vs agent 的 transcript"></p>
+<p>50 年之后，Agent Transcript 还是在解决同一个问题：WAL 其实只是一个预写日志，真正的数据还在数据页（page）里面，而且 checkpoint 一过，旧的日志就会被数据库回收；但 Transcript 本身是不会被回收的，并且它本身就反映了上下文的状态。所以更准确来讲，它其实更应该和 MySQL 的 binlog 去类比：一行一行的 event 记录发生了什么，谁拿到谁就能从头重放出同一份状态。</p>
+<p>并且，append-only 的模式让前面写下的内容永远不变，正好契合了 prompt caching 的需求。</p>
+<p>这里还涉及到 compaction，这个留到讲上下文工程时再细说。</p>
+<h2 id="2-什么时机叫醒-agent">2. 什么时机叫醒 Agent？</h2>
+<p>前面我们说了，有了持久化、append-only event log 和 prompt assembly，我们随时能够用一份 transcript 把 agent 随时从某个状态重新拉起，那它就不需要是一个 24 小时常驻的进程。</p>
+<p>那问题来了，什么时候应该拉起呢？</p>
+<ol>
+<li>开始的开始，只有人向他发消息才能拉起。</li>
+<li>然后我们跟 agent 说：5分钟之后再提醒我xxx，于是有了 scheduled wake up（定时拉起）。</li>
+<li>工程师还想要更多：你去盯着这个 PR，一直跟进到能合并再告诉我。于是 Claude Code 有了 Monitor Event，当关心的外部状态变化的时候，插一条消息激活当前的会话让 agent 继续工作。</li>
+<li>后面有了 /goal, /loop 也是类似的，都是有一些外部的 signal 来拉起 agent 让他继续干活。</li>
+<li>把 signal 泛化，就可以有很多了：比如主人的 Gmail 收到了新邮件、GitHub 仓库有了新 push、线上报了新 bug 等等（形式可能是一条消息或一个 webhook）</li>
+<li>又绕回来，别的 agent 向我的 agent 发一条消息，也是一种 signal 啊</li>
+<li>一个人和 agent 共存的群聊，群里一旦有人说话，又是一种 signal</li>
+<li>现在我们经常发一句话去打断/Steer 我们的 Agent，这也是一种 signal</li>
+</ol>
+<p>我们发现，这些本质上都是同一个概念，可以叫 signal，严谨一点可以叫做 Agent Activation Event。就像视频 PPT 里展示的那样，可以有各种各样的 信号去把 agent 唤醒。</p>
+<p>那问题又来了，如果同时有很多信号过来，怎么办呢？难道应该并行处理吗？</p>
+<p>聪明的你又想到了，那我分优先级呗。</p>
+<p>保证多种 signal 进来一定能推出一个有序的序列，然后串行处理，就好了。</p>
+<p>为了更 defensive 一点，邮件可能发重复，webhook 也可能重复投递，这里还得加一个幂等键来去重才行。</p>
+<p><img src="/images/posts/agent-12-lessons/agent-signals.png" alt="多个 signal 怎么处理"></p>
+<p>等一下，怎么又感觉有点熟悉？🤔</p>
+<p><strong>这不就是 CPU 的中断嘛。</strong></p>
+<p>CPU 没活干的时候并不空转，而是直接停下来睡觉，等中断把它叫醒：键盘按了一下、网卡收到一个包、定时器到点了。几个中断同时到，由中断控制器排好优先级，一个一个处理；处理一个的时候，别的先挂着。</p>
+<p><strong>把一堆信号排好序、串行处理、重复的去掉，这不是消息队列（MQ）吗。</strong></p>
+<p>Kafka 同一个 key 的消息（默认分区方式下）落在同一个分区，分区内严格有序；同一个消费者组里，一个分区同一时间只交给一个消费者处理。默认的投递语义是「至少一次」，消息可能重复，所以消费者要自己用幂等键去重。</p>
+<p>所以，Agent 的唤醒仍然没有发明什么新的东西，70 多年前的 CPU 中断，30 多年前的 MQ，已经把这套东西想清楚了。</p>
+<h2 id="3-agent-醒来之后在哪儿干活">3. Agent 醒来之后在哪儿干活？</h2>
+<p>信号把你的 Agent 叫醒了，醒来之后，总得有个地方干活：读文件、跑命令、上网查资料。这个 Agent 应该跑在哪里呢？</p>
+<p>还记得 OpenClaw 刚火的时候，很多人抢着买 Mac mini，一度买到断货，连树莓派的股价都跟着炒了一波。，就是因为大家都有各种各样的理由和担心，既想要让 Agent 大展身手，又不想让 Agent 把自己的电脑搞炸了。</p>
+<p>这里有一个矛盾：工具给得越少，Agent 越安全，但能力也受限制；给得越多越能干，但删库的风险也高。</p>
+<p>而大家最后的选择很一致：给它一台受限的 Linux 电脑。</p>
+<p>因为模型本身非常擅长使用 Linux 生态的 bash tools。比如用 awk、sed 来提取字段，用 head、tail 分块读取文件，或者利用 jq 裁剪 JSON 格式的回复、只看特定字段。</p>
+<p>事实证明，如果我们想要一个能力更强、更具备可组合性的 agent harness，最好的办法还是让它跑在一个 Linux 沙箱或 Linux 机器里，而不是完全给它一套由我们自行开发、限制其发挥的定制工具（除非它必须在一个受限的特定环境下工作）。</p>
+<p>把该给的 bash tools 都给它。这样它可以很轻松地查看网络、进程和资源占用，并自然拥有各种处理字符串、网络和文本的现成工具，根本不需要我们额外开发。并且借助 Linux 管道与 Unix 工具哲学的可组合性，工具组合越多，通过管道串联起来的行动链可能性就越多，理论上 agent 的能力就会越强大。</p>
+<p><img src="/images/posts/agent-12-lessons/unix-pipeline.png" alt="一行管道，五步变换：哪个接口报错最多"></p>
+<p>现在很多人都在做 Agent Sandbox。Agent 需要一个临时驻扎的地方来肆无忌惮地执行命令，而大家通常不希望这个环境是自己的本地电脑，因此催生了大量沙箱产品。</p>
+<p>这类沙箱产品的核心价值主要体现在两点：</p>
+<ol>
+<li>极短的启动时间：不同产品提供的冷启动时间差异很大，越优秀的产品冷启动时间越短。Firecracker 官方给的数字是 125 毫秒以内启动一台虚拟机；E2B 这类产品再加一层快照，官方说从快照恢复约 1 秒。</li>
+<li>提供受限的 Linux 环境：该给的工具都会提供，但越权命令会被封禁，同时用硬件虚拟化把它和宿主机隔开，网络和资源也有一定程度的隔离。</li>
+</ol>
+<p><img src="/images/posts/agent-12-lessons/agent-sandbox.png" alt="agent 住在哪：沙箱、Firecracker 和 agent"></p>
+<p>目前 AWS 开源的 Firecracker 就是基于 KVM 实现的。底层由 CPU 厂商提供 guest 模式支持，进而支撑了 KVM，KVM 之上构建了 Firecracker 这样的沙箱技术，再往上则衍生出 E2B 等应用层的商业沙箱产品。现在整个生态已经相当繁荣了。</p>
+<h2 id="4-醒来了agent-怎么知道现在几点">4. 醒来了，Agent 怎么知道现在几点</h2>
+<p>这其实是一个比较小的 point：怎么让 Agent 知道现在的时间，以及这句话和上一句话之间，过去了多久。</p>
+<p>一个常见的做法是在 system prompt 里放当前的年月日。只放日期，不放时分秒甚至毫秒：时间变得太快，每变一次，整段 prompt 的前缀就变了，缓存就命中不了；缓存命中不了，每次都得按原价重新算一遍，花的钱更多，第一个字也出得更慢。</p>
+<p>更好的做法是把日期从 system prompt 里拿出来，当成对话里的一条消息：</p>
+<ol>
+<li>对话开头告诉它今天的日期；</li>
+<li>日期变了（比如聊着聊着过了零点），就往对话末尾追加一条「日期变了，今天是 X 号」，前面的内容一个字都不动，缓存照样命中；</li>
+<li>需要精确到时分秒的时候，给它一个工具去查。</li>
+</ol>
+<p><img src="/images/posts/agent-12-lessons/agent-date-cache.png" alt="日期放在哪：写在 system prompt 里 vs 变了才追加一条"></p>
+<p>Claude Code 就是这么做的。它追加的那条提示还特意多写了一句：不用特意告诉用户，用户自己的时钟看得到。不然模型真会一本正经地跟你说「现在已经过了午夜」。聊天 Agent 最好要加上星期几，因为可能经常要帮人约时间。</p>
+<p>另外还有一个时区的问题。harness 里的时间戳大多是 UTC，但直接给 UTC 日期最多可能会差一天：洛杉矶晚上 6 点以后，UTC 已经是第二天了。所以日期要按用户所在的时区写，并且写明是哪个时区；UTC 时间戳要先换算再说给用户听。我们真踩过这个坑：一个 <code>06:40Z</code> 被原样念给了东八区的用户，他以为是早上 6 点 40。</p>
+<p><img src="/images/posts/agent-12-lessons/agent-timezone.png" alt="同一个瞬间，三个时区"></p>
+<h2 id="5-外部状态变了怎么告诉-agent">5. 外部状态变了，怎么告诉 Agent？</h2>
+<p>日期变了，可以在末尾追加一条提示。那如果外部有人在和 agent 同时改一个东西，要怎么办呢？</p>
+<p>这就是外部有状态对象的同步问题。在跟模型对话的过程中，它调用工具操作了外部的东西（比如一个文件，或者某个有状态的对象），改变了它的状态；与此同时，你自己又亲手改了那个对象。</p>
+<p>举个很简单的例子。</p>
+<p>你让模型把公众号初稿的标题改成「吴彦祖最帅」，模型改了；</p>
+<p>你看完不满意，自己打开编辑器又改成了「我才是吴彦祖」。</p>
+<p>这个动作模型是不知道的。</p>
+<p>下次你跟它说「帮我把这篇文章发出去」，它会发哪个标题呢？</p>
+<p>如果一次改动不是 Agent 自己做的，它就不会出现在上下文的工具调用记录里，Agent 接下来推理时，是有可能感知不到状态改变的。</p>
+<p>我们在实际工程中就遇到过。你跟 Agent 说把某个待办从「待办」改成「进行中」，说完你自己埋头干活，做完顺手在待办列表上打了勾。</p>
+<p>可 Agent 的工具记录里只有「待办 → 进行中」，你没让它改成「已完成」，它怎么知道这件事已经做完了？</p>
+<p>要通知模型外部状态变了，通常有两种方法：</p>
+<ol>
+<li><strong>直接修改历史</strong>：如果上下文里有某次工具调用涉及这个对象，就在状态变了之后，回去改那次调用的结果。但这样非常伤上下文，也非常伤 prompt cache，会让整个过程很混乱，还破坏了我们 immutable, append-only 的 EventLog 设计。</li>
+<li><strong>追加变更提示</strong>：语言模型的注意力往往集中在最前面和最后面（论文《Lost in the Middle》，2023），所以我们在最新一轮 prompt 的最末尾插入一条系统消息，告诉它某个东西的状态变了，后面如果用到，先调工具查一下最新状态。</li>
+</ol>
+<p><img src="/images/posts/agent-12-lessons/agent-change-hint.png" alt="agent 的变更提示"></p>
+<p>这个问题最基础的解法是在 system prompt 里写一条规则，要求模型任何时候都先调工具检查状态。但埋在最前面的规则很容易被 Agent 忽略。把提示放在最后面，不仅更容易被注意到，而且因为它故意只说「变了」、不说「变成了什么」，Agent 只能自己调工具去核实最新状态。</p>
+<p><strong>回想一下久远的计组课，计算机组成原理告诉我们，多核 CPU 就是这么干的。</strong></p>
+<p><img src="/images/posts/agent-12-lessons/cpu-cache-invalidation.png" alt="CPU 的缓存失效"></p>
+<p>每个核都有自己的缓存，存着同一块内存的副本。一个核改了数据，其他核收到的不是新值，而是一个通知：「你手上那份作废了」。</p>
+<p>它们什么都不用做，等到下次真要读的时候，发现自己那份已经作废，才重新去内存拿最新的。</p>
+<blockquote>
+<p>在这方面，Claude Code 做的更细一些，可以简单提一下：</p>
+<ol>
+<li>它给读过的每个文件记下当时的内容和修改时间；</li>
+<li>下一轮调模型前，如果发现磁盘上的文件更新了，就在 prompt 末尾追加一条提醒，附上改动的片段；</li>
+<li>真要写文件之前，还会再检查一次，文件已经被别人改过就拒绝写并要求模型重新读取。</li>
+</ol>
+</blockquote>
+<p><img src="/images/posts/agent-12-lessons/claude-code-file-change.png" alt="Claude Code 怎么发现文件被改了"></p>
+<h2 id="6-上下文管理位置降权和缓存">6. 上下文管理：位置、降权和缓存</h2>
+<p>结合视频里讲的内容，最核心的原则是：要把缓存未命中当成一个 bug。</p>
+<p>每家厂商的前缀缓存都有一个有效期（TTL），比如 Anthropic 默认 5 分钟，命中一次就重新计时。只要你在这个窗口里持续和模型交互，前面不变的那一大段 prompt 就应该次次命中，只按一折计费，原价只算末尾新增的部分。</p>
+<p>所以命中率理论上应该接近 100%，中间一旦出现 miss，通常意味着工程实现上有 bug。</p>
+<p>很多时候我们在做 A/B test 或其他调整时，需要去改动 prompt。虽然 prompt 送去推理时本质上只是一段文本，但在工程上它有组装的过程、分板块的过程、前后顺序以及人为降权的设计。</p>
+<p>也就是说，我们的 prompt 本质上是由不同 section 组成的 section list：</p>
+<ul>
+<li>每个 section 有自己的 section ID</li>
+<li>包含 memory、platform instructions 等不同板块</li>
+<li>各板块按照特定权重和顺序拼装而成</li>
+</ul>
+<p>一旦改了其中一段，比如 platform instructions 里的一句话，缓存就会从那一段开始往后全部失效。</p>
+<p>问题是：怎么知道缓存是被哪段打破的？</p>
+<p><img src="/images/posts/agent-12-lessons/prompt-section-hash.png" alt="组装记录比哈希：第一个不同的板块就是打破缓存的那块"></p>
+<p>视频作者提了一个非常好的工程方法：在组装时记录一条 prompt assembly record。这个 record 会给每一个板块计算哈希值，对比两次调用的 record，通过比对各板块的哈希就能立刻知道是哪个板块发生了变化。当然，直接把整个字符串拿去 diff 问题也不是特别大，这只是一个工程实现技巧。</p>
+<p>这里还有一个很有意思的实战案例。在 Claude Opus 4.6 时代使用 Claude Code 时，它有个毛病：经常拍马屁，我一纠正它，它就顺着我的意思去说，从不反驳我。</p>
+<p>当时我尝试在用户级的 CLAUDE.md 里写明”不要拍马屁，要永远客观真实地回答问题，发现我不对时要反驳并指出错误”，但发现基本没用。</p>
+<p>后来发现它有一个叫 output style 的机制可以调整输出风格，其本质也是一个 Markdown 文件。</p>
+<p>CLAUDE.md 和 output style 都是 Markdown，最后都拼进同一段 prompt 送给 Claude，效果却差很多，原因在于两者放的位置和措辞完全不同：</p>
+<ul>
+<li>output style 处于整个 prompt 非常靠前的位置（当时排在第二个），并且带有非常明确的指令性引导</li>
+<li>CLAUDE.md 则被放在了很靠后的位置，并且被人为降权了。系统会用特殊符号包裹这段内容，并明确提示模型：这里包含的是用户的偏好或简单记忆，应当把它当成参考信息（information），而不是可执行的指令（instruction）</li>
+</ul>
+<p><img src="/images/posts/agent-12-lessons/claude-md-vs-output-style.png" alt="CLAUDE.md 和 output style 进 prompt 的位置"></p>
+<p>正因为位置靠后且被显式降权，CLAUDE.md 的效果才大打折扣。</p>
+<p><strong>还有一个我们自己踩过的坑，比这更离谱 👇</strong></p>
+<p>之前我们有工程师在写 compaction 调用代码的时候，没有把提示词放对位置。做压缩任务本来会有一段提示词（compaction prompt），用来告诉它现在执行压缩任务、目的是产出什么样的结果。</p>
+<p>理论上这段 prompt 应该放在整个 prompt 的最前面去提权，但他放在了一个相对靠中的位置，而那个位置前面恰好有一些降权的 prompt。</p>
+<p><img src="/images/posts/agent-12-lessons/compaction-prompt-position.png" alt="压缩任务书放哪：修之前 vs 修之后"></p>
+<p>这就导致了一个非常奇葩的现象：当你跟 agent 聊了很多轮之后，发了一句新消息过去，它会开始思考很久（本质上是在触发压缩）。压缩完之后理论上应该能继续回答问题，并且不丢失太多上下文信息，结果它最后回出来一句话，就跟刚开始打招呼、什么都没发生过一样。</p>
+<p>这恰恰就是因为那段 compaction prompt 被放在了被降权的错误位置，导致整个 prompt 最开头依然是 “You are a helpful assistant to help the user and answer the user’s questions…” 之类的系统设定。</p>
+<p>最后整个压缩任务跑完，出来的居然是句”你好，有什么可以帮到你”。</p>
+<p>这也是一个非常奇葩但典型的案例。</p>
+<h2 id="7-工具结果太大怎么办">7. 工具结果太大怎么办？</h2>
+<p>前面说到上下文，这里说一下上下文增长速度的问题。</p>
+<p>最开始我们自己搭 harness 的时候没注意太多，发现上下文的增长速度特别快。</p>
+<p>做同样一件事，Claude Code 的增长很慢，而我们自己的特别快。</p>
+<p>我们去分析 tracing，发现大部分增长来自工具调用的返回结果非常大。实际看了一下，确实是一个很大的 JSON，毫不夸张地说，基本上把服务端 ORM 模型的所有字段全吐出来了。如果遇到一个 50 个 item 的长列表，每个 item 有八九个甚至十几个字段，调用一次就会消耗掉大量 token。</p>
+<p>为什么 Claude 增长没这么快？</p>
+<p>翻一下 tracing 会发现：每次工具返回，它都会先看结果有多大。如果超过上限（MCP 工具大约 2.5 万 token），就把整份结果存成文件，模型看到的不是结果本身，而是一段提示词，这个提示词的主要内容是：</p>
+<blockquote>
+<p>工具调用的结果超出了最大 token 限制。</p>
+<p>输出已经帮你存在了 ~/john/.claude/projects/xxx/yyy.txt</p>
+<ol>
+<li>如果你在找字符串，直接 grep 这个文件；</li>
+<li>如果出于分析或者总结的目的导致你要读整个文件，请你用 Bash 按字符区间切片之后，一片片读；</li>
+<li>如果调用子 agent 的工具存在，就交给子 agent 去读，从而保证太长的文本不会轻易进入你的 context。</li>
+</ol>
+</blockquote>
+<p>给 Claude 这样一段 prompt 后，它就会想办法按需、渐进式地用工具向上下文窗口披露信息。这样信息涌入上下文窗口的速度就会慢下来，效率也会更高。</p>
+<p><img src="/images/posts/agent-12-lessons/tool-result-spill.png" alt="工具结果太大时 Claude Code 怎么做"></p>
+<p>这一步 Claude Code 也开放给了用户。它一共有 33 个 hook 时机，其中「工具返回后」（PostToolUse）可以给模型附一段提示，甚至把结果整个换掉。自己搭 harness，在这一步做同样的事就行。</p>
+<p><img src="/images/posts/agent-12-lessons/claude-code-hooks.png" alt="Claude Code 的 hook 时机"></p>
+<p>hook 本质上是你挂在某个时机上的一段程序，最常见的是一条 shell 命令。到了那个时机，Claude Code 把自己当时的状态（工具名、工具参数、工具结果等）打包成一段 JSON 给 hook 程序看；它跑完自己的逻辑，再回一段 JSON，告诉 Claude Code 要做什么：拦截操作/修改参数/附加提示/替换工具结果。</p>
+<h2 id="8-上下文快满了怎么压缩">8. 上下文快满了，怎么压缩？</h2>
+<p>这一节主要是关于 compression（上下文压缩），这里其实有非常多工程细节要解决：</p>
+<h3 id="81-压缩之后到底要保留什么信息">8.1 压缩之后到底要保留什么信息？</h3>
+<p>这部分要解决的问题挺多，也是最核心的：压缩完后哪些信息必须留下来，哪些信息是高价值的。参考 Claude Code 和一些常见 agent harness 的实践，按经验通常有几个关键板块，才能比较好地保留用户意图：</p>
+<blockquote>
+<ol>
+<li>用户的需求、意图与目标</li>
+<li>涉及的关键概念与术语</li>
+<li>用户亲口陈述过的事实</li>
+<li>用户对你的长期约束和要求</li>
+<li>用户纠正过你的地方</li>
+<li>用户明确拒绝过的建议</li>
+<li>当前整体现状（文件与代码改动，错误与修复…）</li>
+<li>用户说过的每一句话</li>
+<li>待解决的问题</li>
+<li>当前正在进行的任务</li>
+<li>可能的下一步动作</li>
+</ol>
+</blockquote>
+<h3 id="82-如何准确计算剩余-token">8.2 如何准确计算剩余 token？</h3>
+<p>做 compact 时，核心的上下文计算涉及几个变量：</p>
+<ol>
+<li>模型的 context window 上限（比如很多模型是 100 万 token）</li>
+<li>用户当前已消耗的上下文（通常需要估算，具体估算方法先不展开）</li>
+</ol>
+<p>举个例子：如果窗口是 100 万 token，当前已经用了 60 万，那还剩 40 万。当我们触发 compaction 时，留给模型输出的摘要上限绝对不能超过剩余的 40 万 token。</p>
+<p>但这里还有一个容易忽视的硬限制：模型本身的单次推理最大输出限制（max output tokens）。哪怕上下文还剩 40 万窗口，如果模型单次推理最多只能输出 12 万 token，那你实际上最多也只能生成 12 万 token 的 summary。这个计算必须非常小心。</p>
+<p><img src="/images/posts/agent-12-lessons/summary-budget.png" alt="摘要能写多长：两条上限取短的那条"></p>
+<h3 id="83-已经用了多少-token图片怎么算">8.3 已经用了多少 token？图片怎么算</h3>
+<p>compaction 里面有一个公式，需要计算大概到什么位置时去触发 compact。这个阈值的设置因人而异：有人喜欢 30%，有人喜欢 75%，有人喜欢 90% 才压缩。</p>
+<p>但一旦涉及到这个，就会涉及到一个计算还剩下多少 token 的公式。如果模型的大小是 100 万 token，你想知道剩下多少，肯定得有个方法去估算目前整个上下文占了多少 token。</p>
+<p>聪明的你肯定会想到：每次LLM调用回来，接口都会返回这一次真实用了多少 token，拿它当基准，我们只估算增量的那部分就行啦。Claude Code 就是这么做的，新增的文字按「字符数 ÷ 4」粗估。</p>
+<p>但问题在于：<strong>如果我们用的是支持解读图片的多模态模型，在这个过程中发过的图片，其 token 数该怎么估算</strong>？这其实是一个很细节但确实需要考虑的问题。</p>
+<p>这里首先要大概知道模型是怎么理解图片的：模型把图片切成固定大小的小方块，一块大约算一个 token，所以<strong>一张图的 token 数只跟它的像素尺寸有关。</strong></p>
+<ul>
+<li>Anthropic 按 28×28 像素一块算，长边超过 1568 像素就先缩小，所以一张图最多约 1,568 token（4.7 以后的模型上限放宽到 2576 像素、4,784 token）</li>
+<li>OpenAI 的新模型按 32×32 像素一块再乘 1.2；</li>
+</ul>
+<p>关键是，用户发过来的图片可能很小，也可能很大。</p>
+<p>所以这里一般还需要 Harness 在发送时先把它缩放到指定大小。</p>
+<p><img src="/images/posts/agent-12-lessons/image-tokens.png" alt="一张图片算多少 token：缩小、切块、数块"></p>
+<p>Claude Code 就是这么做的：图片先缩到 2000×2000 以内，然后每张图片或每份文档一律按 2,000 token 算。</p>
+<h3 id="84-compaction-如何在-event-log-中体现">8.4 Compaction 如何在 event log 中体现？</h3>
+<p>我们之前讲过，Agent 对话持久化靠的是一个 append-only 的 EventLog，compaction 的结果该怎么写进去？常见的做法有几种对比：</p>
+<ol>
+<li>直接覆盖原文件：比如返回了 2 万字摘要，就把前面 50 万字全部抹掉，只留摘要。这是最差的做法，一旦后续需要通过工具检索过去的完整对话历史，抹掉就彻底丢了。</li>
+<li>开一个新文件记录 compact 结果：这也不好，因为本质上依然属于同一个 session，物理拆分并不合理。</li>
+<li>最好的方法：把 append-only EventLog 看作一条连续的时间线。在触发 compact 的节点插入一条分界线 event，该 event 的 metadata 中记录生成的摘要内容。当后续轮次组装 prompt 时，从后往前查找，找到第一条 compact 分界线为止，前面的原始历史直接忽略；必要时允许 agent 通过 search session 或 search messages 之类的工具按需向前召回具体的消息。</li>
+</ol>
+<p><img src="/images/posts/agent-12-lessons/compaction-boundary.png" alt="压缩结果的三种记法：覆盖、开新文件、插分界线"></p>
+<h3 id="85-microcompact">8.5 MicroCompact</h3>
+<p>题外话：Claude Code 里还有一种更轻的压缩，叫 MicroCompact。它并不是去产出一个压缩后的 Summary，而是照着一张名单，去清理一些太旧的工具结果。</p>
+<p>有一张「可以清」的工具名单：读文件、bash、grep、网页搜索、网页读取。</p>
+<p>清理的时候，默认最近 5 条是不清的，更早的 ToolResult 会被替换成一句「旧的工具结果已清除」。</p>
+<p>触发 MicroCompact 的时机有两种：</p>
+<ol>
+<li>请求发出去、接口报「上下文太长」的时候，清掉再马上重发</li>
+<li>是隔了比较长的时间之后触发</li>
+</ol>
+<p><img src="/images/posts/agent-12-lessons/micro-compact.png" alt="微压缩：旧的工具结果换成一句「已清除」"></p>
+<p>为什么这些结果可以清？</p>
+<p>比如，搜了 Google 或百度出来的搜索结果、网页摘要、链接、广告等，<strong>最终的结论其实都会反映在 agent 当轮的文本回答里</strong>；所以历史结果抹掉完全没关系，之后需要再去重新调用搜索即可。读文件、跑命令也是同理的。</p>
+<h2 id="9-agent-的回复怎么送到你的手上">9. Agent 的回复怎么送到你的手上？</h2>
+<p>记得我们最初的目标：我们希望做一个 7×24 小时 on-call、看起来一直在干活、持续为你服务的 agent。我们希望它能像人一样交互：比如干完活能主动给你发个消息。</p>
+<p>那人与人之间一般怎么打交道？</p>
+<p>无非是说话、发消息、打电话或发邮件，急事打电话，不那么急的短信或者邮件。</p>
+<p>这些本质上都是通过信息传递的通道，用于实时或非实时地传递信息。</p>
+<p>核心无非八个字：你来我往、你说一句我说一句。</p>
+<p>这里说一下在技术上需要注意的一些点。</p>
+<p>我们需要把「<strong>agent 怎么想出一句回复</strong>」和「<strong>这句回复怎么送到你手上</strong>」彻底分开。</p>
+<p><img src="/images/posts/agent-12-lessons/agent-four-layers.png" alt="agent 的四层"></p>
+<p>从下往上，可以拆成四层：</p>
+<ol>
+<li><strong>模型调用（model inference）</strong>：最底层，LLM 只做一件事：预测下一个 token（next token prediction）。</li>
+<li><strong>agent 执行（agent execution）</strong>：当你跟 agent 聊一句，它过了一会儿思考完毕、推理完成并回复你。在这个推理过程中，系统注入了海量信息：当前 UTC 时间、你所在的时区（如美国洛杉矶）、用户画像、历史聊天记录，以及必要时用于召回这些记忆的 tools；同时还有 agent 的行事原则、当前可用工具、渐进式披露的动态加载逻辑，甚至通过 meta-tool 调用来 load 更多 tools。把组装好的这一大段 prompt，加上用户当前的一句话以及历史记忆召回，最终才合情合理地推理出一句自然语言回复。harness 把next token prediction 包成了 next message prediction。</li>
+<li><strong>消息生产者（message producer）</strong>：上一层执行的结果是一条消息。从这一层看，agent 就是一个异步的消息生产者。</li>
+<li><strong>消息通道（message channel）</strong>：消息通过哪个渠道送达，可以是 Slack 的某个 thread、iMessage 的某个对话，也可以是一封邮件。就像人跟人可以用微信、WhatsApp、邮件聊天，通道本身不应该独占消息，且要能够轻松地切换。</li>
+</ol>
+<p>因此，message channel、message producer、agent execution、model call / model inference 必须清晰区分，它们在架构上是完全解耦的概念。</p>
+<p>除了 Channel 本身要和 Message 解耦之外，还有 App 多端同步的问题。</p>
+<p>以后一定是一个人与 Agent 共同工作的世界，Agent 一直活在云端帮你干活，有时有事情要通知你，或者需要你批准一个 approval。</p>
+<p>像 Grok Bot 这样的 Agent 应用，可能同时有 iPad 端、手机端、电脑端，未来还会有手表端，满足用户随时和 Agent 沟通的需求。</p>
+<p>它推消息时，肯定不能简单推到手机上就完事了。否则你下一秒打开电脑，就收不到这条消息，这显然行不通。</p>
+<p>这里的最佳实践是：</p>
+<ol>
+<li>生产端记录与存储：生产消息的地方先把元数据记下来，包括生产了什么消息、什么时候产生的、由哪个 Agent 在哪一次推理轮次中产生。消息生成后，统一存放在消息存储库里。</li>
+<li>消费端拉取同步：各个端通过 Sync Key 或者版本号去拉取消息。不同平台拉取时会带上状态（例如上一次看到的是哪个时间点的哪条序列号），请求拉取该序列号之后的所有新消息。</li>
+</ol>
+<p>这样不同平台就可以按照各自的进度和已读状态，去拉取最新的消息。</p>
+<p>聪明的你说：卧槽，怎么又有点熟悉？🤔</p>
+<p><strong>分层就跟网络协议栈差不多，多端消息推送这个，不就是邮箱客户端的 POP3 和 IMAP 协议的选择吗？</strong></p>
+<p>POP3 的做法是把邮件下载到一台设备上，通常还会顺手从服务器上删掉。于是你在家里电脑上收了信，到公司就看不到了，这正是「只用 WebSocket 推到手机」会遇到的问题。</p>
+<p>IMAP 则是邮件一直留在服务器上，每封信有一个只增不减的唯一编号（UID），每个客户端各自记住「我见过的最大编号」，只拉比它更大的新信。手机、电脑、平板各看各的，谁也不影响谁，这正是我们给 agent 消息设计的那一套。</p>
+<h2 id="10-不想管多-session怎么样保证单会话体验">10. 不想管多 Session，怎么样保证单会话体验？</h2>
+<p>Claude Code 出来的时候，常见的用法是开很多个 session：power user 会开不同 session 去做不同的事情，因为他们清楚 session 之间意味着上下文隔离。</p>
+<p>但最终面向消费者的产品，用户是不想去理解这些概念的；开发者自己也觉得管理 session 很麻烦，不希望让用户来管，这就需要我们来承担背后的技术复杂度。</p>
+<blockquote>
+<p>管理多个 session 这件事痛到什么程度？市面上已经冒出了一批专门干这个的工具，比如 <a href="https://herdr.dev">Herdr</a>、<a href="https://cmux.com">cmux</a>，我自己也手搓过一个类似的东西，叫 <a href="https://github.com/Coiggahou2002/leader">leader</a>。</p>
+</blockquote>
+<p>既然我们要用”人”的方式呈现 Agent，让它像真人一样随时可以对话，那就没必要分那么多 session。</p>
+<p>这带来的问题是：从 UI 逻辑上看，每个 Agent 永远只有一个会话，就像微信或 iMessage 的聊天窗口一样，无论聊多少年都在这一个会话里。</p>
+<p>为了实现这个效果，界面上虽然是一个会话，底层其实可以切分成不同的 session：</p>
+<ol>
+<li>聊到上下文满了（最常见的做法）：直接 compact，然后启动一个新的 session</li>
+<li>用户离开太久（比如超过一天）：再回来时把前面的内容做一次 summary，从 summary 开始</li>
+<li>随时检索历史：提供消息搜索工具，让 Agent 随时能找回以前说过的大概内容</li>
+<li>动态意图判断：进一步判断用户当前这句话的意图跟上下文有多大关系。如果关系不大，直接触发 summary 并开启新上下文，避免一直累积到 80% 这类很高的阈值才压缩，否则既耗 token、效率也不高</li>
+</ol>
+<p>其实这跟人与人交流的本质是一样的。</p>
+<p><img src="/images/posts/agent-12-lessons/single-session.png" alt="界面上一个会话，底下切成几段 session"></p>
+<p>还有一个点是：旧消息应该是可以搜索的。</p>
+<p>前面我们讲了可追加写的日志（append-only log）。遇到 compact 的时候，compact 本身也是一个事件，同样应该被追加进去，它本质上就是日志上的一条分界线。</p>
+<p>这样一来，所有旧消息完整保留在 append-only 的 EventLog 里面。</p>
+<p>至于 EventLog 的存储后端怎么存（可能是一份单纯的文件、某种特殊优化过的文件系统，或者数据库实体表里的某些字段），可以先不用管。</p>
+<p>关键在于旧消息全都被保留了下来，人和 Agent 之间说过的每一句话都还在，而且都应该能被搜索。</p>
+<p>能搜的东西分两层：</p>
+<ol>
+<li>消息本身：人和 Agent 说过的话，这是最核心的；</li>
+<li>Agent 的推理过程：内部的 thinking、调过的工具，往后也可以支持搜索。</li>
+</ol>
+<p>有了消息搜索工具（比如叫 message.search），对话就能自由得多。找回旧消息有两种方式：</p>
+<ul>
+<li><strong>预先召回</strong>：用户 5 个星期前聊过世界杯，现在又问起来，harness 先把相关的历史消息找出来，在 prompt 里提示 Agent「用户 5 周前跟你聊过这个话题」；</li>
+<li><strong>主动召回</strong>：Agent 觉得需要时，自己调用搜索工具去翻完整记录。</li>
+</ul>
+<p>其实，人也是这样。</p>
+<p>两个再熟悉的人，打开微信想找一个月前自己说过什么，也还是要靠搜索。</p>
+<h2 id="写在最后">写在最后</h2>
+<p>我最后还有两个点（其实我觉得这两点是类似的），稍微补充一下，每一点就一两句话：</p>
+<ol start="11">
+<li>
+<p>演讲人最后说的：客户端要做得很薄，服务端做得厚一点，将更多的逻辑放在服务端。客户端可能真的只负责展示消息、处理点击和一些交互动效。这样服务端就可以飞速迭代，不需要更新客户端代码。</p>
+</li>
+<li>
+<p>在现在这个时代，产生代码已经非常便宜了。那什么样的东西能让你跟其他工程团队区分开来、让你的团队走得更快？本质上是你的架构设计是否合理、是否解耦、是否高内聚低耦合，以及是否能够支撑极快的迭代速度和很好的可扩展性</p>
+</li>
+</ol>
+<hr>
+<p>本文首发于微信公众号「罗里戴行思录」，分四篇连载：<a href="https://mp.weixin.qq.com/s/cs5yDd9X0DbbsVAIjxLpmg">（一）持久化与唤醒</a>、<a href="https://mp.weixin.qq.com/s/kXav02NzeinLelCZ0QjSKA">（二）沙箱、时间与外部状态</a>、<a href="https://mp.weixin.qq.com/s/b2Nm7swxc-3rV6-EzaD0nA">（三）上下文、工具结果与压缩</a>、<a href="https://mp.weixin.qq.com/s/PBSTawC9e9vn7SK_aY3YuQ">（四）消息送达与单会话</a>。</p></div></article></main><footer><span>© 2026 Rory Cai</span><span class="footer-links"><a href="/llms.txt">给 AI 读: /llms.txt</a><a href="/zh/rss.xml">RSS</a></span></footer></div></body></html>

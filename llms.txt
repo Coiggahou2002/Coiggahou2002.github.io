@@ -39,6 +39,7 @@ Every post is available in English (under /) and Chinese (under /zh/).
 
 ## 文章（中文）
 
+- [从 Grok Bot 的讲座说起：聊聊做 Agent 半年的 12 条经验](https://coiggahou2002.github.io/zh/blogs/agent-12-lessons/) (2026-10-13): 一个号称 7×24 在线的 agent，其实大部分时间都在睡觉。
 - [不找代充，自己开 ChatGPT Pro 5x：一晚上踩完的所有坑](https://coiggahou2002.github.io/zh/blogs/chatgpt-pro-diy/) (2026-10-09): 美区 Apple ID + Amazon 买 Apple 礼品卡 + iOS App 内订阅，不找代充自己开通 ChatGPT Pro 100 的完整踩坑记录。
 - [搞一个真·美国手机号：从紫卡到 WiFi 通话收验证码](https://coiggahou2002.github.io/zh/blogs/us-phone-number/) (2026-10-08): 用 Ultra Mobile PayGo 紫卡加 WiFi 通话，人在国内也能用真美国手机号收验证码的完整过程和踩坑记录。
 - [Prompt、Skill、MCP 都会消失：人们只为结果付费](https://coiggahou2002.github.io/zh/blogs/pay-for-outcomes/) (2026-09-19): Prompt、Skill、Hook、Plugin，全都只是 AI 应用的过渡形态。留下来的，会是一个只交付结果的 Agent 市场。
