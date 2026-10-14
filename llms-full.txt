@@ -55,7 +55,7 @@ I'll use my own experience as an example.
 
 1. At first, I'd ask a chatbot how to write a Dockerfile, copy the bits I needed into my code, and test them by hand.
 2. Then GitHub Copilot arrived: press Tab, get the rest of the line.
-3. Then Cursor made tab completion faster and smarter, and later added a chat sidebar backed by Claude. Models learned to call functions, and all that tool-calling data fed back into better models.
+3. Then Cursor made tab completion faster and smarter, and later added a chat sidebar backed by Claude. Models learned to call functions, and all that tool-calling data fed back to produce better models.
 4. Then Claude Code: a coding agent in the terminal that calls tools on its own and finishes most tasks end to end.
 5. Work went massively parallel. Engineers juggled lots of Claude Code sessions at once, sometimes with Kimi or Codex on the side.
 6. We realized we should track agent work by task (issue), not by session. Tools like Multica took off, and we used it for a while too.
