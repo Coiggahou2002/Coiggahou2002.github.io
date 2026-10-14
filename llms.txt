@@ -18,6 +18,7 @@ Every post is available in English (under /) and Chinese (under /zh/).
 
 ## Posts (English)
 
+- [After the Grok Bot Talk: 12 Lessons from Six Months of Building Agents](https://coiggahou2002.github.io/blogs/agent-12-lessons/) (Oct 14, 2026): An "always-on" agent spends most of its time asleep. Here's what six months of building them taught me.
 - [No Reseller: I Opened ChatGPT Pro 5x Myself, and Every Pitfall I Hit in One Night](https://coiggahou2002.github.io/blogs/chatgpt-pro-diy/) (Oct 9, 2026): The full pitfall log of opening ChatGPT Pro 100 myself, without a reseller: a US Apple ID, an Apple gift card from Amazon, and an in-app iOS subscription.
 - [Getting a Real US Phone Number: From the Purple SIM to Receiving Codes over Wi-Fi Calling](https://coiggahou2002.github.io/blogs/us-phone-number/) (Oct 8, 2026): The full process, pitfalls included, of using an Ultra Mobile PayGo purple SIM plus Wi-Fi Calling so I can receive verification codes on a real US number while I'm in China.
 - [Prompts, Skills, and MCP Will All Disappear. People Only Pay for Outcomes](https://coiggahou2002.github.io/blogs/pay-for-outcomes/) (Sep 19, 2026): Prompts, skills, hooks, plugins — they're all a transitional phase of AI apps. What survives is a marketplace of agents that sell nothing but results.

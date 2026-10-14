@@ -4,6 +4,7 @@
 - Published: 2026-10-13 (Asia/Shanghai; 2026-10-13T06:16:00.000Z)
 - Language: zh-CN
 - Canonical: https://coiggahou2002.github.io/zh/blogs/agent-12-lessons/
+- English version: https://coiggahou2002.github.io/blogs/agent-12-lessons/
 
 > **创作声明**
 >
