@@ -26,7 +26,7 @@ My biggest takeaway from watching it: many of the design trade-offs they talked 
 
 ## How we got here
 
-As you probably know, the simplest hand-rolled agent looks like this:
+Everybody knows the "Hello World" version of the simplest agent loop looks like this:
 
 ```python
 # A minimal agent (simplified)
