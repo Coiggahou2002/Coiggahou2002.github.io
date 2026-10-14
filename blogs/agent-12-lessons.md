@@ -47,14 +47,14 @@ If you write code for a living, you've lived through all of this. Here's how it 
 
 I'll use my own experience as an example.
 
-1. In the very beginning, I'd chat with the model and ask how to write some Dockerfile. It gave me code snippets, I picked out the parts I needed, copy-pasted them into my code, and tested by hand whether it worked.
-2. Then came GitHub Copilot, which completed your code when you pressed Tab.
-3. Then came Cursor, which made tab completion better and smoother. Later it added a chat sidebar that could call Claude models to write code. Models gained function calling, the amount of tool-calling data kept growing, and that data in turn fed back into making the models better.
-4. Claude Code came out, and engineers got a coding agent living in the terminal that could readily call tools to finish the vast majority of tasks and deliver results.
-5. Work became heavily parallel: engineers had to juggle many Claude Code sessions at once, and sometimes Kimi/Codex sessions on top of that.
-6. Gradually we realized we shouldn't track the agent's work by session but by task (issue), so products like Multica started to catch on, and we used Multica for a while too.
-7. We found that once the team's throughput got high, getting PRs to a mergeable state ate up a lot of engineers' energy and attention, so we started building an agent that lives in a cloud sandbox and does nothing but review PRs, find problems, push fixes, and finally get each PR mergeable and merge it into trunk.
-8. Agents, which first proved themselves at coding, started expanding beyond coding and into consumer products. For non-engineers, the best way to think of an agent is as a person: you just message or email it to get it to do things, without having to understand or manage multiple sessions.
+1. At first, I'd ask a chatbot how to write a Dockerfile, copy the bits I needed into my code, and test them by hand.
+2. Then GitHub Copilot arrived: press Tab, get the rest of the line.
+3. Then Cursor made tab completion faster and smarter, and later added a chat sidebar backed by Claude. Models learned to call functions, and all that tool-calling data fed back into better models.
+4. Then Claude Code: a coding agent in the terminal that calls tools on its own and finishes most tasks end to end.
+5. Work went massively parallel. Engineers juggled lots of Claude Code sessions at once, sometimes with Kimi or Codex on the side.
+6. We realized we should track agent work by task (issue), not by session. Tools like Multica took off, and we used it for a while too.
+7. Once the team's throughput got high, shepherding PRs to mergeable ate a lot of engineers' time. So we built an agent that lives in a cloud sandbox and does one job: review PRs, find problems, push fixes, and merge them into trunk.
+8. Agents proved themselves at coding, then moved into consumer products. For non-engineers, an agent is best thought of as a person: you message or email it and never think about sessions.
 
 That's the path as I've lived it, and it lines up closely with the slides @leerob shared.
 
