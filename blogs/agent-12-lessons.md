@@ -53,7 +53,7 @@ I'll use my own experience as an example.
 4. Then Claude Code: a coding agent in the terminal that calls tools on its own and finishes most tasks end to end.
 5. Work went massively parallel. Engineers juggled lots of Claude Code sessions at once, sometimes with Kimi or Codex on the side.
 6. We realized we should track agent work by task (issue), not by session. Tools like Multica took off, and we used it for a while too.
-7. Once the team's throughput got high, shepherding PRs to mergeable ate a lot of engineers' time. So we built an agent that lives in a cloud sandbox and does one job: review PRs, find problems, push fixes, and merge them into trunk.
+7. As coding agents like Claude Code wrote more and more code, faster and faster, they opened more and more PRs, and getting each one to mergeable started eating up a lot of engineering time. So we built an agent that lives in a cloud sandbox and does one job: review PRs, find problems, push fixes, and merge them into trunk.
 8. Agents proved themselves at coding, then moved into consumer products. For non-engineers, an agent is best thought of as a person: you message or email it and never think about sessions.
 
 That's my path, and it closely matches the slides @leerob shared.
