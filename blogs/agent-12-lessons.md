@@ -43,7 +43,7 @@ while True:
         # Feed the tool results back and loop again
 ```
 
-Using programmers' own experience with AI as the example, let's walk through how things have changed from when we first started using AI to help write code until now.
+If you write code for a living, you've lived through all of this. Here's how it went, from the first AI autocomplete to now.
 
 I'll use my own experience as an example.
 
