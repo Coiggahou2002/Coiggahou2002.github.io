@@ -24,7 +24,7 @@ On October 9, Lee Robinson (@leerob from here on), who works on machine learning
 
 My biggest takeaway from watching it: many of the design trade-offs they talked about are very similar to the pitfalls we ran into while building agent products over the past few months. So this series isn't a set of notes on the talk. Instead, it borrows the talk's framework and uses our own experience to dig into the small details of agent engineering that are easy to overlook.
 
-## How did agents get to where they are today, step by step?
+## How we got here
 
 As you probably know, the simplest hand-rolled agent looks like this:
 
